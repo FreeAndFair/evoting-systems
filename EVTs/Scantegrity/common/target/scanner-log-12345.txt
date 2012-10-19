@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>1970-01-01T02:00:00</date>
+  <millis>0</millis>
+  <sequence>0</sequence>
+  <level>CONFIG</level>
+  <class>org.scantegrity.common.Logging</class>
+  <method>log</method>
+  <thread>10</thread>
+  <message>Testing the config level for the logger.</message>
+</record>
+<record>
+  <date>1970-01-01T02:00:00</date>
+  <millis>0</millis>
+  <sequence>0</sequence>
+  <level>ALL</level>
+  <class>org.scantegrity.common.Logging</class>
+  <method>log</method>
+  <thread>10</thread>
+  <message>Test message for the logger.</message>
+</record>

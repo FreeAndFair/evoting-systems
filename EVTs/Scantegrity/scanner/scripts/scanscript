@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#sleep 10;
+
+if [ $1 == "-L" ]; then
+	/usr/local/bin/scanimage -L
+else
+	/usr/local/bin/scanimage --batch="$1" --batch-count=2 --source "ADF Duplex" --mode Lineart --format=tiff --brightness 10 --resolution 150 --bgcolor Black --overscan on --page-height 375.6 -y 375.6
+fi
+
+exit $?

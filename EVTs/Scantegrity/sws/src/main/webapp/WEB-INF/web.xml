@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee" 
+	id="WebApp_ID" version="2.5">
+  <display-name>sws</display-name>
+  
+    <!-- BEGIN Stripes Configuration -->
+    <filter>
+        <filter-name>StripesFilter</filter-name>
+        <filter-class>
+            net.sourceforge.stripes.controller.StripesFilter
+        </filter-class>
+        <init-param>
+            <param-name>ActionResolver.Packages</param-name>
+            <param-value>org.scantegrity.sws.action</param-value>
+        </init-param>
+         <!--<init-param>
+            <param-name>LocalePicker.Locales</param-name>
+            <param-value>en_US</param-value>
+        </init-param>//-->    
+        <init-param>
+            <param-name>MultipartWrapper.Class</param-name>
+            <param-value>net.sourceforge.stripes.controller.multipart.CommonsMultipartWrapper</param-value>
+        </init-param>
+        <init-param>
+            <param-name>Extension.Packages</param-name>
+            <param-value>org.scantegrity.sws.stripes.ext</param-value>
+        </init-param>  
+        <!--      
+        <init-param>
+            <param-name>LocalizationBundleFactory.FieldNameBundle</param-name>
+            <param-value>org.scantegrity.sws.StripesResources</param-value>
+        </init-param> 
+        <init-param>
+            <param-name>LocalizationBundleFactory.ErrorMessageBundle</param-name>
+            <param-value>org.scantegrity.sws.StripesResources</param-value>
+        </init-param>
+         //-->
+    </filter>
+    
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>
+            net.sourceforge.stripes.controller.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <filter>
+        <filter-name>DynamicMappingFilter</filter-name>
+        <filter-class>
+            net.sourceforge.stripes.controller.DynamicMappingFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>DynamicMappingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>DynamicMappingFilter</filter-name>
+        <url-pattern>/</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+    </filter-mapping>
+    <!-- END Stripes Configuration -->
+        
+    <!--<context-param>
+        <param-name>
+            javax.servlet.jsp.jstl.fmt.localizationContext
+        </param-name>
+        <param-value>i18n/Messages</param-value>
+    </context-param>//-->    
+    
+    
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/pages/redirect.jsp</welcome-file>        
+    </welcome-file-list>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/pages/notfound.jsp</location>
+    </error-page>    
+</web-app>

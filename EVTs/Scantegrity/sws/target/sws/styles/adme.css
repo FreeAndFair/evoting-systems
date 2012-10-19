@@ -1,0 +1,171 @@
+body {
+   background-color: white;
+   font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+   font-size: 1em;
+}
+
+/*  Pallet
+--------------------
+     Brown #663300;
+    Green #99cc00;
+*/
+
+h1, h2, h3, h4, h5 {
+   
+    font-family: Georgia, "Times New Roman", Times, serif;
+   
+}
+
+a:link, a:visited, a:active, a:hover {
+   color: #006400;
+   text-decoration: underline;
+}
+
+#skipLinks {
+   position: absolute;
+   left: -9999px;
+}
+
+#page {
+   color: #222222;
+   background-color: white;
+   margin: 1em auto 1em auto;
+   width: 870px;
+   border: 1px solid gray;
+
+}
+
+#navigation {
+   width: 13em;
+   margin: 0em;
+   padding: 15px 0px 15px 20px;
+   position: absolute;
+   top: 0px;
+   left: 0px;
+   
+}
+
+#navigation li {
+   /*list-style-image: url("../images/leaf-bullet.gif");*/   
+   margin: 0em 0em .5em 15px;
+   padding: 0em;
+}
+
+#navigation a {
+   display: block;
+}
+
+#languageLinks {
+   width: 10em;
+   float: right;
+   list-style: none;
+   margin: 0em;
+   padding: 0em;
+   text-align: right;
+}
+
+#languageLinks li {
+   display: inline;
+   margin: 0em;
+   padding: 0em 1em 0em 0em;
+   list-style-type: none;
+}
+
+#header {
+   padding: 0px;
+   height: 113px;
+   position: relative;
+   /*background-color: #006400;*/
+   background-color: white;
+   /*background-image: url("../images/header_808460_20897000.jpg");*/
+   background-repeat: no-repeat;
+   background-position: top right;
+}
+
+#header h2 {
+   line-height: 55px;
+   margin: 0px 0px 0px 120px;
+   padding: 0px;
+   color: black;
+   padding: 0em;
+   font-size: 30px;
+   color: #073200;;
+}
+
+#header h2 span.smaller {
+   display: block;
+   line-height: 1em;
+   padding-top: 15px;
+   padding-bottom: 5px;
+   font-size: 24px;
+   color: #222222;
+}
+
+#header img {
+   height: 101px;
+   width: 101px;
+   display:block;
+   position:absolute;
+   top: 5px;
+   left: 5px;
+}
+
+#treeLogo {
+   position: absolute;
+   top: 5px;
+   left: 5px;
+   height: 100px;
+   width: 100px;
+   display: block;
+   margin: 1px;
+}
+
+#citySeal {
+   position: absolute;
+   top: 5px;
+   right: 5px;
+}
+
+#middle {
+   padding: 0px 15px 0px 15px;
+   clear: both;
+   position: relative;
+   border-top: 1px solid gray;
+}
+
+#content {
+   padding-left: 15em;
+   line-height: 1.25em;
+}
+
+#content h1 {
+   color: #000000;
+   line-height: 1em;
+
+}
+
+#footer {
+   clear: both;
+   text-align: center;
+   font-size: .8em;
+   background-color: #cccccc;
+   padding: 1px;
+}
+
+#footer p {
+   margin: .5em 0em .5em 0em;
+   padding: 0em;
+}
+
+#validate {
+   text-align: center;
+   font-size: .8em;
+   margin: 0em;
+   padding: 0em;
+}
+
+#validate li {
+  display: inline;
+  margin: 0em .5em 0em .5em;
+  padding: 0em;
+}

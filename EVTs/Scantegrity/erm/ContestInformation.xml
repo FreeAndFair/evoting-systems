@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0_26" class="java.beans.XMLDecoder"> 
+ <object class="java.util.Vector"> 
+  <void method="add"> 
+   <object class="org.scantegrity.common.Contest"> 
+    <void property="contestName"> 
+     <string>MAYOR</string> 
+    </void> 
+    <void property="contestants"> 
+     <object class="java.util.Vector"> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>0</int> 
+        </void> 
+        <void property="name"> 
+         <string>Bruce R. Williams</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>1</int> 
+        </void> 
+        <void property="name"> 
+         <string>Write-In</string> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="id"> 
+     <int>0</int> 
+    </void> 
+    <void property="method"> 
+     <object class="org.scantegrity.common.methods.InstantRunoffTally"/> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.scantegrity.common.Contest"> 
+    <void property="contestName"> 
+     <string>CITY COUNCIL MEMBER WARD 1</string> 
+    </void> 
+    <void property="contestants"> 
+     <object class="java.util.Vector"> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>0</int> 
+        </void> 
+        <void property="name"> 
+         <string>Seth Grimes</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>1</int> 
+        </void> 
+        <void property="name"> 
+         <string>Write-In</string> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="id"> 
+     <int>1</int> 
+    </void> 
+    <void property="method"> 
+     <object class="org.scantegrity.common.methods.InstantRunoffTally"/> 
+    </void> 
+    <void property="shortName"> 
+     <string>WARD1COUNCIL</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.scantegrity.common.Contest"> 
+    <void property="contestName"> 
+     <string>CITY COUNCIL MEMBER WARD 2</string> 
+    </void> 
+    <void property="contestants"> 
+     <object class="java.util.Vector"> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>0</int> 
+        </void> 
+        <void property="name"> 
+         <string>Lorig Charkoudian</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>1</int> 
+        </void> 
+        <void property="name"> 
+         <string>Tim Male</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>2</int> 
+        </void> 
+        <void property="name"> 
+         <string>Write-In</string> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="id"> 
+     <int>2</int> 
+    </void> 
+    <void property="method"> 
+     <object class="org.scantegrity.common.methods.InstantRunoffTally"/> 
+    </void> 
+    <void property="shortName"> 
+     <string>WARD2COUNCIL</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.scantegrity.common.Contest"> 
+    <void property="contestName"> 
+     <string>CITY COUNCIL MEMBER WARD 3</string> 
+    </void> 
+    <void property="contestants"> 
+     <object class="java.util.Vector"> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>0</int> 
+        </void> 
+        <void property="name"> 
+         <string>Kay Daniels-Cohen</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>1</int> 
+        </void> 
+        <void property="name"> 
+         <string>Mike Graul</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>2</int> 
+        </void> 
+        <void property="name"> 
+         <string>Jeffrey Noel-Nosbaum</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>3</int> 
+        </void> 
+        <void property="name"> 
+         <string>Write-In</string> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="id"> 
+     <int>3</int> 
+    </void> 
+    <void property="method"> 
+     <object class="org.scantegrity.common.methods.InstantRunoffTally"/> 
+    </void> 
+    <void property="shortName"> 
+     <string>WARD3COUNCIL</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.scantegrity.common.Contest"> 
+    <void property="contestName"> 
+     <string>CITY COUNCIL MEMBER WARD 4</string> 
+    </void> 
+    <void property="contestants"> 
+     <object class="java.util.Vector"> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>0</int> 
+        </void> 
+        <void property="name"> 
+         <string>Terry J. Seamens</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>1</int> 
+        </void> 
+        <void property="name"> 
+         <string>Write-In</string> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="id"> 
+     <int>4</int> 
+    </void> 
+    <void property="method"> 
+     <object class="org.scantegrity.common.methods.InstantRunoffTally"/> 
+    </void> 
+    <void property="shortName"> 
+     <string>WARD4COUNCIL</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.scantegrity.common.Contest"> 
+    <void property="contestName"> 
+     <string>CITY COUNCIL MEMBER WARD 5</string> 
+    </void> 
+    <void property="contestants"> 
+     <object class="java.util.Vector"> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>0</int> 
+        </void> 
+        <void property="name"> 
+         <string>Reuben Snipper</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>1</int> 
+        </void> 
+        <void property="name"> 
+         <string>Write-In</string> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="id"> 
+     <int>5</int> 
+    </void> 
+    <void property="method"> 
+     <object class="org.scantegrity.common.methods.InstantRunoffTally"/> 
+    </void> 
+    <void property="shortName"> 
+     <string>WARD5COUNCIL</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="add"> 
+   <object class="org.scantegrity.common.Contest"> 
+    <void property="contestName"> 
+     <string>CITY COUNCIL MEMBER WARD 6</string> 
+    </void> 
+    <void property="contestants"> 
+     <object class="java.util.Vector"> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>0</int> 
+        </void> 
+        <void property="name"> 
+         <string>Barrie Howard</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>1</int> 
+        </void> 
+        <void property="name"> 
+         <string>Fred Schultz</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="org.scantegrity.common.Contestant"> 
+        <void property="id"> 
+         <int>2</int> 
+        </void> 
+        <void property="name"> 
+         <string>Write-In</string> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void property="id"> 
+     <int>6</int> 
+    </void> 
+    <void property="method"> 
+     <object class="org.scantegrity.common.methods.InstantRunoffTally"/> 
+    </void> 
+    <void property="shortName"> 
+     <string>WARD6COUNCIL</string> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

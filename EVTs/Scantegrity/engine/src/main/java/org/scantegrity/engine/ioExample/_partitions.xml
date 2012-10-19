@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<electionSpecification version="0.1">
+	<electionInfo id="PunchScanCounty">
+		<sections>
+			<section id="s1">
+				<questions>
+					<question id="0" partitionNo="0"/>
+				</questions>
+			</section>
+			<section id="s2">
+				<questions>
+					<question id="1" partitionNo="0"/>
+				</questions>
+			</section>
+			<section id="s3">
+				<questions>
+					<question id="1" partitionNo="1"/>
+				</questions>
+			</section>
+		</sections>
+	</electionInfo>
+</electionSpecification>
