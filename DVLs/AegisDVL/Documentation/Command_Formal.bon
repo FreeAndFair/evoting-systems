@@ -1,0 +1,17 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster COMMAND
+  component
+    deferred class ICOMMAND
+      feature  
+        deferred Sender : IPADDRESS
+          ensure result /= void
+        end
+          
+        deferred Execute : void
+          -> s : STATION
+          require s /= void
+        end
+    end
+  end
+end

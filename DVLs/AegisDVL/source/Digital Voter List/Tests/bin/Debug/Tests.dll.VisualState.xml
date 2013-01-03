@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1052]C:\Users\Nicolai\Documents\Digital Voter List\source\Digital Voter List\Tests\bin\Debug\Tests.dll</TopNode>
+  <SelectedNode>[0-1042]Tests.StationTests.PromoteNewManagerTest</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1052]C:\Users\Nicolai\Documents\Digital Voter List\source\Digital Voter List\Tests\bin\Debug\Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1053]Tests" Expanded="true" />
+    <Node UniqueName="[0-1006]Tests.CommandsTests" Expanded="true" />
+    <Node UniqueName="[0-1046]Tests.CommunicatorTests" Expanded="true" />
+    <Node UniqueName="[0-1031]Tests.StationTests" Expanded="true" />
+  </Nodes>
+</VisualState>

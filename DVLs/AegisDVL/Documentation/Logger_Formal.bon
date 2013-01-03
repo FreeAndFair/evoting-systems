@@ -1,0 +1,19 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster LOGGER
+  component
+    deferred class ILOGGER
+      feature  
+        
+        deferred Log : void
+          -> message : VALUE
+          -> level : VALUE
+          require message /= void
+        end
+        
+        deferred Export : SEQUENCE[LOGENTRY]
+          ensure result /= void
+        end
+    end
+  end
+end

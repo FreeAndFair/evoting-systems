@@ -1,0 +1,92 @@
+class_chart CIPHERTEXT
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "CipherText is encrypted data."
+query
+  "What does this CipherText look like?"
+constraint
+  "The value of the ciphertext must always be non-void."
+end
+
+class_chart ASYMMETRICKEY
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "An asymmetric key can be used for either encryption or decryption of data."
+query
+  "What does this asymmetric key look like?"
+constraint
+  "The value of an asymmetric key must always be non-void."
+end
+
+class_chart SYMMETRICKEY
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A symmetric key can be used for either encryption or decryption of data."
+query
+  "What does this symmetric key look like?"
+constraint
+  "The value of a symmetric key must always be non-void."
+end
+
+class_chart MESSAGE
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A message contains the ciphertexts of a symmetric key, a command encrypted with the symmetric key and a hash encrypted with the senders public key. Used for secure communication."
+query
+  "What is the initialization vector used to encrypt the command?",
+  "What is the CipherText of the symmetric key used to encrypt the command?",
+  "What is the CipherText of the encrypted command?",
+  "What is the CipherText of the senderhash of the command?"
+end
+
+class_chart CPR
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A CPR-number is a number identifying a danish citizen, consisting of the birthdate and a number."
+query
+  "What does this CPR-number look like?"
+constraint
+  "The numeric value of a CPR-number is always greater than zero."
+end
+
+class_chart VOTERNUMBER
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A voternumber is a unique number used in conjunction with the CPR-number to request a ballot."
+query
+  "What does this voter-number look like?"
+end
+
+class_chart BALLOTSTATUS
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A ballot status is used in conjunction with a cpr-number and a voternumber, and indicates wheither status that indicates whether the ballot has been handed out, not handed out, or if it is unavailable at the given election venue."
+query
+  "What is the status of this ballot?"
+constraint
+  "A ballot status is always either 'handed out', 'not handed out' or 'not available'."
+end
+
+class_chart ENCRYPTEDVOTERDATA
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "Encrypted voterdata is the encrypted combination of CPR, VOTERNUMBER and BALLOTSTATUS."
+query
+  "What is the encrypted CPR-number of this encrypted voterdata?",
+  "What is the encrypted voter-number of this encrypted voterdata?",
+  "What is the encrypted ballot status of this encrypted voterdata?"
+constraint
+  "All the data must have a value, that is, be non-void."
+end
+
+class_chart LOGENTRY
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nsbk@itu.dk)"
+  explanation "A log entry is an entry in a log. It contains a message, a time and a level indicating its type."
+query
+  "What is the message of the log entry?",
+  "What type of log entry is this?",
+  "At what time was the log entry added?"
+constraint
+  "None of the values must be void."
+end

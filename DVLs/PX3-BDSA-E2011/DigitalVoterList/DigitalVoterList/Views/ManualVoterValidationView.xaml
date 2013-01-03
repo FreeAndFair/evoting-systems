@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="DigitalVoterList.Views.ManualVoterValidationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="960">
+    <Grid>
+        <Border BorderBrush="Silver" BorderThickness="1" Name="border2" Margin="472,0,0,0"></Border>
+        <DataGrid Name="QuestionsGrid" Margin="472,0,-1,-1" CanUserSortColumns="False" Height="200" MaxHeight="200" MaxWidth="489"/>
+        <Label Content="CPR:" Height="20" HorizontalAlignment="Left" Margin="12,12,0,0" Name="_cprLabel" VerticalAlignment="Top" Padding="0" FontSize="14" FontWeight="Bold" />
+        <TextBlock Height="23" Width="280" HorizontalAlignment="Left" Margin="171,12,0,0" Name="Cpr" Text="" VerticalAlignment="Top" FontSize="14" />
+        <Label Content="Passport number:" FontSize="14" FontWeight="Bold" Height="20" HorizontalAlignment="Left" Margin="12,46,0,0" Name="label1" Padding="0" VerticalAlignment="Top" />
+        <TextBlock FontSize="14" Width="280" Height="23" HorizontalAlignment="Left" Margin="171,46,0,0" Name="PassportNumber" Text="" VerticalAlignment="Top" />
+        <Label Content="Place of birth:" FontSize="14" FontWeight="Bold" Height="20" HorizontalAlignment="Left" Margin="12,84,0,0" Name="label2" Padding="0" VerticalAlignment="Top" />
+        <TextBlock FontSize="14" Width="280" Height="23" HorizontalAlignment="Left" Margin="171,84,0,0" Name="PlaceOfBirth" Text="" VerticalAlignment="Top" />
+        <Label Content="Eligible to vote:" FontSize="14" FontWeight="Bold" Height="20" HorizontalAlignment="Left" Margin="12,118,0,0" Name="label3" Padding="0" VerticalAlignment="Top" />
+        <TextBlock FontSize="14" Width="280" Height="23" HorizontalAlignment="Left" Margin="171,118,0,0" Name="EliglbeToVote" Text="" VerticalAlignment="Top" />
+        <Label Content="Has voted:" FontSize="14" FontWeight="Bold" Height="20" HorizontalAlignment="Left" Margin="12,153,0,0" Name="label4" Padding="0" VerticalAlignment="Top" />
+        <TextBlock FontSize="14" Width="280" Height="23" HorizontalAlignment="Left" Margin="171,153,0,0" Name="HasVoted" Text="" VerticalAlignment="Top" />
+    </Grid>
+</UserControl>

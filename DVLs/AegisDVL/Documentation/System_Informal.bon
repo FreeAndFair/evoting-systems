@@ -1,0 +1,36 @@
+system_chart DVL
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "An open source digital voter list that keeps track of who has been handed a ballot at an election, with a focus on security."
+  cluster DIGITALVOTERLIST description "The various elements of the digital voter list system."
+  cluster COREDATATYPES description "Core datatypes used by the digital voter list system."
+end
+
+cluster_chart DIGITALVOTERLIST
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "The various elements of the digital voter list system."
+  class STATION description "A station is a client-machine that communicates with its manager, and provides a graphical user interface for voters to use when requesting a ballot. A station can also be the manager. A manager manages the various stations, and handles synchronization of the data. It also has elevated rights compared to a station, and can for example manually mark a voter as having been handed a ballot (in case he lost his voter card, or the like)."
+  class SCANNER description "A scanner can read a physical voter card and extract required information from it."
+  class COMMUNICATOR description "A communicator is responsible for securely passing commands between two parties."
+  class CRYPTO description "Crypto is responsible for cryptographic functions such as public-key encryption."
+  class DATABASE description "The database-layer is responsible for communicating with the database (create, read, update, write). It can also perform batch-operations such as importing and exporting the database."
+  class COMMAND description "A command is sent over the network and can be executed at the destination."
+  class LOGGER description "A log is used to track events in the system."
+  class UI description "A UI is used to interact with human beings. The UI must be able to support requirements to be able to interact with the Digital Voter List system."
+end
+
+cluster_chart COREDATATYPES
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "Core datatypes used by the digital voter list system."
+  class CIPHERTEXT description "CipherText is encrypted data."
+  class ASYMMETRICKEY description "An asymmetric key can be used for either encryption or decryption of data."
+  class SYMMETRICKEY description "A symmetric key can be used for either encryption or decryption of data."
+  class MESSAGE description "A message contains ciphertext of a symmetric key, a message encrypted with the symmetric key and a hash encrypted with the senders public key. Used for secure communication."
+  class CPR description "A CPR-number is a number identifying a danish citizen, consisting of the birthdate and a unique identifier."
+  class VOTERNUMBER description "A voternumber is a unique number used in conjunction with the CPR-number to request a ballot."
+  class BALLOTSTATUS description "A ballot status is used in conjunction with a cpr-number and a voternumber, and indicates wheither status that indicates whether the ballot has been handed out, not handed out, or if it is unavailable at the given election venue."
+  class ENCRYPTEDVOTERDATA description "Encrypted voterdata is the encrypted combination of CPR, VOTERNUMBER and BALLOTSTATUS."
+  class LOGENTRY description "A log entry is an entry in a log. It contains a message, a time and a level indicating its type."
+end

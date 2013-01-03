@@ -1,0 +1,81 @@
+Station & IDvlUI:
+
+Methods: 64
+Methods covered by contracts: 31
+Contracts: 76
+Non-trivial contracts: 26
+Invariants: 1
+
+Util:
+
+Methods: 17
+Methods covered by contracts: 9
+Contracts: 20
+Non-trivial contracts: 3
+Invariants: 0
+
+Logging:
+
+Methods: 3
+Methods covered by contracts: 3
+Contracts: 5
+Non-trivial contracts: 1
+Invariants: 0
+
+Scanning:
+
+Methods: 1
+Methods covered by contracts: 0
+Contracts: 0
+Non-trivial contracts: 0
+Invariants: 0
+
+Database:
+
+Methods: 8
+Methods covered by contracts: 7
+Contracts: 18
+Non-trivial contracts: 12
+Invariants: 0
+
+Data types:
+
+Methods: 25
+Methods covered by contracts: 6
+Contracts: 21
+Non-trivial contracts: 1
+Invariants: 7
+
+Crypto:
+
+Methods: 14
+Methods covered by contracts: 12
+Contracts: 14
+Non-trivial contracts: 0
+Invariants: 0
+
+Communication:
+
+Methods: 6
+Methods covered by contracts: 5
+Contracts: 7
+Non-trivial contracts: 1
+Invariants: 0
+
+Commands:
+
+Methods: 20
+Methods covered by contracts: 20
+Contracts: 28
+Non-trivial contracts: 0
+Invariants: 0
+
+----------------------------------------
+
+Sum:
+
+Methods: 158
+Methods covered by contracts: 93
+Contracts: 189
+Non-trivial contracts: 39
+Invariants: 9

@@ -1,0 +1,21 @@
+﻿<Page x:Class="UI.ManagerWindows.DataLoadPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      ShowsNavigationUI="False"
+    Title="DataLoadPage">
+
+    <Grid>
+        <TextBox Height="28" HorizontalAlignment="Left" Margin="132,139,0,0" Name="filePathTextbox" VerticalAlignment="Top" Width="319" />
+        <Button Content="Gennemse" Height="28" HorizontalAlignment="Left" Margin="457,139,0,0" Name="fileBrowseButton" VerticalAlignment="Top" Width="100" Click="FileBrowseButtonClick" />
+        <Label Content="Valg data" Height="28" HorizontalAlignment="Left" Margin="42,139,0,0" Name="fileBrowseLabel" VerticalAlignment="Top" />
+        <Button Content="Næste" Height="28" HorizontalAlignment="Left" Margin="457,263,0,0" Name="nextButton" VerticalAlignment="Top" Width="100" IsEnabled="False" Click="NextButtonClick" />
+        <Button Content="Tilbage" Height="28" HorizontalAlignment="Left" Margin="132,263,0,0" Name="backButton" VerticalAlignment="Top" Width="100" Click="BackButtonClick" />
+        <TextBox Height="28" HorizontalAlignment="Left" Margin="132,201,0,0" Name="keyPathTextBox" VerticalAlignment="Top" Width="319" />
+        <Button Content="Gennemse" Height="28" HorizontalAlignment="Left" Margin="457,201,0,0" Name="keyBrowseButton" VerticalAlignment="Top" Width="100" Click="KeyBrowseButtonClick" />
+        <Label Content="Election public key" Height="28" HorizontalAlignment="Left" Margin="12,201,0,0" Name="keyBrowseLabel" VerticalAlignment="Top" />
+    </Grid>
+</Page>

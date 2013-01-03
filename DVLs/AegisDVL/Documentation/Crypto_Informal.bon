@@ -1,0 +1,18 @@
+class_chart CRYPTO
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "Crypto is responsible for cryptographic functions such as public-key encryption."
+query
+  "What is the asymmetric key used for encrypting voterdata at this election venue?",
+  "What are the keys for my public key infrastructure?",
+  "What does this look like when it's symmetrically encrypted with this key?",
+  "What does this look like when it's symmetrically decrypted with this key?",
+  "What is the current initilization vector?",
+  "What does this look like when it's asymmetrically encrypted with this key?",
+  "What does this look like when it's asymmetrically decrypted with this key?",
+  "What is the hashed value of this?",
+  "May I have a new randomly generated symmetric key?"
+command
+  "The initilization vector is this!",
+  "Generate a new initilization vector to be used for symmetric encryption!"
+end

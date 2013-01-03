@@ -1,0 +1,15 @@
+class_chart COMMUNICATOR
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A communicator is responsible for securely passing commands between two parties."
+query
+  "May I have a new communicator with this station as the parent?",
+  "Is this machine listening on this port?",
+  "Who is my parent?",
+  "What are the addresses of machines in the local network?"
+command
+  "Send this command securely to this target!",
+  "Receive and handle all commands!"
+constraint
+  "All commands should be secure"
+end

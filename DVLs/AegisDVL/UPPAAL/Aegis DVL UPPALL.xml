@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+//The amount of stations in the model
+const int STATIONAMOUNT = 3;
+//The amount of voters in the model
+const int VOTERAMOUNT = 3;
+//types used for verification and channels
+typedef int[0, STATIONAMOUNT-1] chan_t;
+typedef int[0, VOTERAMOUNT-1] voter_t;
+//channels
+urgent chan requestUpdate;
+urgent chan updateDB[chan_t];
+
+//the voter id the manager is working with
+int managerVoter = 0;
+//the voter id the stationListener is working with
+int stationVoter = 0;
+//the sender of a request
+int sender;
+
+//the local data sets
+bool voters[STATIONAMOUNT+1][VOTERAMOUNT];
+//the amount of ballots handed out to each voters
+int ballotsHandedOut[VOTERAMOUNT];
+//the station who needs to hand out a ballot
+int handOutBallotFromStation = -1;
+
+</declaration><template><name x="5" y="5">Station</name><parameter>bool &amp;voters[VOTERAMOUNT], int id</parameter><declaration>// Place local declarations here.
+//voter is the voter number of the person wanting to vote (here 0,1,2)
+int voter = 0;
+// voterConfirmed is whether the voter has already voted in the local database 
+bool voterConfirmed;
+
+void checkVoter(){
+	int i;
+	voterConfirmed = false;
+	for(i = 0; i &lt; VOTERAMOUNT; i++){
+		if(!voters[i]){
+			voterConfirmed = true;
+		}
+	}
+}</declaration><location id="id0" x="-696" y="-416"><name x="-738" y="-454">requestBallot</name></location><location id="id1" x="-984" y="-416"><name x="-1024" y="-456">confirmVoter</name></location><location id="id2" x="-1248" y="-416"><name x="-1256" y="-448">idle</name></location><init ref="id2"/><transition><source ref="id1"/><target ref="id2"/><label kind="guard" x="-1104" y="-376">voterConfirmed==false</label><nail x="-1040" y="-376"/></transition><transition><source ref="id0"/><target ref="id2"/><label kind="synchronisation" x="-1032" y="-288">requestUpdate!</label><label kind="assignment" x="-1032" y="-272">managerVoter := voter-1,
+sender = id</label><nail x="-984" y="-296"/></transition><transition><source ref="id1"/><target ref="id0"/><label kind="guard" x="-904" y="-448">voterConfirmed==true</label></transition><transition><source ref="id2"/><target ref="id1"/><label kind="guard" x="-1192" y="-472">voter &lt; VOTERAMOUNT</label><label kind="assignment" x="-1192" y="-456">checkVoter(),
+voter:=voter+1</label></transition></template><template><name>Manager</name><parameter>bool &amp;voters[VOTERAMOUNT]</parameter><declaration>//sendTo is the number of stations which have been sent the update
+int sendTo = 0;</declaration><location id="id3" x="-1072" y="-160"><name x="-1088" y="-192">loop</name><committed/></location><location id="id4" x="-728" y="-160"><name x="-768" y="-192">notifyStations</name><committed/></location><location id="id5" x="-584" y="-248"><name x="-560" y="-264">confirmVoter</name><committed/></location><location id="id6" x="-800" y="-248"><name x="-808" y="-280">idle</name></location><init ref="id6"/><transition><source ref="id3"/><target ref="id6"/><label kind="guard" x="-1048" y="-264">sendTo == STATIONAMOUNT</label><label kind="assignment" x="-1048" y="-248">sendTo := 0</label></transition><transition><source ref="id3"/><target ref="id4"/><label kind="guard" x="-904" y="0">sendTo != STATIONAMOUNT</label><nail x="-896" y="-8"/><nail x="-728" y="-8"/></transition><transition><source ref="id4"/><target ref="id3"/><label kind="synchronisation" x="-1024" y="-152">updateDB[(sender+1)%STATIONAMOUNT]!</label><label kind="assignment" x="-808" y="-136">sender++,
+sendTo++</label></transition><transition><source ref="id5"/><target ref="id6"/><label kind="guard" x="-776" y="-360">voters[managerVoter]</label><nail x="-696" y="-336"/></transition><transition><source ref="id5"/><target ref="id4"/><label kind="guard" x="-664" y="-160">!voters[managerVoter]</label><label kind="assignment" x="-664" y="-144">voters[managerVoter] := true,
+stationVoter = managerVoter,
+handOutBallotFromStation := sender</label><nail x="-584" y="-160"/></transition><transition><source ref="id6"/><target ref="id5"/><label kind="synchronisation" x="-744" y="-272">requestUpdate?</label></transition></template><template><name>StationListener</name><parameter>bool &amp;voters[VOTERAMOUNT], int id</parameter><location id="id7" x="-40" y="160"><name x="-88" y="176">handoutBallot</name><committed/></location><location id="id8" x="216" y="0"><name x="192" y="-32">update</name><committed/></location><location id="id9" x="-40" y="0"><name x="-48" y="-32">idle</name></location><init ref="id9"/><transition><source ref="id7"/><target ref="id9"/><label kind="guard" x="-32" y="64">handOutBallotFromStation != id</label></transition><transition><source ref="id7"/><target ref="id9"/><label kind="guard" x="-320" y="64">handOutBallotFromStation == id</label><label kind="assignment" x="-328" y="80">ballotsHandedOut[stationVoter]++</label><nail x="-112" y="88"/></transition><transition><source ref="id8"/><target ref="id7"/><label kind="assignment" x="128" y="160">voters[stationVoter] := true</label><nail x="216" y="160"/></transition><transition><source ref="id9"/><target ref="id8"/><label kind="synchronisation" x="-8" y="-24">updateDB[id]?</label></transition></template><system>
+S1 = Station(voters[1], 0);
+SL1 = StationListener(voters[1], 0);
+
+S2 = Station(voters[2], 1);
+SL2 = StationListener(voters[2], 1);
+
+S3 = Station(voters[3], 2);
+SL3 = StationListener(voters[3], 2);
+
+S4 = Station(voters[4], 3);
+SL4 = StationListener(voters[4], 3);
+
+M = Manager(voters[0]);
+
+// List one or more processes to be composed into a system.
+system S1, SL1, S2, SL2, S3, SL3, M;
+</system></nta>

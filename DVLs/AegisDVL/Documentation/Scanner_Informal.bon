@@ -1,0 +1,9 @@
+class_chart SCANNER
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A scanner can read a physical voter card and extract required information from it."
+query
+  "What is the voter number from this voter card?",
+constraint
+  "Failure to read the voter card should result in an error."
+end

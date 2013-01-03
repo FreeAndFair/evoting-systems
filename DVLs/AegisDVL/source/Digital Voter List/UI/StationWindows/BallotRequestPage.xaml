@@ -1,0 +1,17 @@
+﻿<Page x:Class="UI.StationWindows.BallotRequestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" ShowsNavigationUI="False"
+    Title="BallotRequestPage" Height="300" Width="300">
+
+    <Grid>
+        <Label Content="Valgkortsnummer" Height="30" HorizontalAlignment="Center" Margin="0,65,0,0" Name="voterCardNumberLabel" VerticalAlignment="Top" />
+        <TextBox Height="30" HorizontalAlignment="Center" Margin="0,100,0,0" Name="voterCardNumberTextbox" VerticalAlignment="Top" Width="120" PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" TextChanged="VoterCardNumberTextboxTextChanged" />
+        <Label Content="CPR nummer" Height="30" HorizontalAlignment="Center" Margin="0,165,0,0" Name="CPRNumberLabel" VerticalAlignment="Top" />
+        <TextBox Height="30" HorizontalAlignment="Center" Margin="0,200,0,0" Name="CPRNumberTextbox" VerticalAlignment="Top" Width="120" PreviewTextInput="PreviewTextInputHandler" DataObject.Pasting="PastingHandler" MaxLength="10" TextChanged="VoterCardNumberTextboxTextChanged" />
+        <Button Content="Færdig" Height="30" HorizontalAlignment="Center" Margin="0,0,0,20" Name="checkValidityButton" VerticalAlignment="Bottom" Width="120" Click="CheckValidityButtonClick" />
+        <Label Content="Venter på svar..." Height="28" HorizontalAlignment="Left" Margin="0,21,0,0" Name="WaitingLabel" VerticalAlignment="Top" Width="300" HorizontalContentAlignment="Center" />
+    </Grid>
+</Page>

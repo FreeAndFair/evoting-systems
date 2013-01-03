@@ -1,0 +1,25 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster UI
+  component
+    deferred class IUI
+      feature  
+        ManagerExchangingKey : STRING
+          -> ip : IPADDRESS
+        StationExchangingKey : STRING
+          -> ip : IPADDRESS
+        ShowPasswordOnManager : void
+          -> pswd : STRING
+        ShowPasswordOnStation : void
+          -> pswd : STRING
+        BallotRequestReply : void
+          -> handOutBallot : BOOLEAN
+        ElectionEnded : void
+        ElectionStarted : void
+        IsNowManager : void
+        ShutDown : void
+        NotEnoughPeers : void
+        EnoughPeers : void
+    end
+  end
+end

@@ -1,0 +1,88 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster CORE_DATA_TYPES
+  component
+    class CIPHERTEXT
+      feature
+        Value : BYTEARRAY
+      invariant
+        Value /= void
+    end
+    
+    class ASYMMETRICKEY
+      feature
+        Value : ASYMMETRICKEYPARAMETER
+      invariant
+        Value /= void
+    end
+    
+    class SYMMETRICKEY
+      feature
+        Value : BYTEARRAY
+      invariant
+        Value /= void
+    end
+    
+    class MESSAGE
+      feature
+        Iv : BYTEARRAY
+        
+        SymmetricKey : CIPHERTEXT
+        
+        Command : CIPHERTEXT
+        
+        SenderHash : CIPHERTEXT
+      invariant
+        Iv /= void and SymmetricKey /= void and Command /= void and SenderHash /= void
+    end
+    
+    class VOTERNUMBER
+      feature
+        Value : INTEGER
+          ensure 
+            result /= void and
+            result >= 0
+        end
+    end
+    
+   class CPR
+      feature
+        Value : INTEGER
+          ensure 
+            result /= void and
+            result > 0
+        end
+    end
+    
+    class BALLOTSTATUS
+      feature
+        Value : INTEGER
+          ensure 
+            result /= void and
+            result >= 0 and
+            result < 3
+            -- 0 is handed out, 1 is not handed out and 2 is not available (this would ideally be an ENUM)
+        end
+    end
+    
+    class ENCRYPTEDVOTERDATA
+      feature
+        cpr : CIPHERTEXT
+        
+        voterNumber : CIPHERTEXT
+        
+        ballotStatus : CIPHERTEXT
+      invariant
+        cpr /= void and voterNumber /= void and ballotStatus /= void
+    end
+    
+    class LOGENTRY
+      feature
+        Message : VALUE
+        Level : VALUE
+        TimeStamp : INTEGER
+      invariant
+        Message /= void and Level /= void and Timestamp /= void
+    end
+  end
+end

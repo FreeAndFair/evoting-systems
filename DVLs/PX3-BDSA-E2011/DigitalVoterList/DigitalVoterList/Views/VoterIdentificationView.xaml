@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="DigitalVoterList.Views.VoterIdentificationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="112" d:DesignWidth="960">
+    <Grid>
+        <Label Content="Voter card #" Height="30" HorizontalAlignment="Left" Name="_voterCardNumberLabel" VerticalAlignment="Top" Padding="0" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" Margin="0,1,0,0" Width="100" HorizontalContentAlignment="Right" />
+        <TextBox  Height="30" HorizontalAlignment="Right" Margin="0,2,622,0" Name="VoterCardNumber" VerticalAlignment="Top" Width="230" Text="" VerticalContentAlignment="Center" FontSize="14" MaxLength="8" />
+        <Label Content="Name" FontSize="16" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,40,0,0" Name="_voterNameLabel" Padding="0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100" HorizontalContentAlignment="Right" />
+        <TextBox FontSize="14" Height="30" HorizontalAlignment="Right" Margin="0,41,622,0" Name="VoterName" Text="" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="230" />
+        <Label Content="CPR" FontSize="16" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,79,0,0" Name="_cprLabel" Padding="0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100" HorizontalContentAlignment="Right" />
+        <TextBox FontSize="14" Height="30" HorizontalAlignment="Left" Margin="108,80,0,0" Name="VoterCprBirthday" Text="" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="131" MaxLength="6"/>
+        <Label Content="-" FontSize="16" FontWeight="Bold" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="237,77,0,0" Name="label4" Padding="0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="23" />
+        <PasswordBox FontSize="14" Height="30" HorizontalAlignment="Right" Margin="0,80,622,0" Name="VoterCprDigits" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="80" MaxLength="4" />
+        <Image Height="20" Name="CprSuccessImage" Stretch="Fill" Width="20" Margin="342,85,598,7" Source="..\Resources\Icons\success.png" Visibility="Hidden" />
+        <Label Content="Address" FontSize="16" FontWeight="Bold" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="355,41,0,0" Name="_voterAddressLabel" Padding="0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="100" />
+        <TextBox FontSize="14" Height="110" HorizontalAlignment="Right" Name="VoterAddress" Text="" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="493" />
+    </Grid>
+</UserControl>

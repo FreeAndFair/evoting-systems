@@ -1,0 +1,57 @@
+class_chart STATION
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A station is a client-machine that communicates with its manager, and provides a graphical user interface for voters to use when requesting a ballot. A station can also be the manager. A manager manages the various stations, and handles synchronization of the data. It also has elevated rights compared to a station, and can for example manually mark a voter as having been handed a ballot (in case he lost his voter card, or the like)."
+query
+  "What is my address?",
+  "Who is the manager?",
+  "Is there enough active stations in the group to continue operations?",
+  "What is the status of the election?",
+  "Who are my peers?",
+  "How can I manipulate my database?",
+  "How can I communicate with my group?",
+  "How can I encrypt messages?",
+  "How can I log messages?",
+  "How can the user interact with me?",
+  "Am I the manager?",
+  "What is the master password?",
+  "Is this station active?",
+  "What machines on the network respond that they have the digital voter list software running?",
+  "Is this string the masterpassword?",
+  "Can I have a new Station that is the manager?",
+  "Can I have a new Station?"
+command
+  "This station is now the manager!",
+  "This is how you encrypt messages!",
+  "This is how you log messages!",
+  "The master password is this!",
+  "The system is compromised, notify everyone and shut down the election!",
+  "Exchange public keys with this machine!",
+  "Start listening to other stations!",
+  "Stop listening to other stations!",
+  "Start the election!",
+  "Add this station to the group!",
+  "Remove this station from the group!",
+  "Start election of a new manager!",
+  "Elect a new manager!",
+  "Request a ballot for this voter!",
+  "This voter received a ballot!",
+  "Revoke this ballot!",
+  "Tell the group to remove this station as a peer!",
+  "Make this station the new manager!",
+  "Announce to all stations that the election has started!",
+  "Announce to all stations that the election has ended!",
+  "Announce to all that they should revoke this update!"
+constraint
+  "The master password must not be set to null, and the master password must not be changed once it's set.",
+  "All addresses must be well-formed, that is, not null.",
+  "When exchanging public keys with a station, the station must be active.",
+  "You can not start or stop listening unless you're in the opposite state.",
+  "You can not start or end an election unless you're in the opposite state.",
+  "You can not add or remove a peer unless it's either not in or in the peer-list.",
+  "The manager must not be active when attempting to elect a new manager.",
+  "You can not request a ballot for a voter that has already received a ballot, or who can not be found in the database.",
+  "You can not revoke a ballot for a voter that has not received ab allot, or who can not be found in the database.",
+  "To announce the adding or removing of peers, to announce that a ballot has been received or revoked, to announce the start or end the election or to promote a new manager, you must be the manager.",
+  "The address must never be null, nor must the Peer-list."
+end

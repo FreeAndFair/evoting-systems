@@ -1,0 +1,1316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
+
+<title>BON Documentation: DVL</title>
+
+<script type="text/javascript">
+<!--
+
+var items = ['system_chart:DVL','class_chart:INTEGER','class_chart:VOTERNUMBER','class_chart:ASYMMETRICKEY','class_chart:CPR','class_chart:SCANNER','class_chart:NUMBER','class_chart:CIPHERTEXT','class_chart:BALLOTSTATUS','class_chart:TABLE','class_chart:SET','class_chart:STATION','class_chart:FLOAT','class_chart:VALUE','class_chart:COMMUNICATOR','class_chart:FILE','class_chart:LIST','class_chart:COMMAND','class_chart:TUPLE','class_chart:BOOLEAN','class_chart:ANY','class_chart:DATABASE','class_chart:TREE','class_chart:UI','class_chart:LOGGER','class_chart:ENCRYPTEDVOTERDATA','class_chart:MESSAGE','class_chart:CRYPTO','class_chart:SYMMETRICKEY','class_chart:LOGENTRY','class_chart:ARRAY','class_chart:STRING','cluster_chart:COREDATATYPES','cluster_chart:KERNEL','cluster_chart:DVL','cluster_chart:STRUCTURES','cluster_chart:DIGITALVOTERLIST','cluster_chart:NUMBERS','cluster_chart:BUILT_IN'];
+var topOptions = [ 'System Chart', 'system_chart', 'Cluster Charts', 'cluster_chart', 'Class Charts', 'class_chart' ];
+var subOptions = [];
+subOptions['system_chart'] = [ 'DVL', 'system_chart:DVL' ];
+subOptions['cluster_chart'] = [ 'BUILT_IN','cluster_chart:BUILT_IN','COREDATATYPES','cluster_chart:COREDATATYPES','DIGITALVOTERLIST','cluster_chart:DIGITALVOTERLIST','DVL','cluster_chart:DVL','KERNEL','cluster_chart:KERNEL','NUMBERS','cluster_chart:NUMBERS','STRUCTURES','cluster_chart:STRUCTURES' ];
+subOptions['class_chart'] = [ 'ANY','class_chart:ANY','ARRAY','class_chart:ARRAY','ASYMMETRICKEY','class_chart:ASYMMETRICKEY','BALLOTSTATUS','class_chart:BALLOTSTATUS','BOOLEAN','class_chart:BOOLEAN','CIPHERTEXT','class_chart:CIPHERTEXT','COMMAND','class_chart:COMMAND','COMMUNICATOR','class_chart:COMMUNICATOR','CPR','class_chart:CPR','CRYPTO','class_chart:CRYPTO','DATABASE','class_chart:DATABASE','ENCRYPTEDVOTERDATA','class_chart:ENCRYPTEDVOTERDATA','FILE','class_chart:FILE','FLOAT','class_chart:FLOAT','INTEGER','class_chart:INTEGER','LIST','class_chart:LIST','LOGENTRY','class_chart:LOGENTRY','LOGGER','class_chart:LOGGER','MESSAGE','class_chart:MESSAGE','NUMBER','class_chart:NUMBER','SCANNER','class_chart:SCANNER','SET','class_chart:SET','STATION','class_chart:STATION','STRING','class_chart:STRING','SYMMETRICKEY','class_chart:SYMMETRICKEY','TABLE','class_chart:TABLE','TREE','class_chart:TREE','TUPLE','class_chart:TUPLE','UI','class_chart:UI','VALUE','class_chart:VALUE','VOTERNUMBER','class_chart:VOTERNUMBER' ];
+
+
+var showAll = false;
+var sysTitle = 'system_title';
+var topMenu = 'top-menu';
+var subMenu = 'sub-menu';
+
+function setElText(id,text) {
+  var elem = document.getElementById(id);
+  if (elem) {
+    elem.innerHTML = text;
+  }
+}
+
+function toggleShowAll() {
+  showAll = !showAll;
+  if (showAll) {
+    displayAll();
+    setElText('showlink', 'Show One');
+  } else {
+    hideAll();
+    setElText('showlink', 'Show All');
+  }
+  showSelected();
+  return false;
+}
+
+function select(id) {
+  if (showAll) {
+//    setHash(id);
+    return true;
+  } else {
+    showOnly(id);
+    return true;
+  }
+}
+
+function showOnly(id) {
+  var elem = document.getElementById(id);
+  if (elem) {
+    hideAll();
+    showElem(id);
+  }
+}
+
+function hideAll() {
+  for (var i=0; i<items.length; i++) {
+    hideElem(items[i]);
+  }
+}
+
+function displayAll() {
+  for (var i=0; i<items.length; i++) {
+    showElem(items[i]);
+  }
+}
+
+function showElem(id) {
+  var elem = document.getElementById(id);
+  if (elem) {
+    show(elem);
+  }
+}
+
+function hideElem(id) {
+  var elem = document.getElementById(id);
+  if (elem) {
+    hide(elem);
+  }
+}
+
+function hide(elem) {
+  addClass(elem,'hidden');
+}
+
+function show(elem) {
+  removeClass(elem,'hidden');
+}
+
+function addClass(elem,cName) {
+  if (!elem.className) {
+    elem.className = cName;
+  } else if (elem.className.indexOf(cName) == -1) {
+    elem.className += ' ' + cName;
+  }
+}
+
+function removeClass(elem,cName) {
+  if (elem.className) {
+    var toReplace = elem.className.match(' ' + cName);
+    elem.className = elem.className.replace(toReplace, '');
+  }
+}
+
+function setBack(id) {
+//Not yet...
+}
+
+function initialPopulate() {
+  var topSelect = document.getElementById(topMenu);
+  if (topSelect) {
+    topSelect.options.length = 0;
+    for (var i=0; i < topOptions.length; i+=2) {
+      topSelect.options[i/2] = new Option(topOptions[i],topOptions[i+1]);
+    }
+  }
+  if (window.location.hash) {
+    hashSelect(window.location.hash.substr(1));    
+  } else {
+    populate();
+    showSelected();
+  }
+  lastHash = window.location.hash;
+  //Trigger checkHash
+  setInterval(checkHash,100);
+}
+
+function hashSelect(hash) {
+  var parts = hash.split(':');
+  if (parts.length == 2) {
+    linkSelect(parts[0],hash);
+  } else {
+    populate();
+  }
+}
+
+var lastHash = '';
+
+function checkHash() {
+
+  if (window.location.hash) {
+    if (window.location.hash != lastHash) {
+      hashSelect(window.location.hash.substr(1));
+      lastHash = window.location.hash;
+    }
+  }
+}
+
+function setHash(hash) {
+  lastHash = '#' + hash;
+  window.location.hash = hash;
+}
+
+function populate() {
+
+  var subSelect = document.getElementById(subMenu);
+  var topSelect = document.getElementById(topMenu);
+
+  if (subSelect && topSelect) {
+    var selected = topSelect.options[topSelect.selectedIndex].value;
+    if (selected) {
+      var chosenSubOptions = subOptions[selected];
+      subSelect.options.length = 0;
+      for (var i=0; i < chosenSubOptions.length; i+=2) {
+        subSelect.options[i/2] = new Option(chosenSubOptions[i],chosenSubOptions[i+1]);
+      }
+    }
+  }
+}
+
+function showSelected() {
+  var subSelect = document.getElementById(subMenu);
+  if (subSelect) {
+    var selected = subSelect.options[subSelect.selectedIndex].value;
+    if (selected) {
+      select(selected);
+      setHash(selected);
+    }
+  }
+}
+
+function linkSelect(top, sub) {
+  var topSelect = document.getElementById(topMenu);
+  if (topSelect) {
+    for (var i=0; i < topSelect.options.length; i++) {
+      if (topSelect.options[i].value == top) {
+        topSelect.selectedIndex = i;
+        break;
+      }
+    }
+  }  
+  populate();
+  var subSelect = document.getElementById(subMenu);
+  if (subSelect) {
+    for (var i=0; i < subSelect.options.length; i++) {
+      if (subSelect.options[i].value == sub) {
+        subSelect.selectedIndex = i;
+        showSelected();
+        return false;
+      }
+    }
+    showSelected();
+  }
+  return true;
+}
+
+
+//-->
+</script>
+
+<style type="text/css">
+
+.hidden {
+  position:absolute;
+  left:0px;
+  top:-500px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+body {
+  font-family: Optima, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Helvetica, Arial, sans-serif;
+}
+
+.list-entry {
+  margin-left: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+#main {
+  padding-bottom: 100px;
+}
+
+#footer {
+  z-index: 1;
+  position: fixed; 
+  bottom: 0px;
+  right: 0px; 
+  width: 100%;
+  border-top: 2px solid #000000;
+  background-color: #cccccc;
+}
+
+#left-footer {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+#left-footer select {
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+#showlink {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+  min-width: 125px;
+}
+
+#top-menu {
+  min-width: 160px;
+}
+
+#sub-menu {
+  min-width: 220px;
+}
+
+#right-footer {
+  margin: 5px 5px 0px 0px;
+  padding: 0;
+  text-align: right;
+}
+
+#footer a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+dl {
+  margin: 0 0 0 10px;
+}
+
+dd {
+  margin-left: 20px;
+} 
+
+.scenario_entry dt {
+  font-weight: bold;
+}
+
+.indexing dt, .explanation dt {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
+
+.top-level {
+  width: 98%;
+  margin: auto;
+}
+
+.outer {
+  width: 100%;
+  background-color: #a2a2a2;
+  border: 2px solid #000000;
+  margin-bottom: 30px;
+}
+
+.type, .name, .part {
+  border: 4px groove #c0c0c0;
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+}
+
+.explanation, .indexing {
+  padding: 5px 5px 5px 10px;
+  background-color: #ffffff;
+  vertical-align: top;
+  border: 4px groove #c0c0c0;
+  padding: 5px 0px 5px 0px;
+}
+
+.name {
+  background-color: #f3f0f0;
+  font-size: 1.1em;
+}
+
+.part {
+  background-color: #cccccc;
+}
+
+.type, .part {
+  width: 25%;
+}
+
+.type {
+  background-color: #bcbcbc;
+}
+
+.name, .indexing, .explanation {
+  width: 50%;
+}
+
+.top, .middle, .bottom {
+  width: 100%;
+}
+
+.bottom table {
+  border: 4px groove #c0c0c0;
+  width: 100%;
+}
+
+.bottom tr {
+  width: 100%;
+}
+
+.bottom td, .bottom th {
+  border: 1px inset #c0c0c0;
+  vertical-align: top;
+  padding: 8px 20px 8px 20px;
+}
+
+.spaced-lines {
+  line-height: 1.5em;
+}
+
+.white {
+  background-color: #ffffff;
+}
+
+.light-grey {
+  background-color: #f3f0f0;
+}
+
+.grey {
+  background-color: #cccccc;
+}
+</style>
+
+</head>
+<body onload="initialPopulate();">
+
+<div id="main">
+
+<div class="top-level" id="class_chart:STATION">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">STATION</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A station is a client-machine that communicates with its manager, and provides a graphical user interface for voters to use when requesting a ballot. A station can also be the manager. A manager manages the various stations, and handles synchronization of the data. It also has elevated rights compared to a station, and can for example manually mark a voter as having been handed a ballot (in case he lost his voter card, or the like).&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is my address?&quot;,<br/>&quot;Who is the manager?&quot;,<br/>&quot;Is there enough active stations in the group to continue operations?&quot;,<br/>&quot;What is the status of the election?&quot;,<br/>&quot;Who are my peers?&quot;,<br/>&quot;How can I manipulate my database?&quot;,<br/>&quot;How can I communicate with my group?&quot;,<br/>&quot;How can I encrypt messages?&quot;,<br/>&quot;How can I log messages?&quot;,<br/>&quot;How can the user interact with me?&quot;,<br/>&quot;Am I the manager?&quot;,<br/>&quot;What is the master password?&quot;,<br/>&quot;Is this station active?&quot;,<br/>&quot;What machines on the network respond that they have the digital voter list software running?&quot;,<br/>&quot;Is this string the masterpassword?&quot;,<br/>&quot;Can I have a new Station that is the manager?&quot;,<br/>&quot;Can I have a new Station?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines">&quot;This station is now the manager!&quot;,<br/>&quot;This is how you encrypt messages!&quot;,<br/>&quot;This is how you log messages!&quot;,<br/>&quot;The master password is this!&quot;,<br/>&quot;The system is compromised, notify everyone and shut down the election!&quot;,<br/>&quot;Exchange public keys with this machine!&quot;,<br/>&quot;Start listening to other stations!&quot;,<br/>&quot;Stop listening to other stations!&quot;,<br/>&quot;Start the election!&quot;,<br/>&quot;Add this station to the group!&quot;,<br/>&quot;Remove this station from the group!&quot;,<br/>&quot;Start election of a new manager!&quot;,<br/>&quot;Elect a new manager!&quot;,<br/>&quot;Request a ballot for this voter!&quot;,<br/>&quot;This voter received a ballot!&quot;,<br/>&quot;Revoke this ballot!&quot;,<br/>&quot;Tell the group to remove this station as a peer!&quot;,<br/>&quot;Make this station the new manager!&quot;,<br/>&quot;Announce to all stations that the election has started!&quot;,<br/>&quot;Announce to all stations that the election has ended!&quot;,<br/>&quot;Announce to all that they should revoke this update!&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;The master password must not be set to null, and the master password must not be changed once it's set.&quot;,<br/>&quot;All addresses must be well-formed, that is, not null.&quot;,<br/>&quot;When exchanging public keys with a station, the station must be active.&quot;,<br/>&quot;You can not start or stop listening unless you're in the opposite state.&quot;,<br/>&quot;You can not start or end an election unless you're in the opposite state.&quot;,<br/>&quot;You can not add or remove a peer unless it's either not in or in the peer-list.&quot;,<br/>&quot;The manager must not be active when attempting to elect a new manager.&quot;,<br/>&quot;You can not request a ballot for a voter that has already received a ballot, or who can not be found in the database.&quot;,<br/>&quot;You can not revoke a ballot for a voter that has not received ab allot, or who can not be found in the database.&quot;,<br/>&quot;To announce the adding or removing of peers, to announce that a ballot has been received or revoked, to announce the start or end the election or to promote a new manager, you must be the manager.&quot;,<br/>&quot;The address must never be null, nor must the Peer-list.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:COMMAND">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">COMMAND</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A command is sent over the network and can be executed at the destination.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;Who sent this command?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines">&quot;Execute this command!&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="system_chart:DVL">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">SYSTEM</th>
+      <td class="name" colspan="2">DVL</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Purpose</dt>
+          <dd>&quot;An open source digital voter list that keeps track of who has been handed a ballot at an election, with a focus on security.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          <tr>
+            <th class="grey">Cluster</th>
+            <th class="grey">Description</th>
+          </tr>
+          <tr>
+            <td class="light-grey"><a href="#cluster_chart:DIGITALVOTERLIST" onclick="return linkSelect('cluster_chart','cluster_chart:DIGITALVOTERLIST');">DIGITALVOTERLIST</a></td>
+            <td class="white">&quot;The various elements of the digital voter list system.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#cluster_chart:COREDATATYPES" onclick="return linkSelect('cluster_chart','cluster_chart:COREDATATYPES');">COREDATATYPES</a></td>
+            <td class="white">&quot;Core datatypes used by the digital voter list system.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="cluster_chart:DIGITALVOTERLIST">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLUSTER</th>
+      <td class="name" colspan="2">DIGITALVOTERLIST</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Purpose</dt>
+          <dd>&quot;The various elements of the digital voter list system.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          <tr>
+            <th class="grey">Class</th>
+            <th class="grey">Description</th>
+          </tr>
+          <tr>
+            <td class="light-grey"><a href="#class_chart:STATION" onclick="return linkSelect('class_chart','class_chart:STATION');">STATION</a></td>
+            <td class="white">&quot;A station is a client-machine that communicates with its manager, and provides a graphical user interface for voters to use when requesting a ballot. A station can also be the manager. A manager manages the various stations, and handles synchronization of the data. It also has elevated rights compared to a station, and can for example manually mark a voter as having been handed a ballot (in case he lost his voter card, or the like).&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:SCANNER" onclick="return linkSelect('class_chart','class_chart:SCANNER');">SCANNER</a></td>
+            <td class="white">&quot;A scanner can read a physical voter card and extract required information from it.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:COMMUNICATOR" onclick="return linkSelect('class_chart','class_chart:COMMUNICATOR');">COMMUNICATOR</a></td>
+            <td class="white">&quot;A communicator is responsible for securely passing commands between two parties.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:CRYPTO" onclick="return linkSelect('class_chart','class_chart:CRYPTO');">CRYPTO</a></td>
+            <td class="white">&quot;Crypto is responsible for cryptographic functions such as public-key encryption.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:DATABASE" onclick="return linkSelect('class_chart','class_chart:DATABASE');">DATABASE</a></td>
+            <td class="white">&quot;The database-layer is responsible for communicating with the database (create, read, update, write). It can also perform batch-operations such as importing and exporting the database.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:COMMAND" onclick="return linkSelect('class_chart','class_chart:COMMAND');">COMMAND</a></td>
+            <td class="white">&quot;A command is sent over the network and can be executed at the destination.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:LOGGER" onclick="return linkSelect('class_chart','class_chart:LOGGER');">LOGGER</a></td>
+            <td class="white">&quot;A log is used to track events in the system.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:UI" onclick="return linkSelect('class_chart','class_chart:UI');">UI</a></td>
+            <td class="white">&quot;A UI is used to interact with human beings. The UI must be able to support requirements to be able to interact with the Digital Voter List system.&quot;</td>
+          </tr>
+        </table>
+              </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="cluster_chart:COREDATATYPES">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLUSTER</th>
+      <td class="name" colspan="2">COREDATATYPES</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Purpose</dt>
+          <dd>&quot;Core datatypes used by the digital voter list system.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          <tr>
+            <th class="grey">Class</th>
+            <th class="grey">Description</th>
+          </tr>
+          <tr>
+            <td class="light-grey"><a href="#class_chart:CIPHERTEXT" onclick="return linkSelect('class_chart','class_chart:CIPHERTEXT');">CIPHERTEXT</a></td>
+            <td class="white">&quot;CipherText is encrypted data.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:ASYMMETRICKEY" onclick="return linkSelect('class_chart','class_chart:ASYMMETRICKEY');">ASYMMETRICKEY</a></td>
+            <td class="white">&quot;An asymmetric key can be used for either encryption or decryption of data.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:SYMMETRICKEY" onclick="return linkSelect('class_chart','class_chart:SYMMETRICKEY');">SYMMETRICKEY</a></td>
+            <td class="white">&quot;A symmetric key can be used for either encryption or decryption of data.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:MESSAGE" onclick="return linkSelect('class_chart','class_chart:MESSAGE');">MESSAGE</a></td>
+            <td class="white">&quot;A message contains ciphertext of a symmetric key, a message encrypted with the symmetric key and a hash encrypted with the senders public key. Used for secure communication.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:CPR" onclick="return linkSelect('class_chart','class_chart:CPR');">CPR</a></td>
+            <td class="white">&quot;A CPR-number is a number identifying a danish citizen, consisting of the birthdate and a unique identifier.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:VOTERNUMBER" onclick="return linkSelect('class_chart','class_chart:VOTERNUMBER');">VOTERNUMBER</a></td>
+            <td class="white">&quot;A voternumber is a unique number used in conjunction with the CPR-number to request a ballot.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:BALLOTSTATUS" onclick="return linkSelect('class_chart','class_chart:BALLOTSTATUS');">BALLOTSTATUS</a></td>
+            <td class="white">&quot;A ballot status is used in conjunction with a cpr-number and a voternumber, and indicates wheither status that indicates whether the ballot has been handed out, not handed out, or if it is unavailable at the given election venue.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:ENCRYPTEDVOTERDATA" onclick="return linkSelect('class_chart','class_chart:ENCRYPTEDVOTERDATA');">ENCRYPTEDVOTERDATA</a></td>
+            <td class="white">&quot;Encrypted voterdata is the encrypted combination of CPR, VOTERNUMBER and BALLOTSTATUS.&quot;</td>
+          </tr>          <tr>
+            <td class="light-grey"><a href="#class_chart:LOGENTRY" onclick="return linkSelect('class_chart','class_chart:LOGENTRY');">LOGENTRY</a></td>
+            <td class="white">&quot;A log entry is an entry in a log. It contains a message, a time and a level indicating its type.&quot;</td>
+          </tr>
+        </table>
+              </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:COMMUNICATOR">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">COMMUNICATOR</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A communicator is responsible for securely passing commands between two parties.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;May I have a new communicator with this station as the parent?&quot;,<br/>&quot;Is this machine listening on this port?&quot;,<br/>&quot;Who is my parent?&quot;,<br/>&quot;What are the addresses of machines in the local network?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines">&quot;Send this command securely to this target!&quot;,<br/>&quot;Receive and handle all commands!&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;All commands should be secure&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:DATABASE">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">DATABASE</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;The database-layer is responsible for communicating with the database (create, read, update, write). It can also perform batch-operations such as importing and exporting the database.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;Has this voter received a ballot?&quot;,<br/>&quot;What does the entire database look like?&quot;,<br/>&quot;Who is my parent station?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines">&quot;This user has received a ballot!&quot;,<br/>&quot;This user's ballot has been revoked!&quot;,<br/>&quot;Import this encrypted data into the database!&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;After the election has started, the number of rows should never change.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:SCANNER">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">SCANNER</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A scanner can read a physical voter card and extract required information from it.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is the voter number from this voter card?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;Failure to read the voter card should result in an error.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:UI">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">UI</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A UI is used to interact with human beings. The UI must be able to support requirements to be able to interact with the Digital Voter List system.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is the key the user typed in to respond to the manager initiating a key-exchange?&quot;,<br/>&quot;What is the password the user typed in when a station is replying to a key-exchange?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines">&quot;Show this password on the manager machine!&quot;,<br/>&quot;Show this password on a station machine!&quot;,<br/>&quot;Let the UI know whether or not the voter can receive a ballot!&quot;,<br/>&quot;Let the UI know that the election has ended!&quot;,<br/>&quot;Let the UI know that the election has started!&quot;,<br/>&quot;Let the UI know that this machine is now the manager!&quot;,<br/>&quot;Let the UI know that it needs to shut down!&quot;,<br/>&quot;Let the UI know that there are not enough peers to continue execution!&quot;,<br/>&quot;Let the UI know that there are enough peers to continue execution!&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:LOGGER">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">LOGGER</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A log is used to track events in the system.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What does the entire log look like?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines">&quot;Log this message!&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:CRYPTO">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">CRYPTO</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;Crypto is responsible for cryptographic functions such as public-key encryption.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is the asymmetric key used for encrypting voterdata at this election venue?&quot;,<br/>&quot;What are the keys for my public key infrastructure?&quot;,<br/>&quot;What does this look like when it's symmetrically encrypted with this key?&quot;,<br/>&quot;What does this look like when it's symmetrically decrypted with this key?&quot;,<br/>&quot;What is the current initilization vector?&quot;,<br/>&quot;What does this look like when it's asymmetrically encrypted with this key?&quot;,<br/>&quot;What does this look like when it's asymmetrically decrypted with this key?&quot;,<br/>&quot;What is the hashed value of this?&quot;,<br/>&quot;May I have a new randomly generated symmetric key?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines">&quot;The initilization vector is this!&quot;,<br/>&quot;Generate a new initilization vector to be used for symmetric encryption!&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:CIPHERTEXT">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">CIPHERTEXT</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;CipherText is encrypted data.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What does this CipherText look like?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;The value of the ciphertext must always be non-void.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:ASYMMETRICKEY">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">ASYMMETRICKEY</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;An asymmetric key can be used for either encryption or decryption of data.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What does this asymmetric key look like?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;The value of an asymmetric key must always be non-void.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:SYMMETRICKEY">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">SYMMETRICKEY</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A symmetric key can be used for either encryption or decryption of data.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What does this symmetric key look like?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;The value of a symmetric key must always be non-void.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:MESSAGE">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">MESSAGE</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A message contains the ciphertexts of a symmetric key, a command encrypted with the symmetric key and a hash encrypted with the senders public key. Used for secure communication.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is the initialization vector used to encrypt the command?&quot;,<br/>&quot;What is the CipherText of the symmetric key used to encrypt the command?&quot;,<br/>&quot;What is the CipherText of the encrypted command?&quot;,<br/>&quot;What is the CipherText of the senderhash of the command?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:CPR">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">CPR</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A CPR-number is a number identifying a danish citizen, consisting of the birthdate and a number.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What does this CPR-number look like?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;The numeric value of a CPR-number is always greater than zero.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:VOTERNUMBER">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">VOTERNUMBER</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A voternumber is a unique number used in conjunction with the CPR-number to request a ballot.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What does this voter-number look like?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:BALLOTSTATUS">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">BALLOTSTATUS</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A ballot status is used in conjunction with a cpr-number and a voternumber, and indicates wheither status that indicates whether the ballot has been handed out, not handed out, or if it is unavailable at the given election venue.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is the status of this ballot?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;A ballot status is always either 'handed out', 'not handed out' or 'not available'.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:ENCRYPTEDVOTERDATA">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">ENCRYPTEDVOTERDATA</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;Encrypted voterdata is the encrypted combination of CPR, VOTERNUMBER and BALLOTSTATUS.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is the encrypted CPR-number of this encrypted voterdata?&quot;,<br/>&quot;What is the encrypted voter-number of this encrypted voterdata?&quot;,<br/>&quot;What is the encrypted ballot status of this encrypted voterdata?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;All the data must have a value, that is, be non-void.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="top-level" id="class_chart:LOGENTRY">
+  <table class="outer">
+    <tr class="top">
+      <th class="type">CLASS</th>
+      <td class="name" colspan="2">LOGENTRY</td>
+      <td class="part"><strong>Part:</strong> 1/1</td>
+    </tr>
+    <tr class="middle">
+      <td class="explanation" colspan="2">
+        <dl>
+          <dt>Type Of Object</dt>
+          <dd>&quot;A log entry is an entry in a log. It contains a message, a time and a level indicating its type.&quot;</dd>
+        </dl>
+      </td>
+      <td class="indexing" colspan="2">
+        <dl>
+          <dt>Indexing</dt>
+          <dd>author : "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nsbk@itu.dk)";</dd>
+        </dl>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="bottom">
+        <table>
+          
+          <tr>
+            <th class="light-grey">Queries</th>
+            <td class="white spaced-lines">&quot;What is the message of the log entry?&quot;,<br/>&quot;What type of log entry is this?&quot;,<br/>&quot;At what time was the log entry added?&quot;</td>
+          </tr>
+          <tr>
+            <th class="light-grey">Commands</th>
+            <td class="white spaced-lines"></td>
+          </tr>
+          <tr>
+            <th class="light-grey">Constraints</th>
+            <td class="white spaced-lines">&quot;None of the values must be void.&quot;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="footer">
+  <p id="left-footer">
+    <button id="showlink" onclick="return toggleShowAll();">Show all</button>
+    Chart type:
+    <select id="top-menu" onchange="populate(); showSelected();"><option>processing...</option></select>
+    Chart:
+    <select id="sub-menu" onchange="showSelected();"><option>processing...</option></select>
+  </p>
+  <p id="right-footer">
+    Generated by <a href="http://kind.ucd.ie/products/opensource/BONc">BONc</a> (version: bonc-0.2.7) <a href="http://validator.w3.org/check?uri=referer">XHTML</a> output, 16-05-2012 15:44:48.
+  </p>
+</div>
+
+</div> <!-- End main -->
+
+</body>
+</html>
+

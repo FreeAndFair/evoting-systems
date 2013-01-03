@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VoterModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Voters">
+      <EntityTypeMapping TypeName="VoterModel.Voter">
+        <MappingFragment StoreEntitySet="Voters">
+          <ScalarProperty Name="VoterNumber" ColumnName="VoterNumber" />
+          <ScalarProperty Name="CPR" ColumnName="CPR" />
+          <ScalarProperty Name="BallotStatus" ColumnName="BallotStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

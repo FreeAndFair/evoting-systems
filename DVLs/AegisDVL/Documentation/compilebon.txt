@@ -1,0 +1,2 @@
+bonc -p html -po DVL.html Command_Informal.bon Communicator_Informal.bon Core_Datatypes.bon Crypto_Informal.bon Scanner_Informal.bon Station_Informal.bon UI_Informal.bon Database_Informal.bon Logger_Informal.bon System_Informal.bon
+bonc -f Command_Formal.bon Communicator_Formal.bon Core_Datatypes_Formal.bon Crypto_Formal.bon Database_Formal.bon Scanner_Formal.bon Station_Formal.bon UI_Formal.bon Logger_Formal.bon

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VoterModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="VoterModelStoreContainer">
+          <EntitySet Name="Voters" EntityType="VoterModel.Store.Voters" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="Voters">
+          <Key>
+            <PropertyRef Name="VoterNumber" />
+          </Key>
+          <Property Name="VoterNumber" Type="blob" Nullable="false" />
+          <Property Name="CPR" Type="blob" Nullable="false" />
+          <Property Name="BallotStatus" Type="blob" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VoterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Voters" EntityType="VoterModel.Voter" />
+        </EntityContainer>
+        <EntityType Name="Voter">
+          <Key>
+            <PropertyRef Name="VoterNumber" />
+          </Key>
+          <Property Name="VoterNumber" Type="Binary" Nullable="false" MaxLength="2147483647" FixedLength="false" />
+          <Property Name="CPR" Type="Binary" Nullable="false" MaxLength="2147483647" FixedLength="false" />
+          <Property Name="BallotStatus" Type="Binary" Nullable="false" MaxLength="2147483647" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VoterModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Voters"><EntityTypeMapping TypeName="VoterModel.Voter"><MappingFragment StoreEntitySet="Voters">
+            <ScalarProperty Name="VoterNumber" ColumnName="VoterNumber" />
+            <ScalarProperty Name="CPR" ColumnName="CPR" />
+            <ScalarProperty Name="BallotStatus" ColumnName="BallotStatus" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="VoterModel">
+        <EntityTypeShape EntityType="VoterModel.Voter" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

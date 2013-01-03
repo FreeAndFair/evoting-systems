@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="DigitalVoterList.Views.SearchCitizenView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="500" Width="960">
+    <Grid>
+        <ScrollViewer CanContentScroll="True" Margin="0,168,0,0">
+            <DataGrid Width="940" Height="330" Name="SearchResultsGrid" SelectionMode="Single" IsReadOnly="True" />
+        </ScrollViewer>
+        <TextBox Height="30" HorizontalAlignment="Left" Margin="168,12,0,0" Name="nameTextBox" VerticalAlignment="Top" Width="644" FontSize="14" />
+        <TextBox Height="30" HorizontalAlignment="Left" Margin="168,64,0,0" Name="addressTextBox" VerticalAlignment="Top" Width="644" FontSize="14" />
+        <TextBox Height="30" HorizontalAlignment="Left" Margin="168,116,0,0" Name="cprTextBox" VerticalAlignment="Top" Width="253" FontSize="14" />
+        <TextBlock Height="46" HorizontalAlignment="Left" Margin="462,116,0,0" Name="statusTextBlock" Text="" VerticalAlignment="Top" Width="350" FontSize="14" Foreground="Red" TextWrapping="Wrap" />
+        <Label Content="Name" Height="46" HorizontalAlignment="Left" Margin="12,12,0,0" Name="nameLabel" VerticalAlignment="Top" Width="150" FontSize="16" FontWeight="Bold" />
+        <Label Content="Address" FontSize="16" Height="46" HorizontalAlignment="Left" Margin="12,64,0,0" Name="addressLabel" VerticalAlignment="Top" Width="150" FontWeight="Bold" />
+        <Label FontSize="16" Height="46" HorizontalAlignment="Left" Margin="12,116,0,0" Name="cprLabel" VerticalAlignment="Top" Width="150" Content="Cpr No." FontWeight="Bold" />
+        <Button Content="Select" Height="46" HorizontalAlignment="Left" Margin="818,64,0,0" Name="SelectButton" VerticalAlignment="Top" Width="124" FontSize="16" />
+        <Button Content="Search" Height="46" HorizontalAlignment="Left" Margin="818,116,0,0" Name="SearchButton" VerticalAlignment="Top" Width="124" FontSize="16" />
+        <Button Content="Quit" FontSize="16" Height="46" HorizontalAlignment="Left" Margin="818,14,0,0" Name="QuitButton" VerticalAlignment="Top" Width="124" />
+    </Grid>
+</UserControl>

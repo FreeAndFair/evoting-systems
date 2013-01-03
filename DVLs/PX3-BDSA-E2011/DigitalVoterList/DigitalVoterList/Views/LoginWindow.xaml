@@ -1,0 +1,15 @@
+﻿<Window x:Class="DigitalVoterList.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PX3 Login" Height="220" Width="300" ResizeMode="NoResize">
+    <Grid Height="176">
+        <TextBlock Height="46" HorizontalAlignment="Left" Name="_title" Text="Login to use system" VerticalAlignment="Top" Width="300" FontSize="20" Background="#FF00A3FF" Foreground="White" FontWeight="Bold" Padding="10" />
+        <TextBlock Height="43" HorizontalAlignment="Left" Margin="209,3,0,0" Name="_logo" Text="PX3" VerticalAlignment="Top" Width="55" FontSize="30" FontWeight="Bold" Foreground="#FF1F8AD6" />
+        <Label Content="Username:" Height="23" HorizontalAlignment="Left" Margin="12,63,0,0" Name="_usernameLabel" VerticalAlignment="Top" Width="104" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="114,63,0,0" Name="Username" VerticalAlignment="Top" Width="144" />
+        <Label Content="Password:" Height="23" HorizontalAlignment="Left" Margin="12,101,0,0" Name="_passwordLabel" VerticalAlignment="Top" Width="104" />
+        <PasswordBox Height="23" HorizontalAlignment="Left" Margin="114,103,0,0" Name="Password" VerticalAlignment="Top" Width="144" DataContext="{Binding}" UseLayoutRounding="False" />
+        <Button Content="Login" Height="23" HorizontalAlignment="Right" Margin="0,141,12,0" Name="LoginBtn" VerticalAlignment="Top" Width="75" />
+        <TextBlock Height="44" HorizontalAlignment="Left" Margin="12,132,0,0" Name="StatusText" Text="" VerticalAlignment="Top" Width="165" Foreground="Red" TextWrapping="Wrap" />
+    </Grid>
+</Window>

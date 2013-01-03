@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\Nicolai\Documents\Digital Voter List\source\Digital Voter List\Tests\bin\Debug\Tests.dll" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-05-08" time="14:21:21">
+  <environment nunit-version="2.5.7.10213" clr-version="2.0.50727.4216" os-version="Microsoft Windows NT 6.0.6002 Service Pack 2" platform="Win32NT" cwd="C:\Program Files\NUnit 2.5.7\bin\net-2.0" machine-name="MADNESS" user="Nicolai" user-domain="Madness" />
+  <culture-info current-culture="da-DK" current-uiculture="da-DK" />
+  <test-suite type="Assembly" name="C:\Users\Nicolai\Documents\Digital Voter List\source\Digital Voter List\Tests\bin\Debug\Tests.dll" executed="True" result="Failure" success="False" time="9.919" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="Tests" executed="True" result="Failure" success="False" time="9.722" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="StationTests" executed="True" result="Failure" success="False" time="9.722" asserts="0">
+            <results>
+              <test-case name="Tests.StationTests.EnoughStationsTest" executed="True" result="Error" success="False" time="9.721" asserts="1">
+                <failure>
+                  <message><![CDATA[System.Net.Sockets.SocketException : Normalt må en socket-adresse (protokol/netværksadresse/port) kun bruges én gang]]></message>
+                  <stack-trace><![CDATA[
+Server stack trace:
+at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+at System.Net.Sockets.TcpListener.Start(Int32 backlog)
+at System.Net.Sockets.TcpListener.Start()
+at Digital_Voter_List.Communication.Communicator.ReceiveAndHandle() in C:\Users\Nicolai\Documents\Digital Voter List\source\Digital Voter List\Digital Voter List\Communication\Communicator.cs:line 66
+at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+at System.Runtime.Remoting.Messaging.StackBuilderSink.AsyncProcessMessage(IMessage msg, IMessageSink replySink)
+
+Exception rethrown at [0]:
+at System.Runtime.Remoting.Proxies.RealProxy.EndInvokeHelper(Message reqMsg, Boolean bProxyCase)
+at System.Runtime.Remoting.Proxies.RemotingProxy.Invoke(Object NotUsed, MessageData& msgData)
+at Tests.StationTests.Listener.EndInvoke(IAsyncResult result)
+at Tests.StationTests.AsyncManagerAnnounce(Action invoke) in C:\Users\Nicolai\Documents\Digital Voter List\source\Digital Voter List\Tests\StationTests.cs:line 268
+at Tests.StationTests.EnoughStationsTest() in C:\Users\Nicolai\Documents\Digital Voter List\source\Digital Voter List\Tests\StationTests.cs:line 133
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

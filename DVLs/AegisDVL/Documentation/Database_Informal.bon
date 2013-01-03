@@ -1,0 +1,15 @@
+class_chart DATABASE
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "The database-layer is responsible for communicating with the database (create, read, update, write). It can also perform batch-operations such as importing and exporting the database."
+query
+  "Has this voter received a ballot?",
+  "What does the entire database look like?",
+  "Who is my parent station?"
+command
+  "This user has received a ballot!",
+  "This user's ballot has been revoked!",
+  "Import this encrypted data into the database!"
+constraint
+  "After the election has started, the number of rows should never change."
+end

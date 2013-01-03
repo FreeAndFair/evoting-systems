@@ -1,0 +1,43 @@
+﻿<Page x:Class="UI.ManagerWindows.OverviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" Title="OverviewPage" Height="401" Width="607">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="522*" />
+            <ColumnDefinition Width="85*" />
+        </Grid.ColumnDefinitions>
+        <DataGrid AutoGenerateColumns="False" Height="263" HorizontalAlignment="Left" Margin="32,43,0,0" Name="stationGrid" VerticalAlignment="Top" Width="533" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="IP Adresse" Width="*" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding IpAdress}" TextAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Tilsluttet" Width="*" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Connected}" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Margin="32,325,12,12" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Button Content="Opdater"  Margin="20,20,10,20" Height="23" Name="RefreshButton" Width="75" Click="RefreshButtonClick" />
+            <Button Content="Tilbage"  Margin="20,20,10,20" Height="23" Name="BackButton" Width="75" Click="BackButtonClick" />
+            <Button Content="Tilføj" Margin="20,20,10,20" Height="23" Name="AddButton" Width="75" Click="AddButtonClick" />
+            <Button Content="Fjern" Margin="20,20,10,20" Height="23" Name="RemoveButton" Width="75" Click="RemoveButtonClick" />
+            <Button Content="Start Valg" Margin="20,20,10,20" Height="23" Name="StartEndElectionButton" Width="98" Click="StartEndElectionButtonClick" />
+        </StackPanel>
+        <Label Content="" Height="28" HorizontalAlignment="Left" Margin="32,12,0,0" Name="PasswordLabel" VerticalAlignment="Top" Width="426" />
+        <Label Content="" Height="28" HorizontalAlignment="Left" Margin="464,0,0,0" Name="UpdateLabel" VerticalAlignment="Top" Width="101" Grid.ColumnSpan="2" />
+        <ProgressBar Height="9" HorizontalAlignment="Left" Margin="465,31,0,0" Name="LoadingBar" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" />
+    </Grid>
+</Page>

@@ -1,0 +1,94 @@
+INSERT INTO `action` (`id`, `label`) VALUES
+(1, 'AllVotingPlaces'),
+(2, 'CreateUser'),
+(3, 'LoadCitizen'),
+(4, 'LoadUser'),
+(5, 'LoadVoterCard'),
+(6, 'ScanVoterCard'),
+(7, 'FindCitizen'),
+(8, 'FindUser'),
+(9, 'FindVotingVenue'),
+(10, 'SaveUser'),
+(11, 'SetHasVoted'),
+(12, 'SetHasVotedManually'),
+(13, 'ChangeOwnPassword'),
+(14, 'ChangeOthersPassword'),
+(15, 'UpdateCitizens'),
+(16, 'UpdateVoterCards'),
+(17, 'PrintVoterCards');
+
+INSERT INTO `user` (`id`, `user_name`, `title`, `person_id`, `password_hash`, `user_salt`) VALUES
+(1, 'jdmo', 'Sys Tester', 1, '89D2F4EDD669E164DE3463B83F0F41F0', 'lkaFDA62lio+3'),
+(2, 'slave', 'Slave', 2, 'D1086F795012D703413B65963C66D345', '9Ha62lio+3FDA'),
+(3, 'elec', 'Election Representitive', 3, 'DE4E5E74A3C1A45E3ABF68456501DA75', '');
+
+INSERT INTO `permission` (`action_id`, `user_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(6, 3),
+(3, 3),
+(11, 3);
+
+INSERT INTO `voting_venue` (`id`, `address`, `name`) VALUES
+(1, 'Dyssegårdsvej 34', 'Dyssegårdskolens aula'),
+(2, 'Lærkevej 2', 'Gotenfods Gymnasiums gymnastiksal'),
+(7, 'Bakkedals vej 23', 'Aurehøj Gymnasiums fællessal');
+
+INSERT INTO `person` (`id`, `name`, `address`, `cpr`, `eligible_to_vote`, `has_voted`, `place_of_birth`, `passport_number`, `voting_venue_id`) VALUES
+(1, 'Jens Dahl Møllerhøj', 'Nørre Alle 75, 471', '2405901253', 1, 0, 'Gentofte Hospital', '5684895471', 7),
+(2, 'Christopher Nørgård Dall',NULL, '2303871234', 0, 0, 'Samsø Sygehus', '663780088', 2),
+(3, 'Mathilde Roed Birk', NULL, '1212534321', 1, 0, NULL, NULL, 1),
+(4, 'Ronni Holm', NULL, '1705787897', 1, 1, 'Randers Sygehus', '376095272', 1);
+
+INSERT INTO `quiz` (`id`, `question`, `answer`, `person_id`) VALUES
+(1, '"Hvad er din fødselsdag?"', '"24-05-1990"', 1),
+(2, '"Hvad er din mors navn?"', '"Mette Møllerhøj"', 1),
+(3, '"Hvad er du uddannet som?"', '"Smed"', 2),
+(4, '"Hvad er din arbejdsplads?"', '"Mærsk A/S"', 3),
+(5, '"Hvad er dit telefonnummer?"', '"74562350"', 4),
+(6, '"Hvor er du født?"', '"Hvidovre hospital"', 4),
+(7, '"Hvad hedder din far?"', '"Hans Olesen"', 4);
+
+INSERT INTO `voter_card` (`id`, `person_id`, `valid`, `id_key`) VALUES
+(1, 1, 1, 'HR5F4D7D'),
+(2, 2, 1, 'UIO8ONH7'),
+(3, 2, 0, '5HU9KQY4'),
+(4, 3, 1, '68JGU9NG'),
+(5, 3, 0, '1HN8O9M9'),
+(6, 4, 0, '5DPN6E4S'),
+(7, 4, 0, 'JN0IAU9S');
+
+INSERT INTO `workplace` (`user_id`, `voting_venue_id`) VALUES
+(1, 1),
+(2, 7),
+(2, 2);
+
+INSERT INTO `raw_person_data` (`cpr`, `name`, `mother_cpr`, `father_cpr`, `address`, `address_previous`, `gender`, `birthday`, `deathdate`, `dead`, `birthplace`, `age`, `driver_id`, `military_served`, `workplace`, `education`, `telephone`, `passport_number`, `city`, `zipcode`, `nationality`, `disempowered`) VALUES
+('2405901253', 'Jens Dahl Møllerhøj','1009014537','0101404821','Nørre Alle 75','Hagens Alle 17','male','1990-05-24',NULL,0,'Gentofte Hospital',21,NULL,1,'ITU',NULL,'281566001','1234567890','København Ø',2100,'DNK',0),
+('0101404821', 'Mik Thomasen', '1007170920', '1701091251', NULL, 'Lærkevej 25', 'male', '1940-01-01', NULL, 0, 'Nykøbing F. Centralsygehus', 71, NULL, 0, 'Gypsum Recycling International A/S', NULL, NULL, '719709942', 'Kibæk', 6933, 'DNK', 0),
+('0102574530', 'Ronja Degn Clemmensen', NULL, NULL, 'Dambakken 13', 'Kløvervej 52', 'female', '1957-02-01', NULL, 0, 'Sygehus Syd, Næstved', 54, NULL, 0, 'Gjensidige', 'Billedkunst, kunstteori og formidling', NULL, NULL, 'Gredstedbro', 6771, 'DNK', 0),
+('0108660320', 'Amanda Østergård Vilhelmsen', '0202341400', '0101404821', 'Langerødvej 48', NULL, 'female', '1966-08-01', NULL, 0, 'Herlev Hospital', 45, NULL, 0, 'Dreist Advokater', 'Klassisk musiker', NULL, '682142010', 'Vestervig', 7770, 'DNK', 0),
+('0202341400', 'Anne Bruhn Leth', '3007051250', '1906063551', 'Emdrup Banke 16', NULL, 'female', '1934-02-02', NULL, 0, 'Nykøbing F. Centralsygehus', 77, NULL, 0, 'Assuranceforeningen Skuld', 'Elektroteknologi', '05307874', '185662068', 'Rødvig Stevns', 4673, 'DNK', 0),
+('0205874871', 'Robert Friis Frandsen', '0102574530', '2011590731', 'Forbindelsesvej 25', 'Strynøgade 51', 'male', '1987-05-02', NULL, 0, 'Herlev Hospital', 24, NULL, 0, NULL, 'Filmkomposition', NULL, NULL, 'Holeby', 4960, 'DNK', 0),
+('0207313680', 'Gunhild Højlund Jespersen', '1103021560', '0309112781', 'Gribskovvej 49', NULL, 'female', '1931-07-02', '1975-08-11', 1, 'Nordsjællands Hospital i Hillerød', 80, NULL, 0, 'Mjølner Informatics', 'Overfladebehandler', '97871086', '547983356', 'København NV', 2400, 'DNK', 0),
+('0207723190', 'Christina Frank', '2803419870', '2401523001', NULL, 'Mosedraget 40', 'female', NULL, NULL, 0, 'Regionshospitalet, Herning', 39, '98525148', 0, 'Advokatkontoret Fabritius Tengnagel & Heine', NULL, NULL, '004472136', 'Almind', 6051, 'DNK', 0),
+('0208212970', 'Bente Højbjerg Wulff', NULL, NULL, 'Kalkbrænderiløbskaj 25', NULL, 'female', '1921-08-02', '1987-07-10', 1, 'Sygehus Sønderjylland, Haderslev', 90, NULL, 0, 'Advokatfirmaet Schebye Jacobsen', NULL, NULL, '915285167', 'Gudme', 5884, 'DNK', 0),
+('0209112621', 'Iver Hjorth', NULL, NULL, 'Søholmvej 37', 'Søholmvej 37', 'male', '1911-09-02', NULL, 1, 'Sygehus Syd, Næstved', 100, NULL, 0, 'Formsprog', NULL, '63094295', NULL, 'Bjert', 6091, 'DNK', 0),
+('0211103781', 'Kurt Kofod', NULL, NULL, NULL, 'Smutvej 5', 'male', '1910-11-02', '1983-08-15', 1, 'Nykøbing F. Centralsygehus', 101, '48322043', 1, 'Scandinavian Arlines System - Denmark', NULL, '14027469', '539507441', 'Viuf', 6052, 'DNK', 0),
+('0212572300', 'Winnie Nicolaisen', '0911341100', '1804250251', NULL, NULL, 'female', '1957-12-02', NULL, 0, 'Hillerød Sygehus', 54, NULL, 0, 'Advodan', NULL, '28074262', '017187818', 'Århus C', 8000, 'DNK', 0),
+('2208109580', 'Ragna Svensson', '0701903200', '2802903601', 'Kalkbrænderihavnsg 48', NULL, 'female', NULL, NULL, 0, 'Holstebro Centralsygehus', 1, NULL, 0, NULL, NULL, NULL, '372549959', 'Herning', 7400, 'DNK', 0);

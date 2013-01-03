@@ -1,0 +1,79 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster CRYPTO
+  component
+    deferred class ICRYPTO
+      feature
+      
+      VoterDataEncryptionKey : ASYMMETRICKEY
+        ensure result /= void
+      end
+      
+      SetVoterDataEncryptionKey : void
+        -> key : ASYMMETRICKEY
+      
+      Keys : SET[ASYMMETRICKEY]
+        ensure result /= void
+      end
+       
+      AsymmetricDecrypt : BYTEARRAY
+        -> c : CIPHERTEXT
+        -> k : ASYMMETRICKEY
+        require 
+          c /= void and
+          k /= void
+        ensure result /= void
+      end
+      
+      AsymmetricEncrypt : CIPHERTEXT
+        -> b : BYTEARRAY
+        -> k : ASYMMETRICKEY
+        require 
+          b /= void and
+          k /= void
+        ensure result /= void
+      end
+      
+      SymmetricDecrypt : BYTEARRAY
+        -> c : CIPHERTEXT
+        -> k : SYMMETRICKEY
+        require 
+          c /= void and
+          k /= void
+        ensure result /= void
+      end
+      
+      SymmetricEncrypt : CIPHERTEXT
+        -> b : BYTEARRAY
+        -> k : SYMMETRICKEY
+        require 
+          b /= void and
+          k /= void
+        ensure result /= void
+      end
+      
+      Hash : BYTEARRAY
+        -> b : BYTEARRAY
+        require b /= void
+      end
+      
+      SetIv : void
+        -> b : BYTEARRAY
+        require b /= void
+        ensure GetIv = b
+      end
+      
+      GetIv : BYTEARRAY
+        ensure result /= void
+      end
+      
+      NewIv : void
+        ensure GetIv /= void and GetIv /= old getIv
+      end
+      
+      GenerateSymmetricKey : BYTEARRAY
+        ensure result /= void
+      end
+    end
+  end
+end

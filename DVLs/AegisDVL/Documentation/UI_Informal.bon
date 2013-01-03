@@ -1,0 +1,18 @@
+class_chart UI
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A UI is used to interact with human beings. The UI must be able to support requirements to be able to interact with the Digital Voter List system."
+query
+  "What is the key the user typed in to respond to the manager initiating a key-exchange?",
+  "What is the password the user typed in when a station is replying to a key-exchange?"
+command
+  "Show this password on the manager machine!",
+  "Show this password on a station machine!",
+  "Let the UI know whether or not the voter can receive a ballot!",
+  "Let the UI know that the election has ended!",
+  "Let the UI know that the election has started!",
+  "Let the UI know that this machine is now the manager!",
+  "Let the UI know that it needs to shut down!",
+  "Let the UI know that there are not enough peers to continue execution!",
+  "Let the UI know that there are enough peers to continue execution!"
+end

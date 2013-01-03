@@ -1,0 +1,54 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster DATABASE
+  component
+    deferred class IDATABASE
+      feature  
+        
+        deferred GetBallotStatus : BALLOTSTATUS
+          -> vn : VOTERNUMBER
+          -> cpr : CPR
+          require
+            vn /= void and cpr /= void
+        end
+        
+        deferred SetBallotStatus : void
+          -> vn : VOTERNUMBER
+          -> cpr : CPR
+          -> bs : BALLOTSTATUS
+          require
+            GetBallotStatus(vn, cpr) /= BALLOTSTATUS.Unavailable and bs /= BALLOTSTATUS.Unavailable and ((GetBallotStatus(vn, cpr) = BALLOTSTATUS.NotReceived and bs = BallotStatus.Received) or (GetBallotStatus(vn, cpr) = BALLOTSTATUS.Received and bs = BallotStatus.NotReceived))
+          ensure GetBallotstatus(vn, cpr) = bs
+        end
+        
+        deferred GetBallotStatusCPROnly : BALLOTSTATUS
+          -> cpr : CPR
+          -> pswd : STRING
+          require
+            pswd /= void and Parent.ValidMasterPassword(pswd)
+        end
+        
+        deferred SetBallotStatusCPROnly : void
+          -> cpr : CPR
+          -> bs : BALLOTSTATUS
+          -> pswd : STRING
+          require
+            pswd /= void and Parent.ValidMasterPassword(pswd) and GetBallotStatusCPROnly(cpr, pswd) /= BALLOTSTATUS.Unavailable and bs /= BALLOTSTATUS.Unavailable and ((GetBallotStatusCPROnly(cpr, pswd) = BALLOTSTATUS.NotReceived and bs = BallotStatus.Received) or (GetBallotStatusCPROnly(cpr, pswd) = BALLOTSTATUS.Received and bs = BallotStatus.NotReceived))
+          ensure GetBallotstatusCPROnly(cpr, pswd) = bs
+        end
+        
+        deferred AllData : SEQUENCE[ENCRYPTEDVOTERDATA]
+          ensure result /= void
+        end  
+        
+        deferred Parent : STATION
+          ensure result /= void
+        end
+        
+        deferred Import : void
+          -> data : SEQUENCE[ENCRYPTEDVOTERDATA]
+          require data /= void
+        end
+    end
+  end
+end

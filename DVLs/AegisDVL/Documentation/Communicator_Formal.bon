@@ -1,0 +1,31 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster COMMUNICATOR
+  component
+    deferred class ICOMMUNICATOR
+      feature  
+      
+        deferred IsListening : BOOLEAN
+          -> a : IPADDRESS
+          require a /= void
+        end
+        
+        deferred DiscoverNetworkMachines : SEQUENCE[IPADDRESS]
+          ensure result /= void
+        end
+        
+        deferred Send : void 
+          -> c : COMMAND
+          -> target : IPADDRESS
+          require c /= void and target /= void
+        end
+        
+        deferred ReceiveAndHandle : void
+        
+        deferred Parent : STATION
+          ensure result /= null
+        end
+         
+    end
+  end
+end

@@ -1,0 +1,9 @@
+class_chart LOGGER
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A log is used to track events in the system."
+query
+  "What does the entire log look like?"
+command
+  "Log this message!"
+end

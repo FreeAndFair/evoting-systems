@@ -1,0 +1,12 @@
+static_diagram DIGITALVOTERLIST
+component
+  cluster SCANNER
+  component
+    deferred class ISCANNER
+      feature  
+        
+        deferred scan : VOTERNUMBER
+        
+    end
+  end
+end

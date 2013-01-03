@@ -1,0 +1,69 @@
+scenario_chart USE_SCENARIOS
+indexing
+	created: "2011-11-30";
+	revised: "2011-11-30"
+explanation
+	"Common scenarios at an election, related to the voter lists, from a users view."
+scenario "USER REQUEST FOR INFORMATION"
+	description "The user can request information regarding his/her voting status. If the information is not available yet, the user can get an estimate on when it will be available. Otherwise the user can see if they are eligible to vote and if he/she has voted."
+scenario "COLLECT DATA"
+	description "Data regarding eligible voters and their personal details must be gathered and filtered from various, preferably secure, data sources."
+scenario "PRINT VOTER CARDS"
+	description "Data must be collected just before printing voter cards. Voter cards are printed based on collected data."
+scenario "SEND OUT EXTRA VOTER CARD"
+	description "Users who haven't got their voter card (lost in mail, etc.) can request a new voter card. The old voter card is invalidated, and a new one is sent out."
+scenario "REGISTER VOTERS WITH VOTER CARD"
+	description "When a voter arrives at the voting venue, he/she must present his/her voter card, enter a personal information (eg. last four digits of CPR-number) and answer one or more security questions in order to recieve their ballot."
+scenario "MANUAL REGISTRATION OF VOTER WITHOUT A VOTER CARD"
+	description "If a voter has no voter card, a manual validation process is performed. The voter must show picture-id or documents of authentication of similair quality. The voter is then evaluated by the election-staff, who determines wether they should be given a ballot. This process is only handled by special, highly trusted election staff."
+scenario "CHANGE USER PASSWORD"
+	description "When a user is logged in the first time, he/she is asked to change his/her password to a personal password of his/her choice. The password must comply with some specific security constraints."
+end
+
+scenario_chart SYSTEM_SCENARIOS
+indexing
+	created: "2011-11-30";
+	revised: "2011-11-30"
+explanation
+	"Common scenarios at an election, related to the voter lists, from a system view. This is an overview description, omitting technical details."
+scenario "USER REQUEST FOR INFORMATION"
+	description "A request is sent to the central database. If the information is available, it is returned."
+scenario "COLLECT DATA"
+	description "Retrieve data from various data sources. Filter and merge the information to the best possible set of data. Store useful information in the central database."
+scenario "PRINT VOTER CARDS"
+	description "Data must be collected just before printing. A random voter-card-id is attached to each voter in the central database. For each eligible voter, a voter card is printed with the necessary information and keyphrase from the central database."
+scenario "SEND OUT EXTRA VOTER CARD"
+	description "When a new voter card is sent out, the voter-card-id for the old voter card is marked as invalid in the database, and a new one is written. The new voter-card-id is used on the new voter card, which is sent to the voters address."
+scenario "VALIDATION OF VOTERS WITH VOTER CARD"
+	description "Voter card is scanned. If voter-card-id is found in central database, a security question (for the election official to ask) is returned. To validate, the voter must enter a personal information that is unknown to the election official (eg. last four digits of their CPR-number). If the voter-card-id is not found in the central database, the voter can't be validated by his/her voter card and must go to manual validation."
+scenario "MANUAL VALIDATION OF VOTER WITHOUT A VOTER CARD"
+	description "For the manual validation the election-staff representative can look-up information for the given citizen, based on his/her CPR-number. If manual validation is successfull, a manual registration in the system is performed. This process is handled by authorized staff, and only they can perform the manual regeistration after authenticating themself."
+scenario "REGISTER VOTER"
+	description "A voter must be validated by his/her voter card, or manually by authorized staff, in order to be registered and handed a ballot. A registration can only happen if the voter has not all ready been registered. The registration happens in the central database."
+end
+
+scenario_chart SYSTEM_PROCESS_CHART
+indexing
+	created: "2011-11-30";
+	revised: "2011-11-30"
+explanation
+	"Description of core system processes, and how they interact. Important for understanding the system arcitechture."
+scenario "USER REQUEST FOR INFORMATION"
+	description "The user enters citizen's CPR-number. This is sent to the server, that gives back data regarding his/her voting status. The voting status can be: 'Information not available yet', 'You are not eligible to vote', You are eligible to vote, your voter card should arrive in X days', 'You have voted', 'The election is over, you have voted' or 'The election is over you have not voted'"
+scenario "COLLECT DATA"
+	description "We just generate mock-up data."
+scenario "INITIALIZE ELECTION DAY"
+	description "At the start of the election day, the local database at every election venue must be sync'ed to match the central database. The digital voter list system cannot be used before this process has succesfully completed."
+scenario "PRINT VOTER CARDS"
+	description "The printing system requests all data to be collected. For each voter in the database, the printing system generates and inserts a voter-card-id. For each voter in the database, the printing system retrieves the voter-card-id, name and address of the voter, and prints this information to the voter card, which is sent by mail."
+scenario "SEND OUT EXTRA VOTER CARD"
+	description "The printing system marks the old voter-card-id as invalid and generates a new voter-card-id for the citizen. For this citizen, the voter-card-id, name and address is retrieved from the database and printed to the voter card. The voter card is sent out by mail."
+scenario "VALIDATION OF VOTERS WITH VOTER CARD"
+	description "The voter-card-id is read through a bar-code. The voter-card-id is looked up in the central database. If the voter-card-id is not found in the database, an error message is returned. If the voter-card-id is marked as invalid in the database, the coresponding error-message is returned. If the voter-card-id is found in the central database and is valid, a security question and it's answer is returned to the election official. The security question can be refreshed by the election official. The voter must enter a simple personal information that is unknown to the election official (eg. last four digits in CPR-number), and the election official must validate the voter through the security question. If the entered, personal information can be validated in the central database, the election official has successfully validated the voter, the voter is eligible to vote and has not allready voted, the voter is marked as 'has voted' in the central database, and the voter-card-id is marked invalid. If the process fails at any point, the process can be retried. If the election official is suspicious about the voter, or the voter fails to enter his/her simple personal information 3 times, the voter must go to manual validation."
+scenario "MANUAL REGISTRATION OF VOTER WITHOUT A VOTER CARD"
+	description "The voters identity and eligibility to vote is manually validated by a trusted election official. The election official can look up information on the voter and his/her eligibility to vote via the voters CPR-number. If the voter is found eligible, the election official can send a request to the central database, for marking the voter as 'has voted', by entering his/her password. Only if the voter is eligible and has not allready voted, a confirmation is returned and the voter can be handed a ballot."
+scenario "REGISTRATION OF VOTING"
+	description "When a voter is registered as 'has voted', information is also kept regarding when this happened and who was the election representative in charge."
+scenario "DATABASE PROXY"
+	description "All requests from the voting venue goes through a database proxy unit at the voting venue. If the proxy can establish connection to the central database, the proper actions are performed there and mirrored in the local database. If a connection can't be established, the proper actions are performed in the local database and marked as unsynchronized, and synced to the central database as soon as the connection can again be established."
+end

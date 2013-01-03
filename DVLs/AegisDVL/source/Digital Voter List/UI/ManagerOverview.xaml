@@ -1,0 +1,50 @@
+﻿<Page x:Class="UI.ManagerOverview"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Data="clr-namespace:UI.Data"
+      mc:Ignorable="d" 
+      d:DesignHeight="407" d:DesignWidth="903"
+	Title="Overview">
+    <Page.Resources>
+        <Data:DesignTimeStationStatuses x:Key="dtData" />
+    </Page.Resources>
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{StaticResource dtData}" Height="283" HorizontalAlignment="Left" Margin="342,21,0,0" Name="ManagerstationGrid" VerticalAlignment="Top" Width="533" CanUserDeleteRows="False" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="IP Adress" Width="*" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding IpAdress}" TextAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Connected" Width="*" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Connected}" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Margin="350,325,57,12" Orientation="Horizontal">
+            <Button Content="Tilføj" Margin="20,20,10,20" Height="23" HorizontalAlignment="Left" Name="ManagerAddButton" VerticalAlignment="Top" Width="75" Click="ManagerAddButtonClick" />
+            <Button Content="Fjern" Margin="20,20,10,20" Height="23" HorizontalAlignment="Right" Name="ManagerRemoveButton" VerticalAlignment="Top" Width="75" Click="ManagerRemoveButtonClick" />
+            <Button Content="Gør til Manager" Margin="20,20,10,20" HorizontalAlignment="Left" Height="23" Name="ManagerMakeManagerButton" VerticalAlignment="Top" Width="110" />
+            <Button Content="Start Valg" Margin="20,20,10,20"  HorizontalAlignment="Left" Height="23" Name="ManagerStartEndElectionButton" VerticalAlignment="Top" Width="98" />
+        </StackPanel>
+
+
+            <Label Content="Valgkortsnummer" Height="30" HorizontalAlignment="Center" Margin="111,57,687,0" Name="voterCardNumberLabel" VerticalAlignment="Top" />
+            <TextBox DataObject.Pasting="PastingHandler" Height="30" HorizontalAlignment="Center" Margin="104,92,679,0" Name="voterCardNumberTextbox" PreviewTextInput="PreviewTextInputHandler" VerticalAlignment="Top" Width="120" />
+            <Label Content="CPR nummer" Height="30" HorizontalAlignment="Center" Margin="124,157,700,0" Name="CPRNumberLabel" VerticalAlignment="Top" />
+            <TextBox DataObject.Pasting="PastingHandler" Height="30" HorizontalAlignment="Center" Margin="104,192,679,0" Name="CPRNumberTextbox" PreviewTextInput="PreviewTextInputHandler" VerticalAlignment="Top" Width="120" />
+            <Button Click="CheckValidityButtonClick" Content="Færdig" Height="30" HorizontalAlignment="Center" Margin="104,0,679,99" Name="checkValidityButton" VerticalAlignment="Bottom" Width="120" />
+            <Button Content="Kun CPR" Height="30" HorizontalAlignment="Center" Margin="104,0,679,48" Name="OnlyCprButton" VerticalAlignment="Bottom" Width="120" />
+
+    </Grid>
+</Page>

@@ -1,0 +1,9 @@
+DELETE FROM quiz;
+DELETE FROM voter_card;
+DELETE FROM person;
+DELETE FROM workplace;
+DELETE FROM voting_venue;
+DELETE FROM permission;
+DELETE FROM action;
+DELETE FROM user;
+DELETE FROM raw_person_data;

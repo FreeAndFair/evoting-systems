@@ -1,0 +1,320 @@
+system_chart PX3_DIGITAL_VOTER_LIST
+indexing
+	authors: "Jens Dahl Møllerhøj <jdmo@itu.dk>, Morten Hyllekilde Andersen <mhyl@itu.dk> & Michael Valentin <mier@itu.dk>";
+	course: "BDSA";
+	university: "IT University of Copenhagen";
+	created: "25-11-2011";
+explanation
+	"A system for managing and using digital voter lists at an election for at parlament or similair"
+cluster ELECTION
+	description "Things related to an election to a parlament or similair"
+cluster UTILITIES
+	description "Various generic utilities for acomplishing simple and/or trivial tasks easier."
+end
+
+cluster_chart ELECTION
+explanation
+	"Things related to an election for a parlament or similair"
+class PERSON
+	description "A human being with a name"
+class RAWPERSON
+	description "A datastructure containing all the data that can be found about a human being."
+class CITIZEN
+	description "A person with a valid and unique ID-number (CPR-number)"
+class USER
+	description "A person responsible of helping out at an election"
+class VOTER_CARD
+	description "A ticket to be exchanged for a ballot, that is send out to the voter as a part of the validation process."
+class ELECTION_EVENT
+	description "A standardized interface for an election."
+class GENERAL_EVENT
+	description "An actual election, that runs at a specific time, in a specific area and with a specific set of elegible voters."
+class VOTING_VENUE
+	description "A specific venue for voting, typically a school or similair public place."
+class DATA_ACCESS_OBJECT
+	description "A standardized interface for querieing a data source."
+class DAO_PERMISSION_PROXY
+	description "An object that insures that the user have permissions to call functions in the database."
+class DAO_MYSQL
+	description "A DAO specific for mySQL databases."
+class DAO_FACTORY
+	description "An object to ensure you get the right database object"
+cluster ADMINISTRATION
+	description "Things related to the administration of an election"
+end
+
+cluster_chart UTILITIES
+explanation
+	"Various generic utilities for acomplishing simple and/or trivial tasks easier."
+class BARCODE
+	description "An optical, machine readable, representation of simple data"
+class QUIZ
+	description "A linguistic expression used to make a request for information"
+class RETRY_UTILITY
+	description "A utility for retrying actions"
+end
+
+cluster_chart ADMINISTRATION
+explanation
+	"Things related to the administration of an election"
+class VOTER_CARD_PRINTER
+	description "A system that can generate a voter card, given a set of information."
+class DATA_TRANSFORMER
+	description "A system that can collect the necessary data for an election event."
+class DATA_ANALYZER
+	description "A system that can analyze the turnout results after an election."
+end
+
+class_chart RETRY_UTILITY
+indexing
+	in_cluster: "UTILITIES";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"A utility for retrying actions"
+command
+	"Please retry this action after this amount of time!"
+end
+
+class_chart PERSON
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"A human being"
+query
+	"May I have a new person?",
+	"What is your CPR-number?",
+	"What is your name?",
+	"What is your adress?",
+	"What is your passport number?",
+	"Where were you born?"
+end
+
+class_chart CITIZEN
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"A potential voter"
+inherit PERSON
+query
+	"Are you eligible to vote?",
+	"Have you voted?",
+	"What is your voting status?",
+	"What voter cards belong to you?",
+	"What security questions can i ask you?",
+	"In what voting venue should you vote?"
+command
+	"Change your eligibility to vote!",
+	"Register that you have voted!"
+constraint
+	"Must have a CPR-number",
+	"A has voted when he has been handed a ballot"
+end
+
+class_chart USER
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"The users at the election venue and people adminitrating the electing, whom have different priviledges."
+inherit
+	CITIZEN
+query
+	"What is your title?",
+	"What permissions do you have?",
+	"What voting venues do you work in?"
+command
+	"Change your password!",
+	"Get perm"
+constraint
+	"Must have a title",
+	"Must have a username",
+	"Must have a password"
+end
+
+class_chart VOTER_CARD
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"The voter card being sent to citizens who are eligibe to vote."
+query
+	"Can I have a new voter card for this citizen for this ElectionEvent?",
+	"Which election event have you been made for?",
+	"Who are you addressed to?",
+	"What is your ID?",
+	"Are you valid?"
+command
+	"Set this voter card invalid!"
+constraint
+	"Must have a citizen",
+	"Must have an election event",
+	"Must have an ID"
+end
+
+class_chart ELECTION_EVENT
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"An event containing data of an election."
+query
+	"Can I have a new election with this name and date?",
+	"When are you scheduled to be?",
+	"What is your name?"
+command
+	"Change your scheduled election date!",
+	"Change your name!"
+constraint
+	"Must have a scheduled election date and a name"
+end
+
+class_chart VOTING_VENUE
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-12-01";
+	revised: "2011-12-01";
+explanation
+	"A specific venue for voting, typically a school or similair public place."
+query
+	"What is your name?",
+	"What is your address?",
+	"What elegible voters do you have?"
+end
+
+class_chart DATA_ACCESS_OBJECT
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"An object to access the database in a standardized way."
+query
+	"What person has this id?",
+	"What user has this id?",
+	"What user has this username and password?",
+	"What votercard has this id?",
+	"What votercard has this id-key?",
+	"What persons exists with data similiar to this?",
+	"May i have all eligible voters in the database?",
+	"What users exists with data similiar to this?",
+	"What votercards exists with data similiar to this?"
+command
+	"Create this person with this data!",
+	"Create this user with this data!",
+	"Create this voter card with this data!",
+	"Update this person with this data!",
+	"Mark that a voter has voted with standard validation!",
+	"mark that a voter has voted with manual validation!",
+	"Change this users pasword to this!",
+	"Mark this user as invalid!",
+	"Mark this voter card as invalid!"
+constraint
+	"Person to be created must have a name or CPR-number",
+	"User to be created must have a username",
+	"User to be created must have a password"
+end
+
+class_chart DAO_PERMISSION_PROXY
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"An object that insures that the user have permissions to call functions in the database"
+inherit DATA_ACCESS_OBJECT
+query
+	"May I have a new DAO permission proxy for this DAO with this users permissions"
+end
+
+class_chart DAO_MYSQL
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"A DAO specific for MySQL databases"
+inherit DATA_ACCESS_OBJECT
+query
+	"Give me a data access object that this user can use."
+constraint
+	"Must be constructed from factory method"
+end
+
+class_chart DAO_FACTORY
+indexing
+	in_cluster: "ELECTION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"An object to ensure you get the right database object"
+query
+	"Give me the right DAO"
+end
+
+class_chart BARCODE
+indexing
+	in_cluster: "UTILITIES";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"An optical, machine readable, representation of simple data, with the ability to output both the data and the optical representation."
+query
+	"May I have a new barcode object, representing this data?",
+	"What data do you hold?",
+	"Can I have an optical representation of the data you hold?"
+constraint
+	"The data must not be longer than 10 charachters",
+	"The optical representation must represent the data exactly and unambiguously."
+end
+	
+class_chart QUIZ
+indexing
+	in_cluster: "UTILITIES";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"A brief assessment used as an authenticator"
+query
+	"Give me a new quiz with this question and this answer to it",
+	"What is the question?",
+	"What is the answer?"
+constraint
+	"The answer must be the answer to the question."
+end
+
+class_chart VOTER_CARD_PRINTER
+indexing
+	in_cluster: "ADMINISTRATION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"A printer used to create the physical voter cards"
+query
+	"May I have a new voter card printer?",
+	"May I have a voter card based on this voter card information",
+constraint
+	""
+end
+
+class_chart DATA_TRANSFORMER
+indexing
+	in_cluster: "ADMINISTRATION";
+	created: "2011-11-25";
+	revised: "2011-11-25"
+explanation
+	"A system used to collect information about all citizens"
+query
+	"",
+	""
+constraint
+	""
+end
+

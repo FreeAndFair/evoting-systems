@@ -1,0 +1,25 @@
+1. Choose location of data file
+2. Load datafile
+3. View the machines on the network with teh DVL software running
+4. Add machines to the network before the election has started 
+5. Remove machines from the network before the election has started
+6. Make another machine the manager before the election
+7. Input voter card number and CPR number with the intention of handing out a ballot
+8. receive an acknowledgement that handing out a ballot is ok
+9. Remove machines from the network during the election has started
+10. Make another machine the manager during the election
+11. Choose destination for exported data file
+12. Export the data file
+13. Record a voter based on his CPR number alone (only after proper identification)
+14. View the master password after the data is loaded
+
+unsupported by UI:
+1. show password for public key in adding a machine
+
+how they connect:
+
+Station:
+UI_TypeChoice -> UI_WaitForManager -> UI_BallotRequest
+
+
+UI_TypeChoice -> UI_DataLoad -> UI_MasterPassword -> UI_Overview -> UI_ManagerOverview -> UI_EndedElection

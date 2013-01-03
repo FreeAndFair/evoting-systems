@@ -1,0 +1,9 @@
+class_chart COMMAND
+  indexing
+    author: "Nikolaj Aaes (niaa@itu.dk) & Nicolai Skovvart (nbsk@itu.dk)"
+  explanation "A command is sent over the network and can be executed at the destination."
+query
+  "Who sent this command?"
+command
+  "Execute this command!"  
+end

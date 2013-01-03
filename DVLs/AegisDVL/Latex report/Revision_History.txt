@@ -1,0 +1,1673 @@
+Revision: 334
+Author: Skovvart
+Date: 2012-05-18 20:06
+Message: Increased RSA key-strength. This significantly slows down the constructor-speed.
+----
+Revision: 333
+Author: Skovvart
+Date: 2012-05-18 13:59
+Message: Optimized a contract.
+----
+Revision: 332
+Author: Skovvart
+Date: 2012-05-17 23:43
+Message: Added a lock on logger to prevent some threading issues in the tests..
+----
+Revision: 331
+Author: Skovvart
+Date: 2012-05-17 19:55
+Message: Fixed a comment in station, made logger commit every entry every time again
+----
+Revision: 330
+Author: Skovvart
+Date: 2012-05-17 16:59
+Message: Comitting final contracts/test fixes.
+----
+Revision: 329
+Author: Skovvart
+Date: 2012-05-16 15:45
+Message: Bon compilation fixes.
+----
+Revision: 328
+Author: Skovvart
+Date: 2012-05-16 15:18
+Message: Updated BON, compiled it, fixed some comments and some contracts, removed Printer from BON.
+----
+Revision: 327
+Author: Skovvart
+Date: 2012-05-15 17:19
+Message: Redid Station formal and informal documentation, added a couple of contracts in Station.cs
+----
+Revision: 326
+Author: Aaes
+Date: 2012-05-15 15:51
+Message: added comments to all UI classes
+----
+Revision: 325
+Author: Skovvart
+Date: 2012-05-15 15:43
+Message: Commented StopListening
+----
+Revision: 324
+Author: Skovvart
+Date: 2012-05-15 14:47
+Message: Should now announce to peers joining after the election has started, that they should start as well
+----
+Revision: 323
+Author: Aaes
+Date: 2012-05-15 14:36
+Message: 
+----
+Revision: 322
+Author: Aaes
+Date: 2012-05-15 14:24
+Message: when a station is promoted to the manager the amount of stations is checked
+----
+Revision: 321
+Author: Aaes
+Date: 2012-05-15 14:16
+Message: 
+----
+Revision: 320
+Author: Aaes
+Date: 2012-05-15 14:06
+Message: changed width of shown password on waitingformanagerpage
+----
+Revision: 319
+Author: Aaes
+Date: 2012-05-15 14:00
+Message: 
+----
+Revision: 318
+Author: Skovvart
+Date: 2012-05-15 13:51
+Message: You might have a manager if you are a manager, when receiving the PublicKeyExchangeCommand reply
+----
+Revision: 317
+Author: Aaes
+Date: 2012-05-15 13:39
+Message: 
+----
+Revision: 316
+Author: Aaes
+Date: 2012-05-15 13:30
+Message: dispatcher methods used in notenoughpeers and enoughpeers
+----
+Revision: 315
+Author: Aaes
+Date: 2012-05-15 13:20
+Message: 
+----
+Revision: 314
+Author: Aaes
+Date: 2012-05-15 13:19
+Message: changed names to danish
+----
+Revision: 313
+Author: Skovvart
+Date: 2012-05-15 13:12
+Message: 
+----
+Revision: 312
+Author: Skovvart
+Date: 2012-05-15 13:10
+Message: Reorganized some regions in Stations, "implemented" the new IDvlUi features in TestUi
+----
+Revision: 311
+Author: Aaes
+Date: 2012-05-15 13:05
+Message: NotEnoughPeers and EnoughPeers are implemented
+----
+Revision: 310
+Author: Skovvart
+Date: 2012-05-15 12:54
+Message: AddPeer and RemovePeer will now announce to the UI when there's enough or not enough peers to continue the election. The required amount of peers is at the moment set to 1.
+----
+Revision: 309
+Author: Aaes
+Date: 2012-05-15 12:53
+Message: added enough peers and not enough peers to IDvlUI
+----
+Revision: 308
+Author: Skovvart
+Date: 2012-05-15 12:33
+Message: Generated passwords now use 10 chars.
+----
+Revision: 307
+Author: Skovvart
+Date: 2012-05-15 12:30
+Message: Made ShutDownElection and ShutDownElectionCommand notify the UI, renamed default and root namespace to Aegis_DVL
+----
+Revision: 306
+Author: Aaes
+Date: 2012-05-15 12:23
+Message: added shutdown UI method
+----
+Revision: 305
+Author: Aaes
+Date: 2012-05-14 12:49
+Message: changed the window titles
+----
+Revision: 304
+Author: Aaes
+Date: 2012-05-14 12:35
+Message: changed the icon for the .exe file
+----
+Revision: 303
+Author: Aaes
+Date: 2012-05-14 12:31
+Message: Changed the icon
+----
+Revision: 302
+Author: Skovvart
+Date: 2012-05-11 18:27
+Message: Changed PublicKeyExchange failure state requirement to Manager != null
+----
+Revision: 301
+Author: Aaes
+Date: 2012-05-11 18:06
+Message: 
+----
+Revision: 300
+Author: Aaes
+Date: 2012-05-11 17:30
+Message: 
+----
+Revision: 299
+Author: Aaes
+Date: 2012-05-11 17:29
+Message: 
+----
+Revision: 298
+Author: Aaes
+Date: 2012-05-11 17:19
+Message: 
+----
+Revision: 297
+Author: Aaes
+Date: 2012-05-11 16:12
+Message: 
+----
+Revision: 296
+Author: Skovvart
+Date: 2012-05-11 14:28
+Message: Disabled contracts, upped the connect time-out
+----
+Revision: 295
+Author: Aaes
+Date: 2012-05-11 14:27
+Message: 
+----
+Revision: 294
+Author: Skovvart
+Date: 2012-05-11 13:54
+Message: and the same thing again
+----
+Revision: 293
+Author: Skovvart
+Date: 2012-05-11 13:51
+Message: Will no longer attempt to remove peers that aren't added (when publickeyexchange fails)
+----
+Revision: 292
+Author: Skovvart
+Date: 2012-05-11 12:36
+Message: Removed some todo-comments.
+----
+Revision: 291
+Author: Skovvart
+Date: 2012-05-11 12:06
+Message: Final (?) code coverage whoring
+----
+Revision: 290
+Author: Skovvart
+Date: 2012-05-10 17:48
+Message: Tests fixed and updated to satisfy coverage requirements.
+----
+Revision: 289
+Author: Skovvart
+Date: 2012-05-10 16:58
+Message: Added revoke when target fails to receive BallotReceived, added cpr, password options in station
+----
+Revision: 288
+Author: Skovvart
+Date: 2012-05-10 16:24
+Message: Commented and contracted constructors.
+----
+Revision: 287
+Author: Aaes
+Date: 2012-05-10 15:13
+Message: changed titles on dialogs
+----
+Revision: 286
+Author: Aaes
+Date: 2012-05-10 15:11
+Message: 
+----
+Revision: 285
+Author: Skovvart
+Date: 2012-05-10 15:11
+Message: Code analysis fixes
+----
+Revision: 284
+Author: Aaes
+Date: 2012-05-10 14:41
+Message: 
+----
+Revision: 283
+Author: Skovvart
+Date: 2012-05-10 14:13
+Message: Code coverage requirements completed (for now)
+----
+Revision: 282
+Author: Skovvart
+Date: 2012-05-10 12:22
+Message: Removed logging from IsAliveCommands since it gave problems when trying to discover peers.
+----
+Revision: 281
+Author: Skovvart
+Date: 2012-05-09 18:23
+Message: Still problems with the logger and DiscoverNetworkMachines. Threading problem?
+----
+Revision: 280
+Author: Aaes
+Date: 2012-05-09 15:40
+Message: Added an icon for the program
+----
+Revision: 279
+Author: Skovvart
+Date: 2012-05-09 14:22
+Message: Now listens to begin with
+----
+Revision: 278
+Author: Aaes
+Date: 2012-05-09 14:22
+Message: 
+----
+Revision: 277
+Author: Skovvart
+Date: 2012-05-09 14:20
+Message: 
+----
+Revision: 276
+Author: Skovvart
+Date: 2012-05-09 14:18
+Message: ..neither can the communicator
+----
+Revision: 275
+Author: Skovvart
+Date: 2012-05-09 14:16
+Message: Can't assume that the logger exists when the DB is created
+----
+Revision: 274
+Author: Skovvart
+Date: 2012-05-09 14:11
+Message: Logging mostly implemented
+----
+Revision: 273
+Author: Skovvart
+Date: 2012-05-09 13:24
+Message: Updated some tests
+----
+Revision: 272
+Author: Aaes
+Date: 2012-05-09 13:17
+Message: comments in UIHandler
+----
+Revision: 271
+Author: Skovvart
+Date: 2012-05-09 13:02
+Message: Some fixes, updated tests, removed some deprecated constructors
+----
+Revision: 270
+Author: Aaes
+Date: 2012-05-09 12:27
+Message: A PDF file called "Manual" will be opened when the Help->User Manual is pressed, it must be placed in "UI/bin/Debug" atm
+----
+Revision: 269
+Author: Skovvart
+Date: 2012-05-08 16:22
+Message: Finally found the bug that caused tests to loop forever.
+----
+Revision: 268
+Author: Aaes
+Date: 2012-05-08 15:43
+Message: comments in UIHandler
+----
+Revision: 267
+Author: Aaes
+Date: 2012-05-08 14:54
+Message: PDF generator changed test data
+----
+Revision: 266
+Author: Skovvart
+Date: 2012-05-07 16:45
+Message: Fixed some tests, removed Printer (since it probably shouldn't be a part of the solution)
+----
+Revision: 265
+Author: Aaes
+Date: 2012-05-07 13:01
+Message: 
+----
+Revision: 264
+Author: Skovvart
+Date: 2012-05-07 12:53
+Message: ForEach should not use a local collection, so it wont accidentally be modified during execution.
+----
+Revision: 263
+Author: Aaes
+Date: 2012-05-04 16:58
+Message: 
+----
+Revision: 262
+Author: Skovvart
+Date: 2012-05-04 16:55
+Message: PromoteNewManager should not update the target UI
+----
+Revision: 261
+Author: Aaes
+Date: 2012-05-04 16:48
+Message: 
+----
+Revision: 260
+Author: Aaes
+Date: 2012-05-04 16:27
+Message: 
+----
+Revision: 259
+Author: Skovvart
+Date: 2012-05-04 16:19
+Message: ElectNewManager now notifies the UI if the new manager is itself.
+----
+Revision: 258
+Author: Aaes
+Date: 2012-05-04 16:19
+Message: 
+----
+Revision: 257
+Author: Aaes
+Date: 2012-05-04 16:18
+Message: now a station can become a manager UI-wise
+----
+Revision: 256
+Author: Aaes
+Date: 2012-05-04 16:09
+Message: 
+----
+Revision: 255
+Author: Aaes
+Date: 2012-05-04 16:04
+Message: 
+----
+Revision: 254
+Author: Aaes
+Date: 2012-05-04 15:59
+Message: markAsConnected should work as intended
+----
+Revision: 253
+Author: Aaes
+Date: 2012-05-04 15:51
+Message: 
+----
+Revision: 252
+Author: Aaes
+Date: 2012-05-04 15:50
+Message: now only one update thread will be active at a time and it will be aborted when you leave the window
+----
+Revision: 251
+Author: Aaes
+Date: 2012-05-04 15:35
+Message: 
+----
+Revision: 250
+Author: Aaes
+Date: 2012-05-04 15:30
+Message: 
+----
+Revision: 249
+Author: Aaes
+Date: 2012-05-04 15:22
+Message: the ballot response dialogs will have a , MessageBoxImage.Stop if the response was false
+----
+Revision: 248
+Author: Aaes
+Date: 2012-05-04 15:12
+Message: fixed ballotrequestreply to use the right dispatcher
+----
+Revision: 247
+Author: Aaes
+Date: 2012-05-04 15:04
+Message: Loading bar for updating
+----
+Revision: 246
+Author: Skovvart
+Date: 2012-05-04 15:00
+Message: CryptoCommand should also use the appropriate key now.
+----
+Revision: 245
+Author: Skovvart
+Date: 2012-05-04 14:55
+Message: CryptoCommand will now also accept messages from yourself
+----
+Revision: 244
+Author: Skovvart
+Date: 2012-05-04 14:36
+Message: Removed contract that requires that the Iv setter requires that the value is different, since it causes problems when sending the message to yourself
+----
+Revision: 243
+Author: Aaes
+Date: 2012-05-04 14:27
+Message: update label added to overview and manageroverview
+----
+Revision: 242
+Author: Skovvart
+Date: 2012-05-04 14:16
+Message: Database get no longer throws exception when the voternumber doesn't match the cpr, only returns BallotStatus.NotAvailable
+----
+Revision: 241
+Author: Aaes
+Date: 2012-05-04 14:14
+Message: the PopulateList methods should be in seperate threads now
+----
+Revision: 240
+Author: Aaes
+Date: 2012-05-04 14:02
+Message: 
+----
+Revision: 239
+Author: Skovvart
+Date: 2012-05-04 14:00
+Message: ..fixed yet again
+----
+Revision: 238
+Author: Skovvart
+Date: 2012-05-04 13:58
+Message: Fixed nullcheck
+----
+Revision: 237
+Author: Skovvart
+Date: 2012-05-04 13:56
+Message: NewIv should always be different from the old one
+----
+Revision: 236
+Author: Skovvart
+Date: 2012-05-04 13:45
+Message: When the manager is sending cryptocommands to itself, it will now use the right encryption key (since the manager isn't found in its peerlist)
+----
+Revision: 235
+Author: Aaes
+Date: 2012-05-04 13:29
+Message: slight optimization of the populateList() methods
+----
+Revision: 234
+Author: Skovvart
+Date: 2012-05-04 13:17
+Message: Catching Asn1ParsingException as well
+----
+Revision: 233
+Author: Aaes
+Date: 2012-05-04 13:14
+Message: inactive peers are removed from the peerlist when the overview and manageroverview lists are updated
+----
+Revision: 232
+Author: Skovvart
+Date: 2012-05-04 13:13
+Message: Reduced and changed IP ranges for ITU...
+----
+Revision: 231
+Author: Skovvart
+Date: 2012-05-03 17:02
+Message: Logger updated to use logName instead of a fixed string
+----
+Revision: 230
+Author: Aaes
+Date: 2012-05-03 16:45
+Message: all menuitems in the file menu are now disabled in the endelectionwindow
+----
+Revision: 229
+Author: Aaes
+Date: 2012-05-03 16:40
+Message: you can now close the application from the files menu if you have the master password but not in the EndElectionPage
+----
+Revision: 228
+Author: Aaes
+Date: 2012-05-03 16:29
+Message: a user cannot press OK in the acceptStationDialog, AcceptManagerDialog and CheckMasterPasswordDialog unless he has actually written something
+----
+Revision: 227
+Author: Aaes
+Date: 2012-05-03 16:24
+Message: It is now impossible to remove stations you are not already connected to in the ManagerOverviewPage
+----
+Revision: 226
+Author: Aaes
+Date: 2012-05-03 16:22
+Message: the station window will appear in the middle of the screen on open
+----
+Revision: 225
+Author: Aaes
+Date: 2012-05-03 16:20
+Message: AcceptStationDialog, AcceptManagerDialog and checkmasterPasswordialog now focuses thier passwordboxes on startup and Esc is bound to cancel and Enter is bound to OK
+----
+Revision: 224
+Author: Skovvart
+Date: 2012-05-03 16:20
+Message: PublicKeyExchangeCommand will keep asking for a new password when unable to get a key from the provided. Should stop on cancel.
+----
+Revision: 223
+Author: Aaes
+Date: 2012-05-03 16:15
+Message: translated list headers and enabled cancel on the "gør til manager" button
+----
+Revision: 222
+Author: Aaes
+Date: 2012-05-03 16:12
+Message: AcceptStationDialog and AcceptManagerDialog now use password boxes instead of textboxes
+----
+Revision: 221
+Author: Aaes
+Date: 2012-05-03 16:11
+Message: showPasswordwindow wasnt used anymore and was deleted
+----
+Revision: 220
+Author: Aaes
+Date: 2012-05-03 16:10
+Message: added a filter to the export save file dialog
+----
+Revision: 219
+Author: Aaes
+Date: 2012-05-03 16:08
+Message: wipes the shown password on the manager when a reply is received
+----
+Revision: 218
+Author: Aaes
+Date: 2012-05-03 16:02
+Message: 
+----
+Revision: 217
+Author: Aaes
+Date: 2012-05-03 16:02
+Message: The passwords shown at connect are not shown in dialogs anymore
+----
+Revision: 216
+Author: Skovvart
+Date: 2012-05-03 15:03
+Message: EndElectionCommand now notifies UI
+----
+Revision: 215
+Author: Aaes
+Date: 2012-05-03 14:59
+Message: 
+----
+Revision: 214
+Author: Aaes
+Date: 2012-05-03 14:59
+Message: fixed showpasswordonmanager
+----
+Revision: 213
+Author: Aaes
+Date: 2012-05-03 14:47
+Message: ElectionStarted and ElectionEnded should now work
+----
+Revision: 212
+Author: Skovvart
+Date: 2012-05-03 14:43
+Message: Generated password length decreased to 2 for testing purposes.
+----
+Revision: 211
+Author: Aaes
+Date: 2012-05-03 14:43
+Message: end election cancel works and the ballotRequestPage constructor is fixed
+----
+Revision: 210
+Author: Skovvart
+Date: 2012-05-03 14:38
+Message: StartElectionCommand notifies the UI
+----
+Revision: 209
+Author: Skovvart
+Date: 2012-05-03 14:29
+Message: Logger not controls the backup of older logs instead of the UI.
+----
+Revision: 208
+Author: Aaes
+Date: 2012-05-03 14:10
+Message: The right dispacther now opens a dialog
+----
+Revision: 207
+Author: Skovvart
+Date: 2012-05-03 13:54
+Message: Updated DiscoverNetworkMachines to use a CountdownEvent.
+----
+Revision: 206
+Author: Skovvart
+Date: 2012-05-03 13:26
+Message: Fixed and removed some TODO's
+----
+Revision: 205
+Author: Skovvart
+Date: 2012-05-03 13:19
+Message: DiscoverNetworkMachines now waits for all threads to finish. DiscoverPeers no longer checks that StationActive since DiscoverNetworkMachines does this.
+----
+Revision: 204
+Author: Skovvart
+Date: 2012-05-03 13:08
+Message: Optimized Send slightly
+----
+Revision: 203
+Author: Aaes
+Date: 2012-05-03 12:42
+Message: 
+----
+Revision: 202
+Author: Aaes
+Date: 2012-05-03 12:41
+Message: 
+----
+Revision: 201
+Author: Aaes
+Date: 2012-05-03 12:33
+Message: 
+----
+Revision: 200
+Author: Aaes
+Date: 2012-05-03 12:17
+Message: 
+----
+Revision: 199
+Author: Skovvart
+Date: 2012-05-03 00:31
+Message: Updated cleanup for some tests.
+----
+Revision: 198
+Author: Skovvart
+Date: 2012-05-03 00:23
+Message: Updated some tests (a lot still broken due to lack of a UI), attempted changing Send to split the message into multiple packets to better be able to send large messages (Sync command)
+----
+Revision: 197
+Author: Skovvart
+Date: 2012-05-02 21:04
+Message: 
+----
+Revision: 196
+Author: Skovvart
+Date: 2012-05-02 20:57
+Message: 
+----
+Revision: 195
+Author: Skovvart
+Date: 2012-05-02 18:51
+Message: 
+----
+Revision: 194
+Author: Aaes
+Date: 2012-05-02 18:51
+Message: 
+----
+Revision: 193
+Author: Skovvart
+Date: 2012-05-02 18:45
+Message: 
+----
+Revision: 192
+Author: Aaes
+Date: 2012-05-02 18:45
+Message: 
+----
+Revision: 191
+Author: Skovvart
+Date: 2012-05-02 18:08
+Message: 
+----
+Revision: 190
+Author: Skovvart
+Date: 2012-05-02 18:06
+Message: 
+----
+Revision: 189
+Author: Aaes
+Date: 2012-05-02 17:34
+Message: 
+----
+Revision: 188
+Author: Skovvart
+Date: 2012-05-02 17:34
+Message: Bugfixes
+----
+Revision: 187
+Author: Aaes
+Date: 2012-05-02 16:03
+Message: all dialogs should focus and appear in the right position now (middle of the screen)
+----
+Revision: 186
+Author: Skovvart
+Date: 2012-05-02 16:03
+Message: Dispatcher thread handling
+----
+Revision: 185
+Author: Aaes
+Date: 2012-05-02 15:43
+Message: 
+----
+Revision: 184
+Author: Skovvart
+Date: 2012-05-02 15:43
+Message: 
+----
+Revision: 183
+Author: Aaes
+Date: 2012-05-02 15:31
+Message: now the dialogs showing passwords are not modal anymore
+----
+Revision: 182
+Author: Skovvart
+Date: 2012-05-02 15:27
+Message: 
+----
+Revision: 181
+Author: Skovvart
+Date: 2012-05-02 15:16
+Message: 
+----
+Revision: 180
+Author: Skovvart
+Date: 2012-05-02 15:14
+Message: 
+----
+Revision: 179
+Author: Skovvart
+Date: 2012-05-02 15:12
+Message: Test code
+----
+Revision: 178
+Author: Aaes
+Date: 2012-05-02 15:02
+Message: comments in UiHandler
+----
+Revision: 177
+Author: Skovvart
+Date: 2012-05-02 15:01
+Message: Listener loop added.
+----
+Revision: 176
+Author: Aaes
+Date: 2012-05-02 14:46
+Message: 
+----
+Revision: 175
+Author: Skovvart
+Date: 2012-05-02 14:44
+Message: New constructors taking IDvlUi
+----
+Revision: 174
+Author: Skovvart
+Date: 2012-05-02 14:35
+Message: OCD reformatting
+----
+Revision: 173
+Author: Aaes
+Date: 2012-05-02 14:33
+Message: added commments to IDvlUi
+----
+Revision: 172
+Author: Skovvart
+Date: 2012-05-02 13:55
+Message: Moved UI interface to proper solution
+----
+Revision: 171
+Author: Skovvart
+Date: 2012-05-02 13:53
+Message: Moved UI interface to DVL solution, updated placeholder ui-method calls to the interface ones, updated some commands to properly notify the UI
+----
+Revision: 170
+Author: Aaes
+Date: 2012-05-02 13:52
+Message: 
+----
+Revision: 169
+Author: Aaes
+Date: 2012-05-02 13:50
+Message: added a cancel button to the BallotCPRRequestWindow
+----
+Revision: 168
+Author: Aaes
+Date: 2012-05-02 13:47
+Message: 
+----
+Revision: 167
+Author: Aaes
+Date: 2012-05-02 13:46
+Message: 
+----
+Revision: 166
+Author: Aaes
+Date: 2012-05-02 13:46
+Message: Now the assorted windows can react to a reply concerning whether or not to hand out a ballot
+----
+Revision: 165
+Author: Skovvart
+Date: 2012-05-02 13:27
+Message: Made it compilable again
+----
+Revision: 164
+Author: Skovvart
+Date: 2012-05-02 13:10
+Message: 
+----
+Revision: 163
+Author: Skovvart
+Date: 2012-05-02 13:10
+Message: Updated UI Interface for Dvl purposes
+----
+Revision: 162
+Author: Skovvart
+Date: 2012-05-02 12:45
+Message: PKExchangeCmd updated to be "UI ready"
+----
+Revision: 161
+Author: Aaes
+Date: 2012-05-02 12:45
+Message: Now the Done and Only CPR buttons will only be enabled when the sufficient amount of characters are present
+----
+Revision: 160
+Author: Aaes
+Date: 2012-05-02 12:30
+Message: added checks for empty CPR and voter number textboxes
+----
+Revision: 159
+Author: Aaes
+Date: 2012-05-02 12:24
+Message: When you request a ballot there is now a check for whether the voter exists/have voted
+----
+Revision: 158
+Author: Aaes
+Date: 2012-05-02 12:19
+Message: 
+----
+Revision: 157
+Author: Skovvart
+Date: 2012-05-01 22:03
+Message: Updated most tests to work with the "new" station constructors.
+----
+Revision: 156
+Author: Skovvart
+Date: 2012-05-01 17:57
+Message: Increased the buffersize, so it can now actually load the data-set from disk.
+----
+Revision: 155
+Author: Skovvart
+Date: 2012-05-01 17:49
+Message: Updated small dataset (in dropbox), updated EncryptedVoterData to no longer use a tuple (as it was giving serilization issues), updated UIHandlers import somewhat.
+----
+Revision: 154
+Author: Skovvart
+Date: 2012-05-01 16:37
+Message: UI now handles Log.sqlite properly
+----
+Revision: 153
+Author: Aaes
+Date: 2012-05-01 16:15
+Message: 
+----
+Revision: 152
+Author: Aaes
+Date: 2012-05-01 16:09
+Message: the back button on the MasterPassword page now goes to a typechoicepage instead of a dataload page
+----
+Revision: 151
+Author: Aaes
+Date: 2012-05-01 16:05
+Message: the types password is now dots instead of letters
+----
+Revision: 150
+Author: Skovvart
+Date: 2012-05-01 16:00
+Message: Updated Dispose to check that Logger and Crypto are only disposed when set.
+----
+Revision: 149
+Author: Skovvart
+Date: 2012-05-01 15:58
+Message: ValidMasterPassword checks for null. Rarely relevant, but can cause exception in UI otherwise.
+----
+Revision: 148
+Author: Aaes
+Date: 2012-05-01 15:57
+Message: When the master password is check the cancel button no longer pops up a prompt saying incorrect password
+----
+Revision: 147
+Author: Aaes
+Date: 2012-05-01 15:53
+Message: Check master password dialog changes
+----
+Revision: 146
+Author: Skovvart
+Date: 2012-05-01 15:44
+Message: Always override database
+----
+Revision: 145
+Author: Aaes
+Date: 2012-05-01 15:43
+Message: moved a statement
+----
+Revision: 144
+Author: Skovvart
+Date: 2012-05-01 15:35
+Message: 
+----
+Revision: 143
+Author: Aaes
+Date: 2012-05-01 15:29
+Message: You can now choose "All files" in the dataload page
+----
+Revision: 142
+Author: Skovvart
+Date: 2012-05-01 15:29
+Message: Added App.Config to allow mixed assembly (though we don't know what mixed assembly this is.. File.Exists?)
+----
+Revision: 141
+Author: Aaes
+Date: 2012-05-01 15:28
+Message: when a station goes back the station object is disposed
+----
+Revision: 140
+Author: Aaes
+Date: 2012-05-01 15:10
+Message: 
+----
+Revision: 139
+Author: Skovvart
+Date: 2012-05-01 14:19
+Message: Removed a and updated some constructors. Updated other files where necessary.
+----
+Revision: 138
+Author: Skovvart
+Date: 2012-05-01 14:09
+Message: Made tests compilable again. Made many tests use "using".
+----
+Revision: 137
+Author: Aaes
+Date: 2012-05-01 13:25
+Message: The master password is stored from the MasterPasswordPage to the DataLoadPage in order to correctly initialize the station, it is set to null afterwards
+----
+Revision: 136
+Author: Aaes
+Date: 2012-05-01 13:21
+Message: comments and finalizing of IUIHandler
+----
+Revision: 135
+Author: Skovvart
+Date: 2012-05-01 13:16
+Message: "Broke" tests to make them compile, while making the code more ready for release. Fix tests later.
+----
+Revision: 134
+Author: Aaes
+Date: 2012-05-01 13:13
+Message: 
+----
+Revision: 133
+Author: Skovvart
+Date: 2012-05-01 13:07
+Message: Made GeneratePassword static (which means it's not part of the interface..)
+----
+Revision: 132
+Author: Aaes
+Date: 2012-05-01 13:04
+Message: renamed Overview to OverviewPage and rearranged the order of dataloadpage and masterpassword page
+----
+Revision: 131
+Author: Skovvart
+Date: 2012-05-01 12:57
+Message: AllData calls ToArray() so we don't get WhereSelector which isn't serializable
+----
+Revision: 130
+Author: Aaes
+Date: 2012-05-01 12:53
+Message: Import and export implemented in the UIHandler
+----
+Revision: 129
+Author: Aaes
+Date: 2012-05-01 12:45
+Message: Corrected UIHandler to handle new export / import methods
+----
+Revision: 128
+Author: Skovvart
+Date: 2012-05-01 12:44
+Message: Updated to work with new signature for Import and removed Export
+----
+Revision: 127
+Author: Skovvart
+Date: 2012-05-01 12:39
+Message: Removed export (data can be exported through AllData), changed Import to just take a dataset instead of a lambda importing the dataset.
+----
+Revision: 126
+Author: Aaes
+Date: 2012-05-01 12:30
+Message: Cleaned up UI classes
+----
+Revision: 125
+Author: Skovvart
+Date: 2012-05-01 12:20
+Message: Made SyncCommand use primitive types, updated test. Potential problem with masterpassword in constructor in logger and sqlitedb
+----
+Revision: 124
+Author: Aaes
+Date: 2012-05-01 12:18
+Message: Renamed UiHandler back to UIHandler and remade some missing methods
+----
+Revision: 123
+Author: Aaes
+Date: 2012-04-30 16:49
+Message: Comments on the UIHandler and in some other UI classes
+----
+Revision: 122
+Author: Skovvart
+Date: 2012-04-30 16:43
+Message: Fixed some serialization problems with SyncCommand, added a test, added a comment for a missing parameter in IDatabase, added the option of not creating dummy databases (should be removed soonish alltogether)
+----
+Revision: 121
+Author: Skovvart
+Date: 2012-04-30 15:54
+Message: No longer overriding Master.pw
+----
+Revision: 120
+Author: Skovvart
+Date: 2012-04-27 11:06
+Message: Note added
+----
+Revision: 119
+Author: Skovvart
+Date: 2012-04-27 10:25
+Message: Added comment. Also, previous update uncommented a couple of things in UiHandler, make sure it doesn't cause problems.
+----
+Revision: 118
+Author: Skovvart
+Date: 2012-04-27 10:23
+Message: Reformatted and renamed some things (Don't hate Aaes :(((()
+----
+Revision: 117
+Author: Skovvart
+Date: 2012-04-27 10:12
+Message: Added synccommand (untested), updated publickeyexchange (slightly), added bouncycastle to ui assembly
+----
+Revision: 116
+Author: Aaes
+Date: 2012-04-25 15:33
+Message: Added a way for every machine to mark a voter only via CPR and masterpassword
+----
+Revision: 115
+Author: Skovvart
+Date: 2012-04-25 15:23
+Message: [Serializable] på den nye command
+----
+Revision: 114
+Author: Skovvart
+Date: 2012-04-25 15:19
+Message: RequestBallot (CPR, masterpassword) added to station. Master-password hash is saved to Master.pw so it persists even when program terminates.
+----
+Revision: 113
+Author: Aaes
+Date: 2012-04-24 16:51
+Message: To request a ballot using only the CPR the masterpassword is required
+----
+Revision: 112
+Author: Skovvart
+Date: 2012-04-24 16:51
+Message: Added (CPR, masterPassword) access to the database.
+----
+Revision: 111
+Author: Aaes
+Date: 2012-04-24 16:43
+Message: It is possible to export the data from the files menu
+----
+Revision: 110
+Author: Aaes
+Date: 2012-04-24 16:29
+Message: The population of the lists in manageroverviewpage and in overview is optimized
+----
+Revision: 109
+Author: Skovvart
+Date: 2012-04-24 16:22
+Message: Implemented masterpassword in station (not commands, etc).
+----
+Revision: 108
+Author: Aaes
+Date: 2012-04-24 16:04
+Message: Moar UI!
+----
+Revision: 107
+Author: Aaes
+Date: 2012-04-24 15:05
+Message: 
+----
+Revision: 106
+Author: Skovvart
+Date: 2012-04-24 15:04
+Message: Updated communicator to handle failures, updated tests. Added GeneratePassword to (I)Crypto. Added some #regions to IDisposable.
+----
+Revision: 105
+Author: Aaes
+Date: 2012-04-24 14:46
+Message: Added a checkMasterPW Dialog and revised the Overview window
+----
+Revision: 104
+Author: Aaes
+Date: 2012-04-24 14:09
+Message: Corrected the folder structure of the UI
+----
+Revision: 103
+Author: Aaes
+Date: 2012-04-24 14:03
+Message: Added more code to make the merging of station and the UI smoother
+----
+Revision: 102
+Author: Skovvart
+Date: 2012-04-23 16:54
+Message: Updated unit tests to include logging.
+----
+Replacing : /source/Digital Voter List/Digital Voter List/Logging/LogModel.Designer.cs
+Replacing : /source/Digital Voter List/Digital Voter List/Logging/LogModel.edmx
+Revision: 101
+Author: Aaes
+Date: 2012-04-23 15:25
+Message: UI updates to match the back end
+----
+Revision: 100
+Author: Aaes
+Date: 2012-04-22 23:13
+Message: added a master password generator
+----
+Revision: 99
+Author: Skovvart
+Date: 2012-04-19 00:58
+Message: Fixed election algorithm
+----
+Revision: 98
+Author: Skovvart
+Date: 2012-04-18 16:14
+Message: Trying to add nunit.framework.dll without the rest of NUnit
+----
+Revision: 97
+Author: Aaes
+Date: 2012-04-18 16:12
+Message: SQLite DLL's added
+----
+Revision: 96
+Author: Skovvart
+Date: 2012-04-18 16:01
+Message: Fixed method name in XAML
+----
+Revision: 95
+Author: Skovvart
+Date: 2012-04-18 16:00
+Message: Implemented IDisposable
+----
+Revision: 94
+Author: Aaes
+Date: 2012-04-18 15:59
+Message: Added dummy methods to several UI windows and made additional functionality
+----
+Revision: 93
+Author: Skovvart
+Date: 2012-04-18 15:07
+Message: Updated implemented Logger. Restructered datatypes a bit.
+----
+Revision: 92
+Author: Skovvart
+Date: 2012-04-17 16:59
+Message: Reformatted logger.
+----
+Revision: 91
+Author: Skovvart
+Date: 2012-04-17 16:53
+Message: Updated tests, fixed some bugs. 95% code coverage, but still some issues remaining.
+----
+Revision: 90
+Author: Aaes
+Date: 2012-04-17 16:44
+Message: 
+----
+Revision: 89
+Author: Aaes
+Date: 2012-04-17 15:20
+Message: more UI updates
+----
+Revision: 88
+Author: Aaes
+Date: 2012-04-17 13:57
+Message: Added navigation between all UI windows and fixed some resizing issues
+----
+Revision: 87
+Author: Aaes
+Date: 2012-04-17 13:08
+Message: added logging class (not finished) and additional UI windows
+----
+Revision: 86
+Author: Skovvart
+Date: 2012-04-16 16:45
+Message: Updated tests, changed a lot of command comparisons to use .Equals rather than ==
+----
+Revision: 85
+Author: Aaes
+Date: 2012-04-15 18:28
+Message: Added logger and ILogger class + updated the BON to reflect it
+----
+Revision: 84
+Author: Skovvart
+Date: 2012-04-12 15:14
+Message: Fixed some tests, restructured part of the Database namespace
+----
+Revision: 83
+Author: Aaes
+Date: 2012-04-11 15:39
+Message: Added PDFGenerator
+----
+Revision: 82
+Author: Skovvart
+Date: 2012-04-11 15:35
+Message: Removed some TODO's
+----
+Revision: 81
+Author: Skovvart
+Date: 2012-04-11 15:11
+Message: "Fixed" test
+----
+Revision: 80
+Author: Skovvart
+Date: 2012-04-11 15:09
+Message: Tests updated, some equality checking fixed.
+----
+Revision: 79
+Author: Skovvart
+Date: 2012-04-11 13:57
+Message: Updated a couple of classes based on code analysis
+----
+Revision: 78
+Author: Skovvart
+Date: 2012-04-11 13:22
+Message: Removed Pkcs1v5 padding from Rsa as it makes encryptions incomparable. "Padding" inputbytes with a {1} to not lose leading zeros.
+----
+Revision: 77
+Author: Skovvart
+Date: 2012-04-10 16:45
+Message: Crypto doesn't work after all, it seems - same input and key do not generate the same output
+----
+Replacing : /source/Digital Voter List/Digital Voter List/Database/VoterModel.Designer.cs
+Replacing : /source/Digital Voter List/Digital Voter List/Database/VoterModel.edmx
+Revision: 76
+Author: Skovvart
+Date: 2012-04-10 15:42
+Message: Didn't get commited for some reason?
+----
+Revision: 75
+Author: Skovvart
+Date: 2012-04-10 15:39
+Message: Initial implementation of SQLite added.
+----
+Revision: 74
+Author: Skovvart
+Date: 2012-04-10 14:02
+Message: Renamed some namespaces, changed (I)Communicator to include DiscoverNetworkMachines and IsListening, removed ValidMessage (since CryptoCommand handles that logic)
+----
+Revision: 73
+Author: Skovvart
+Date: 2012-04-09 18:27
+Message: todo-comment added
+----
+Revision: 72
+Author: Skovvart
+Date: 2012-04-05 19:37
+Message: dotCover problem fixed by switching Test project compilation to x86 instead of AnyCPU. Added temporary PublicKeyExchangedCommand, implemented StationActive in Station, added/fixed a couple of tests. Made station load an encryptionkey from disk (located in bin directory for now). Made Message serialiable.
+----
+Revision: 71
+Author: Skovvart
+Date: 2012-04-03 15:41
+Message: Optimized references.
+----
+Revision: 70
+Author: Skovvart
+Date: 2012-04-03 15:33
+Message: Updated bytetests to dispose of a memorystream. Attempted to figure out what dotCover's problem is, but to no avail so far.
+----
+Revision: 69
+Author: Skovvart
+Date: 2012-04-03 15:11
+Message: Updated a couple of tests and removed unnecessary files from the root source folder.
+----
+Revision: 68
+Author: Skovvart
+Date: 2012-04-03 14:55
+Message: Added padding to asymmetric encryption, distinguishing between symmetric and asymmetric keys, updated a few tests and a lot of commands, updated communicator slightly,
+----
+Revision: 67
+Author: Skovvart
+Date: 2012-04-03 13:02
+Message: Implemented most commands.
+----
+Revision: 66
+Author: Skovvart
+Date: 2012-04-02 16:42
+Message: Small updates to some tests
+----
+Revision: 65
+Author: Skovvart
+Date: 2012-04-02 16:24
+Message: Cryptotests added. Some are not passing.
+----
+Revision: 64
+Author: Skovvart
+Date: 2012-04-02 15:56
+Message: Updated with latest tests.
+----
+Revision: 63
+Author: Skovvart
+Date: 2012-04-02 14:33
+Message: Initial layout of tests added
+----
+Revision: 62
+Author: Skovvart
+Date: 2012-04-02 14:19
+Message: Fixed type error in station, worked a bit on communicator tests
+----
+Revision: 61
+Author: Skovvart
+Date: 2012-04-02 13:55
+Message: Communicator made public, added regions to station, started unit tests
+----
+Revision: 60
+Author: Skovvart
+Date: 2012-04-02 13:44
+Message: 
+----
+Revision: 59
+Author: Aaes
+Date: 2012-04-02 12:53
+Message: 
+----
+Revision: 58
+Author: Skovvart
+Date: 2012-04-02 12:52
+Message: Small updates
+----
+Revision: 57
+Author: Skovvart
+Date: 2012-04-02 12:50
+Message: Updated (I)Communicator
+----
+Revision: 56
+Author: Aaes
+Date: 2012-04-02 12:50
+Message: 
+----
+Revision: 55
+Author: Aaes
+Date: 2012-04-02 12:50
+Message: included a getParent()
+----
+Revision: 54
+Author: Skovvart
+Date: 2012-04-02 12:27
+Message: compilebon.txt updated to new names
+----
+Revision: 53
+Author: Aaes
+Date: 2012-04-01 22:55
+Message: 
+----
+Revision: 52
+Author: Aaes
+Date: 2012-04-01 22:54
+Message: 
+----
+Revision: 51
+Author: Aaes
+Date: 2012-04-01 22:53
+Message: new UI images (concepts)
+----
+Revision: 50
+Author: Skovvart
+Date: 2012-03-29 15:06
+Message: Most of station done. Need to update BON still.
+----
+Revision: 49
+Author: Skovvart
+Date: 2012-03-28 16:19
+Message: Updated Message and BON to include an IV
+----
+Revision: 48
+Author: Skovvart
+Date: 2012-03-28 15:56
+Message: Recompiled BON
+----
+Revision: 47
+Author: Skovvart
+Date: 2012-03-28 15:54
+Message: Readding commands to solution after conflict.
+----
+Revision: 46
+Author: Skovvart
+Date: 2012-03-28 15:51
+Message: Added Commands folder and ICommand. Updated BON very very slightly.
+----
+Revision: 45
+Author: Aaes
+Date: 2012-03-28 15:46
+Message: added BON documentation to the Communicator
+----
+Revision: 44
+Author: Skovvart
+Date: 2012-03-28 15:41
+Message: Updated compiled bon, added bon compile commands in compilebon.txt
+----
+Revision: 43
+Author: Skovvart
+Date: 2012-03-28 15:25
+Message: Updated compiled BON
+----
+Revision: 42
+Author: Aaes
+Date: 2012-03-28 15:17
+Message: added a method to discover all the machines connected to the same network in the workgroup WORKGROUP
+----
+Revision: 41
+Author: Skovvart
+Date: 2012-03-28 15:10
+Message: Crypto documentation updated
+----
+Revision: 40
+Author: Skovvart
+Date: 2012-03-28 14:59
+Message: Updated Crypto and ICrypto to "require" the use of initilization vectors for symmetric encryption. Updated documentation to come.
+----
+Revision: 39
+Author: Skovvart
+Date: 2012-03-28 14:44
+Message: Crypto mostly implemented, with some TODO notes in comments.
+----
+Revision: 38
+Author: Skovvart
+Date: 2012-03-28 14:06
+Message: Commented and renamed some utility classes.
+----
+Revision: 37
+Author: Skovvart
+Date: 2012-03-28 13:50
+Message: Crypto documentation updated
+----
+Revision: 36
+Author: Skovvart
+Date: 2012-03-28 13:46
+Message: ICrypto updated
+----
+Revision: 35
+Author: Skovvart
+Date: 2012-03-28 13:09
+Message: Added utility functions
+----
+Revision: 34
+Author: Skovvart
+Date: 2012-03-28 13:04
+Message: Skovvart's OCD was satisfied.
+----
+Revision: 33
+Author: Skovvart
+Date: 2012-03-28 12:46
+Message: Finished IDatabase BON implementation
+----
+Revision: 32
+Author: Aaes
+Date: 2012-03-27 16:46
+Message: Core.cs now have contracts and BON documentation
+----
+Revision: 31
+Author: Skovvart
+Date: 2012-03-27 16:18
+Message: IDatabase "done" for now, needs to add the invariant when Station is more complete.
+----
+Revision: 30
+Author: Skovvart
+Date: 2012-03-27 16:04
+Message: Recompiled information documentation
+----
+Revision: 29
+Author: Skovvart
+Date: 2012-03-27 15:50
+Message: Re-ignoring .suo
+----
+Revision: 28
+Author: Skovvart
+Date: 2012-03-27 15:50
+Message: Updated BouncyCastle.Crypto.dll reference
+----
+Revision: 27
+Author: Aaes
+Date: 2012-03-27 15:45
+Message: 
+----
+Revision: 26
+Author: Skovvart
+Date: 2012-03-27 15:44
+Message: IDatabase formatted, BON slightly updated.
+----
+Revision: 25
+Author: Aaes
+Date: 2012-03-27 15:37
+Message: wrongly names vars in the BON
+----
+Revision: 24
+Author: Aaes
+Date: 2012-03-27 15:37
+Message: added documentation and BON methods to the ICrypto class (the old ones are still in there)
+----
+Revision: 23
+Author: Aaes
+Date: 2012-03-27 15:20
+Message: added documentation and contracts for IPrinter and IScanner
+----
+Revision: 22
+Author: Aaes
+Date: 2012-03-27 14:19
+Message: second edition of formal BON
+----
+Revision: 21
+Author: Aaes
+Date: 2012-03-27 14:14
+Message: first edition of formal BON
+----
+Revision: 20
+Author: Skovvart
+Date: 2012-03-27 12:29
+Message: Fixed Command_Formal.bon
+----
+Revision: 19
+Author: Aaes
+Date: 2012-03-27 12:22
+Message: camelcase OCD
+----
+Revision: 18
+Author: Aaes
+Date: 2012-03-27 12:21
+Message: camelcase OCD
+----
+Revision: 17
+Author: Aaes
+Date: 2012-03-27 12:19
+Message: Command_formal.bon done
+----
+Revision: 16
+Author: Skovvart
+Date: 2012-03-27 12:09
+Message: Removed readme.textile
+----
+Revision: 15
+Author: Aaes
+Date: 2012-03-27 12:08
+Message: Formal BON files added
+----
+Revision: 14
+Author: Skovvart
+Date: 2012-03-26 15:59
+Message: Recompiled BON documentation
+----
+Revision: 13
+Author: Aaes
+Date: 2012-03-26 15:58
+Message: Additional revisions to the informal BON
+----
+Revision: 12
+Author: Skovvart
+Date: 2012-03-26 14:11
+Message: Updated compiled BON documentation
+----
+Revision: 11
+Author: Skovvart
+Date: 2012-03-26 14:08
+Message: ???
+----
+Revision: 10
+Author: Aaes
+Date: 2012-03-26 14:05
+Message: more informal BON changes
+----
+Revision: 9
+Author: Skovvart
+Date: 2012-03-26 14:01
+Message: Updated compiled BON
+----
+Revision: 8
+Author: Skovvart
+Date: 2012-03-26 13:58
+Message: Removed triplet - tuple of three should do.
+----
+Revision: 7
+Author: Aaes
+Date: 2012-03-26 13:52
+Message: Changed informal BON - Communicator_Informal.bon
+----
+Revision: 6
+Author: Skovvart
+Date: 2012-03-26 13:38
+Message: Documentation added
+----
+Revision: 5
+Author: Skovvart
+Date: 2012-03-26 13:34
+Message: Hello Aaes
+----
+Revision: 4
+Author: Skovvart
+Date: 2012-03-26 13:33
+Message: Test commit
+----
+Revision: 3
+Author: Skovvart
+Date: 2012-03-26 13:14
+Message: 
+----
+Revision: 2
+Author: Skovvart
+Date: 2012-03-26 12:58
+Message: Initial source commit
+----
+Revision: 1
+Author: www-data
+Date: 2011-09-18 15:27
+Message: Automatically created readme.textile and /trunk directory. We recommend you to put all your code there.

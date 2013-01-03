@@ -1,0 +1,160 @@
+static_diagram CLASS_INTERFACES
+component
+  cluster ELECTION
+  component
+	class PERSON
+		feature
+			CprNumber : INTEGER
+			Name : STRING
+			Address : STRING
+			PassportNumber : INTEGER
+			PlaceOfBirth : DATE
+		end
+	class CITIZEN
+	  inherit PERSON
+		feature
+			EligibleToVote : BOOLEAN
+			HasVoted : BOOLEAN
+			VotingStatus : STRING
+			VoterCards : SET[VOTER_CARD]
+			SecurityQuestion : QUIZ
+			end
+		invariant
+			CprNumber /= Void;
+			--CprNumber must be valid
+		end
+	class USER
+	  inherit PERSON
+		feature
+			Title : STRING
+			Username : STRING
+			Privileges : SET[STRING]
+			ChangePassword : BOOLEAN
+				-> pwd : STRING
+			Authenticated : BOOLEAN
+		end
+	class VOTER_CARD
+		feature
+			ElectionEvent : ELECTION_EVENT
+				ensure
+					result /= Void
+			end
+			Citizen : CITIZEN
+				ensure
+					result /= Void
+			end
+			Voter_card : VOTER_CARD
+				-> c : CITIZEN
+				-> e : ELECTION_EVENT
+				require
+					c /= Void;
+					e /= Void;
+			end
+			Id : STRING
+				ensure
+					result /= Void
+			end
+		end
+	end
+	class ELECTION_EVENT
+		feature
+			ElectionEvent : ELECTION_EVENT
+				-> d : DATE
+				-> name : STRING
+			require
+				d /= Void
+			ensure
+				result /= Void
+			end
+			Name : STRING
+			ensure
+				result /= Void
+			end
+			Date : DATE
+			ensure
+				result /= Void
+			end
+		end
+	class DATA_ACCESS_OBJECT
+		feature
+			SavePerson : BOOLEAN
+				-> p : PERSON
+			SaveUser : BOOLEAN
+				-> u : USER
+			SaveVoterCard : BOOLEAN
+				-> v : VOTER_CARD
+			FindPerson : SET[PERSON]
+				-> p : PERSON
+			FindUser : SET[USER]
+				-> p : USER
+			FindVoterCard : SET[VOTER_CARD]
+				-> p : VOTER_CARD
+			LoadPerson : PERSON
+				-> id : INTEGER
+			LoadUser : USER
+				-> id : INTEGER
+			LoadUser : USER
+				-> username : STRING
+				-> password : STRING
+			LoadVoterCard : VOTER_CARD
+				-> id : INTEGER
+			LoadVoterCard : VOTER_CARD
+				-> id-key : STRING
+		end
+	class DAO_MYSQL
+		inherit DATA_ACCESS_OBJECT
+		feature
+			Create : DATA_ACCESS_OBJECT
+				-> u : USER
+		end
+	class DAO_PERMISSION_PROXY
+		inherit DATA_ACCESS_OBJECT
+		feature
+			Dao_Permission_Proxy : DAO_PERMISSION_PROXY
+				-> u : USER
+		end
+	class DAO_FACTORY
+		feature
+			GetDAO : DATA_ACCESS_OBJECT
+				-> u : USER
+		end
+  cluster UTILITIES
+  component
+	class DATABASE
+	class BARCODE
+		feature
+			Barcode
+				-> data : STRING
+				require
+					data /= Void;
+			end
+		Data : STRING
+			ensure
+				result /= Void;
+		end
+		Image : IMAGE		
+			ensure
+				result /= Void;
+		end
+			invariant
+					1=1;	-- The data must not be longer than 10 charachters
+					-- The data must be at least one charachter
+		end
+	class QUIZ
+		feature
+			Quiz: Void
+			Question: STRING
+			Answer: STRING
+	end
+  cluster ADMINISTRATION
+  component
+	class VOTER_CARD_PRINTER
+		feature
+			VoterCardPrinter: Void
+			Print: Void
+		end
+	end
+	class DATA_COLLECTOR 	-- Not designed yet...
+	class DATA_ANALYZER 	-- Not designed yet...
+  end
+end
