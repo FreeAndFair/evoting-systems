@@ -1,0 +1,722 @@
+<head>
+    <link rel="stylesheet" href="/static/docs/style.css" />
+    <title>Helios: Verification Specifications</title>
+</head>
+<body>
+
+<h1 id="title">Helios Verification Specifications</h1>
+by Ben Adida.
+<hr />
+
+<h2>Introduction</h2>
+<p>
+    Helios is an open-audit voting system, which means that:
+</p>
+<ul>
+    <li> Alice can verify that her vote was correctly captured,</li>
+    <li> all captured votes are displayed (in encrypted form) for all to see, and</li>
+    <li> anyone can verify that the captured votes were correctly tallied.</li>
+</ul>
+
+<p>
+    This document specifies all data formats and the exact verification protocols and algorithms. Using this document, it should be possible for an able programmer to build a complete verification program in any modern programming language. For the sake of concreteness, instead of pseudo-code, we use Python (2.3 or above.)
+</p>
+
+<h2>Accessing Data</h2>
+
+<p>
+    All data for an election is easily accessible using simple HTTP GET requests. Consider an election with election id <tt>&lt;ELECTION_ID&gt;</tt>. The election data structure, including the election public key, questions, etc., can be obtained by requesting the following URL:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;
+</pre>
+
+<p>
+    The list of voters, denoted <tt>&lt;VOTER_LIST&gt;</tt>, is available at:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/voters
+</pre>
+
+<p>
+    Given this list, it is possible to extract individual voter identifiers, denoted <tt>&lt;VOTER_ID&gt;</tt> (the data structure will be explained later in this document.) Once obtained, a complete voter data structure, including encrypted vote, can be downloaded at:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/voters/&lt;VOTER_ID&gt;
+</pre>    
+
+<p>
+    When downloading multiple ballots at the same time, it is possible to request a list of voters <em>with</em> their encrypted vote:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/voters?with_vote=1</pre>
+
+<p>
+    It is recommended that lists of voters with their votes be downloaded in batches of no more than 50, which can be done with an additional URL argument:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/voters?with_vote=1&amp;limit=50
+</pre>
+
+<p>
+    And the next batch can be requested using the <tt>after</tt> parameter:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/voters?with_vote=1&amp;after=&lt;PREVIOUS_BATCH_LAST_VOTER_ID&gt;&amp;limit=50
+</pre>
+
+<p>
+    The result of an election is available at:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/result
+</pre>    
+
+<p>
+    While the proof of this result is available at:
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/result_proof
+</pre>    
+    
+<p>
+    For testing purposes, the following election identifier can be used:
+</p>
+
+<pre>
+    agxoZWxpb3N2b3RpbmdyDwsSCEVsZWN0aW9uGOAQDA
+</pre>
+
+<p>
+    which means that its election information is at<br />
+    <a href="http://www.heliosvoting.org/elections/agxoZWxpb3N2b3RpbmdyDwsSCEVsZWN0aW9uGOAQDA">http://www.heliosvoting.org/elections/agxoZWxpb3N2b3RpbmdyDwsSCEVsZWN0aW9uGOAQDA</a>.
+</p>
+
+<p>
+    All data for this election was generated using the Helios system, and a verification program, built to the guidelines that follow, should be able to check all of the results.
+</p>
+
+<p>
+    If one wants to check the audit trail of a ballot, a new ballot audit trail can be generated at any time <a target="_blank" href="http://www.heliosvoting.org/elections/agxoZWxpb3N2b3RpbmdyDwsSCEVsZWN0aW9uGOAQDA/vote">using the voting booth interface for this election</a>. For convenience, one such ballot audit trail is available <a href="verification-specs-ballot-audit-trail.txt">here</a>, with choices 2 (Drummond) and 3 (Axel). The ballot fingerprint is <tt>6PkosgVAYO11FbVvqHGBeRo1SNs</tt>.
+</p>
+
+<h2>Data Formats</h2>
+
+<p>
+    We begin with a description of the data types and their representations. All data made available by Helios is in <a href="http://json.org">JavaScript Object Notation (JSON)</a> format, with keys in <u>alphabetical order</u> and <u>no extraneous whitespace</u> other than that specified by JSON. These two conditions are particularly important, as hashing data structures will only yield the same hash if the conditions are respected. An example of a JSON data structure with these two conditions is:
+</p>
+
+<div class="codeblock"><div class="codetitle">Example (not an actual Helios data structure)</div>
+{"email": ["ben@adida.net", "ben@mit.edu"], "first_name": "Ben", "last_name": "Adida"}
+</div>
+
+<h3>Basic Cryptographic Datatypes</h3>
+
+<p>
+    All large integers are represented in decimal form as strings, rather than integers. The reason is that some languages do not support big integers natively, and thus cannot properly parse large integers in JSON integer form. An El-Gamal public-key is then a dictionary including the prime <tt>p</tt>, the primer-order <tt>q</tt> of its intended subgroup, the generator <tt>g</tt>, and the public-key value <tt>y</tt> (with keys in alphabetical order):
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ELGAMAL_PUBLIC_KEY&gt;</div>
+{"g": "6811145128679259384514506369165", "p": "16998971978194099593503959",
+"q": "8499485989097049796751", "y": "7464668703479877164253720373259704"}</div>
+
+<p>
+    An El-Gamal ciphertext is a JSON structure containing properties <tt>alpha</tt> and <tt>beta</tt>, the two components modulo <tt>p</tt>.
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ELGAMAL_CIPHERTEXT&gt;</div>
+{"alpha": "72348234202340223423", "beta": "123498235234234234324" }</div>
+
+<p>
+    In Helios, all ciphertexts are <em>Exponential ElGamal</em>, so <tt>alpha = g^r mod p</tt>, and <tt>beta = g^m y^r mod p</tt>.
+</p>
+
+<h3>Voter</h3>
+
+<p>
+    A single voter in Helios is represented using a few fields that identify the voter:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;VOTER&gt;</div>
+{"email": "benadida@gmail.com", "name": "Ben Adida",
+"vote_hash": null, "voter_id": "agxoZWxpb3N2b3RpbmdyCwsSBVZvdGVyGCcM"}</div>
+
+<p>
+    The <tt>voter_id</tt> is unique across all elections hosted at this particular Helios server. The <tt>vote_hash</tt> is the SHA1 hash of the voter's encrypted ballot. Until the voter casts a ballot, <tt>vote_hash</tt> is null.
+</p>
+
+<p>
+    Voters may be identified by OpenID URL rather than email address, in which case their JSON representation is:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;VOTER&gt; (2)</div>
+{"name": "Ben Adida", "openid": "http://benadida.myopenid.com",
+"vote_hash": null, "voter_id": "agxoZWxpb3N2b3RpbmdyCwsSBVZvdGVyGCcM"}</div>
+
+<p>
+    In elections where voters are placed in categories (e.g. precincts), an additional <tt>category</tt> field is present:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;VOTER&gt; (3)</div>
+{"category": "02139", "email": "benadida@gmail.com", "name": "Ben Adida",
+"vote_hash": null, "voter_id": "agxoZWxpb3N2b3RpbmdyCwsSBVZvdGVyGCcM"}</div>
+
+<p>
+    Once a voter has cast a ballot, their JSON representation is augmented with their encrypted vote:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;VOTER_WITH_VOTE&gt;</div>
+{"category": "02139", "name": "Ben Adida", "openid": "http://benadida.myopenid.com",
+"vote" : &lt;VOTE&gt;, "vote_hash": "f1d2d2f924e986ac86fdf7b36c94bcdf32beec15",
+"voter_id": "agxoZWxpb3N2b3RpbmdyCwsSBVZvdGVyGCcM"}</div>
+
+<p>
+    We describe the details of the <tt>&lt;VOTE&gt;</tt> data structure later in this document, once we have described all of the required components.
+    </p>
+    
+<p>
+    It may be confusing to note that <tt>vote_hash</tt> and <tt>vote</tt> are both present within the data structure, when the hash is clearly derived from the vote. The reason for the presence of both is that, when voters are listed in a <tt>&lt;VOTER_LIST&gt;</tt>, only the <tt>vote_hash</tt> is listed, not the complete <tt>vote</tt>, for efficiency purposes.
+</p>
+
+<h3>Election</h3>
+
+<p>An election is represented as:</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ELECTION&gt;</div>
+{"election_id": "agxoZWxpb3N2b3RpbmdyDgsSCEVsZWN0aW9uGAYM", "name": "foo234234",
+"pk": &lt;ELGAMAL_PUBLIC_KEY&gt;,
+"questions": &lt;QUESTION_LIST&gt;,
+"voters_hash": "G6yS\/dAZm5hKnCn5cRgBGdw3yGo",
+"voting_ends_at": null, "voting_starts_at": null}
+</div>
+
+<p><tt>election_id</tt> is a unique identifier for the election, and <tt>name</tt> is the election's name.</p>
+
+<p><tt>&lt;ELGAMAL_PUBLIC_KEY&gt;</tt> is, as detailed earlier, the JSON data structure that represents an El-Gamal public key.</p>
+
+<p><tt>&lt;QUESTION_LIST&gt;</tt> is a data structure that represents the list of questions and available answers to those questions.</p>
+
+<div class="codeblock"><div class="codetitle">&lt;QUESTION_LIST&gt;</div>
+[&lt;QUESTION&gt;, &lt;QUESTION&gt;, ...]</div>
+
+<p>
+    and a single question is a JSON object:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;QUESTION&gt;</div>
+{"answer_urls": ["http://example.com/alice", null], "answers": ["alice", "bob"], "max": 1,
+"question": "Who Should be President?", "short_name": "President"}</div>
+
+<p>which, in this case, contains two possible answers (alice and bob), URLs that describe these answers in greater detail, the text of the question, and a short name for the question. The parameter <tt>max</tt> indicates the maximum number of options that a voter can select, most often 1. Note how, given that this <tt>max</tt> value should be a small integer, it is in fact serialized as an integer, not as a string.</p>
+
+<p><tt>voters_hash</tt> is the base64 encoding of the SHA1 hash of the list of voters for the election. The list of voters is a JSON array, where each voter is represented <em>without</em> a cast ballot and <em>without</em> the <tt>vote_hash</tt>, of course (otherwise <tt>voters_hash</tt> changes as voters cast their ballot). For example, a list of voters might be:
+    
+<div class="codeblock"><div class="codetitle">&lt;VOTER_LIST&gt; (example)</div>
+[{"email": "ben@adida.net", "name": "Ben Adida", "voter_id": "453"},
+{"name": "Ella", "openid": "http://ella.example.com", "voter_id": "834"}]</div>
+
+<p>
+    <b>Note:</b> we strictly follow the JSON specification, so the forward-slash character "/" is escaped as "\/". Not all JSON toolkits do this correctly, given that escaping the forward-slash is not necessary given JavaScript specifications, but for interoperability, we choose the strict interpretation. Python's <tt>simplejson</tt> does the right thing.
+</p>
+
+<h4>Open Registration</h3>
+    
+<p>
+    Helios supports "open registration elections", when the election administrator so desires. In those elections, the voter list is not set ahead of time. In that case, an election data structure does not contain <tt>voters_hash</tt>, but does contain a new field, <tt>openreg</tt>:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ELECTION&gt;</div>
+{"election_id": "agxoZWxpb3N2b3RpbmdyDgsSCEVsZWN0aW9uGAYM", "name": "foo234234",
+"openreg": True,
+"pk": &lt;ELGAMAL_PUBLIC_KEY&gt;,
+"questions": &lt;QUESTION_LIST&gt;,
+"voting_ends_at": null, "voting_starts_at": null}
+</div>
+
+<h3>Election Fingerprint</h3>
+
+<p>
+    Once an election is ready to be used for voting, the administrator <em>freezes</em> the election, at which point Helios prevents changing any of the question parameters and voter registration settings: an open election remains an open election, and a closed election remains closed with a fixed voter list.
+</p>
+
+<p>
+    Such a frozen election can be designated by its <b>Helios Election Fingerprint</b>, which is the base-64-string-encoded SHA1 of the election data structure serialized as JSON (with properly alphabetized field names). Note how this fingerprint depends on the list of voters if the election registration status is closed, but not if it is open. In any case, this fingerprint does <em>not</em> depend on any cast vote or cast-vote hash.
+</p>
+
+<h3>Vote</h3>
+
+<p>A vote contains a list of encrypted answers, and a reference to the election, both by ID (for convenience) and by hash (for integrity.) The hash is the election fingerprint just described.</p>
+
+<div class="codeblock"><div class="codetitle">&lt;VOTE&gt;</div>
+{"answers": [&lt;ENCRYPTED_ANSWER&gt;, &lt;ENCRYPTED_ANSWER&gt;, ...],
+"election_hash": "Nz1fWLvVLH3eY3Ox7u5hxfLZPdw",
+"election_id": "agxoZWxpb3N2b3RpbmdyDgsSCEVsZWN0aW9uGAYM"}</div>
+
+<p> Each "encrypted answer" corresponds to one election question: it contains a list of ciphertexts (one for each possible choice for that question), a list of corresponding proofs that the ciphertext is correctly formed, and an overall proof that all of the ciphertexts for that election question, taken together, are correctly formed.</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ENCRYPTED_ANSWER&gt;</div>
+{"choices": [&lt;ELGAMAL_CIPHERTEXT&gt;, &lt;ELGAMAL_CIPHERTEXT&gt;, ...],
+"individual_proofs": [&lt;ZK_PROOF_0..1&gt;, &lt;ZK_PROOF_0..1&gt;, ...],
+"overall_proof": &lt;ZK_PROOF_0..max&gt;}</div>
+
+<p>
+    The value of <tt>max</tt> in <tt>overall_proof</tt> matches the value of <tt>max</tt> in the election's question definition.
+</p>
+
+<p>
+    When a voter generates a ballot, Helios provides the ballot fingerprint, which is the base64-encoding of the SHA1 hash of the <tt>&lt;VOTE&gt;</tt> data structure defined above.
+</p>
+
+<h3>Proofs</h3>
+
+<p>
+    A zero-knowledge proof, denoted <tt>&lt;ZK_PROOF_0..max&gt;</tt>, is a transcript of a non-interactive proof that the corresponding ciphertext encodes an integer value between 0 and <tt>max</tt>. For the overall proof, the ciphertext whose value is being proven to be between 0 and <tt>max</tt> is the homomorphic sum (element-wise product) of the <tt>choices</tt> ciphertexts.
+</p>
+
+<p>
+    In Helios, all <tt>0..max</tt> proofs are disjunctive proofs (CDS &amp; CP), meaning that the transcript includes <tt>max+1</tt> proofs, one for each possible value of the plaintext, 0 through <tt>max</tt>. The <tt>max+1</tt> individual challenges must sum up to the single actual protocol challenge, which ensures that one of the proofs is real (while the others are simulated.)
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ZK_PROOF_0..max&gt;</div>
+[&lt;ZK_PROOF(0)&gt;, &lt;ZK_PROOF(1)&gt;, ..., &lt;ZK_PROOF(max)&gt;]
+</div>
+
+<p>
+    A single ZK proof is then composed of three messages: the commitment, the challenge, and the response. Since the proof is a Chaum-Pedersen proof of a DDH tuple, the commitment is composed of two values, <tt>A</tt> and <tt>B</tt>. Thus, a ZK proof is:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ZK_PROOF(plaintext)&gt;</div>
+{"challenge": "2342342",
+"commitment": {"A": "28838", "B": "9823723"},
+"response": "970234234"}
+</div>
+
+<h3>Ballot Audit Trail</h3>
+
+<p>
+    When a voter chooses to audit their ballot, each encrypted answer contains additional information concerning the actual selected choice and the randomness used to encrypt each choice's ciphertext. Specifically, the JSON structure for <tt>&lt;VOTE_WITH_PLAINTEXTS&gt;</tt> is as follows.
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;VOTE_WITH_PLAINTEXTS&gt;</div>
+{"answers": [&lt;ENCRYPTED_ANSWER_WITH_PLAINTEXT&gt;, &lt;ENCRYPTED_ANSWER_WITH_PLAINTEXT&gt;, ...],
+"election_hash": &lt;B64_HASH&gt;,
+"election_id": &lt;ELECTION_ID&gt;}</div>
+
+<p>
+    And the contained <tt>&lt;ENCRYPTED_ANSWER_WITH_PLAINTEXT&gt;</tt> is as follows.
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ENCRYPTED_ANSWER_WITH_PLAINTEXT&gt;</div>
+{"answer": 1,
+"choices": [&lt;ELGAMAL_CIPHERTEXT&gt;, &lt;ELGAMAL_CIPHERTEXT&gt;, ...],
+"individual_proofs": [&lt;ZK_PROOF_0..1&gt;, &lt;ZK_PROOF_0..1&gt;, ...],
+"overall_proof": &lt;ZK_PROOF_0..max&gt;,
+"randomness": [&lt;BIGINT&gt;, &lt;BIGINT&gt;, &lt;BIGINT&gt;]}</div>
+
+<h3>Result</h3>
+
+<p>
+    The result of an election is represented using two structures: <tt>&lt;RESULT&gt;</tt> and <tt>&lt;RESULT_PROOF&gt;</tt>. The result simply displays the count of votes for each candidate within each question, in an array of arrays format.
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;RESULT&gt;</div>
+[[&lt;QUESTION_1_CANDIDATE_1_COUNT&gt;, &lt;QUESTION_1_CANDIDATE_2_COUNT&gt;, &lt;QUESTION_1_CANDIDATE_3_COUNT&gt;],
+ [&lt;QUESTION_2_CANDIDATE_1_COUNT&gt;, &lt;QUESTION_2_CANDIDATE_2_COUNT&gt;]]
+</div>
+
+<p>
+    The <tt>&lt;RESULT_PROOF&gt;</tt> data structure is formatted exactly the same way, with a Chaum-Pedersen proof of proper decryption for each candidate within each question:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;RESULT_PROOF&gt;</div>
+[[&lt;QUESTION_1_CANDIDATE_1_PROOF&gt;, &lt;QUESTION_1_CANDIDATE_2_PROOF&gt;, &lt;QUESTION_1_CANDIDATE_3_PROOF&gt;],
+ [&lt;QUESTION_2_CANDIDATE_1_PROOF&gt;, &lt;QUESTION_2_CANDIDATE_2_PROOF&gt;]]
+</div>
+
+<h2>A Note on the Source Code in this Specification</h2>
+
+<p>
+   In the rest of this document, we show how to verify various aspects of a Helios election using Python code for concreteness and legibility. We assume that certain data structures have been defined: <tt>election</tt>, <tt>vote</tt>, <tt>proof</tt>, <tt>disjunctive_proof</tt>, and a few others, all of which correspond to collections of fields that directly map to the JSON data structures described above. However, we note that a verification program need not necessarily parse these JSON strings into custom Python objects. It is perfectly acceptable to extract individual fields when necessary.
+</p>
+
+<p>
+    In particular, in a number of cases, our sample code will call <tt>election.toJSON()</tt>, or <tt>vote.toJSON()</tt> in order to re-convert the data structure to JSON so that it can be hashed and checked for integrity. A verification program that handles JSON strings directly without de-serializing them to Python objects would obviously not need to re-serialize to JSON, either. The original JSON provided by the Helios server hashes appropriately to the intended values.
+</p>
+
+<h2>Verifying a Single Ballot</h2>
+
+<p>
+    Recall the Chaum-Pedersen proof that a ciphertext <tt>(alpha,beta)</tt> under public key <tt>(y, (g,p,q))</tt> is proven to encode the value <tt>m</tt> by proving knowledge of <tt>r</tt>, the randomness used to create the ciphertext, specifically that <tt>g, y, alpha, beta/g^m</tt> is a DDH tuple, noting that <tt>alpha = g^r</tt> and <tt>beta/g^m = y^r</tt>.
+</p>
+
+<ul>
+    <li> Prover sends <tt>A = g^w mod p</tt> and <tt>B = y^w mod p</tt> for a random <tt>w</tt>.</li>
+    <li> Verifier sends <tt>challenge</tt>, a random challenge <tt>mod q</tt>.</li>
+    <li> Prover sends <tt>response = w + challenge * r</tt>.</li>
+    <li> Verifier checks that:
+        <ul>
+            <li><tt>g^response = A * alpha^challenge</tt></li>
+            <li><tt>y^response = B * (beta/g^m)^challenge</tt></li>
+        </ul>
+    </li>
+</ul>
+
+<div class="codeblock"><div class="codetitle">verify_proof(ciphertext, plaintext, proof, public_key):</div>
+if pow(public_key.g, proof.response, public_key.p) !=
+   ((proof.commitment.A * pow(ciphertext.alpha, proof.challenge, public_key.p)) % public_key.p):
+      return False
+
+beta_over_m = modinverse(pow(public_key.g, plaintext, public_key.p), public_key.p) * ciphertext.beta
+beta_over_m_mod_p = beta_over_m % public_key.p
+
+if pow(public_key.y, proof.response, public_key.p) !=
+   ((proof.commitment.B * pow(beta_over_m_mod_p, proof.challenge, public_key.p)) % public_key.p):
+      return False
+
+return True
+</div>
+
+<p>
+    In a disjunctive proof that the ciphertext is the encryption of one value between 0 and <tt>max</tt>, all <tt>max+1</tt> proof transcripts are checked, and the sum of the challenges is checked against the expected challenge value. Since we use this proof in non-interactive Fiat-Shamir form, we generate the expected challenge value as <tt>SHA1(A0 + "," + B0 + "," + A1 + "," + B1 + ... + "Amax" + "," + Bmax)</tt> with <tt>A0, B0, A1, B1, ... ,Amax, Bmax</tt> in decimal form. (<tt>Ai</tt> and <tt>Bi</tt> are the components of the commitment for the  <tt>i</tt>'th proof.)
+</p>
+
+<p>
+    Thus, to verify a &lt;ZK_PROOF_0..max&gt; on a &lt;ELGAMAL_CIPHERTEXT&gt;, the following steps are taken.
+</p>
+
+<div class="codeblock"><div class="codetitle">verify_disjunctive_0..max_proof(ciphertext, max, disjunctive_proof, public_key):</div>
+for i in range(max+1):
+  # the proof for plaintext "i"
+  if not verify_proof(ciphertext, i, disjunctive_proof[i], public_key):
+    return False
+
+# the overall challenge
+computed_challenge = sum([proof.challenge for proof in disjunctive_proof]) % public_key.q
+
+# concatenate the arrays of A,B values
+list_of_values_to_hash = sum([[p.commitment.A, p.commitment.B] for p in disjunctive_proof], [])
+
+# concatenate as strings
+str_to_hash = ",".join(list_of_values_to_hash)
+
+# hash
+expected_challenge = int_sha(str_to_hash)
+
+# last check
+return computed_challenge == expected_challenge
+</div>
+
+<p>
+    Thus, given <tt>&lt;ELECTION&gt;</tt> and a <tt>&lt;VOTE&gt;</tt>, the verification steps are as follows:
+</p>
+
+<div class="codeblock"><div class="codetitle">verify_vote(election, vote):</div>
+# check hash (remove the last character which is a useless '=')
+computed_hash = base64.b64encode(hash.new(election.toJSON()).digest())[:-1]
+if computed_hash != vote.election_hash:
+    return False
+
+# go through each encrypted answer by index, because we need the index
+# into the question array, too for figuring out election information
+for question_num in range(len(vote.answers)):
+   encrypted_answer = vote.answers[question_num]
+   question = election.questions[question_num]
+
+   # initialize homomorphic sum (assume operator overload on __add__ with 0 special case.)
+   homomorphic_sum = 0
+
+   # go through each choice for the question (loop by integer because two arrays)
+   for choice_num in range(len(encrypted_answer.choices)):
+     ciphertext = encrypted_answer.choices[choice_num]
+     disjunctive_proof = encrypted_answer.individual_proofs[choice_num]
+     
+     # check the individual proof (disjunctive max is 1)
+     if not verify_disjunctive_0..max_proof(ciphertext, 1, disjunctive_proof, election.public_key):
+        return False
+        
+     # keep track of homomorphic sum
+     homomorphic_sum = ciphertext + homomorphic_sum
+   
+   # check the overall proof
+   if not verify_disjunctive_0..max_proof(homomorphic_sum, question.max,
+                                          encrypted_answer.overall_proof,
+                                          election.public_key):
+       return False
+       
+# done, we succeeded
+return True
+</div>
+    
+<h2>Auditing/Spoiling a Single Ballot</h2>
+
+<p>
+    Given a <tt>&lt;VOTE_WITH_PLAINTEXTS&gt;</tt> and a claimed vote fingerprint, verification entails checking the fingerprint, checking all of the proofs to make sure the ballot is well-formed, and finally ensuring that the ballot actually encodes the claimed choices.
+</p>
+
+<div class="codeblock"><div class="codetitle">verify_ballot_audit(vote_with_plaintexts, election, vote_fingerprint)</div>
+# check the proofs
+if not verify_vote(election, vote_with_plaintexts):
+    return False
+    
+# check the proper encryption of each choice within each question
+# go through each encrypted answer
+for encrypted_answer in vote_with_plaintexts.answers:
+    # loop through each choice by integer (multiple arrays)
+    for choice_num in range(len(encrypted_answer.choices)):
+      # the ciphertext and randomness used to encrypt it
+      ciphertext = encrypted_answer.choices[choice_num]
+      randomness = encrypted_answer.randomness[choice_num]
+      
+      # the plaintext we expect, g^1 if selected, or g^0 if not selected
+      if choice_num == encrypted_answer.answer:
+        plaintext = public_key.g
+      else:
+        plaintext = 1
+        
+      # check alpha
+      if pow(public_key.g, randomness, public_key.p) != ciphertext.alpha:
+        return False
+        
+      # check beta
+      expected_beta = (pow(public_key.y, randomness, public_key.p) * plaintext) % public_key.p
+      if expected_beta != ciphertext.beta:
+        return False
+
+# check the fingerprint
+vote_without_plaintexts = vote_with_plaintexts.remove_plaintexts()
+computed_fingerprint = base64.b64encode(hash.new(vote_without_plaintexts.toJSON()).digest())[:-1]
+
+return computed_fingerprint == vote_fingerprint
+</div>
+
+<h2>Verifying a Complete Election Tally</h2>
+
+<p>
+    To verify a complete election tally, one should:
+</p>
+<ul>
+    <li> display the computed election fingerprint.</li>
+    <li> ensure that the list of voters matches the election voter-list hash.</li>
+    <li> display the fingerprint of each cast ballot.</li>
+    <li> check that each cast ballot is correctly formed by verifying the proofs.</li>
+    <li> homomorphically compute the encrypted tallies and verify, using the result proof, that they correctly decrypt to the claimed results. Display these results.</li>
+</ul>
+
+<p>
+    In other words, the complete results of a verified election includes: the election fingerprint, the list of ballot fingerprints, and the actual count. Any party who verifies the election should re-publish all of these items, as they are meaningless without one another. This is effectively a "re-tally".
+</p>
+
+<p>
+    Part of this re-tally requires checking a decryption proof, which is almost the same, but not quite the same, as checking an encryption proof with given randomness. First, we document the verification of a decryption proof.    
+</p>
+
+<div class="codeblock"><div class="codetitle">verify_decryption_proof(ciphertext, plaintext, proof, public_key):</div>
+# Here, we prove that (g, y, alpha, beta/g^m) is a DDH tuple.
+# Before we were working with (g, alpha, y, beta/g^m)
+if pow(public_key.g, proof.response, public_key.p) !=
+   ((proof.commitment.A * pow(public_key.y, proof.challenge, public_key.p)) % public_key.p):
+      return False
+
+beta_over_m = modinverse(pow(public_key.g, plaintext, public_key.p), public_key.p) * ciphertext.beta
+beta_over_m_mod_p = beta_over_m % public_key.p
+
+if pow(ciphertext.alpha, proof.response, public_key.p) !=
+   ((proof.commitment.B * pow(beta_over_m_mod_p, proof.challenge, public_key.p)) % public_key.p):
+      return False
+
+# compute the challenge generation, Fiat-Shamir style
+str_to_hash = str(proof.commitment.A) + "," + str(proof.commitment.B)
+computed_challenge = int_sha(str_to_hash)
+
+# check that the challenge matches
+return computed_challenge == proof.challenge
+</div>
+
+<p>
+    Then, the re-tally proceeds as follows.
+</p>
+
+<div class="codeblock"><div class="codetitle">retally_election(election, voters, result, result_proof):</div>
+# compute the election fingerprint
+election_fingerprint = b64_sha(election.toJSON())
+
+# compute the voter list hash on just the voter identities
+voters_without_votes = votes.remove_votes()
+voters_hash = b64_sha(voters_without_votes.toJSON())
+
+# verify, no need to continue if we fail here
+if voters_hash != election.voters_hash:
+    return False
+    
+# keep track of voter fingerprints
+vote_fingerprints = []
+
+# keep track of running tallies, initialize at 0
+# again, assuming operator overloading for homomorphic addition
+tallies = [[0 for a in question.answers] for question in election.questions]
+
+# go through each voter, check it
+for voter in voters:
+    if not verify_vote(election, voter.vote):
+        return False
+        
+    # compute fingerprint
+    vote_fingerprints.append(b64_sha(voter.vote.toJSON()))
+    
+    # update tallies, looping through questions and answers within them
+    for question_num in range(len(election.questions)):
+        for choice_num in range(len(election.questions[question_num].answers)):
+            tallies[question_num][choice_num] = voter.vote.answers[question_num].choices[choice_num] +
+                                                tallies[question_num][choice_num]
+    
+
+# now we have tallied everything in ciphertexts, we must verify proofs
+for question_num in range(len(election.questions)):
+    for choice_num in range(len(election.questions[question_num].answers)):
+        # verify the tally for that choice within that question
+        # check that it decrypts to the claimed result with the claimed proof
+        if not verify_decryption_proof(tallies[question_num][choice_num],
+                pow(election.public_key.g, result[question_num][choice_num], election.public_key.p),
+                result_proof[question_num][choice_num],
+                election.public_key):
+            return False
+            
+# return the complete tally, now that it is confirmed
+return {
+    'election_fingerprint': election_fingerprint,
+    'vote_fingerprints' : vote_fingerprints,
+    'verified_tally' : result
+}
+</div>
+
+<h2>Election with Multiple Trustees</h2>
+
+<p>
+    A Helios election can be configured to have multiple trustees, each of which holds a share of the election secret key.
+</p>
+
+<p>
+    Before the trustees have submitted their public key shares, the election's public key is null, e.g.:
+</p>
+
+<div class="codeblock"><div class="codetitle">Election with Trustees, before shares</div>
+{"election_id": "agxoZWxpb3N2b3RpbmdyDgsSCEVsZWN0aW9uGAUM", "name": "test-trustees",
+"pk": null, "questions": [], "voters_hash": "l9Fw4VUO7kr8CvBlt4zaMCqXZ0w",
+"voting_ends_at": null, "voting_starts_at": null}
+</div>
+
+<p>
+    The list of trustees for an election can be obtained at
+</p>
+
+<pre>
+    http://www.heliosvoting.org/elections/&lt;ELECTION_ID&gt;/trustees
+</pre>
+
+<p>
+    which returns the <tt>&lt;TRUSTEE_LIST&gt;</tt> data structure as follows:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;TRUSTEE_LIST&gt;</div>
+[&lt;TRUSTEE&gt;, &lt;TRUSTEE&gt;, ..., &lt;TRUSTEE&gt;]
+</div>
+
+<p>
+    where a single <tt>&lt;TRUSTEE&gt;</tt> data structure is:
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;TRUSTEE&gt;</div>
+{"decryption_factors": &lt;DECRYPTION_FACTORS&gt;, "decryption_proofs": &lt;DECRYPTION_PROOFS&gt;,
+"email": "trustee@election.com", "pk": &lt;ELGAMAL_PUBLIC_KEY&gt;, "pok": &lt;ELGAMAL_KEY_POK&gt;}
+</div>
+
+<h3>Key Share and Proof of Knowledge of Secret</h3>
+
+<p>
+    The <tt>&lt;ELGAMAL_PUBLIC_KEY&gt;</tt> field is a normal ElGamal public key, as before. The &lt;ELGAMAL_KEY_POK&gt; is a non-interactive proof of knowledge of the secret key corresponding to the given public key. Helios uses the simple Schnorr proof of knowledge of discrete log, which is a simple three-round protocol proof as follows:
+</p>
+
+<ul>
+    <li> Prover generates <tt>w</tt>, a random integer modulo <tt>q</tt>, and computes <tt>commitment = g^w mod p</tt>.</li>
+    <li> Verifier provides <tt>challenge</tt> modulo <tt>q</tt>.</li>
+    <li> Prover computes <tt>response = w + x*challenge mod q</tt>, where <tt>x</tt> is the secret key.</li>
+</ul>
+
+<p>
+    Then, the verifier checks that <tt>g^response = commitment * y^challenge</tt>, where <tt>y</tt> is the public key. In the non-interactive setting, the challenge is generated as the decimal representation of the SHA1 of the commitment.
+</p>
+
+<p>
+    The format for the resulting proof is as follows.
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;ELGAMAL_KEY_POK&gt;</div>
+{"challenge": "2342342",
+"commitment": "124235235",
+"response": "970234234"}
+</div>
+
+<h3>Freezing a Trustee Election</h3>
+
+<p>
+Once all trustees have submitted their public key shares, 
+</p>
+
+<h3>Decryption Shares</h3>
+
+<p>
+   In Helios, the trustees are all required to show up for decryption. Threshold decryption is <em>not implemented at this time</em>. Thus, come decryption time, each trustee provides a decryption factor and a proof that this decryption factor was correctly generated given the trustee's public key. 
+</p>
+
+<p>
+    Thus, <tt>&lt;DECRYPTION_FACTORS&gt;</tt> is structured the same way as <tt>&lt;RESULT&gt;</tt>, an array of arrays, to provide one decryption factor for each choice of each question.
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;DECRYPTION_FACTORS&gt;</div>
+[[&lt;Q1_CANDIDATE_1_DEC_FACTOR&gt;, &lt;Q1_CANDIDATE_2_DEC_FACTOR&gt;, &lt;Q1_CANDIDATE_3_DEC_FACTOR&gt;],
+ [&lt;Q2_CANDIDATE_1_DEC_FACTOR&gt;, &lt;Q2_CANDIDATE_2_DEC_FACTOR&gt;]]
+</div>
+
+<p>
+    Then, <tt>&lt;DECRYPTION_PROOFS&gt;</tt> is a similarly structured array of arrays, where each element is a proof of the corresponding decryption factor, much like <tt>&lt;RESULT_PROOF&gt;</tt> is an element-wise decryption proof of <tt>&lt;RESULT&gt;</tt>.
+</p>
+
+<div class="codeblock"><div class="codetitle">&lt;DECRYPTION_PROOFS&gt;</div>
+[[&lt;Q1_CANDIDATE_1_PROOF&gt;, &lt;Q1_CANDIDATE_2_PROOF&gt;, &lt;Q1_CANDIDATE_3_PROOF&gt;],
+ [&lt;Q2_CANDIDATE_1_PROOF&gt;, &lt;Q2_CANDIDATE_2_PROOF&gt;]]
+</div>
+
+<p>
+    Each of these proofs is a DH-tuple proof, just like the original result decryption proof, with the fourth element of the DH tuple the corresponding decryption factor. So, for example, <tt>&lt;Q1_CANDIDATE_1_PROOF&gt;</tt> is a transcript of the proof that <tt>g, Q1_C1_TALLY.alpha, y, &lt;Q1_CANDIDATE_1_DEC_FACTOR&gt;</tt> is a proper DH tuple. The homomorphic tally, prior to decryption, is computed exactly as it was without trustees.
+</p>
+
+<h3>Putting it All Together</h3>
+
+<p>
+   At verification time, the steps for a trustee election are only slightly different: 
+</p>
+
+<ul>
+    <li> Each trustee's public-key share is verified against the corresponding proof of knowledge.</li>
+    <li> The election's single public key is indeed the product of the key shares.</li>
+    <li> Each individual ballot is verified <em>just as before</em>.</li>
+    <li> The encrypted tally for each candidate to each question is homomorphically computed, <em>just as before</em>.</li>
+    <li> Each partial decryption for each candidate to each question is verified.</li>
+    <li> The final tally for a given candidate is obtained by multiplying the partial decryption factors, and dividing it out of the corresponding encrypted tally's <tt>beta</tt>.</li>
+</ul>
+
+<p>
+    &nbsp;
+</p>
+
+<hr />
+<address>ben@adida.net</address>
+</body>

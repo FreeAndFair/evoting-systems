@@ -1,0 +1,50 @@
+{% extends 'server_ui/templates/base.html' %}
+{% block title %}Confirm Vote{% endblock %}
+
+{% block content %}
+<script language="javascript">
+$(document).ready(function() {
+  $('#waiting_div').hide();
+});
+
+function show_waiting() {
+  $('#cast_div').hide();
+  $('#waiting_div').show();
+}
+</script>
+<h1>Confirm your Vote</h1>
+
+{% if error %}
+<p style="color: red;">{{error}}</p>
+{% endif %}
+
+<h3>Your Ballot</h3>
+
+<p style="font-size:1.6em;">
+    <tt>{{vote_fingerprint}}</tt>
+</p>
+
+<div id="cast_div">
+<h3>Cast Your Ballot with your Credentials</h3>
+
+<form method="post" onsubmit="show_waiting();" action="">
+    <input type="hidden" name="csrf_token" value="{{csrf_token}}" />
+
+<table>
+{{form.as_table}}
+</table><br />
+
+    <input type="submit" value="cast this ballot" /><br /><br />
+</form>
+
+<p>
+    Forgot your password? <a href="{% url helios_auth.auth_systems.password.password_forgotten_view %}?return_url={% url server_ui.views.cast_confirm %}">Have it emailed to you</a>.<br />(don't worry, we won't forget your vote).
+</p>
+</div>
+
+<div id="waiting_div" align="center">
+  Verifying and Casting your ballot<br />
+  <img src="/static/helios/loading.gif" />
+</div>
+
+{% endblock %}

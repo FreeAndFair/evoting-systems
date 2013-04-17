@@ -1,0 +1,27 @@
+
+<h3 style="border-bottom: 1px solid black;">Submit Your Encrypted Ballot</h3>
+
+<p>
+Your encrypted ballot is ready for submission.<br />
+All plaintext information has been removed from memory: all that remains is the encrypted vote.<br />
+</p>
+
+<p>
+Your encrypted vote fingerprint is:<br />
+<b><tt style="font-size: 16pt;">{$T.encrypted_vote_hash}</tt></b>
+</p>
+
+<p>
+To submit your encrypted vote, enter your login information below.<br />
+(Notice how we only ask for your login once your ballot plaintext has been discarded.)
+</p>
+
+<form onsubmit="BOOTH.send_ballot(); return false;" action="#" id="send_ballot_form" class="prettyform">
+<label for="email">Email:</label>
+<input type="text" name="email" size="30" /><br />
+<label for="password">Password:</label>
+<input type="password" name="password" size="30" /><br/>
+<label for="submit">&nbsp;</label>
+<input type="submit" value="send" class="pretty" />
+</form>
+

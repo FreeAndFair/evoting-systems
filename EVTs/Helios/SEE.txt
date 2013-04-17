@@ -1,4 +1,0 @@
-See the following GitHub repositories:
- - https://github.com/benadida/helios
- - https://github.com/benadida/helios-server
-

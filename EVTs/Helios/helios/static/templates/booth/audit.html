@@ -1,0 +1,22 @@
+
+<h3>Your audited ballot</h3>
+
+<p>
+You have chosen to audit your encrypted ballot.
+</p>
+
+<p>
+Here is the fully audited ballot information, which you can copy and paste.
+</p>
+
+<div id="audit_trail" style="width: 700px; height: 300px; overflow: auto; font-family: fixed-width; background:white; border: 1px solid #888;">
+{$T.audit_trail}
+</div>
+
+<p>
+    Copy the content above (<a href="javascript:UTILS.select_element_content($('#audit_trail')[0]);">select it</a>).<br />
+    Visit the <a target="_blank" href="/elections/single_ballot_verifier">Helios Ballot Verifier</a> to ensure it was properly formed.
+</p>
+
+<input type="button" value="Go Back to Choices" onclick="BOOTH.show_confirm();" class="pretty" />
+
