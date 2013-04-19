@@ -1,0 +1,2413 @@
+How to create a referendum in Helios.
+
+Captured with Wireshark. 
+Get each tcp connection with Filter: "tcp.stream eq 0" (then 1, 2, 3...)
+Go to Analyze > Follow TCP stream and copy paste here:
+
+
+***********************************************************************************************
+Dummy authentication:
+***********************************************************************************************
+GET /auth/?return_url=/ HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/
+Cookie: sessionid=b448888c0a097704057d9f70cc5002ba
+
+HTTP/1.0 302 FOUND
+Date: Thu, 21 Feb 2013 10:04:12 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/auth/start/dummy?return_url=/
+
+***********************************************************************************************
+GET /auth/start/dummy?return_url=/ HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/
+Cookie: sessionid=b448888c0a097704057d9f70cc5002ba
+
+HTTP/1.0 302 FOUND
+Date: Thu, 21 Feb 2013 10:04:12 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/auth/dummy/login
+Set-Cookie:  sessionid=b448888c0a097704057d9f70cc5002ba; expires=Thu, 07-Mar-2013 10:04:12 GMT; httponly; Max-Age=1209600; Path=/
+
+***********************************************************************************************
+GET /auth/dummy/login HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/
+Cookie: sessionid=b448888c0a097704057d9f70cc5002ba
+
+HTTP/1.0 200 OK
+Date: Thu, 21 Feb 2013 10:04:12 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title> - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="/static/auth/combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+<h2>Helios Election Server &mdash; Login</h2>
+
+        </div>
+        <div id="contentbody">
+              
+
+<div>
+  <form class="prettyform" action="" method="POST" id="login_form">
+    <input type="hidden" name="csrf_token" value="e3026ba0-036c-4a42-9cef-d4fc9c2b9445" />
+    <table>
+      <tr><th><label for="id_username">Username:</label></th><td><input id="id_username" type="text" name="username" maxlength="50" /></td></tr>
+<tr><th><label for="id_admin_p">Admin?</label></th><td><input type="checkbox" name="admin_p" id="id_admin_p" /></td></tr>
+    </table>
+    <div>
+      <input type="submit" value="Login" />
+    </div>
+  </form>
+</div>
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+
+not logged in. [<a href="http://localhost:8000/auth/?return_url=">log in</a>]
+
+<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+***********************************************************************************************
+POST /auth/dummy/login HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/auth/dummy/login
+Cookie: sessionid=b448888c0a097704057d9f70cc5002ba
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 73
+
+csrf_token=e3026ba0-036c-4a42-9cef-d4fc9c2b9445&username=admin&admin_p=on
+
+HTTP/1.0 302 FOUND
+Date: Thu, 21 Feb 2013 10:04:16 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/auth/after/
+Set-Cookie:  sessionid=b448888c0a097704057d9f70cc5002ba; expires=Thu, 07-Mar-2013 10:04:16 GMT; httponly; Max-Age=1209600; Path=/
+
+***********************************************************************************************
+GET /auth/after/ HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/auth/dummy/login
+Cookie: sessionid=b448888c0a097704057d9f70cc5002ba
+
+HTTP/1.0 302 FOUND
+Date: Thu, 21 Feb 2013 10:04:16 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/auth/after_intervention
+Set-Cookie:  sessionid=b448888c0a097704057d9f70cc5002ba; expires=Thu, 07-Mar-2013 10:04:16 GMT; httponly; Max-Age=1209600; Path=/
+
+***********************************************************************************************
+GET /auth/after_intervention HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/auth/dummy/login
+Cookie: sessionid=b448888c0a097704057d9f70cc5002ba
+
+HTTP/1.0 302 FOUND
+Date: Thu, 21 Feb 2013 10:04:16 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/
+Set-Cookie:  sessionid=b448888c0a097704057d9f70cc5002ba; expires=Thu, 07-Mar-2013 10:04:16 GMT; httponly; Max-Age=1209600; Path=/
+
+***********************************************************************************************
+GET / HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/auth/dummy/login
+Cookie: sessionid=b448888c0a097704057d9f70cc5002ba
+
+HTTP/1.0 200 OK
+Date: Thu, 21 Feb 2013 10:04:17 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Helios Election Server - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+<h2>Helios Election Server</h2>
+
+        </div>
+        <div id="contentbody">
+              
+
+<div id="mystuff">
+
+<div style="font-size:1.4em;" class="highlight-box">
+<img border="0" height="25" src="/static/auth/login-icons/dummy.png" alt="dummy" /> admin
+</div>
+
+<h4>Administration</h4>
+
+<em>none yet</em>
+
+<p>[<a href="/helios/elections/administered">see all</a>]</p>
+<div style="text-align:right;">
+<a href="/helios/elections/new" style="font-size: 1.2em; padding:5px; background: #eee; border: 1px solid #888">create election &gt;</a>
+</div>
+
+
+<h4>Recent Votes</h4>
+
+<em>none yet</em>
+
+<p>[<a href="/helios/elections/voted">see all</a>]</p>
+
+<br /><br />
+</div>
+
+<p style="font-size: 1.4em;">
+  This is the default message
+</p>
+
+
+<h4>no featured elections at the moment</h4>
+
+
+<br clear="right" /><br />
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> admin
+[<a href="/auth/logout?return_url=/">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+***********************************************************************************************
+
+
+
+
+
+***********************************************************************************************
+Create referendum
+***********************************************************************************************
+GET / HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/auth/dummy/login
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:41:56 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Helios Election Server - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+<h2>Helios Election Server</h2>
+
+        </div>
+        <div id="contentbody">
+              
+
+<div id="mystuff">
+
+<div style="font-size:1.4em;" class="highlight-box">
+<img border="0" height="25" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+</div>
+
+<h4>Administration</h4>
+
+<em>none yet</em>
+
+<p>[<a href="/helios/elections/administered">see all</a>]</p>
+<div style="text-align:right;">
+<a href="/helios/elections/new" style="font-size: 1.2em; padding:5px; background: #eee; border: 1px solid #888">create election &gt;</a>
+</div>
+
+
+<h4>Recent Votes</h4>
+
+<em>none yet</em>
+
+<p>[<a href="/helios/elections/voted">see all</a>]</p>
+
+<br /><br />
+</div>
+
+<p style="font-size: 1.4em;">
+  This is the default message
+</p>
+
+
+<h4>no featured elections at the moment</h4>
+
+
+<br clear="right" /><br />
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+
+
+
+
+
+
+
+
+*****************************************************************************************************
+GET /helios/elections/new HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:42:00 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title> - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+
+  <h2 class="title">Create a New Election</h2>
+  
+
+  
+  <form class="prettyform" action="" method="POST" id="create_election_form">
+    <table class="pretty">
+     <tr><th><label for="id_short_name">Short name:</label></th><td><input id="id_short_name" type="text" name="short_name" maxlength="25" /><br /><span class="helptext">no spaces, will be part of the URL for your election, e.g. my-club-2010</span></td></tr>
+<tr><th><label for="id_name">Name:</label></th><td><input id="id_name" maxlength="100" type="text" name="name" size="60" /><br /><span class="helptext">the pretty name for your election, e.g. My Club 2010 Election</span></td></tr>
+<tr><th><label for="id_description">Description:</label></th><td><textarea wrap="soft" id="id_description" rows="10" cols="70" name="description"></textarea></td></tr>
+<tr><th><label for="id_election_type">type:</label></th><td><select name="election_type" id="id_election_type">
+<option value="election">Election</option>
+<option value="referendum">Referendum</option>
+</select></td></tr>
+<tr><th><label for="id_use_voter_aliases">Use voter aliases:</label></th><td><input type="checkbox" name="use_voter_aliases" id="id_use_voter_aliases" /><br /><span class="helptext">If selected, voter identities will be replaced with aliases, e.g. "V12", in the ballot tracking center</span></td></tr>
+<tr><th><label for="id_private_p">Private?</label></th><td><input type="checkbox" name="private_p" id="id_private_p" /><br /><span class="helptext">A private election is only visible to registered voters.</span></td></tr>
+     </table>
+  <div>
+  <label for="">&nbsp;</label><input type="submit" value="Next &gt;&gt;" id="next_button" />
+  </div>
+  </form>
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/new">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+
+
+*****************************************************************************************************
+POST /helios/elections/new HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/new
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 105
+
+short_name=tcpdump1&name=Capture+this+with+tcpdump&description=Content+goes+here&election_type=referendum
+
+HTTP/1.0 302 FOUND
+Date: Wed, 20 Feb 2013 16:42:31 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view
+
+
+
+
+*****************************************************************************************************
+
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/new
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:42:31 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Capture this with tcpdump - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+
+<div style="float: left; margin-right: 50px;">
+  <h2 class="title">Capture this with tcpdump
+
+
+<span class="adminaction"><a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/edit">edit</a></span>
+
+</h2>
+<p style="padding-top:0px; margin-top:0px">
+<em>public</em> referendum created by <u><b><img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test</b></u>
+
+
+&nbsp;[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/archive?archive_p=1">archive it</a>]
+
+<br />
+
+
+
+this referendum is <u>not</u> featured on the front page.
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/set_featured?featured_p=1">feature it</a>]
+
+
+
+
+</p>
+
+</div>
+
+
+<br /><br />
+
+
+
+<br clear="left" />
+
+<div style="margin-bottom: 25px;margin-left: 15px; border-left: 1px solid #aaa; padding-left: 5px; font-size:1.3em; ">
+Content goes here
+</div>
+
+
+<p align="center" style="font-size: 1.5em;">
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions">questions (0)</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list">voters &amp; ballots</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/trustees/view">trustees (1)</a>
+</p>
+
+
+
+<p>
+
+
+<b>Next Step:</b>
+<span style="font-size: 1.3em;">
+
+
+
+add questions to the ballot, and<br />
+
+enter your voter list (or open registration to the public)<br />
+
+
+
+
+</span>
+
+
+
+</p>
+
+
+
+<br /><br />
+
+
+
+
+
+
+<span class="highlight-box round">
+  voting is not yet open
+</span> <br /><br />
+
+
+
+
+
+
+You are <em>not eligible</em> to vote in this referendum.
+<br />
+
+
+
+
+
+
+
+
+
+
+<div style="background: lightyellow; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
+<a href="#" onclick="$('#auditbody').slideToggle(250);">Audit Info</a>
+<div id="auditbody" style="display:none;">
+<br />Election URL:<br />
+<tt style="font-size: 1.2em;"><a href="http://localhost:8000/helios/e/tcpdump1">http://localhost:8000/helios/e/tcpdump1</a></tt>
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+
+*****************************************************************************************************
+
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:42:49 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Questions for Capture this with tcpdump - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+<script language="javascript" src="/static/helios/helios/underscore-min.js"></script>
+<script language="javascript" src="/static/helios/helios/jquery-jtemplates.js"></script>
+<script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+<script language="javascript" src="/static/helios/helios/jscrypto/jsbn.js"></script>
+<script language="javascript" src="/static/helios/helios/jscrypto/jsbn2.js"></script>
+<script language="javascript" src="/static/helios/helios/jscrypto/sjcl.js"></script>
+
+<script language="javascript">
+  // required for jscrypto library
+  var JSCRYPTO_HOME = "/static/helios/helios/jscrypto";
+</script>
+
+<script language="javascript" src="/static/helios/helios/jscrypto/class.js"></script>  
+<script language="javascript" src="/static/helios/helios/jscrypto/bigint.js"></script>
+<script language="javascript" src="/static/helios/helios/jscrypto/random.js"></script>
+<script language="javascript" src="/static/helios/helios/jscrypto/elgamal.js"></script>
+<script language="javascript" src="/static/helios/helios/jscrypto/sha1.js"></script>
+<script language="javascript" src="/static/helios/helios/jscrypto/sha2.js"></script>
+<script language="javascript" src="/static/helios/helios/jscrypto/helios.js"></script>
+
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+  <h2 class="title">Capture this with tcpdump &mdash; Questions <span style="font-size:0.7em;">[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">back to election</a>]</span></h2>
+
+  <script language="javascript">
+
+  QUESTIONS = [];
+
+
+  ADMIN_P = true;
+
+
+  CSRF_TOKEN = '214eed7f-63cb-4443-a18b-507d9611ff28';
+
+  function refresh() {
+      $('#questions').processTemplate({'questions' : QUESTIONS, 'admin_p' : ADMIN_P}); 
+
+      add_answers($('#answer_table'),DEFAULT_NUM_ANSWERS);
+ }
+  
+  function save_questions(callback) {
+      $.post('./save_questions', {'questions_json' : $.toJSON(QUESTIONS), 'csrf_token': CSRF_TOKEN}, function(result) {
+          callback();          
+      });      
+  }
+  
+  function get_question_from_form(form) {
+      var max = null;
+      if (form.max.value != "")
+        max = parseInt(form.max.value);
+        
+      var new_q = {'question' : form.question.value, 'min': parseInt(form.min.value), 'max': max, 'short_name': form.question.value, 'answers': [], 'answer_urls': [], 'choice_type': form.choice_type.value, 'tally_type': 'homomorphic', 'result_type': form.result_type.value};
+      var i = 0;
+      while(true) {
+          i += 1;
+          if (!form['answer_' + i] || !form['answer_' + i].value)
+            break;
+          new_q.answers[i-1] = form['answer_' + i].value;
+          new_q.answer_urls[i-1] = null;
+      }
+      
+     return new_q;
+  }
+
+  function question_add(form) {
+      var new_q = get_question_from_form(form);
+      QUESTIONS.push(new_q);
+      save_questions(refresh);
+  }
+  
+  function question_remove(q_num) {
+      var new_questions = [];
+      $(QUESTIONS).each(function(i, q) {
+          if (i == q_num)
+            return;
+          new_questions.push(q);
+      });
+      QUESTIONS = new_questions;
+      save_questions(refresh);
+  }
+
+  function question_edit(q_num) {
+    $('#q_view_'+q_num).hide();
+    $('#q_edit_'+q_num).show();
+
+    // set the default values for this question
+    var form = $('#question_edit_' + q_num + '_form');
+    var q_data = QUESTIONS[q_num];
+    form[0].min.value = q_data.min;
+    form[0].max.value = q_data.max;
+    form[0].question.value = q_data.question;
+    form[0].result_type.value = q_data.result_type;
+
+    // add the answers
+    var answer_table = $('#answer_table_' + q_num);
+    add_answers(answer_table, q_data.answers.length);
+    $(q_data.answers).each(function(i, a) {
+     form[0]['answer_' + (i+1)].value = a;
+    });
+  }
+
+  function question_edit_cancel(q_num) {
+    $('#q_edit_'+q_num).hide();
+    $('#q_view_'+q_num).show();
+  }
+
+  function question_update(q_num, form) {
+      var new_q = get_question_from_form(form);
+      QUESTIONS[q_num] = new_q;
+      save_questions(refresh);
+  }
+
+  var DEFAULT_NUM_ANSWERS = 5;
+
+  function add_answer(el) {
+    el = $(el);
+    var num_answers = el.find('input.answer').length + 1;
+    el.find('tbody').append('<tr><th>&nbsp;&nbsp;&nbsp;</th><th>Answer #' + num_answers + '</th><td><input type="text" class="answer" name="answer_' + num_answers + '" size="70" /></td></tr>');
+  }
+
+  function add_answers(el, num) {
+    for (var i=0; i<num; i++)
+      add_answer(el);
+  }
+
+  function question_move_up(num) {
+    var temp_q = QUESTIONS[num];
+    QUESTIONS[num] = QUESTIONS[num-1];
+    QUESTIONS[num-1] = temp_q;
+    save_questions(refresh);
+  }
+
+  $(document).ready(function() {
+      $('#questions').setTemplateURL("/static/helios/static_templates/question.html");
+
+      refresh();
+  });
+  
+
+  </script>
+
+  <div id="questions">
+  </div>
+.....
+...<!-- end #content -->
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+
+
+
+*****************************************************************************************************
+
+POST /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/save_questions HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: */*
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions
+Content-Length: 446
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+Pragma: no-cache
+Cache-Control: no-cache
+
+questions_json=%5B%7B%22question%22%3A+%22Build+death+star+replica%22%2C+%22min%22%3A+0%2C+%22max%22%3A+1%2C+%22short_name%22%3A+%22Build+death+star+replica%22%2C+%22answers%22%3A+%5B%22Yes%22%2C+%22Maybe%22%2C+%22No%22%5D%2C+%22answer_urls%22%3A+%5Bnull%2C+null%2C+null%5D%2C+%22choice_type%22%3A+%22approval%22%2C+%22tally_type%22%3A+%22homomorphic%22%2C+%22result_type%22%3A+%22absolute%22%7D%5D&csrf_token=214eed7f-63cb-4443-a18b-507d9611ff28
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:43:23 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+SUCCESS
+
+
+
+
+
+
+
+*****************************************************************************************************
+POST /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/save_questions HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: */*
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With: XMLHttpRequest
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions
+Content-Length: 837
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+Pragma: no-cache
+Cache-Control: no-cache
+
+questions_json=%5B%7B%22question%22%3A+%22Build+death+star+replica%22%2C+%22min%22%3A+0%2C+%22max%22%3A+1%2C+%22short_name%22%3A+%22Build+death+star+replica%22%2C+%22answers%22%3A+%5B%22Yes%22%2C+%22Maybe%22%2C+%22No%22%5D%2C+%22answer_urls%22%3A+%5Bnull%2C+null%2C+null%5D%2C+%22choice_type%22%3A+%22approval%22%2C+%22tally_type%22%3A+%22homomorphic%22%2C+%22result_type%22%3A+%22absolute%22%7D%2C+%7B%22question%22%3A+%22Fly+me+to+the+moon%22%2C+%22min%22%3A+0%2C+%22max%22%3A+1%2C+%22short_name%22%3A+%22Fly+me+to+the+moon%22%2C+%22answers%22%3A+%5B%22Yes%22%2C+%22No%22%2C+%22Let+me+play+among+the+stars%22%5D%2C+%22answer_urls%22%3A+%5Bnull%2C+null%2C+null%5D%2C+%22choice_type%22%3A+%22approval%22%2C+%22tally_type%22%3A+%22homomorphic%22%2C+%22result_type%22%3A+%22absolute%22%7D%5D&csrf_token=214eed7f-63cb-4443-a18b-507d9611ff28HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:43:51 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+SUCCESS
+
+
+*****************************************************************************************************
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:43:59 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Capture this with tcpdump - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+
+<div style="float: left; margin-right: 50px;">
+  <h2 class="title">Capture this with tcpdump
+
+
+<span class="adminaction"><a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/edit">edit</a></span>
+
+</h2>
+<p style="padding-top:0px; margin-top:0px">
+<em>public</em> referendum created by <u><b><img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test</b></u>
+
+
+&nbsp;[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/archive?archive_p=1">archive it</a>]
+
+<br />
+
+
+
+this referendum is <u>not</u> featured on the front page.
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/set_featured?featured_p=1">feature it</a>]
+
+
+
+
+</p>
+
+</div>
+
+
+<br /><br />
+
+
+
+<br clear="left" />
+
+<div style="margin-bottom: 25px;margin-left: 15px; border-left: 1px solid #aaa; padding-left: 5px; font-size:1.3em; ">
+Content goes here
+</div>
+
+
+<p align="center" style="font-size: 1.5em;">
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions">questions (2)</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list">voters &amp; ballots</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/trustees/view">trustees (1)</a>
+</p>
+
+
+
+<p>
+
+
+<b>Next Step:</b>
+<span style="font-size: 1.3em;">
+
+
+
+enter your voter list (or open registration to the public)<br />
+
+
+
+
+</span>
+
+
+
+</p>
+
+
+
+<br /><br />
+
+
+
+
+
+
+<span class="highlight-box round">
+  voting is not yet open
+</span> <br /><br />
+
+
+
+
+
+
+You are <em>not eligible</em> to vote in this referendum.
+<br />
+
+
+
+
+
+
+
+
+
+
+<div style="background: lightyellow; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
+<a href="#" onclick="$('#auditbody').slideToggle(250);">Audit Info</a>
+<div id="auditbody" style="display:none;">
+<br />Election URL:<br />
+<tt style="font-size: 1.2em;"><a href="http://localhost:8000/helios/e/tcpdump1">http://localhost:8000/helios/e/tcpdump1</a></tt>
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+*****************************************************************************************************
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:44:00 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Voters &amp; Ballot Tracking Center for Capture this with tcpdump - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+  <h2 class="title">Capture this with tcpdump &mdash; Voters and Ballot Tracking Center <span style="font-size:0.7em;">[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">back to election</a>]</span></h2>
+
+<p>
+<b>Who can vote?</b>
+
+<em>Only the voters listed here</em>.
+
+</p>
+
+
+
+You can change this setting:
+<form method="post" action="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/eligibility">
+<input type="hidden" name="csrf_token" value="214eed7f-63cb-4443-a18b-507d9611ff28" />
+<input type="radio" name="eligibility" value="openreg"  /> anyone can vote<br />
+<input type="radio" name="eligibility" value="closedreg" CHECKED /> only voters listed explicitly below can vote<br />
+
+<input type="submit" value="update" />
+</form>
+
+
+
+
+
+
+
+
+<!-- Add a Voter: WORK HERE-->
+
+<p>
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload">bulk upload voters</a>
+</p>
+
+
+
+
+
+
+<br /><br />
+<em>no voters.</em>
+
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+*****************************************************************************************************
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:44:04 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title> - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+  <h2 class="title">Capture this with tcpdump &mdash; Bulk Upload Voters <span style="font-size:0.7em;">[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">back to election</a>]</span></h2>
+
+<form method="post" action="" id="upload_form" enctype="multipart/form-data">
+  <p>
+    If you would like to specify your list of voters by name and email address,<br />
+    you can bulk upload a list of such voters here.<br /><br />
+
+    Please prepare a text file of comma-separated values, as follows:
+  </p>
+  <pre>
+      benadida,ben@adida.net,Ben Adida
+      bob,bob@acme.org,Bob Acme
+      ...
+  </pre> 
+
+  <p>
+    The easiest way to prepare such a file is to use a spreadsheet program and to export as "CSV".
+  </p>
+  
+    <input type="hidden" name="csrf_token" value="214eed7f-63cb-4443-a18b-507d9611ff28" />
+    
+    <input type="file" name="voters_file" />
+    <input type="submit" value="go" />
+</form>
+
+<div id="processing">
+</div>
+
+<div id="done" style="display:none;">
+  OK, done uploading.<br />
+  You can now <a href="./manage">view the list of voters</a>.
+</div>
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+*****************************************************************************************************
+POST /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+Content-Type: multipart/form-data; boundary=---------------------------13767021134784780771073185699
+Content-Length: 483
+
+-----------------------------13767021134784780771073185699
+Content-Disposition: form-data; name="csrf_token"
+
+214eed7f-63cb-4443-a18b-507d9611ff28
+-----------------------------13767021134784780771073185699
+Content-Disposition: form-data; name="voters_file"; filename="test_voters.csv"
+Content-Type: text/csv
+
+alice,alice@localhost,Alice
+bob,bob@localhost,Bob
+carol,carol@localhost,Carol
+dave,dave@localhost,Dave
+-----------------------------13767021134784780771073185699--
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:44:10 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Set-Cookie:  sessionid=fcc7ac471a67363021e071af25c2909f; expires=Wed, 06-Mar-2013 16:44:10 GMT; httponly; Max-Age=1209600; Path=/
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title> - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+  <h2 class="title">Capture this with tcpdump &mdash; Bulk Upload Voters &mdash; Confirm<span style="font-size:0.7em;">[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">back to election</a>]</span></h2>
+
+<p>
+You have uploaded a file of voters. The first few rows of this file are:
+</p>
+
+<table>
+<tr><th>Voter Login</th><th>Email Address</th><th>Name</th></tr>
+
+<tr><td>alice</td><td>alice@localhost</td><td>Alice</td></tr>
+
+<tr><td>bob</td><td>bob@localhost</td><td>Bob</td></tr>
+
+<tr><td>carol</td><td>carol@localhost</td><td>Carol</td></tr>
+
+<tr><td>dave</td><td>dave@localhost</td><td>Dave</td></tr>
+
+</table>
+
+<p></p>
+<form method="post" action="" id="upload_form">
+  Does this look right to you?
+  <input type="hidden" name="confirm_p" value="1" />
+  <input type="submit" value="Yes, let's go" />
+</form>
+
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload-cancel">no, let me upload a different file</a>
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+*****************************************************************************************************
+POST /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 11
+
+confirm_p=1
+
+HTTP/1.0 302 FOUND
+Date: Wed, 20 Feb 2013 16:44:14 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list
+Set-Cookie:  sessionid=fcc7ac471a67363021e071af25c2909f; expires=Wed, 06-Mar-2013 16:44:14 GMT; httponly; Max-Age=1209600; Path=/
+
+*****************************************************************************************************
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:44:14 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Voters &amp; Ballot Tracking Center for Capture this with tcpdump - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+  <h2 class="title">Capture this with tcpdump &mdash; Voters and Ballot Tracking Center <span style="font-size:0.7em;">[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">back to election</a>]</span></h2>
+
+<p>
+<b>Who can vote?</b>
+
+<em>Only the voters listed here</em>.
+
+</p>
+
+
+
+You can change this setting:
+<form method="post" action="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/eligibility">
+<input type="hidden" name="csrf_token" value="214eed7f-63cb-4443-a18b-507d9611ff28" />
+<input type="radio" name="eligibility" value="openreg"  /> anyone can vote<br />
+<input type="radio" name="eligibility" value="closedreg" CHECKED /> only voters listed explicitly below can vote<br />
+
+<input type="submit" value="update" />
+</form>
+
+
+
+
+
+
+
+
+<!-- Add a Voter: WORK HERE-->
+
+<p>
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/upload">bulk upload voters</a>
+</p>
+
+
+Prior Bulk Uploads:
+<ul>
+
+<li>
+
+102
+
+ bytes, at Feb. 20, 2013, 4:44 p.m.:
+
+<em>done processing: 4 voters loaded</em>
+
+</li>
+
+</ul>
+
+
+
+
+
+
+
+
+<p>
+<b>
+
+no votes yet
+
+</b>
+</p>
+
+Voters 1 - 4 (of 4)&nbsp;&nbsp;
+
+
+
+<table class="pretty">
+<tr>
+
+<th>Name</th>
+
+
+
+<th>Smart Ballot Tracker</th>
+</tr>
+
+<tr>
+
+<td>
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/email?voter_id=dave">email</a>]
+[<a onclick="return confirm('are you sure you want to remove Dave ?');" href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/c51a1a8f-05da-403d-8209-41352cddfbf1/delete">x</a>]
+
+<img border="0" height="20" src="/static/auth/login-icons/password.png" alt="password" /> Dave</td>
+
+
+<td><tt style="font-size: 1.4em;;">&mdash;</tt></td>
+</tr>
+
+<tr>
+
+<td>
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/email?voter_id=carol">email</a>]
+[<a onclick="return confirm('are you sure you want to remove Carol ?');" href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/619c8ed4-ac11-46ef-aad6-782626126ae0/delete">x</a>]
+
+<img border="0" height="20" src="/static/auth/login-icons/password.png" alt="password" /> Carol</td>
+
+
+<td><tt style="font-size: 1.4em;;">&mdash;</tt></td>
+</tr>
+
+<tr>
+
+<td>
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/email?voter_id=bob">email</a>]
+[<a onclick="return confirm('are you sure you want to remove Bob ?');" href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/ccb8b6d2-9915-4405-a7f2-54004a2efbdd/delete">x</a>]
+
+<img border="0" height="20" src="/static/auth/login-icons/password.png" alt="password" /> Bob</td>
+
+
+<td><tt style="font-size: 1.4em;;">&mdash;</tt></td>
+</tr>
+
+<tr>
+
+<td>
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/email?voter_id=alice">email</a>]
+[<a onclick="return confirm('are you sure you want to remove Alice ?');" href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/b6b19b59-dacc-42b4-a04d-759b4a676c7e/delete">x</a>]
+
+<img border="0" height="20" src="/static/auth/login-icons/password.png" alt="password" /> Alice</td>
+
+
+<td><tt style="font-size: 1.4em;;">&mdash;</tt></td>
+</tr>
+
+</table>
+
+
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+*****************************************************************************************************
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:44:44 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Capture this with tcpdump - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+
+<div style="float: left; margin-right: 50px;">
+  <h2 class="title">Capture this with tcpdump
+
+
+<span class="adminaction"><a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/edit">edit</a></span>
+
+</h2>
+<p style="padding-top:0px; margin-top:0px">
+<em>public</em> referendum created by <u><b><img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test</b></u>
+
+
+&nbsp;[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/archive?archive_p=1">archive it</a>]
+
+<br />
+
+
+
+this referendum is <u>not</u> featured on the front page.
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/set_featured?featured_p=1">feature it</a>]
+
+
+
+
+</p>
+
+</div>
+
+
+<br /><br />
+
+
+
+<br clear="left" />
+
+<div style="margin-bottom: 25px;margin-left: 15px; border-left: 1px solid #aaa; padding-left: 5px; font-size:1.3em; ">
+Content goes here
+</div>
+
+
+<p align="center" style="font-size: 1.5em;">
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions">questions (2)</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list">voters &amp; ballots</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/trustees/view">trustees (1)</a>
+</p>
+
+
+
+<p>
+
+
+<b>Next Step:</b>
+<span style="font-size: 1.3em;">
+
+
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/freeze">freeze ballot and open election.</a>
+<br />
+
+once you do this, the election will be immediately open for voting.
+
+
+
+
+</span>
+
+
+
+</p>
+
+
+
+<br /><br />
+
+
+
+
+
+
+<span class="highlight-box round">
+  voting is not yet open
+</span> <br /><br />
+
+
+
+
+
+
+You are <em>not eligible</em> to vote in this referendum.
+<br />
+
+
+
+
+
+
+
+
+
+
+<div style="background: lightyellow; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
+<a href="#" onclick="$('#auditbody').slideToggle(250);">Audit Info</a>
+<div id="auditbody" style="display:none;">
+<br />Election URL:<br />
+<tt style="font-size: 1.2em;"><a href="http://localhost:8000/helios/e/tcpdump1">http://localhost:8000/helios/e/tcpdump1</a></tt>
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+*****************************************************************************************************
+
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/freeze HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:44:49 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title> - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+  <h2 class="title">Capture this with tcpdump &mdash; Freeze Ballot</h2>
+<p>
+Once the ballot is frozen, the questions and options can no longer be modified.<br />
+The list of trustees and their public keys will also be frozen.
+</p>
+
+<p>
+
+Registration for your election is currently <b>closed</b>, which means only the voters you designate will be able to cast a ballot. As the administrator, you will still be able to modify that voter list as the election progresses.
+
+</p>    
+
+
+
+
+<form method="post" action="">
+<input type="hidden" name="csrf_token" value="214eed7f-63cb-4443-a18b-507d9611ff28" />
+    
+<input class="pretty" type="submit" value="Freeze the ballot" />
+<button onclick="document.location='./view'; return false;">never mind</button>
+</form>
+
+
+<br /><br />
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/freeze">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+
+*****************************************************************************************************
+POST /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/freeze HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/freeze
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 47
+
+csrf_token=214eed7f-63cb-4443-a18b-507d9611ff28
+
+
+HTTP/1.0 302 FOUND
+Date: Wed, 20 Feb 2013 16:44:51 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+Location: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view
+
+
+*****************************************************************************************************
+GET /helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://localhost:8000/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/freeze
+Cookie: sessionid=fcc7ac471a67363021e071af25c2909f
+
+HTTP/1.0 200 OK
+Date: Wed, 20 Feb 2013 16:44:51 GMT
+Server: WSGIServer/0.1 Python/2.7.3
+Vary: Cookie
+Content-Type: text/html; charset=utf-8
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    dir="ltr"
+    xml:lang="en"
+    lang="en">
+  <head>
+    <title>Capture this with tcpdump - Helios</title>
+    
+      <!--
+          <link rel="stylesheet" type="text/css"  media="screen, projection" href="combined-ltr.css" />
+      -->
+      <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css">
+
+.<link rel="stylesheet" type="text/css" href="/static/helios/css/ui-lightness/jquery-ui-1.8.1.custom.css">
+    
+
+      <script language="javascript" src="/static/helios/js/jquery-1.4.2.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jquery-ui-1.8.1.custom.min.js"></script>
+      <script language="javascript" src="/static/helios/js/jqsplitdatetime.js"></script>
+    
+    <script language="javascript" src="/static/helios/helios/jquery.json.min.js"></script>
+
+    
+    
+
+    
+  </head>
+
+  <body>
+    <div id="content">
+        <div id="header">
+            <a href="/"><img border="0" src="/static/logo.gif" height="110" /></a><br />
+        
+        
+        </div>
+        <div id="contentbody">
+              
+
+<script>
+if (!navigator.javaEnabled()) {
+//
+// even if Java is not enabled, we now have a server-side solution
+//
+//  $(document).ready(function() {
+//    $('#votelink').hide();
+//    $('#nojava_message').show();    
+//  });
+//
+}
+</script>
+
+<div style="float: left; margin-right: 50px;">
+  <h2 class="title">Capture this with tcpdump
+
+
+</h2>
+<p style="padding-top:0px; margin-top:0px">
+<em>public</em> referendum created by <u><b><img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test</b></u>
+
+
+&nbsp;[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/archive?archive_p=1">archive it</a>]
+
+<br />
+
+
+
+this referendum is <u>not</u> featured on the front page.
+
+[<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/set_featured?featured_p=1">feature it</a>]
+
+
+
+
+</p>
+
+</div>
+
+
+<br /><br />
+
+
+
+<br clear="left" />
+
+<div style="margin-bottom: 25px;margin-left: 15px; border-left: 1px solid #aaa; padding-left: 5px; font-size:1.3em; ">
+Content goes here
+</div>
+
+
+<p align="center" style="font-size: 1.5em;">
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/questions">questions (2)</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list">voters &amp; ballots</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/trustees/view">trustees (1)</a>
+</p>
+
+
+
+<p>
+
+
+<b>Next Step:</b>
+<span style="font-size: 1.3em;">
+
+
+
+
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/compute_tally">compute encrypted tally</a><br />
+The encrypted votes will be combined into an encrypted tally. Once this is done,<br />
+trustees will be asked to provide their share of the decryption.
+
+
+
+
+</span>
+
+
+
+</p>
+
+
+
+<br /><br />
+
+
+
+
+
+
+<span class="highlight-box round" style="font-size: 1.6em; margin-right: 10px;" id="votelink">
+<a href="/helios/testcookie?continue_url=http%3A%2F%2Flocalhost%3A8000%2Fbooth%2Fvote.html%3Felection_url%3D%252Fhelios%252Felections%252F84f999ac-7b7c-11e2-94a9-08002710ab51">Vote in this referendum </a>
+</span><br />
+<br />
+
+
+This referendum ends at the administrator's discretion.
+
+<br />
+
+
+
+
+<div class="highlight-box round" style="font-size: 1.2em; margin-right: 400px; display:none;" id="nojava_message">
+  You do not have Java installed in your browser.<br />At this time, Helios requires Java.<br />
+  Visit <a target="_new" href="http://java.sun.com">java.sun.com</a> to install it.
+</div>
+<br />
+
+
+
+
+
+
+You are <em>not eligible</em> to vote in this referendum.
+<br />
+
+
+
+
+
+
+
+
+
+
+<div style="background: lightyellow; padding:5px; padding-left: 10px; margin-top: 15px; border: 1px solid #aaa; width: 720px;" class="round">
+<a href="#" onclick="$('#auditbody').slideToggle(250);">Audit Info</a>
+<div id="auditbody" style="display:none;">
+<br />Election URL:<br />
+<tt style="font-size: 1.2em;"><a href="http://localhost:8000/helios/e/tcpdump1">http://localhost:8000/helios/e/tcpdump1</a></tt>
+
+
+<br />
+<br />Election Fingerprint:<br />
+<tt style="font-size: 1.3em; font-weight: bold;">zG1/rUrp9XhHghS8G8ZtxyME9a5m1bR3GJppz+Lg7ZU</tt>
+
+
+
+
+<p style="font-size: 1.3em;">
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/voters/list">Ballot Tracking Center</a> &nbsp;| &nbsp;
+<a href="/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/audited-ballots/">Audited Ballots</a>
+</p>
+
+  
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+        </div>
+      <div id="footer">
+<span style="float:right;">
+
+</span>
+
+logged in as <img border="0" height="15" src="/static/auth/login-icons/dummy.png" alt="dummy" /> test
+[<a href="/auth/logout?return_url=/helios/elections/84f999ac-7b7c-11e2-94a9-08002710ab51/view">logout</a>]<br />
+
+<a href="http://heliosvoting.org">About Helios</a>
+
+| <a href="mailto:help@heliosvoting.org">Help!</a>
+
+| <a href="/helios/stats/">Statistics</a>
+
+<br clear="right" />
+      </div>
+    </div>
+    
+  </body>
+</html>
+*****************************************************************************************************

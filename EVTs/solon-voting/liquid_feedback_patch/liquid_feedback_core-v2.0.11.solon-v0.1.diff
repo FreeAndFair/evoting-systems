@@ -1,0 +1,1185 @@
+diff -Pur liquid_feedback_core-v2.0.11.orig/core.sql liquid_feedback_core-v2.0.11.cryptonize/core.sql
+--- liquid_feedback_core-v2.0.11.orig/core.sql	2012-06-20 22:22:02.000000000 +0300
++++ liquid_feedback_core-v2.0.11.cryptonize/core.sql	2012-08-23 23:17:34.000000000 +0300
+@@ -55,13 +55,15 @@
+ 
+ 
+ CREATE TABLE "system_setting" (
+-        "member_ttl"            INTERVAL );
++        "member_ttl"            INTERVAL,
++        "ext_voting_service"       BOOLEAN         NOT NULL DEFAULT FALSE );
+ CREATE UNIQUE INDEX "system_setting_singleton_idx" ON "system_setting" ((1));
+ 
+ COMMENT ON TABLE "system_setting" IS 'This table contains only one row with different settings in each column.';
+ COMMENT ON INDEX "system_setting_singleton_idx" IS 'This index ensures that "system_setting" only contains one row maximum.';
+ 
+ COMMENT ON COLUMN "system_setting"."member_ttl" IS 'Time after members get their "active" flag set to FALSE, if they do not show any activity.';
++COMMENT ON COLUMN "system_setting"."ext_voting_service" IS 'If set to true, an external voting module is used for voting phase. (Typically one based on cryptographically secure voting algorithms.)';
+ 
+ 
+ CREATE TABLE "contingent" (
+@@ -331,6 +333,7 @@
+         "admission_time"        INTERVAL        NOT NULL,
+         "discussion_time"       INTERVAL        NOT NULL,
+         "verification_time"     INTERVAL        NOT NULL,
++        "public_voting_time"    INTERVAL,
+         "voting_time"           INTERVAL        NOT NULL,
+         "issue_quorum_num"      INT4            NOT NULL,
+         "issue_quorum_den"      INT4            NOT NULL,
+@@ -347,9 +350,29 @@
+         "indirect_majority_positive"    INT4    NOT NULL DEFAULT 0,
+         "indirect_majority_non_negative" INT4   NOT NULL DEFAULT 0,
+         "no_reverse_beat_path"          BOOLEAN NOT NULL DEFAULT TRUE,
+-        "no_multistage_majority"        BOOLEAN NOT NULL DEFAULT FALSE );
++        "no_multistage_majority"        BOOLEAN NOT NULL DEFAULT FALSE,
++        CONSTRAINT "public_voting_time_lte_private_voting_time" 
++        CHECK ( "public_voting_time"      <= "voting_time" )
++        );
+ CREATE INDEX "policy_active_idx" ON "policy" ("active");
+ 
++CREATE FUNCTION "autofill_public_voting_time_trigger"()
++  RETURNS TRIGGER
++  LANGUAGE 'plpgsql' VOLATILE AS $$
++    BEGIN
++      IF
++        NEW."public_voting_time" ISNULL
++      THEN
++        NEW."public_voting_time" := NEW."voting_time";
++      END IF;
++      RETURN NULL;
++    END;
++  $$;
++
++CREATE TRIGGER "autofill_public_voting_time"
++  AFTER INSERT OR UPDATE ON "policy" FOR EACH ROW EXECUTE PROCEDURE
++  "autofill_public_voting_time_trigger"();
++
+ COMMENT ON TABLE "policy" IS 'Policies for a particular proceeding type (timelimits, quorum)';
+ 
+ COMMENT ON COLUMN "policy"."index"                 IS 'Determines the order in listings';
+@@ -357,6 +380,7 @@
+ COMMENT ON COLUMN "policy"."admission_time"        IS 'Maximum duration of issue state ''admission''; Maximum time an issue stays open without being "accepted"';
+ COMMENT ON COLUMN "policy"."discussion_time"       IS 'Duration of issue state ''discussion''; Regular time until an issue is "half_frozen" after being "accepted"';
+ COMMENT ON COLUMN "policy"."verification_time"     IS 'Duration of issue state ''verification''; Regular time until an issue is "fully_frozen" (e.g. entering issue state ''voting'') after being "half_frozen"';
++COMMENT ON COLUMN "policy"."public_voting_time"    IS 'When system_setting.ext_voting_service=true, members can cast both a publicly visible vote and a private (encrypted) vote. The ''public_voting_time'' will typically be shorter than ''voting_time'', which is the duration for casting the private (encrypted) vote.';
+ COMMENT ON COLUMN "policy"."voting_time"           IS 'Duration of issue state ''voting''; Time after an issue is "fully_frozen" but not "closed" (duration of issue state ''voting'')';
+ COMMENT ON COLUMN "policy"."issue_quorum_num"      IS   'Numerator of potential supporter quorum to be reached by one initiative of an issue to be "accepted" and enter issue state ''discussion''';
+ COMMENT ON COLUMN "policy"."issue_quorum_den"      IS 'Denominator of potential supporter quorum to be reached by one initiative of an issue to be "accepted" and enter issue state ''discussion''';
+@@ -375,6 +399,9 @@
+ COMMENT ON COLUMN "policy"."no_reverse_beat_path"  IS 'Causes initiatives with "reverse_beat_path" flag to not be "eligible", thus disallowing them to be winner. See comment on column "initiative"."reverse_beat_path". This option ensures both that a winning initiative is never tied in a (weak) condorcet paradox with the status quo and a winning initiative always beats the status quo directly with a simple majority.';
+ COMMENT ON COLUMN "policy"."no_multistage_majority" IS 'Causes initiatives with "multistage_majority" flag to not be "eligible", thus disallowing them to be winner. See comment on column "initiative"."multistage_majority". This disqualifies initiatives which could cause an instable result. An instable result in this meaning is a result such that repeating the ballot with same preferences but with the winner of the first ballot as status quo would lead to a different winner in the second ballot. If there are no direct majorities required for the winner, or if in direct comparison only simple majorities are required and "no_reverse_beat_path" is true, then results are always stable and this flag does not have any effect on the winner (but still affects the "eligible" flag of an "initiative").';
+ 
++COMMENT ON FUNCTION "autofill_public_voting_time_trigger"()  IS 'Implementation of trigger "autofill_public_voting_time" on table "policy".';
++COMMENT ON TRIGGER "autofill_public_voting_time" ON "policy" IS 'If "public_voting_time" is not set, set it equal to "voting_time".';
++
+ 
+ CREATE TABLE "unit" (
+         "id"                    SERIAL4         PRIMARY KEY,
+@@ -465,6 +492,7 @@
+ 
+ CREATE TYPE "issue_state" AS ENUM (
+         'admission', 'discussion', 'verification', 'voting',
++        'public_voting_closed', 'private_voting_closed',
+         'canceled_revoked_before_accepted',
+         'canceled_issue_not_accepted',
+         'canceled_after_revocation_during_discussion',
+@@ -485,16 +513,20 @@
+         "accepted"              TIMESTAMPTZ,
+         "half_frozen"           TIMESTAMPTZ,
+         "fully_frozen"          TIMESTAMPTZ,
++        "public_voting_closed"  TIMESTAMPTZ,
++        "private_voting_closed" TIMESTAMPTZ,
+         "closed"                TIMESTAMPTZ,
+         "ranks_available"       BOOLEAN         NOT NULL DEFAULT FALSE,
+         "cleaned"               TIMESTAMPTZ,
+         "admission_time"        INTERVAL        NOT NULL,
+         "discussion_time"       INTERVAL        NOT NULL,
+         "verification_time"     INTERVAL        NOT NULL,
++        "public_voting_time"    INTERVAL,
+         "voting_time"           INTERVAL        NOT NULL,
+         "snapshot"              TIMESTAMPTZ,
+         "latest_snapshot_event" "snapshot_event",
+         "population"            INT4,
++        "public_voter_count"    INT4,
+         "voter_count"           INT4,
+         "status_quo_schulze_rank" INT4,
+         CONSTRAINT "valid_state" CHECK ((
+@@ -511,6 +543,8 @@
+           ("state" = 'discussion'   AND "closed" ISNULL AND "accepted" NOTNULL AND "half_frozen" ISNULL) OR
+           ("state" = 'verification' AND "closed" ISNULL AND "half_frozen" NOTNULL AND "fully_frozen" ISNULL) OR
+           ("state" = 'voting'       AND "closed" ISNULL AND "fully_frozen" NOTNULL) OR
++          ("state" = 'public_voting_closed'             AND "public_voting_closed" NOTNULL AND "closed" ISNULL AND "fully_frozen" NOTNULL) OR
++          ("state" = 'private_voting_closed'            AND "public_voting_closed" NOTNULL AND "private_voting_closed" NOTNULL AND "closed" ISNULL AND "fully_frozen" NOTNULL) OR
+           ("state" = 'canceled_revoked_before_accepted'              AND "closed" NOTNULL AND "accepted" ISNULL) OR
+           ("state" = 'canceled_issue_not_accepted'                   AND "closed" NOTNULL AND "accepted" ISNULL) OR
+           ("state" = 'canceled_after_revocation_during_discussion'   AND "closed" NOTNULL AND "half_frozen"  ISNULL) OR
+@@ -548,16 +582,20 @@
+ COMMENT ON COLUMN "issue"."accepted"                IS 'Point in time, when one initiative of issue reached the "issue_quorum"';
+ COMMENT ON COLUMN "issue"."half_frozen"             IS 'Point in time, when "discussion_time" has elapsed; Frontends must ensure that for half_frozen issues a) initiatives are not revoked, b) no new drafts are created, c) no initiators are added or removed.';
+ COMMENT ON COLUMN "issue"."fully_frozen"            IS 'Point in time, when "verification_time" has elapsed and voting has started; Frontends must ensure that for fully_frozen issues additionally to the restrictions for half_frozen issues a) initiatives are not created, b) no interest is created or removed, c) no supporters are added or removed, d) no opinions are created, changed or deleted.';
+-COMMENT ON COLUMN "issue"."closed"                  IS 'Point in time, when "admission_time" or "voting_time" have elapsed, and issue is no longer active; Frontends must ensure that for closed issues additionally to the restrictions for half_frozen and fully_frozen issues a) no voter is added or removed to/from the direct_voter table, b) no votes are added, modified or removed.';
++COMMENT ON COLUMN "issue"."public_voting_closed"    IS 'Point in time, when no more public votes can be cast, but it is still possible to cast private votes via the external voting service. (Doesn''t participate in valid_state constraint, cause could be anything depending on value of system_setting.ext_voting_service.)';
++COMMENT ON COLUMN "issue"."private_voting_closed"    IS 'Point in time, when no more private votes can be cast in the external voting service, but the external voting service has not yet delivered back the results. (Doesn''t participate in valid_state constraint, cause could be anything depending on value of system_setting.ext_voting_service.)';
++COMMENT ON COLUMN "issue"."closed"                  IS 'Point in time, when "admission_time" or "voting_time" have elapsed, and issue is no longer active. In case of external voting service, this state means that results have been delivered back and ranks can now be calculated; Frontends must ensure that for closed issues additionally to the restrictions for half_frozen and fully_frozen issues a) no voter is added or removed to/from the direct_voter table, b) no votes are added, modified or removed.';
+ COMMENT ON COLUMN "issue"."ranks_available"         IS 'TRUE = ranks have been calculated';
+ COMMENT ON COLUMN "issue"."cleaned"                 IS 'Point in time, when discussion data and votes had been deleted';
+ COMMENT ON COLUMN "issue"."admission_time"          IS 'Copied from "policy" table at creation of issue';
+ COMMENT ON COLUMN "issue"."discussion_time"         IS 'Copied from "policy" table at creation of issue';
+ COMMENT ON COLUMN "issue"."verification_time"       IS 'Copied from "policy" table at creation of issue';
++COMMENT ON COLUMN "issue"."public_voting_time"      IS 'Copied from "policy" table at creation of issue';
+ COMMENT ON COLUMN "issue"."voting_time"             IS 'Copied from "policy" table at creation of issue';
+ COMMENT ON COLUMN "issue"."snapshot"                IS 'Point in time, when snapshot tables have been updated and "population" and *_count values were precalculated';
+ COMMENT ON COLUMN "issue"."latest_snapshot_event"   IS 'Event type of latest snapshot for issue; Can be used to select the latest snapshot data in the snapshot tables';
+ COMMENT ON COLUMN "issue"."population"              IS 'Sum of "weight" column in table "direct_population_snapshot"';
++COMMENT ON COLUMN "issue"."public_voter_count"      IS 'Total number of public votes cast, either directly or via public delegation; This value is related to the final voting, while "population" is related to snapshots before the final voting';
+ COMMENT ON COLUMN "issue"."voter_count"             IS 'Total number of direct and delegating voters; This value is related to the final voting, while "population" is related to snapshots before the final voting';
+ COMMENT ON COLUMN "issue"."status_quo_schulze_rank" IS 'Schulze rank of status quo, as calculated by "calculate_ranks" function';
+ 
+@@ -1547,6 +1585,9 @@
+       IF "issue_row"."closed" NOTNULL THEN
+         RAISE EXCEPTION 'Tried to modify data belonging to a closed issue.';
+       END IF;
++      IF "issue_row"."public_voting_closed" NOTNULL THEN
++        RAISE EXCEPTION 'Public voting on this issue is closed.';
++      END IF;
+       RETURN NULL;
+     END;
+   $$;
+@@ -1643,6 +1684,9 @@
+       IF NEW."verification_time" ISNULL THEN
+         NEW."verification_time" := "policy_row"."verification_time";
+       END IF;
++      IF NEW."public_voting_time" ISNULL THEN
++        NEW."public_voting_time" := "policy_row"."public_voting_time";
++      END IF;
+       IF NEW."voting_time" ISNULL THEN
+         NEW."voting_time" := "policy_row"."voting_time";
+       END IF;
+@@ -3771,6 +3815,107 @@
+   ( "issue"."id"%TYPE )
+   IS 'Closes the voting on an issue, and calculates positive and negative votes for each initiative; The ranking is not calculated yet, to keep the (locking) transaction short.';
+ 
++-- This was copied from close_voting() and some functionality removed
++CREATE FUNCTION "close_public_voting"("issue_id_p" "issue"."id"%TYPE)
++  RETURNS VOID
++  LANGUAGE 'plpgsql' VOLATILE AS $$
++    DECLARE
++      "area_id_v"   "area"."id"%TYPE;
++      "unit_id_v"   "unit"."id"%TYPE;
++      "member_id_v" "member"."id"%TYPE;
++    BEGIN
++      PERFORM "lock_issue"("issue_id_p");
++      SELECT "area_id" INTO "area_id_v" FROM "issue" WHERE "id" = "issue_id_p";
++      SELECT "unit_id" INTO "unit_id_v" FROM "area"  WHERE "id" = "area_id_v";
++      -- delete delegating votes (in cases of manual reset of issue state):
++      DELETE FROM "delegating_voter"
++        WHERE "issue_id" = "issue_id_p";
++      -- delete votes from non-privileged voters:
++      DELETE FROM "direct_voter"
++        USING (
++          SELECT
++            "direct_voter"."member_id"
++          FROM "direct_voter"
++          JOIN "member" ON "direct_voter"."member_id" = "member"."id"
++          LEFT JOIN "privilege"
++          ON "privilege"."unit_id" = "unit_id_v"
++          AND "privilege"."member_id" = "direct_voter"."member_id"
++          WHERE "direct_voter"."issue_id" = "issue_id_p" AND (
++            "member"."active" = FALSE OR
++            "privilege"."voting_right" ISNULL OR
++            "privilege"."voting_right" = FALSE
++          )
++        ) AS "subquery"
++        WHERE "direct_voter"."issue_id" = "issue_id_p"
++        AND "direct_voter"."member_id" = "subquery"."member_id";
++      -- consider delegations:
++      UPDATE "direct_voter" SET "weight" = 1
++        WHERE "issue_id" = "issue_id_p";
++      PERFORM "add_vote_delegations"("issue_id_p");
++      -- set voter count and mark issue as public voting closed (private voting continues):
++      UPDATE "issue" SET
++        "state"  = 'public_voting_closed',
++        "public_voting_closed" = now(),
++        "public_voter_count" = (
++          SELECT coalesce(sum("weight"), 0)
++          FROM "direct_voter" WHERE "issue_id" = "issue_id_p"
++        )
++        WHERE "id" = "issue_id_p";
++    END;
++  $$;
++
++COMMENT ON FUNCTION "close_public_voting"
++  ( "issue"."id"%TYPE )
++  IS 'When using external voting service, closes the public voting on an issue, i.e. the votes stored in this system directly without encryption. Typically private voting phase will continue longer, so there is no calculation of votes here.';
++
++
++CREATE FUNCTION "close_private_voting"("issue_id_p" "issue"."id"%TYPE)
++  RETURNS VOID
++  LANGUAGE 'plpgsql' VOLATILE AS $$
++    BEGIN
++      UPDATE "issue" SET
++        "state"  = 'private_voting_closed',
++        "private_voting_closed" = now()
++        WHERE "id" = "issue_id_p";
++      -- clean up battle table (in case there are some "old" results)
++      DELETE FROM "battle" WHERE "issue_id" = "issue_id_p";
++    END;
++  $$;
++
++COMMENT ON FUNCTION "close_private_voting"
++  ( "issue"."id"%TYPE )
++  IS 'When using external voting service, closes the private (external) voting on an issue. After this it is not possible to vote anymore, but results are not yet available in this database.';
++
++
++CREATE FUNCTION "ext_results_available"("issue_id_p" "issue"."id"%TYPE)
++  RETURNS VOID
++  LANGUAGE 'plpgsql' VOLATILE AS $$
++    BEGIN
++      PERFORM "lock_issue"("issue_id_p");
++      -- copy "positive_votes" and "negative_votes" from "battle" table:
++      UPDATE "initiative" SET
++        "positive_votes" = "battle_win"."count",
++        "negative_votes" = "battle_lose"."count"
++        FROM "battle" AS "battle_win", "battle" AS "battle_lose"
++        WHERE
++          "battle_win"."issue_id" = "issue_id_p" AND
++          "battle_win"."winning_initiative_id" = "initiative"."id" AND
++          "battle_win"."losing_initiative_id" ISNULL AND
++          "battle_lose"."issue_id" = "issue_id_p" AND
++          "battle_lose"."losing_initiative_id" = "initiative"."id" AND
++          "battle_lose"."winning_initiative_id" ISNULL;
++      -- mark issue as ready for calculate_ranks
++      UPDATE "issue" SET
++        "state"  = 'calculation',
++        "closed" = now()
++        WHERE "id" = "issue_id_p";
++    END;
++  $$;
++
++COMMENT ON FUNCTION "ext_results_available"
++  ( "issue"."id"%TYPE )
++  IS 'External voting service has now stored results of the voting into battle table and also set issue.voter_count. The calculation of ranks will now proceed as normal.';
++
+ 
+ CREATE FUNCTION "defeat_strength"
+   ( "positive_votes_p" INT4, "negative_votes_p" INT4 )
+@@ -4104,7 +4249,6 @@
+ -- Automatic state changes --
+ -----------------------------
+ 
+-
+ CREATE FUNCTION "check_issue"
+   ( "issue_id_p" "issue"."id"%TYPE )
+   RETURNS VOID
+@@ -4112,6 +4256,7 @@
+     DECLARE
+       "issue_row"         "issue"%ROWTYPE;
+       "policy_row"        "policy"%ROWTYPE;
++      "ext_voting_service_v" BOOLEAN;
+     BEGIN
+       PERFORM "lock_issue"("issue_id_p");
+       SELECT * INTO "issue_row" FROM "issue" WHERE "id" = "issue_id_p";
+@@ -4220,14 +4365,43 @@
+           -- NOTE: "issue" might change, thus "issue_row" has to be updated below
+         END IF;
+         SELECT * INTO "issue_row" FROM "issue" WHERE "id" = "issue_id_p";
+-        -- close issue by calling close_voting(...) after voting time:
++
++        -- here the state machine is different if an external voting service is used
++        SELECT "ext_voting_service" INTO "ext_voting_service_v" FROM "system_setting" LIMIT 1;
++        IF "ext_voting_service_v" AND
++           "issue_row"."fully_frozen" NOTNULL AND
++           "issue_row"."public_voting_closed" ISNULL AND
++           "issue_row"."closed" ISNULL AND
++          now() >= "issue_row"."fully_frozen" + "issue_row"."public_voting_time"
++        THEN
++             -- using external voting service: close public voting after public_voting_time
++             PERFORM "close_public_voting"("issue_id_p");
++        END IF;           
++        SELECT * INTO "issue_row" FROM "issue" WHERE "id" = "issue_id_p";
++        IF
++          "ext_voting_service_v" AND
++          "issue_row"."closed" ISNULL AND
++          "issue_row"."fully_frozen" NOTNULL AND
++          "issue_row"."public_voting_closed" NOTNULL AND
++          "issue_row"."private_voting_closed" ISNULL AND
++          now() >= "issue_row"."fully_frozen" + "issue_row"."voting_time"
++        THEN
++          -- using external voting service: close private voting, but note that results do not become immediately available
++          -- they can now be supplied from the external service
++          PERFORM "close_private_voting"("issue_id_p");
++        END IF;
++        SELECT * INTO "issue_row" FROM "issue" WHERE "id" = "issue_id_p";
+         IF
++          ("ext_voting_service_v" ISNULL OR "ext_voting_service_v"=FALSE) AND
+           "issue_row"."closed" ISNULL AND
+           "issue_row"."fully_frozen" NOTNULL AND
+           now() >= "issue_row"."fully_frozen" + "issue_row"."voting_time"
+         THEN
++          -- normal, standalone operation
++          -- close issue by calling close_voting(...) after voting time:
+           PERFORM "close_voting"("issue_id_p");
+           -- calculate ranks will not consume much time and can be done now
++          -- TODO: isn't this supposed to be called separately in lf_update???
+           PERFORM "calculate_ranks"("issue_id_p");
+         END IF;
+       END IF;
+diff -Pur liquid_feedback_core-v2.0.11.orig/test.sql liquid_feedback_core-v2.0.11.cryptonize/test.sql
+--- liquid_feedback_core-v2.0.11.orig/test.sql	2012-06-20 22:22:02.000000000 +0300
++++ liquid_feedback_core-v2.0.11.cryptonize/test.sql	2012-08-23 23:21:21.000000000 +0300
+@@ -1,5 +1,7 @@
+ -- NOTE: This file requires that sequence generators have not been used.
+--- (All new rows need to start with id '1'.)
++-- All new rows need to start with id '1'. This is still true for the stuff
++-- before "issue_test"(), even if sql inside the function can handle any
++-- starting point.
+ 
+ BEGIN;
+ 
+@@ -37,6 +39,7 @@
+     "admission_time",
+     "discussion_time",
+     "verification_time",
++    "public_voting_time",
+     "voting_time",
+     "issue_quorum_num", "issue_quorum_den",
+     "initiative_quorum_num", "initiative_quorum_den",
+@@ -45,7 +48,7 @@
+   ) VALUES (
+     1,
+     'Default policy',
+-    '1 hour', '1 hour', '1 hour', '1 hour',
++    '1 hour', '1 hour', '1 hour', '1 hour', '1 hour',
+     25, 100,
+     20, 100,
+     1, 2, TRUE,
+@@ -55,11 +58,12 @@
+   LANGUAGE 'plpgsql' VOLATILE AS $$
+     BEGIN
+       UPDATE "issue" SET
+-        "snapshot"     = "snapshot"     - '1 hour 1 minute'::INTERVAL,
+-        "created"      = "created"      - '1 hour 1 minute'::INTERVAL,
+-        "accepted"     = "accepted"     - '1 hour 1 minute'::INTERVAL,
+-        "half_frozen"  = "half_frozen"  - '1 hour 1 minute'::INTERVAL,
+-        "fully_frozen" = "fully_frozen" - '1 hour 1 minute'::INTERVAL;
++        "snapshot"             = "snapshot"             - '1 hour 1 minute'::INTERVAL,
++        "created"              = "created"              - '1 hour 1 minute'::INTERVAL,
++        "accepted"             = "accepted"             - '1 hour 1 minute'::INTERVAL,
++        "half_frozen"          = "half_frozen"          - '1 hour 1 minute'::INTERVAL,
++        "fully_frozen"         = "fully_frozen"         - '1 hour 1 minute'::INTERVAL,
++        "public_voting_closed" = "public_voting_closed" - '1 hour 1 minute'::INTERVAL;
+       PERFORM "check_everything"();
+       RETURN;
+     END;
+@@ -130,281 +134,542 @@
+   (4,  5, 'area', 13),
+   (4, 12, 'area', 22);
+ 
+-INSERT INTO "issue" ("area_id", "policy_id") VALUES
+-  (3, 1);  -- id 1
++-- Create a new issue, related initiatives, supporters and eventual votes
++-- Can be run several times after each other, doesn't depend on id sequences starting from 1
++-- TODO: verify results (correct winner, etc)
++CREATE FUNCTION "issue_test"() RETURNS VOID
++  LANGUAGE 'plpgsql' VOLATILE AS $$
++    DECLARE
++      "issue_id_1_v"          INT4;
++      "issue_id_2_v"          INT4;
++      "initiative_id_base1_v" INT4;
++      "initiative_id_base2_v" INT4;
++      "draft_id_base1_v"      INT4;
++      "draft_id_base2_v"      INT4;
++      "suggestion_id_base1_v" INT4;
++      "suggestion_id_base2_v" INT4;
++      "ext_voting_service_v"  BOOLEAN;
++    BEGIN
+ 
+-INSERT INTO "initiative" ("issue_id", "name") VALUES
+-  (1, 'Initiative #1'),  -- id 1
+-  (1, 'Initiative #2'),  -- id 2
+-  (1, 'Initiative #3'),  -- id 3
+-  (1, 'Initiative #4'),  -- id 4
+-  (1, 'Initiative #5'),  -- id 5
+-  (1, 'Initiative #6'),  -- id 6
+-  (1, 'Initiative #7');  -- id 7
+-
+-INSERT INTO "draft" ("initiative_id", "author_id", "content") VALUES
+-  (1, 17, 'Lorem ipsum...'),  -- id 1
+-  (2, 20, 'Lorem ipsum...'),  -- id 2
+-  (3, 20, 'Lorem ipsum...'),  -- id 3
+-  (4, 20, 'Lorem ipsum...'),  -- id 4
+-  (5, 14, 'Lorem ipsum...'),  -- id 5
+-  (6, 11, 'Lorem ipsum...'),  -- id 6
+-  (7, 12, 'Lorem ipsum...');  -- id 7
++      INSERT INTO "issue" ("area_id", "policy_id") VALUES
++        (3, 1);  -- id 1
+ 
+-INSERT INTO "initiator" ("initiative_id", "member_id") VALUES
+-  (1, 17),
+-  (1, 19),
+-  (2, 20),
+-  (3, 20),
+-  (4, 20),
+-  (5, 14),
+-  (6, 11),
+-  (7, 12);
+-
+-INSERT INTO "supporter" ("member_id", "initiative_id", "draft_id") VALUES
+-  ( 7,  4,  4),
+-  ( 8,  2,  2),
+-  (11,  6,  6),
+-  (12,  7,  7),
+-  (14,  1,  1),
+-  (14,  2,  2),
+-  (14,  3,  3),
+-  (14,  4,  4),
+-  (14,  5,  5),
+-  (14,  6,  6),
+-  (14,  7,  7),
+-  (17,  1,  1),
+-  (17,  3,  3),
+-  (19,  1,  1),
+-  (19,  2,  2),
+-  (20,  1,  1),
+-  (20,  2,  2),
+-  (20,  3,  3),
+-  (20,  4,  4),
+-  (20,  5,  5);
+-
+-INSERT INTO "suggestion" ("initiative_id", "author_id", "name", "content") VALUES
+-  (1, 19, 'Suggestion #1', 'Lorem ipsum...');  -- id 1
+-INSERT INTO "opinion" ("member_id", "suggestion_id", "degree", "fulfilled") VALUES
+-  (14, 1, 2, FALSE);
+-INSERT INTO "opinion" ("member_id", "suggestion_id", "degree", "fulfilled") VALUES
+-  (19, 1, 2, FALSE);
+-
+-INSERT INTO "issue" ("area_id", "policy_id") VALUES
+-  (4, 1);  -- id 2
+-
+-INSERT INTO "initiative" ("issue_id", "name") VALUES
+-  (2, 'Initiative A'),  -- id  8
+-  (2, 'Initiative B'),  -- id  9
+-  (2, 'Initiative C'),  -- id 10
+-  (2, 'Initiative D');  -- id 11
+-
+-INSERT INTO "draft" ("initiative_id", "author_id", "content") VALUES
+-  ( 8, 1, 'Lorem ipsum...'),  -- id  8
+-  ( 9, 2, 'Lorem ipsum...'),  -- id  9
+-  (10, 3, 'Lorem ipsum...'),  -- id 10
+-  (11, 4, 'Lorem ipsum...');  -- id 11
+-
+-INSERT INTO "initiator" ("initiative_id", "member_id") VALUES
+-  ( 8, 1),
+-  ( 9, 2),
+-  (10, 3),
+-  (11, 4);
+-
+-INSERT INTO "supporter" ("member_id", "initiative_id", "draft_id") VALUES
+-  (1,  8,  8),
+-  (1,  9,  9),
+-  (1, 10, 10),
+-  (1, 11, 11),
+-  (2,  8,  8),
+-  (2,  9,  9),
+-  (2, 10, 10),
+-  (2, 11, 11),
+-  (3,  8,  8),
+-  (3,  9,  9),
+-  (3, 10, 10),
+-  (3, 11, 11),
+-  (4,  8,  8),
+-  (4,  9,  9),
+-  (4, 10, 10),
+-  (4, 11, 11),
+-  (5,  8,  8),
+-  (5,  9,  9),
+-  (5, 10, 10),
+-  (5, 11, 11),
+-  (6,  8,  8),
+-  (6,  9,  9),
+-  (6, 10, 10),
+-  (6, 11, 11);
+- 
+-SELECT "time_warp"();
+-SELECT "time_warp"();
+-SELECT "time_warp"();
+-
+-INSERT INTO "direct_voter" ("member_id", "issue_id") VALUES
+-  ( 8, 1),
+-  ( 9, 1),
+-  (11, 1),
+-  (12, 1),
+-  (14, 1),
+-  (19, 1),
+-  (20, 1),
+-  (21, 1);
+-
+-INSERT INTO "vote" ("member_id", "issue_id", "initiative_id", "grade") VALUES
+-  ( 8, 1, 1,  1),
+-  ( 8, 1, 2,  1),
+-  ( 8, 1, 3,  1),
+-  ( 8, 1, 4,  1),
+-  ( 8, 1, 5,  1),
+-  ( 8, 1, 6, -1),
+-  ( 8, 1, 7, -1),
+-  ( 9, 1, 1, -2),
+-  ( 9, 1, 2, -3),
+-  ( 9, 1, 3, -2),
+-  ( 9, 1, 4, -2),
+-  ( 9, 1, 5, -2),
+-  ( 9, 1, 6, -1),
+-  (11, 1, 1, -1),
+-  (11, 1, 2, -1),
+-  (11, 1, 3, -1),
+-  (11, 1, 4, -1),
+-  (11, 1, 5, -1),
+-  (11, 1, 6,  2),
+-  (11, 1, 7,  1),
+-  (12, 1, 1, -1),
+-  (12, 1, 3, -1),
+-  (12, 1, 4, -1),
+-  (12, 1, 5, -1),
+-  (12, 1, 6, -2),
+-  (12, 1, 7,  1),
+-  (14, 1, 1,  1),
+-  (14, 1, 2,  3),
+-  (14, 1, 3,  1),
+-  (14, 1, 4,  2),
+-  (14, 1, 5,  1),
+-  (14, 1, 6,  1),
+-  (14, 1, 7,  1),
+-  (19, 1, 1,  3),
+-  (19, 1, 2,  4),
+-  (19, 1, 3,  2),
+-  (19, 1, 4,  2),
+-  (19, 1, 5,  2),
+-  (19, 1, 7,  1),
+-  (20, 1, 1,  1),
+-  (20, 1, 2,  2),
+-  (20, 1, 3,  1),
+-  (20, 1, 4,  1),
+-  (20, 1, 5,  1),
+-  (21, 1, 5, -1);
+-
+-INSERT INTO "direct_voter" ("member_id", "issue_id") VALUES
+-  ( 1, 2),
+-  ( 2, 2),
+-  ( 3, 2),
+-  ( 4, 2),
+-  ( 5, 2),
+-  ( 6, 2),
+-  ( 7, 2),
+-  ( 8, 2),
+-  ( 9, 2),
+-  (10, 2),
+-  (11, 2),
+-  (12, 2),
+-  (13, 2),
+-  (14, 2),
+-  (15, 2),
+-  (16, 2),
+-  (17, 2),
+-  (18, 2),
+-  (19, 2),
+-  (20, 2);
+-
+-INSERT INTO "vote" ("member_id", "issue_id", "initiative_id", "grade") VALUES
+-  ( 1, 2,  8,  3),
+-  ( 1, 2,  9,  4),
+-  ( 1, 2, 10,  2),
+-  ( 1, 2, 11,  1),
+-  ( 2, 2,  8,  3),
+-  ( 2, 2,  9,  4),
+-  ( 2, 2, 10,  2),
+-  ( 2, 2, 11,  1),
+-  ( 3, 2,  8,  4),
+-  ( 3, 2,  9,  3),
+-  ( 3, 2, 10,  2),
+-  ( 3, 2, 11,  1),
+-  ( 4, 2,  8,  4),
+-  ( 4, 2,  9,  3),
+-  ( 4, 2, 10,  2),
+-  ( 4, 2, 11,  1),
+-  ( 5, 2,  8,  4),
+-  ( 5, 2,  9,  3),
+-  ( 5, 2, 10,  2),
+-  ( 5, 2, 11,  1),
+-  ( 6, 2,  8,  4),
+-  ( 6, 2,  9,  3),
+-  ( 6, 2, 10,  2),
+-  ( 6, 2, 11,  1),
+-  ( 7, 2,  8,  4),
+-  ( 7, 2,  9,  3),
+-  ( 7, 2, 10,  2),
+-  ( 7, 2, 11,  1),
+-  ( 8, 2,  8,  4),
+-  ( 8, 2,  9,  3),
+-  ( 8, 2, 10,  2),
+-  ( 8, 2, 11,  1),
+-  ( 9, 2,  8, -1),
+-  ( 9, 2,  9,  1),
+-  ( 9, 2, 10,  3),
+-  ( 9, 2, 11,  2),
+-  (10, 2,  8, -1),
+-  (10, 2,  9,  1),
+-  (10, 2, 10,  3),
+-  (10, 2, 11,  2),
+-  (11, 2,  8, -1),
+-  (11, 2,  9,  1),
+-  (11, 2, 10,  3),
+-  (11, 2, 11,  2),
+-  (12, 2,  8, -1),
+-  (12, 2,  9,  1),
+-  (12, 2, 10,  3),
+-  (12, 2, 11,  2),
+-  (13, 2,  8, -1),
+-  (13, 2,  9,  1),
+-  (13, 2, 10,  3),
+-  (13, 2, 11,  2),
+-  (14, 2,  8, -1),
+-  (14, 2,  9,  1),
+-  (14, 2, 10,  3),
+-  (14, 2, 11,  2),
+-  (15, 2,  8, -1),
+-  (15, 2,  9, -3),
+-  (15, 2, 10, -4),
+-  (15, 2, 11, -2),
+-  (16, 2,  8, -1),
+-  (16, 2,  9, -3),
+-  (16, 2, 10, -4),
+-  (16, 2, 11, -2),
+-  (17, 2,  8, -1),
+-  (17, 2,  9, -3),
+-  (17, 2, 10, -4),
+-  (17, 2, 11, -2),
+-  (18, 2,  8, -1),
+-  (18, 2,  9,  1),
+-  (18, 2, 10, -2),
+-  (18, 2, 11,  2),
+-  (19, 2,  8, -1),
+-  (19, 2,  9,  1),
+-  (19, 2, 10, -2),
+-  (19, 2, 11,  2),
+-  (20, 2,  8,  1),
+-  (20, 2,  9,  2),
+-  (20, 2, 10, -1),
+-  (20, 2, 11,  3);
++      SELECT MAX("id") INTO "issue_id_1_v" FROM "issue";
++
++      INSERT INTO "initiative" ("issue_id", "name") VALUES
++        ("issue_id_1_v", 'Initiative #1'),  -- id 1
++        ("issue_id_1_v", 'Initiative #2'),  -- id 2
++        ("issue_id_1_v", 'Initiative #3'),  -- id 3
++        ("issue_id_1_v", 'Initiative #4'),  -- id 4
++        ("issue_id_1_v", 'Initiative #5'),  -- id 5
++        ("issue_id_1_v", 'Initiative #6'),  -- id 6
++        ("issue_id_1_v", 'Initiative #7');  -- id 7
++
++      SELECT MAX("id")-6 INTO "initiative_id_base1_v" FROM "initiative";
++
++      INSERT INTO "draft" ("initiative_id", "author_id", "content") VALUES
++        ("initiative_id_base1_v"  , 17, 'Lorem ipsum...'),  -- id 1
++        ("initiative_id_base1_v"+1, 20, 'Lorem ipsum...'),  -- id 2
++        ("initiative_id_base1_v"+2, 20, 'Lorem ipsum...'),  -- id 3
++        ("initiative_id_base1_v"+3, 20, 'Lorem ipsum...'),  -- id 4
++        ("initiative_id_base1_v"+4, 14, 'Lorem ipsum...'),  -- id 5
++        ("initiative_id_base1_v"+5, 11, 'Lorem ipsum...'),  -- id 6
++        ("initiative_id_base1_v"+6, 12, 'Lorem ipsum...');  -- id 7
++
++      SELECT MAX("id")-6 INTO "draft_id_base1_v" FROM "draft";
++
++      INSERT INTO "initiator" ("initiative_id", "member_id") VALUES
++        ("initiative_id_base1_v"  , 17),
++        ("initiative_id_base1_v"  , 19),
++        ("initiative_id_base1_v"+1, 20),
++        ("initiative_id_base1_v"+2, 20),
++        ("initiative_id_base1_v"+3, 20),
++        ("initiative_id_base1_v"+4, 14),
++        ("initiative_id_base1_v"+5, 11),
++        ("initiative_id_base1_v"+6, 12);
++
++      INSERT INTO "supporter" ("member_id", "initiative_id", "draft_id") VALUES
++        ( 7,  "initiative_id_base1_v"+3,  "draft_id_base1_v"+3),
++        ( 8,  "initiative_id_base1_v"+1,  "draft_id_base1_v"+1),
++        (11,  "initiative_id_base1_v"+5,  "draft_id_base1_v"+5),
++        (12,  "initiative_id_base1_v"+6,  "draft_id_base1_v"+6),
++        (14,  "initiative_id_base1_v"  ,  "draft_id_base1_v"  ),
++        (14,  "initiative_id_base1_v"+1,  "draft_id_base1_v"+1),
++        (14,  "initiative_id_base1_v"+2,  "draft_id_base1_v"+2),
++        (14,  "initiative_id_base1_v"+3,  "draft_id_base1_v"+3),
++        (14,  "initiative_id_base1_v"+4,  "draft_id_base1_v"+4),
++        (14,  "initiative_id_base1_v"+5,  "draft_id_base1_v"+5),
++        (14,  "initiative_id_base1_v"+6,  "draft_id_base1_v"+6),
++        (17,  "initiative_id_base1_v"  ,  "draft_id_base1_v"  ),
++        (17,  "initiative_id_base1_v"+2,  "draft_id_base1_v"+2),
++        (19,  "initiative_id_base1_v"  ,  "draft_id_base1_v"  ),
++        (19,  "initiative_id_base1_v"+1,  "draft_id_base1_v"+1),
++        (20,  "initiative_id_base1_v"  ,  "draft_id_base1_v"  ),
++        (20,  "initiative_id_base1_v"+1,  "draft_id_base1_v"+1),
++        (20,  "initiative_id_base1_v"+2,  "draft_id_base1_v"+2),
++        (20,  "initiative_id_base1_v"+3,  "draft_id_base1_v"+3),
++        (20,  "initiative_id_base1_v"+4,  "draft_id_base1_v"+4);
++
++      INSERT INTO "suggestion" ("initiative_id", "author_id", "name", "content") VALUES
++        ("initiative_id_base1_v", 19, 'Suggestion #1', 'Lorem ipsum...');  -- id 1
++
++      SELECT MAX("id")   INTO "suggestion_id_base1_v" FROM "suggestion";
++
++      INSERT INTO "opinion" ("member_id", "suggestion_id", "degree", "fulfilled") VALUES
++        (14, "suggestion_id_base1_v", 2, FALSE);
++      INSERT INTO "opinion" ("member_id", "suggestion_id", "degree", "fulfilled") VALUES
++        (19, "suggestion_id_base1_v", 2, FALSE);
++
++
++
++      INSERT INTO "issue" ("area_id", "policy_id") VALUES
++        (3, 1);  -- id 2 
++
++      SELECT MAX("id") INTO "issue_id_2_v" FROM "issue";
++
++      INSERT INTO "initiative" ("issue_id", "name") VALUES
++        ("issue_id_2_v", 'Initiative A'),  -- id  8 
++        ("issue_id_2_v", 'Initiative B'),  -- id  9 
++        ("issue_id_2_v", 'Initiative C'),  -- id 10
++        ("issue_id_2_v", 'Initiative D');  -- id 11
++
++      SELECT MAX("id")-3 INTO "initiative_id_base2_v" FROM "initiative";
++
++      INSERT INTO "draft" ("initiative_id", "author_id", "content") VALUES
++        ("initiative_id_base2_v"  , 1, 'Lorem ipsum...'),  -- id  8
++        ("initiative_id_base2_v"+1, 2, 'Lorem ipsum...'),  -- id  9
++        ("initiative_id_base2_v"+2, 3, 'Lorem ipsum...'),  -- id 10
++        ("initiative_id_base2_v"+3, 4, 'Lorem ipsum...');  -- id 11
++
++      SELECT MAX("id")-3 INTO "draft_id_base2_v" FROM "draft";
++
++      INSERT INTO "initiator" ("initiative_id", "member_id") VALUES
++        ("initiative_id_base2_v"  , 1),
++        ("initiative_id_base2_v"+1, 2),
++        ("initiative_id_base2_v"+2, 3),
++        ("initiative_id_base2_v"+3, 4);
++
++      INSERT INTO "supporter" ("member_id", "initiative_id", "draft_id") VALUES
++        (1, "initiative_id_base2_v"  , "draft_id_base2_v"  ),
++        (1, "initiative_id_base2_v"+1, "draft_id_base2_v"+1),
++        (1, "initiative_id_base2_v"+2, "draft_id_base2_v"+2),
++        (1, "initiative_id_base2_v"+3, "draft_id_base2_v"+3),
++        (2, "initiative_id_base2_v"  , "draft_id_base2_v"  ),
++        (2, "initiative_id_base2_v"+1, "draft_id_base2_v"+1),
++        (2, "initiative_id_base2_v"+2, "draft_id_base2_v"+2),
++        (2, "initiative_id_base2_v"+3, "draft_id_base2_v"+3),
++        (3, "initiative_id_base2_v"  , "draft_id_base2_v"  ),
++        (3, "initiative_id_base2_v"+1, "draft_id_base2_v"+1),
++        (3, "initiative_id_base2_v"+2, "draft_id_base2_v"+2),
++        (3, "initiative_id_base2_v"+3, "draft_id_base2_v"+3),
++        (4, "initiative_id_base2_v"  , "draft_id_base2_v"  ),
++        (4, "initiative_id_base2_v"+1, "draft_id_base2_v"+1),
++        (4, "initiative_id_base2_v"+2, "draft_id_base2_v"+2),
++        (4, "initiative_id_base2_v"+3, "draft_id_base2_v"+3),
++        (5, "initiative_id_base2_v"  , "draft_id_base2_v"  ),
++        (5, "initiative_id_base2_v"+1, "draft_id_base2_v"+1),
++        (5, "initiative_id_base2_v"+2, "draft_id_base2_v"+2),
++        (5, "initiative_id_base2_v"+3, "draft_id_base2_v"+3),
++        (6, "initiative_id_base2_v"  , "draft_id_base2_v"  ),
++        (6, "initiative_id_base2_v"+1, "draft_id_base2_v"+1),
++        (6, "initiative_id_base2_v"+2, "draft_id_base2_v"+2),
++        (6, "initiative_id_base2_v"+3, "draft_id_base2_v"+3);
++
++      PERFORM "time_warp"();
++      PERFORM "time_warp"();
++      -- NOTE: When system_setting.ext_voting_service=TRUE this last time warp
++      -- does nothing. But there is a point in testing that it really does nothing.
++      PERFORM "time_warp"();
++
++      -- NOTE: When system_setting.ext_voting_service=TRUE, the public votes
++      -- are stored into these tables just the same as real votes when it is =FALSE.
++      INSERT INTO "direct_voter" ("member_id", "issue_id") VALUES
++        ( 8, "issue_id_1_v"),
++        ( 9, "issue_id_1_v"),
++        (11, "issue_id_1_v"),
++        (12, "issue_id_1_v"),
++        (14, "issue_id_1_v"),
++        (19, "issue_id_1_v"),
++        (20, "issue_id_1_v"),
++        (21, "issue_id_1_v");
++
++      INSERT INTO "vote" ("member_id", "issue_id", "initiative_id", "grade") VALUES
++        ( 8, "issue_id_1_v", "initiative_id_base1_v"  ,  1),
++        ( 8, "issue_id_1_v", "initiative_id_base1_v"+1,  1),
++        ( 8, "issue_id_1_v", "initiative_id_base1_v"+2,  1),
++        ( 8, "issue_id_1_v", "initiative_id_base1_v"+3,  1),
++        ( 8, "issue_id_1_v", "initiative_id_base1_v"+4,  1),
++        ( 8, "issue_id_1_v", "initiative_id_base1_v"+5, -1),
++        ( 8, "issue_id_1_v", "initiative_id_base1_v"+6, -1),
++        ( 9, "issue_id_1_v", "initiative_id_base1_v"  , -2),
++        ( 9, "issue_id_1_v", "initiative_id_base1_v"+1, -3),
++        ( 9, "issue_id_1_v", "initiative_id_base1_v"+2, -2),
++        ( 9, "issue_id_1_v", "initiative_id_base1_v"+3, -2),
++        ( 9, "issue_id_1_v", "initiative_id_base1_v"+4, -2),
++        ( 9, "issue_id_1_v", "initiative_id_base1_v"+5, -1),
++        (11, "issue_id_1_v", "initiative_id_base1_v"  , -1),
++        (11, "issue_id_1_v", "initiative_id_base1_v"+1, -1),
++        (11, "issue_id_1_v", "initiative_id_base1_v"+2, -1),
++        (11, "issue_id_1_v", "initiative_id_base1_v"+3, -1),
++        (11, "issue_id_1_v", "initiative_id_base1_v"+4, -1),
++        (11, "issue_id_1_v", "initiative_id_base1_v"+5,  2),
++        (11, "issue_id_1_v", "initiative_id_base1_v"+6,  1),
++        (12, "issue_id_1_v", "initiative_id_base1_v"  , -1),
++        (12, "issue_id_1_v", "initiative_id_base1_v"+2, -1),
++        (12, "issue_id_1_v", "initiative_id_base1_v"+3, -1),
++        (12, "issue_id_1_v", "initiative_id_base1_v"+4, -1),
++        (12, "issue_id_1_v", "initiative_id_base1_v"+5, -2),
++        (12, "issue_id_1_v", "initiative_id_base1_v"+6,  1),
++        (14, "issue_id_1_v", "initiative_id_base1_v"  ,  1),
++        (14, "issue_id_1_v", "initiative_id_base1_v"+1,  3),
++        (14, "issue_id_1_v", "initiative_id_base1_v"+2,  1),
++        (14, "issue_id_1_v", "initiative_id_base1_v"+3,  2),
++        (14, "issue_id_1_v", "initiative_id_base1_v"+4,  1),
++        (14, "issue_id_1_v", "initiative_id_base1_v"+5,  1),
++        (14, "issue_id_1_v", "initiative_id_base1_v"+6,  1),
++        (19, "issue_id_1_v", "initiative_id_base1_v"  ,  3),
++        (19, "issue_id_1_v", "initiative_id_base1_v"+1,  4),
++        (19, "issue_id_1_v", "initiative_id_base1_v"+2,  2),
++        (19, "issue_id_1_v", "initiative_id_base1_v"+3,  2),
++        (19, "issue_id_1_v", "initiative_id_base1_v"+4,  2),
++        (19, "issue_id_1_v", "initiative_id_base1_v"+6,  1),
++        (20, "issue_id_1_v", "initiative_id_base1_v"  ,  1),
++        (20, "issue_id_1_v", "initiative_id_base1_v"+1,  2),
++        (20, "issue_id_1_v", "initiative_id_base1_v"+2,  1),
++        (20, "issue_id_1_v", "initiative_id_base1_v"+3,  1),
++        (20, "issue_id_1_v", "initiative_id_base1_v"+4,  1),
++        (21, "issue_id_1_v", "initiative_id_base1_v"+4, -1);
++
++      INSERT INTO "direct_voter" ("member_id", "issue_id") VALUES
++        ( 1, "issue_id_2_v"),
++        ( 2, "issue_id_2_v"),
++        ( 3, "issue_id_2_v"),
++        ( 4, "issue_id_2_v"),
++        ( 5, "issue_id_2_v"),
++        ( 6, "issue_id_2_v"),
++        ( 7, "issue_id_2_v"),
++        ( 8, "issue_id_2_v"),
++        ( 9, "issue_id_2_v"),
++        (10, "issue_id_2_v"),
++        (11, "issue_id_2_v"),
++        (12, "issue_id_2_v"),
++        (13, "issue_id_2_v"),
++        (14, "issue_id_2_v"),
++        (15, "issue_id_2_v"),
++        (16, "issue_id_2_v"),
++        (17, "issue_id_2_v"),
++        (18, "issue_id_2_v"),
++        (19, "issue_id_2_v"),
++        (20, "issue_id_2_v");
++
++      INSERT INTO "vote" ("member_id", "issue_id", "initiative_id", "grade") VALUES
++        ( 1, "issue_id_2_v", "initiative_id_base2_v"  ,  3),
++        ( 1, "issue_id_2_v", "initiative_id_base2_v"+1,  4),
++        ( 1, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 1, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 2, "issue_id_2_v", "initiative_id_base2_v"  ,  3),
++        ( 2, "issue_id_2_v", "initiative_id_base2_v"+1,  4),
++        ( 2, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 2, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 3, "issue_id_2_v", "initiative_id_base2_v"  ,  4),
++        ( 3, "issue_id_2_v", "initiative_id_base2_v"+1,  3),
++        ( 3, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 3, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 4, "issue_id_2_v", "initiative_id_base2_v"  ,  4),
++        ( 4, "issue_id_2_v", "initiative_id_base2_v"+1,  3),
++        ( 4, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 4, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 5, "issue_id_2_v", "initiative_id_base2_v"  ,  4),
++        ( 5, "issue_id_2_v", "initiative_id_base2_v"+1,  3),
++        ( 5, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 5, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 6, "issue_id_2_v", "initiative_id_base2_v"  ,  4),
++        ( 6, "issue_id_2_v", "initiative_id_base2_v"+1,  3),
++        ( 6, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 6, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 7, "issue_id_2_v", "initiative_id_base2_v"  ,  4),
++        ( 7, "issue_id_2_v", "initiative_id_base2_v"+1,  3),
++        ( 7, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 7, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 8, "issue_id_2_v", "initiative_id_base2_v"  ,  4),
++        ( 8, "issue_id_2_v", "initiative_id_base2_v"+1,  3),
++        ( 8, "issue_id_2_v", "initiative_id_base2_v"+2,  2),
++        ( 8, "issue_id_2_v", "initiative_id_base2_v"+3,  1),
++        ( 9, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        ( 9, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        ( 9, "issue_id_2_v", "initiative_id_base2_v"+2,  3),
++        ( 9, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (10, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (10, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        (10, "issue_id_2_v", "initiative_id_base2_v"+2,  3),
++        (10, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (11, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (11, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        (11, "issue_id_2_v", "initiative_id_base2_v"+2,  3),
++        (11, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (12, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (12, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        (12, "issue_id_2_v", "initiative_id_base2_v"+2,  3),
++        (12, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (13, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (13, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        (13, "issue_id_2_v", "initiative_id_base2_v"+2,  3),
++        (13, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (14, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (14, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        (14, "issue_id_2_v", "initiative_id_base2_v"+2,  3),
++        (14, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (15, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (15, "issue_id_2_v", "initiative_id_base2_v"+1, -3),
++        (15, "issue_id_2_v", "initiative_id_base2_v"+2, -4),
++        (15, "issue_id_2_v", "initiative_id_base2_v"+3, -2),
++        (16, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (16, "issue_id_2_v", "initiative_id_base2_v"+1, -3),
++        (16, "issue_id_2_v", "initiative_id_base2_v"+2, -4),
++        (16, "issue_id_2_v", "initiative_id_base2_v"+3, -2),
++        (17, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (17, "issue_id_2_v", "initiative_id_base2_v"+1, -3),
++        (17, "issue_id_2_v", "initiative_id_base2_v"+2, -4),
++        (17, "issue_id_2_v", "initiative_id_base2_v"+3, -2),
++        (18, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (18, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        (18, "issue_id_2_v", "initiative_id_base2_v"+2, -2),
++        (18, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (19, "issue_id_2_v", "initiative_id_base2_v"  , -1),
++        (19, "issue_id_2_v", "initiative_id_base2_v"+1,  1),
++        (19, "issue_id_2_v", "initiative_id_base2_v"+2, -2),
++        (19, "issue_id_2_v", "initiative_id_base2_v"+3,  2),
++        (20, "issue_id_2_v", "initiative_id_base2_v"  ,  1),
++        (20, "issue_id_2_v", "initiative_id_base2_v"+1,  2),
++        (20, "issue_id_2_v", "initiative_id_base2_v"+2, -1),
++        (20, "issue_id_2_v", "initiative_id_base2_v"+3,  3);
++
++      -- When system_setting.ext_voting_service=FALSE, this closes voting and
++      -- calculates results. In this case we are done.
++      -- When it is =TRUE, this closes both private and public voting time.
++      PERFORM "time_warp"();
++      -- Extra check_issue does nothing...
++      PERFORM "check_everything"();
++
++      -- For system_setting.ext_voting_service=TRUE we now provide voting
++      -- results "from the external system", and then calculate ranks.
++      -- The results here are identical to what the public voting above ends up to, 
++      -- although in reality that may not be the case.
++      SELECT "ext_voting_service" INTO "ext_voting_service_v" FROM "system_setting";
++      IF "ext_voting_service_v" = TRUE THEN
++        INSERT INTO battle ("issue_id", "winning_initiative_id", "losing_initiative_id", "count")
++        VALUES
++              ("issue_id_1_v", "initiative_id_base1_v"+2, "initiative_id_base1_v"+1,     4),
++              ("issue_id_1_v", "initiative_id_base1_v"+2, "initiative_id_base1_v"+5,    10),
++              ("issue_id_1_v", "initiative_id_base1_v"+5, "initiative_id_base1_v"+6,     2),
++              ("issue_id_1_v", "initiative_id_base1_v"+5, "initiative_id_base1_v"+4,     7),
++              ("issue_id_1_v", "initiative_id_base1_v"+1, "initiative_id_base1_v"+5,    13),
++              ("issue_id_1_v", "initiative_id_base1_v"+4, "initiative_id_base1_v"+3,     0),
++              ("issue_id_1_v", "initiative_id_base1_v"+2, "initiative_id_base1_v"+4,     1),
++              ("issue_id_1_v", "initiative_id_base1_v"+1, "initiative_id_base1_v"+6,    11),
++              ("issue_id_1_v", "initiative_id_base1_v"+1, "initiative_id_base1_v"+4,    11),
++              ("issue_id_1_v", "initiative_id_base1_v"+2, "initiative_id_base1_v"+6,     8),
++              ("issue_id_1_v", "initiative_id_base1_v"+5, "initiative_id_base1_v"+1,     6),
++              ("issue_id_1_v",                  NULL  , "initiative_id_base1_v"+1,     6),
++              ("issue_id_1_v", "initiative_id_base1_v"+5, "initiative_id_base1_v"+2,     6),
++              ("issue_id_1_v",                  NULL  , "initiative_id_base1_v"+2,     8),
++              ("issue_id_1_v", "initiative_id_base1_v"+3,                  NULL  ,    11),
++              ("issue_id_1_v", "initiative_id_base1_v"+6, "initiative_id_base1_v"+3,     8),
++              ("issue_id_1_v", "initiative_id_base1_v"+5, "initiative_id_base1_v"+3,     6),
++              ("issue_id_1_v",                  NULL  , "initiative_id_base1_v"+3,     8),
++              ("issue_id_1_v", "initiative_id_base1_v"+3, "initiative_id_base1_v"+4,     4),
++              ("issue_id_1_v", "initiative_id_base1_v"+6, "initiative_id_base1_v"+2,     8),
++              ("issue_id_1_v", "initiative_id_base1_v"+3, "initiative_id_base1_v"+6,    11),
++              ("issue_id_1_v", "initiative_id_base1_v"+6, "initiative_id_base1_v"+1,     8),
++              ("issue_id_1_v", "initiative_id_base1_v"+4, "initiative_id_base1_v"+5,    10),
++              ("issue_id_1_v", "initiative_id_base1_v"+4, "initiative_id_base1_v"+2,     0),
++              ("issue_id_1_v", "initiative_id_base1_v"+4, "initiative_id_base1_v"+1,     4),
++              ("issue_id_1_v", "initiative_id_base1_v"+6, "initiative_id_base1_v"+5,     9),
++              ("issue_id_1_v", "initiative_id_base1_v"+2,                  NULL  ,    11),
++              ("issue_id_1_v", "initiative_id_base1_v"+1,                  NULL  ,    11),
++              ("issue_id_1_v", "initiative_id_base1_v"+6, "initiative_id_base1_v"+4,     9),
++              ("issue_id_1_v", "initiative_id_base1_v"+3, "initiative_id_base1_v"+2,     3),
++              ("issue_id_1_v", "initiative_id_base1_v"+5,                  NULL  ,     5),
++              ("issue_id_1_v", "initiative_id_base1_v"+3, "initiative_id_base1_v"+1,     4),
++              ("issue_id_1_v", "initiative_id_base1_v"+4, "initiative_id_base1_v"+6,     8),
++              ("issue_id_1_v", "initiative_id_base1_v"+1, "initiative_id_base1_v"+3,    10),
++              ("issue_id_1_v", "initiative_id_base1_v"+3, "initiative_id_base1_v"+5,    13),
++              ("issue_id_1_v", "initiative_id_base1_v"+2, "initiative_id_base1_v"+3,     0),
++              ("issue_id_1_v", "initiative_id_base1_v"+1, "initiative_id_base1_v"+2,    10),
++              ("issue_id_1_v", "initiative_id_base1_v"+4,                  NULL  ,    11),
++              ("issue_id_1_v",                  NULL  , "initiative_id_base1_v"+6,     3),
++              ("issue_id_1_v", "initiative_id_base1_v"+6,                  NULL  ,    10),
++              ("issue_id_1_v",                  NULL  , "initiative_id_base1_v"+4,     9),
++              ("issue_id_1_v",                  NULL  , "initiative_id_base1_v"+5,     9);
++        INSERT INTO battle ("issue_id", "winning_initiative_id", "losing_initiative_id", "count")
++        VALUES
++              ("issue_id_2_v", "initiative_id_base2_v"+1, "initiative_id_base2_v"  ,    11),
++              ("issue_id_2_v", "initiative_id_base2_v"+1, "initiative_id_base2_v"+2,    14),
++              ("issue_id_2_v", "initiative_id_base2_v"+3, "initiative_id_base2_v"+1,    12),
++              ("issue_id_2_v", "initiative_id_base2_v"+1,                  NULL  ,    17),
++              ("issue_id_2_v", "initiative_id_base2_v"+2,                  NULL  ,    14),
++              ("issue_id_2_v",                  NULL  , "initiative_id_base2_v"+1,     3),
++              ("issue_id_2_v", "initiative_id_base2_v"  , "initiative_id_base2_v"+2,    14),
++              ("issue_id_2_v", "initiative_id_base2_v"+2, "initiative_id_base2_v"+1,     6),
++              ("issue_id_2_v", "initiative_id_base2_v"  , "initiative_id_base2_v"+3,    11),
++              ("issue_id_2_v", "initiative_id_base2_v"+3,                  NULL  ,    17),
++              ("issue_id_2_v", "initiative_id_base2_v"+3, "initiative_id_base2_v"+2,     6),
++              ("issue_id_2_v", "initiative_id_base2_v"+1, "initiative_id_base2_v"+3,     8),
++              ("issue_id_2_v",                  NULL  , "initiative_id_base2_v"  ,    11),
++              ("issue_id_2_v", "initiative_id_base2_v"  , "initiative_id_base2_v"+1,     9),
++              ("issue_id_2_v",                  NULL  , "initiative_id_base2_v"+2,     6),
++              ("issue_id_2_v", "initiative_id_base2_v"+3, "initiative_id_base2_v"  ,     9),
++              ("issue_id_2_v", "initiative_id_base2_v"+2, "initiative_id_base2_v"+3,    14),
++              ("issue_id_2_v",                  NULL  , "initiative_id_base2_v"+3,     3),
++              ("issue_id_2_v", "initiative_id_base2_v"  ,                  NULL  ,     9),
++              ("issue_id_2_v", "initiative_id_base2_v"+2, "initiative_id_base2_v"  ,     6);
++
++       -- External system must also set issue.voter_count
++       UPDATE "issue" SET "voter_count"=20 WHERE "id"="issue_id_1_v";
++       UPDATE "issue" SET "voter_count"=20 WHERE "id"="issue_id_2_v";
++
++        -- External system will then call this:
++        PERFORM ext_results_available("issue_id_1_v");        
++        PERFORM ext_results_available("issue_id_2_v");        
++        -- And this will calculate ranks as usual
++        PERFORM "time_warp"();
++        -- Extra check_issue does nothing...
++        PERFORM "check_everything"();
++
++      END IF;
++
++      RETURN;
++    END;
++  $$;
++
++-- END OF "issue_test"();
+ 
+-SELECT "time_warp"();
++CREATE FUNCTION "verify_results"() RETURNS VOID
++  LANGUAGE 'plpgsql' VOLATILE AS $$
++    DECLARE
++      "event1_row"         "event"%ROWTYPE;
++      "event2_row"         "event"%ROWTYPE;
++      "issue1_row"         "issue"%ROWTYPE;
++      "issue2_row"         "issue"%ROWTYPE;
++      "initiative_row"     "initiative"%ROWTYPE;
++      "int_v"              INT4;
++      "s"                  VARCHAR(100);
++    BEGIN
++      SELECT * INTO "event2_row" FROM "event" WHERE "id" IN (SELECT MAX("id") FROM "event"); 
++      SELECT * INTO "event1_row" FROM "event" WHERE "id" = "event2_row"."id"-1; 
++      IF NOT "event1_row"."state" = 'finished_with_winner' THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for event related to issue #1.';
++      END IF;
++      IF NOT "event2_row"."state" = 'finished_without_winner' THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for event related to issue #2.';
++      END IF;
++
++      SELECT * INTO "issue2_row" FROM "issue" WHERE "id" IN (SELECT MAX("id") FROM "issue"); 
++      SELECT * INTO "issue1_row" FROM "issue" WHERE "id" = "issue2_row"."id"-1; 
++      IF NOT "issue1_row"."state" = 'finished_with_winner' THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for issue #1.';
++      END IF;
++      IF NOT "issue2_row"."state" = 'finished_without_winner' THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for issue #1.';
++      END IF;
++      IF NOT "issue1_row"."closed" > '1970-01-01 00:00:01+00'::TIMESTAMPTZ THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for issue #1. "closed" IS NULL.';
++      END IF;
++      IF NOT "issue2_row"."closed" > '1970-01-01 00:00:01+00'::TIMESTAMPTZ THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for issue #2. "closed" IS NULL.';
++      END IF;
++      IF "issue1_row"."status_quo_schulze_rank" != 5 THEN
++        RAISE EXCEPTION 'FAIL: Wrong status_quo_schulze_rank for issue #1. (should be 5).';
++      END IF;
++      IF "issue2_row"."status_quo_schulze_rank" != 5 THEN
++        RAISE EXCEPTION 'FAIL: Wrong status_quo_schulze_rank for issue #2. (should be 5).';
++      END IF;
++
++      SELECT * INTO "initiative_row" FROM "initiative" WHERE "id" IN (SELECT MIN("id") FROM "initiative" WHERE "issue_id" = "issue1_row"."id");
++      IF 
++        ("initiative_row"."admitted") OR
++        ("initiative_row"."winner") OR
++        ("initiative_row"."positive_votes" > 0) OR
++        ("initiative_row"."negative_votes" > 0) OR
++        ("initiative_row"."schulze_rank" > 0) OR
++        ("initiative_row"."rank" > 0)
++      THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for initiative #1 of issue #1.';
++      END IF;
++      SELECT * INTO "initiative_row" FROM "initiative" WHERE "id" = "initiative_row"."id"+1;
++      IF 
++        (NOT "initiative_row"."admitted") OR
++        (NOT "initiative_row"."winner") OR
++        ("initiative_row"."positive_votes"!=11) OR
++        ("initiative_row"."negative_votes"!=6) OR
++        ("initiative_row"."schulze_rank"!=1) OR
++        ("initiative_row"."rank"!=1)
++      THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for initiative #2 of issue #1.';
++      END IF;
++      SELECT COUNT(*) INTO "int_v" FROM "initiative" 
++             WHERE "id" >= "initiative_row"."id"+1 AND "id" <= "initiative_row"."id"+5 AND NOT "winner";
++      IF "int_v" != 5  THEN
++        RAISE EXCEPTION 'FAIL: Wrong amount of losing initiatives for issue #1.';
++      END IF;
++
++      SELECT * INTO "initiative_row" FROM "initiative" WHERE "id" IN (SELECT MIN("id") FROM "initiative" WHERE "issue_id" = "issue2_row"."id");
++      IF 
++        (NOT "initiative_row"."admitted") OR
++        ("initiative_row"."winner") OR
++        ("initiative_row"."positive_votes"!=9) OR
++        ("initiative_row"."negative_votes"!=11) OR
++        ("initiative_row"."schulze_rank"!=1) OR
++        ("initiative_row"."rank"!=1)
++      THEN
++        RAISE EXCEPTION 'FAIL: Wrong state for initiative #1 of issue #2.';
++      END IF;
++      SELECT * INTO "initiative_row" FROM "initiative" WHERE "id" = "initiative_row"."id"+1;
++      IF 
++        (NOT "initiative_row"."admitted") OR
++        ("initiative_row"."winner") OR
++        ("initiative_row"."positive_votes"!=17) OR
++        ("initiative_row"."negative_votes"!=3) OR
++        ("initiative_row"."schulze_rank"!=2) OR
++        ("initiative_row"."rank"!=2)
++      THEN
++         RAISE EXCEPTION 'FAIL: Wrong state for initiative #2 of issue #2.';
++     END IF;
++      SELECT COUNT(*) INTO "int_v" FROM "initiative" 
++             WHERE "id" >= "initiative_row"."id"-1 AND "id" <= "initiative_row"."id"+2 AND NOT "winner";
++      IF "int_v" != 4  THEN
++        RAISE EXCEPTION 'FAIL: Wrong amount of losing initiatives for issue #2';
++      END IF;
++      RETURN;
++    END;
++  $$;
++
++
++
++-- Call issue_test() with the default system_setting
++SELECT "issue_test"();
++COMMIT;
++BEGIN;
++SELECT "verify_results"();
++COMMIT;
++
++-- Call issue_test() for simulating external voting service
++BEGIN;
++DELETE FROM "system_setting";
++INSERT INTO "system_setting" ("member_ttl", "ext_voting_service")
++  VALUES ('1 year', TRUE);
++SELECT "issue_test"();
++COMMIT;
++BEGIN;
++SELECT "verify_results"();
++COMMIT;
++BEGIN;
+ 
++---------- End of core tests -----------------------------------
++-- Dropping helper function
+ DROP FUNCTION "time_warp"();
++-- Back to default system setting
++DELETE FROM "system_setting";
+ 
+ -- Test policies that help with testing specific frontend parts

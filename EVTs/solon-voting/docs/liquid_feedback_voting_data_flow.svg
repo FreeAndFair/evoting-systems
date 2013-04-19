@@ -1,0 +1,2466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="liquid_feedback_voting_data_flow.svg">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect7820"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect7816"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6599"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6403"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5075"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4822"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path4383"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3767"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3763"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-6"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-58"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-88"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-85"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-589"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3-4"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-2"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3-4-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6809"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6811"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-3"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-58-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6403-6"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6599-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6818"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6820"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6823"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6825"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-5"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6828"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6830"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-7"
+       is_visible="true" />
+    <linearGradient
+       y2="43.4874"
+       x2="234.9888"
+       y1="-2.0796001"
+       x1="234.9888"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_1_-1">
+      <stop
+         id="stop3982-4"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop3984-1"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop3986-2"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop3988-4"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop3990-6"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop3992-9"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.938202"
+       x2="108.5477"
+       y1="10.8496"
+       x1="83.852501"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_2_-3">
+      <stop
+         id="stop3999-6"
+         style="stop-color:#D1E4A5"
+         offset="0" />
+      <stop
+         id="stop4001-4"
+         style="stop-color:#ACD479"
+         offset="0.5" />
+      <stop
+         id="stop4003-1"
+         style="stop-color:#76B83F"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="36.175201"
+       x2="82.073898"
+       y1="10.7197"
+       x1="58.209499"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_3_-0">
+      <stop
+         id="stop4008-3"
+         style="stop-color:#F37E5F"
+         offset="0" />
+      <stop
+         id="stop4010-4"
+         style="stop-color:#EC1C24"
+         offset="0.5" />
+      <stop
+         id="stop4012-9"
+         style="stop-color:#CF232A"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="32.586399"
+       x2="48.277"
+       y1="9.5396004"
+       x1="40.476601"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_4_-0">
+      <stop
+         id="stop4017-3"
+         style="stop-color:#2BC4F3"
+         offset="0" />
+      <stop
+         id="stop4019-1"
+         style="stop-color:#00AEEE"
+         offset="0.5" />
+      <stop
+         id="stop4021-4"
+         style="stop-color:#0095DA"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="36.206699"
+       x2="30.7013"
+       y1="9.2593002"
+       x1="19.1777"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_5_-6">
+      <stop
+         id="stop4026-3"
+         style="stop-color:#2BC4F3"
+         offset="0" />
+      <stop
+         id="stop4028-6"
+         style="stop-color:#00AEEE"
+         offset="0.5" />
+      <stop
+         id="stop4030-4"
+         style="stop-color:#0095DA"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="35.430901"
+       x2="132.92551"
+       y1="11.3696"
+       x1="115.1201"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_6_-8">
+      <stop
+         id="stop4035-2"
+         style="stop-color:#FFE7A3"
+         offset="0" />
+      <stop
+         id="stop4037-5"
+         style="stop-color:#FFCA05"
+         offset="0.5" />
+      <stop
+         id="stop4039-4"
+         style="stop-color:#FAAC18"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.0219"
+       x2="299.32669"
+       y1="9.2631998"
+       x1="299.32669"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_7_-2">
+      <stop
+         id="stop4044-5"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop4046-9"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop4048-1"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop4050-9"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop4052-3"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop4054-2"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.0219"
+       x2="443.56451"
+       y1="9.2631998"
+       x1="443.56451"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_8_-1">
+      <stop
+         id="stop4059-8"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop4061-8"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop4063-1"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop4065-3"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop4067-6"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop4069-7"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.0219"
+       x2="153.7578"
+       y1="9.2631998"
+       x1="153.7578"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_9_-4">
+      <stop
+         id="stop4074-7"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop4076-0"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop4078-0"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop4080-6"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop4082-1"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop4084-4"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="32.694"
+       x2="156.96809"
+       y1="12.6055"
+       x1="150.1689"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_10_-7">
+      <stop
+         id="stop4091-7"
+         style="stop-color:#2BC4F3"
+         offset="0" />
+      <stop
+         id="stop4093-0"
+         style="stop-color:#00AEEE"
+         offset="0.5" />
+      <stop
+         id="stop4095-2"
+         style="stop-color:#0095DA"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="29.825399"
+       x2="154.6628"
+       y1="12.1348"
+       x1="153.0298"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_11_-5">
+      <stop
+         id="stop4100-6"
+         style="stop-color:#64C08A"
+         offset="0" />
+      <stop
+         id="stop4102-2"
+         style="stop-color:#00A550"
+         offset="0.5" />
+      <stop
+         id="stop4104-9"
+         style="stop-color:#00914C"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="32.093899"
+       x2="446.56299"
+       y1="12.207"
+       x1="439.832"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_12_-4">
+      <stop
+         id="stop4109-6"
+         style="stop-color:#64C08A"
+         offset="0" />
+      <stop
+         id="stop4111-1"
+         style="stop-color:#00A550"
+         offset="0.5" />
+      <stop
+         id="stop4113-9"
+         style="stop-color:#00914C"
+         offset="1" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3763-5"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3767-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-7"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-7-3"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7664"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7666"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-5-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-76"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-28"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-78"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-1-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-02"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-1-3"
+       is_visible="true" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="514.49802"
+     inkscape:cy="628.27514"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="753"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:0.69893050000000001;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect7848-0"
+       width="326.5997"
+       height="671.42859"
+       x="23.839005"
+       y="46.933609"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect7848"
+       width="668.57141"
+       height="671.42859"
+       x="406.85715"
+       y="47.219326"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <g
+       id="g3769"
+       transform="translate(-52.857143,-85.428571)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <path
+         transform="translate(1.0101525,-2)"
+         d="m 159.6041,183.12592 c 0,10.32099 -8.36683,18.68782 -18.68782,18.68782 -10.321,0 -18.68783,-8.36683 -18.68783,-18.68782 0,-10.321 8.36683,-18.68783 18.68783,-18.68783 10.32099,0 18.68782,8.36683 18.68782,18.68783 z"
+         sodipodi:ry="18.687822"
+         sodipodi:rx="18.687822"
+         sodipodi:cy="183.12592"
+         sodipodi:cx="140.91628"
+         id="path2987"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2989"
+         d="m 141.40105,199.81374 0,40.4061"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         inkscape:path-effect="#path-effect3763"
+         id="path3761"
+         d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.198,207.89496 37.37564,0"
+         inkscape:path-effect="#path-effect3767"
+         id="path3765"
+         d="m 123.198,207.89496 37.37564,0"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <switch
+       id="switch3973"
+       transform="matrix(0.19771778,0,0,0.17798965,141.75268,118.93338)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+	<foreignObject
+   id="foreignObject3975"
+   height="1"
+   width="1"
+   y="0"
+   x="0"
+   requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/">
+		<i:pgfRef
+   xlink:href="#adobe_illustrator_pgf">
+		</i:pgfRef>
+
+	</foreignObject>
+
+	<g
+   id="g3977"
+   i:extraneous="self">
+		<g
+   id="g3979">
+			<linearGradient
+   y2="43.4874"
+   x2="234.9888"
+   y1="-2.0796001"
+   x1="234.9888"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_1_">
+				<stop
+   id="stop3982"
+   style="stop-color:#FFFFFF"
+   offset="0" />
+
+				<stop
+   id="stop3984"
+   style="stop-color:#FBFBFB"
+   offset="0.3992" />
+
+				<stop
+   id="stop3986"
+   style="stop-color:#F3F3F4"
+   offset="0.6213" />
+
+				<stop
+   id="stop3988"
+   style="stop-color:#E7E8E9"
+   offset="0.7999" />
+
+				<stop
+   id="stop3990"
+   style="stop-color:#D7D9DA"
+   offset="0.9545" />
+
+				<stop
+   id="stop3992"
+   style="stop-color:#D1D3D4"
+   offset="1" />
+
+			</linearGradient>
+
+			<rect
+   id="rect3994"
+   height="41.507999"
+   width="469.979"
+   stroke-miterlimit="10"
+   x="0"
+   y="0"
+   style="fill:url(#SVGID_1_);stroke:#000000;stroke-miterlimit:10" />
+
+			<rect
+   id="rect3996"
+   height="323.94901"
+   width="469.979"
+   stroke-miterlimit="10"
+   y="40.25"
+   x="0"
+   style="fill:#ffffff;stroke:#000000;stroke-miterlimit:10" />
+
+			<linearGradient
+   y2="34.938202"
+   x2="108.5477"
+   y1="10.8496"
+   x1="83.852501"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_2_">
+				<stop
+   id="stop3999"
+   style="stop-color:#D1E4A5"
+   offset="0" />
+
+				<stop
+   id="stop4001"
+   style="stop-color:#ACD479"
+   offset="0.5" />
+
+				<stop
+   id="stop4003"
+   style="stop-color:#76B83F"
+   offset="1" />
+
+			</linearGradient>
+
+			<path
+   id="path4005"
+   d="m 84.534,22.066 c 0,0 -3.439,-4.256 4.337,-9.691 7.776,-5.436 14.416,1.975 14.416,1.975 l -3.765,2.631 c 0,0 -2.722,-5.286 -8.616,-1.166 -5.894,4.12 -3.128,7.261 -3.128,7.261 l 4.003,0.584 -5.966,4.17 -3.972,-5.682 2.691,-0.082 z m 23.42,-1.187 -4.002,-5.725 -6.012,4.202 4.034,0.589 c 0,0 2.787,3.165 -3.152,7.316 -5.939,4.151 -8.683,-1.174 -8.683,-1.174 l -3.793,2.651 c 0,0 6.689,7.468 14.526,1.991 7.836,-5.478 4.369,-9.766 4.369,-9.766 l 2.713,-0.084 z"
+   inkscape:connector-curvature="0"
+   style="fill:url(#SVGID_2_)" />
+
+			<linearGradient
+   y2="36.175201"
+   x2="82.073898"
+   y1="10.7197"
+   x1="58.209499"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_3_">
+				<stop
+   id="stop4008"
+   style="stop-color:#F37E5F"
+   offset="0" />
+
+				<stop
+   id="stop4010"
+   style="stop-color:#EC1C24"
+   offset="0.5" />
+
+				<stop
+   id="stop4012"
+   style="stop-color:#CF232A"
+   offset="1" />
+
+			</linearGradient>
+
+			<polygon
+   id="polygon4014"
+   points="68.375,25.821 75.286,32.732 79.544,28.473 72.634,21.563 79.544,14.652 75.286,10.393 68.375,17.304 61.464,10.393 57.205,14.652 64.116,21.563 57.205,28.473 61.464,32.732 "
+   style="fill:url(#SVGID_3_)" />
+
+			<linearGradient
+   y2="32.586399"
+   x2="48.277"
+   y1="9.5396004"
+   x1="40.476601"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_4_">
+				<stop
+   id="stop4017"
+   style="stop-color:#2BC4F3"
+   offset="0" />
+
+				<stop
+   id="stop4019"
+   style="stop-color:#00AEEE"
+   offset="0.5" />
+
+				<stop
+   id="stop4021"
+   style="stop-color:#0095DA"
+   offset="1" />
+
+			</linearGradient>
+
+			<polygon
+   id="polygon4023"
+   points="54.148,21.575 38.74,10.383 38.74,32.767 "
+   style="fill:url(#SVGID_4_)" />
+
+			<linearGradient
+   y2="36.206699"
+   x2="30.7013"
+   y1="9.2593002"
+   x1="19.1777"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_5_">
+				<stop
+   id="stop4026"
+   style="stop-color:#2BC4F3"
+   offset="0" />
+
+				<stop
+   id="stop4028"
+   style="stop-color:#00AEEE"
+   offset="0.5" />
+
+				<stop
+   id="stop4030"
+   style="stop-color:#0095DA"
+   offset="1" />
+
+			</linearGradient>
+
+			<polygon
+   id="polygon4032"
+   points="14.347,21.575 29.755,10.383 29.755,32.767 "
+   style="fill:url(#SVGID_5_)" />
+
+			<linearGradient
+   y2="35.430901"
+   x2="132.92551"
+   y1="11.3696"
+   x1="115.1201"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_6_">
+				<stop
+   id="stop4035"
+   style="stop-color:#FFE7A3"
+   offset="0" />
+
+				<stop
+   id="stop4037"
+   style="stop-color:#FFCA05"
+   offset="0.5" />
+
+				<stop
+   id="stop4039"
+   style="stop-color:#FAAC18"
+   offset="1" />
+
+			</linearGradient>
+
+			<polygon
+   id="polygon4041"
+   points="127.079,32.946 133.641,32.946 133.641,20.079 131.731,18.103 131.731,11.954 128.202,11.954 128.202,14.454 124.275,10.393 114.909,20.079 114.909,32.946 121.625,32.946 121.625,24.993 127.079,24.993 "
+   style="fill:url(#SVGID_6_)" />
+
+			<linearGradient
+   y2="34.0219"
+   x2="299.32669"
+   y1="9.2631998"
+   x1="299.32669"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_7_">
+				<stop
+   id="stop4044"
+   style="stop-color:#FFFFFF"
+   offset="0" />
+
+				<stop
+   id="stop4046"
+   style="stop-color:#FBFBFB"
+   offset="0.3992" />
+
+				<stop
+   id="stop4048"
+   style="stop-color:#F3F3F4"
+   offset="0.6213" />
+
+				<stop
+   id="stop4050"
+   style="stop-color:#E7E8E9"
+   offset="0.7999" />
+
+				<stop
+   id="stop4052"
+   style="stop-color:#D7D9DA"
+   offset="0.9545" />
+
+				<stop
+   id="stop4054"
+   style="stop-color:#D1D3D4"
+   offset="1" />
+
+			</linearGradient>
+
+			<rect
+   id="rect4056"
+   height="22.552999"
+   width="315.897"
+   stroke-miterlimit="10"
+   y="10.393"
+   x="141.37801"
+   style="fill:url(#SVGID_7_);stroke:#000000;stroke-miterlimit:10" />
+
+			<linearGradient
+   y2="34.0219"
+   x2="443.56451"
+   y1="9.2631998"
+   x1="443.56451"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_8_">
+				<stop
+   id="stop4059"
+   style="stop-color:#FFFFFF"
+   offset="0" />
+
+				<stop
+   id="stop4061"
+   style="stop-color:#FBFBFB"
+   offset="0.3992" />
+
+				<stop
+   id="stop4063"
+   style="stop-color:#F3F3F4"
+   offset="0.6213" />
+
+				<stop
+   id="stop4065"
+   style="stop-color:#E7E8E9"
+   offset="0.7999" />
+
+				<stop
+   id="stop4067"
+   style="stop-color:#D7D9DA"
+   offset="0.9545" />
+
+				<stop
+   id="stop4069"
+   style="stop-color:#D1D3D4"
+   offset="1" />
+
+			</linearGradient>
+
+			<rect
+   id="rect4071"
+   height="22.552999"
+   width="27.422001"
+   stroke-miterlimit="10"
+   y="10.393"
+   x="429.854"
+   style="fill:url(#SVGID_8_);stroke:#000000;stroke-miterlimit:10" />
+
+			<linearGradient
+   y2="34.0219"
+   x2="153.7578"
+   y1="9.2631998"
+   x1="153.7578"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_9_">
+				<stop
+   id="stop4074"
+   style="stop-color:#FFFFFF"
+   offset="0" />
+
+				<stop
+   id="stop4076"
+   style="stop-color:#FBFBFB"
+   offset="0.3992" />
+
+				<stop
+   id="stop4078"
+   style="stop-color:#F3F3F4"
+   offset="0.6213" />
+
+				<stop
+   id="stop4080"
+   style="stop-color:#E7E8E9"
+   offset="0.7999" />
+
+				<stop
+   id="stop4082"
+   style="stop-color:#D7D9DA"
+   offset="0.9545" />
+
+				<stop
+   id="stop4084"
+   style="stop-color:#D1D3D4"
+   offset="1" />
+
+			</linearGradient>
+
+			<rect
+   id="rect4086"
+   height="22.552999"
+   width="24.759001"
+   stroke-miterlimit="10"
+   y="10.393"
+   x="141.37801"
+   style="fill:url(#SVGID_9_);stroke:#000000;stroke-miterlimit:10" />
+
+			<g
+   id="g4088">
+				<linearGradient
+   y2="32.694"
+   x2="156.96809"
+   y1="12.6055"
+   x1="150.1689"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_10_">
+					<stop
+   id="stop4091"
+   style="stop-color:#2BC4F3"
+   offset="0" />
+
+					<stop
+   id="stop4093"
+   style="stop-color:#00AEEE"
+   offset="0.5" />
+
+					<stop
+   id="stop4095"
+   style="stop-color:#0095DA"
+   offset="1" />
+
+				</linearGradient>
+
+				<circle
+   id="circle4097"
+   r="9.2379999"
+   cy="21.559999"
+   cx="153.19901"
+   sodipodi:cx="153.19901"
+   sodipodi:cy="21.559999"
+   sodipodi:rx="9.2379999"
+   sodipodi:ry="9.2379999"
+   style="fill:url(#SVGID_10_)"
+   d="m 162.43701,21.559999 c 0,5.102007 -4.136,9.238 -9.238,9.238 -5.10201,0 -9.238,-4.135993 -9.238,-9.238 0,-5.102006 4.13599,-9.237999 9.238,-9.237999 5.102,0 9.238,4.135993 9.238,9.237999 z" />
+
+				<linearGradient
+   y2="29.825399"
+   x2="154.6628"
+   y1="12.1348"
+   x1="153.0298"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_11_">
+					<stop
+   id="stop4100"
+   style="stop-color:#64C08A"
+   offset="0" />
+
+					<stop
+   id="stop4102"
+   style="stop-color:#00A550"
+   offset="0.5" />
+
+					<stop
+   id="stop4104"
+   style="stop-color:#00914C"
+   offset="1" />
+
+				</linearGradient>
+
+				<path
+   id="path4106"
+   d="m 146.667,21.287 c -1.903,-3.49 -1.711,-3.896 -1.711,-3.896 l 0,0 1.349,-0.64 c 0.098,-0.801 0.566,-1.711 1.068,-2.359 0.38,-0.309 0.786,-0.588 1.213,-0.834 0.533,0.291 2.255,0.697 2.164,1.582 -0.091,0.886 0.279,0.613 0.003,1.974 -0.275,1.361 -1.149,1.271 0.104,1.633 1.253,0.363 2.342,-1.814 2.342,-1.814 0,0 1.633,1.542 1.633,2.268 0,0.726 0.182,-0.272 -0.906,1.361 -1.089,1.633 -0.908,1.814 -2.45,1.633 -1.542,-0.182 -2.631,-1.633 -2.903,-1.724 -0.272,-0.091 0.454,-0.998 -0.726,-0.091 -1.18,0.907 0.726,4.401 -1.18,0.907 z m 15.699,-0.854 c -0.285,-2.345 -1.447,-4.417 -3.151,-5.881 -0.128,0.151 -0.309,0.445 -0.663,1.02 -1.451,2.359 -1.731,2.994 -1.728,3.901 0.003,0.907 -0.449,2.359 0.73,2.087 1.179,-0.272 1.724,0.454 2.631,0 0.677,-0.339 1.304,-0.527 2.181,-1.127 z m -9.167,10.364 c 1.231,0 2.404,-0.243 3.479,-0.68 -0.666,-2.026 -1.21,-3.387 -1.21,-3.387 0,0 0,-0.635 -0.182,-1.089 -0.182,-0.454 -1.542,-1.814 -1.542,-1.814 -0.272,0 -1.271,0.635 -1.725,1.633 -0.453,0.998 -1.995,0.726 -0.635,2.268 1.354,1.534 3.061,0.255 0.938,3.026 0.289,0.028 0.581,0.043 0.877,0.043 z"
+   inkscape:connector-curvature="0"
+   style="fill:url(#SVGID_11_)" />
+
+			</g>
+
+			<linearGradient
+   y2="32.093899"
+   x2="446.56299"
+   y1="12.207"
+   x1="439.832"
+   gradientUnits="userSpaceOnUse"
+   id="SVGID_12_">
+				<stop
+   id="stop4109"
+   style="stop-color:#64C08A"
+   offset="0" />
+
+				<stop
+   id="stop4111"
+   style="stop-color:#00A550"
+   offset="0.5" />
+
+				<stop
+   id="stop4113"
+   style="stop-color:#00914C"
+   offset="1" />
+
+			</linearGradient>
+
+			<polygon
+   id="polygon4115"
+   points="433.104,17.568 433.104,25.771 444.873,25.771 441.059,31.327 454.354,21.669 441.059,12.012 444.873,17.568 "
+   style="fill:url(#SVGID_12_)" />
+
+		</g>
+
+	</g>
+
+</switch>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="186.83859"
+       y="144.07646"
+       id="text4201"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="186.83859"
+         y="144.07646"
+         id="tspan4207">LQFB</tspan><tspan
+         sodipodi:role="line"
+         x="186.83859"
+         y="159.07646"
+         id="tspan4205">Frontend</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:3.08622861000000004;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3.08622880000000022, 12.34491520999999992;stroke-dashoffset:0"
+       id="rect4209"
+       width="287.96326"
+       height="439.20828"
+       x="40.304089"
+       y="255.95198"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="47.142857"
+       y="265.64792"
+       id="text4227"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4229"
+         x="47.142857"
+         y="265.64792">LQFB Core</tspan></text>
+    <g
+       id="g4276"
+       transform="translate(-282.85714,138.28572)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5"
+           sodipodi:role="line">vote</tspan></text>
+    </g>
+    <g
+       id="g4276-4"
+       transform="translate(-167.53361,139.87058)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-4">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-82"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-7"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-3"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-9"
+           sodipodi:role="line">delegation</tspan></text>
+    </g>
+    <g
+       id="g4276-3"
+       transform="translate(-283.81932,245.01344)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-7">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-89"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-5"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-0"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-4"
+           sodipodi:role="line">direct_voter</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 157.54582,185.21933 -24.68867,90"
+       id="path4372"
+       inkscape:path-effect="#path-effect4374"
+       inkscape:original-d="m 157.54582,185.21933 -24.68867,90"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 198.48143,183.6479 24.96545,90"
+       id="path4372-6"
+       inkscape:path-effect="#path-effect4374-6"
+       inkscape:original-d="m 198.48143,183.6479 24.96545,90"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 69.399057,351.1479 1.43359,32.33365"
+       id="path4372-9"
+       inkscape:path-effect="#path-effect4374-0"
+       inkscape:original-d="m 69.399057,351.1479 1.43359,32.33365"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <g
+       id="g6601"
+       transform="translate(-52.857143,-65.428571)"
+       style="stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 262.85714,482.36218 -54.28571,0"
+         inkscape:path-effect="#path-effect6403"
+         id="path6401"
+         d="m 262.85714,482.36218 -54.28571,0"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend-8)" />
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 262.85714,419.50504 0,64.28571"
+         inkscape:path-effect="#path-effect6599"
+         id="path6597"
+         d="m 262.85714,419.50504 0,64.28571"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="212.57477"
+       y="374.61331"
+       id="text4227-7"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4229-3"
+         x="212.57477"
+         y="374.61331">add</tspan><tspan
+         sodipodi:role="line"
+         x="212.57477"
+         y="389.61331"
+         id="tspan6626">delegated</tspan><tspan
+         sodipodi:role="line"
+         x="212.57477"
+         y="404.61331"
+         id="tspan6628">&quot;weight&quot;</tspan></text>
+    <g
+       id="g4276-3-1"
+       transform="translate(-283.24789,356.44201)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-7-1">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-89-8"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-5-0"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-0-3"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-4-1"
+           sodipodi:role="line">battle</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 68.329377,460.48107 1.43359,32.33365"
+       id="path4372-9-9"
+       inkscape:path-effect="#path-effect4374-0-3"
+       inkscape:original-d="m 68.329377,460.48107 1.43359,32.33365"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <g
+       id="g4276-3-1-2"
+       transform="translate(-281.81933,465.29915)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-7-1-5">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-89-8-4"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-5-0-2"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-0-3-3"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-4-1-9"
+           sodipodi:role="line">initiative</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 74.329377,573.33822 1.43359,32.33365"
+       id="path4372-9-9-8"
+       inkscape:path-effect="#path-effect4374-0-3-4"
+       inkscape:original-d="m 74.329377,573.33822 1.43359,32.33365"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="80.014656"
+       y="589.24414"
+       id="text4227-7-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="80.014656"
+         y="589.24414"
+         id="tspan6628-3">calculate_ranks()</tspan></text>
+    <g
+       id="g3769-0"
+       transform="translate(446.28571,-87.994266)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <path
+         transform="translate(1.0101525,-2)"
+         d="m 159.6041,183.12592 c 0,10.32099 -8.36683,18.68782 -18.68782,18.68782 -10.321,0 -18.68783,-8.36683 -18.68783,-18.68782 0,-10.321 8.36683,-18.68783 18.68783,-18.68783 10.32099,0 18.68782,8.36683 18.68782,18.68783 z"
+         sodipodi:ry="18.687822"
+         sodipodi:rx="18.687822"
+         sodipodi:cy="183.12592"
+         sodipodi:cx="140.91628"
+         id="path2987-1"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2989-6"
+         d="m 141.40105,199.81374 0,40.4061"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         inkscape:path-effect="#path-effect3763-5"
+         id="path3761-2"
+         d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.198,207.89496 37.37564,0"
+         inkscape:path-effect="#path-effect3767-2"
+         id="path3765-1"
+         d="m 123.198,207.89496 37.37564,0"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <switch
+       id="switch3973-4"
+       transform="matrix(0.44975453,0,0,0.17798965,640.89554,116.36768)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <foreignObject
+         id="foreignObject3975-5"
+         height="1"
+         width="1"
+         y="0"
+         x="0"
+         requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/">
+        <i:pgfRef
+           xlink:href="#adobe_illustrator_pgf" />
+      </foreignObject>
+      <g
+         id="g3977-4"
+         i:extraneous="self">
+        <g
+           id="g3979-3">
+          <linearGradient
+             y2="43.4874"
+             x2="234.9888"
+             y1="-2.0796001"
+             x1="234.9888"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6904">
+            <stop
+               id="stop6906"
+               style="stop-color:#FFFFFF"
+               offset="0" />
+            <stop
+               id="stop6908"
+               style="stop-color:#FBFBFB"
+               offset="0.3992" />
+            <stop
+               id="stop6910"
+               style="stop-color:#F3F3F4"
+               offset="0.6213" />
+            <stop
+               id="stop6912"
+               style="stop-color:#E7E8E9"
+               offset="0.7999" />
+            <stop
+               id="stop6914"
+               style="stop-color:#D7D9DA"
+               offset="0.9545" />
+            <stop
+               id="stop6916"
+               style="stop-color:#D1D3D4"
+               offset="1" />
+          </linearGradient>
+          <rect
+             id="rect3994-2"
+             height="41.507999"
+             width="469.979"
+             stroke-miterlimit="10"
+             x="0"
+             y="0"
+             style="fill:url(#SVGID_1_-1);stroke:#000000;stroke-miterlimit:10" />
+          <rect
+             id="rect3996-0"
+             height="323.94901"
+             width="469.979"
+             stroke-miterlimit="10"
+             y="40.25"
+             x="0"
+             style="fill:#ffffff;stroke:#000000;stroke-miterlimit:10" />
+          <linearGradient
+             y2="34.938202"
+             x2="108.5477"
+             y1="10.8496"
+             x1="83.852501"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6920">
+            <stop
+               id="stop6922"
+               style="stop-color:#D1E4A5"
+               offset="0" />
+            <stop
+               id="stop6924"
+               style="stop-color:#ACD479"
+               offset="0.5" />
+            <stop
+               id="stop6926"
+               style="stop-color:#76B83F"
+               offset="1" />
+          </linearGradient>
+          <path
+             id="path4005-0"
+             d="m 84.534,22.066 c 0,0 -3.439,-4.256 4.337,-9.691 7.776,-5.436 14.416,1.975 14.416,1.975 l -3.765,2.631 c 0,0 -2.722,-5.286 -8.616,-1.166 -5.894,4.12 -3.128,7.261 -3.128,7.261 l 4.003,0.584 -5.966,4.17 -3.972,-5.682 2.691,-0.082 z m 23.42,-1.187 -4.002,-5.725 -6.012,4.202 4.034,0.589 c 0,0 2.787,3.165 -3.152,7.316 -5.939,4.151 -8.683,-1.174 -8.683,-1.174 l -3.793,2.651 c 0,0 6.689,7.468 14.526,1.991 7.836,-5.478 4.369,-9.766 4.369,-9.766 l 2.713,-0.084 z"
+             inkscape:connector-curvature="0"
+             style="fill:url(#SVGID_2_-3)" />
+          <linearGradient
+             y2="36.175201"
+             x2="82.073898"
+             y1="10.7197"
+             x1="58.209499"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6929">
+            <stop
+               id="stop6931"
+               style="stop-color:#F37E5F"
+               offset="0" />
+            <stop
+               id="stop6933"
+               style="stop-color:#EC1C24"
+               offset="0.5" />
+            <stop
+               id="stop6935"
+               style="stop-color:#CF232A"
+               offset="1" />
+          </linearGradient>
+          <polygon
+             id="polygon4014-4"
+             points="79.544,28.473 72.634,21.563 79.544,14.652 75.286,10.393 68.375,17.304 61.464,10.393 57.205,14.652 64.116,21.563 57.205,28.473 61.464,32.732 68.375,25.821 75.286,32.732 "
+             style="fill:url(#SVGID_3_-0)" />
+          <linearGradient
+             y2="32.586399"
+             x2="48.277"
+             y1="9.5396004"
+             x1="40.476601"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6938">
+            <stop
+               id="stop6940"
+               style="stop-color:#2BC4F3"
+               offset="0" />
+            <stop
+               id="stop6942"
+               style="stop-color:#00AEEE"
+               offset="0.5" />
+            <stop
+               id="stop6944"
+               style="stop-color:#0095DA"
+               offset="1" />
+          </linearGradient>
+          <polygon
+             id="polygon4023-2"
+             points="38.74,32.767 54.148,21.575 38.74,10.383 "
+             style="fill:url(#SVGID_4_-0)" />
+          <linearGradient
+             y2="36.206699"
+             x2="30.7013"
+             y1="9.2593002"
+             x1="19.1777"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6947">
+            <stop
+               id="stop6949"
+               style="stop-color:#2BC4F3"
+               offset="0" />
+            <stop
+               id="stop6951"
+               style="stop-color:#00AEEE"
+               offset="0.5" />
+            <stop
+               id="stop6953"
+               style="stop-color:#0095DA"
+               offset="1" />
+          </linearGradient>
+          <polygon
+             id="polygon4032-8"
+             points="29.755,32.767 14.347,21.575 29.755,10.383 "
+             style="fill:url(#SVGID_5_-6)" />
+          <linearGradient
+             y2="35.430901"
+             x2="132.92551"
+             y1="11.3696"
+             x1="115.1201"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6956">
+            <stop
+               id="stop6958"
+               style="stop-color:#FFE7A3"
+               offset="0" />
+            <stop
+               id="stop6960"
+               style="stop-color:#FFCA05"
+               offset="0.5" />
+            <stop
+               id="stop6962"
+               style="stop-color:#FAAC18"
+               offset="1" />
+          </linearGradient>
+          <polygon
+             id="polygon4041-7"
+             points="124.275,10.393 114.909,20.079 114.909,32.946 121.625,32.946 121.625,24.993 127.079,24.993 127.079,32.946 133.641,32.946 133.641,20.079 131.731,18.103 131.731,11.954 128.202,11.954 128.202,14.454 "
+             style="fill:url(#SVGID_6_-8)" />
+          <linearGradient
+             y2="34.0219"
+             x2="299.32669"
+             y1="9.2631998"
+             x1="299.32669"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6965">
+            <stop
+               id="stop6967"
+               style="stop-color:#FFFFFF"
+               offset="0" />
+            <stop
+               id="stop6969"
+               style="stop-color:#FBFBFB"
+               offset="0.3992" />
+            <stop
+               id="stop6971"
+               style="stop-color:#F3F3F4"
+               offset="0.6213" />
+            <stop
+               id="stop6973"
+               style="stop-color:#E7E8E9"
+               offset="0.7999" />
+            <stop
+               id="stop6975"
+               style="stop-color:#D7D9DA"
+               offset="0.9545" />
+            <stop
+               id="stop6977"
+               style="stop-color:#D1D3D4"
+               offset="1" />
+          </linearGradient>
+          <rect
+             id="rect4056-8"
+             height="22.552999"
+             width="315.897"
+             stroke-miterlimit="10"
+             y="10.393"
+             x="141.37801"
+             style="fill:url(#SVGID_7_-2);stroke:#000000;stroke-miterlimit:10" />
+          <linearGradient
+             y2="34.0219"
+             x2="443.56451"
+             y1="9.2631998"
+             x1="443.56451"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6980">
+            <stop
+               id="stop6982"
+               style="stop-color:#FFFFFF"
+               offset="0" />
+            <stop
+               id="stop6984"
+               style="stop-color:#FBFBFB"
+               offset="0.3992" />
+            <stop
+               id="stop6986"
+               style="stop-color:#F3F3F4"
+               offset="0.6213" />
+            <stop
+               id="stop6988"
+               style="stop-color:#E7E8E9"
+               offset="0.7999" />
+            <stop
+               id="stop6990"
+               style="stop-color:#D7D9DA"
+               offset="0.9545" />
+            <stop
+               id="stop6992"
+               style="stop-color:#D1D3D4"
+               offset="1" />
+          </linearGradient>
+          <rect
+             id="rect4071-7"
+             height="22.552999"
+             width="27.422001"
+             stroke-miterlimit="10"
+             y="10.393"
+             x="429.854"
+             style="fill:url(#SVGID_8_-1);stroke:#000000;stroke-miterlimit:10" />
+          <linearGradient
+             y2="34.0219"
+             x2="153.7578"
+             y1="9.2631998"
+             x1="153.7578"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient6995">
+            <stop
+               id="stop6997"
+               style="stop-color:#FFFFFF"
+               offset="0" />
+            <stop
+               id="stop6999"
+               style="stop-color:#FBFBFB"
+               offset="0.3992" />
+            <stop
+               id="stop7001"
+               style="stop-color:#F3F3F4"
+               offset="0.6213" />
+            <stop
+               id="stop7003"
+               style="stop-color:#E7E8E9"
+               offset="0.7999" />
+            <stop
+               id="stop7005"
+               style="stop-color:#D7D9DA"
+               offset="0.9545" />
+            <stop
+               id="stop7007"
+               style="stop-color:#D1D3D4"
+               offset="1" />
+          </linearGradient>
+          <rect
+             id="rect4086-4"
+             height="22.552999"
+             width="24.759001"
+             stroke-miterlimit="10"
+             y="10.393"
+             x="141.37801"
+             style="fill:url(#SVGID_9_-4);stroke:#000000;stroke-miterlimit:10" />
+          <g
+             id="g4088-0">
+            <linearGradient
+               y2="32.694"
+               x2="156.96809"
+               y1="12.6055"
+               x1="150.1689"
+               gradientUnits="userSpaceOnUse"
+               id="linearGradient7011">
+              <stop
+                 id="stop7013"
+                 style="stop-color:#2BC4F3"
+                 offset="0" />
+              <stop
+                 id="stop7015"
+                 style="stop-color:#00AEEE"
+                 offset="0.5" />
+              <stop
+                 id="stop7017"
+                 style="stop-color:#0095DA"
+                 offset="1" />
+            </linearGradient>
+            <circle
+               id="circle4097-9"
+               r="9.2379999"
+               cy="21.559999"
+               cx="153.19901"
+               sodipodi:cx="153.19901"
+               sodipodi:cy="21.559999"
+               sodipodi:rx="9.2379999"
+               sodipodi:ry="9.2379999"
+               style="fill:url(#SVGID_10_-7)"
+               d="m 162.43701,21.559999 c 0,5.102007 -4.136,9.238 -9.238,9.238 -5.10201,0 -9.238,-4.135993 -9.238,-9.238 0,-5.102006 4.13599,-9.237999 9.238,-9.237999 5.102,0 9.238,4.135993 9.238,9.237999 z" />
+            <linearGradient
+               y2="29.825399"
+               x2="154.6628"
+               y1="12.1348"
+               x1="153.0298"
+               gradientUnits="userSpaceOnUse"
+               id="linearGradient7020">
+              <stop
+                 id="stop7022"
+                 style="stop-color:#64C08A"
+                 offset="0" />
+              <stop
+                 id="stop7024"
+                 style="stop-color:#00A550"
+                 offset="0.5" />
+              <stop
+                 id="stop7026"
+                 style="stop-color:#00914C"
+                 offset="1" />
+            </linearGradient>
+            <path
+               id="path4106-0"
+               d="m 146.667,21.287 c -1.903,-3.49 -1.711,-3.896 -1.711,-3.896 l 0,0 1.349,-0.64 c 0.098,-0.801 0.566,-1.711 1.068,-2.359 0.38,-0.309 0.786,-0.588 1.213,-0.834 0.533,0.291 2.255,0.697 2.164,1.582 -0.091,0.886 0.279,0.613 0.003,1.974 -0.275,1.361 -1.149,1.271 0.104,1.633 1.253,0.363 2.342,-1.814 2.342,-1.814 0,0 1.633,1.542 1.633,2.268 0,0.726 0.182,-0.272 -0.906,1.361 -1.089,1.633 -0.908,1.814 -2.45,1.633 -1.542,-0.182 -2.631,-1.633 -2.903,-1.724 -0.272,-0.091 0.454,-0.998 -0.726,-0.091 -1.18,0.907 0.726,4.401 -1.18,0.907 z m 15.699,-0.854 c -0.285,-2.345 -1.447,-4.417 -3.151,-5.881 -0.128,0.151 -0.309,0.445 -0.663,1.02 -1.451,2.359 -1.731,2.994 -1.728,3.901 0.003,0.907 -0.449,2.359 0.73,2.087 1.179,-0.272 1.724,0.454 2.631,0 0.677,-0.339 1.304,-0.527 2.181,-1.127 z m -9.167,10.364 c 1.231,0 2.404,-0.243 3.479,-0.68 -0.666,-2.026 -1.21,-3.387 -1.21,-3.387 0,0 0,-0.635 -0.182,-1.089 -0.182,-0.454 -1.542,-1.814 -1.542,-1.814 -0.272,0 -1.271,0.635 -1.725,1.633 -0.453,0.998 -1.995,0.726 -0.635,2.268 1.354,1.534 3.061,0.255 0.938,3.026 0.289,0.028 0.581,0.043 0.877,0.043 z"
+               inkscape:connector-curvature="0"
+               style="fill:url(#SVGID_11_-5)" />
+          </g>
+          <linearGradient
+             y2="32.093899"
+             x2="446.56299"
+             y1="12.207"
+             x1="439.832"
+             gradientUnits="userSpaceOnUse"
+             id="linearGradient7029">
+            <stop
+               id="stop7031"
+               style="stop-color:#64C08A"
+               offset="0" />
+            <stop
+               id="stop7033"
+               style="stop-color:#00A550"
+               offset="0.5" />
+            <stop
+               id="stop7035"
+               style="stop-color:#00914C"
+               offset="1" />
+          </linearGradient>
+          <polygon
+             id="polygon4115-7"
+             points="433.104,17.568 433.104,25.771 444.873,25.771 441.059,31.327 454.354,21.669 441.059,12.012 444.873,17.568 "
+             style="fill:url(#SVGID_12_-4)" />
+        </g>
+      </g>
+    </switch>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="685.98145"
+       y="141.51077"
+       id="text4201-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="685.98145"
+         y="141.51077"
+         id="tspan4207-1">LQFB</tspan><tspan
+         sodipodi:role="line"
+         x="685.98145"
+         y="156.51077"
+         id="tspan4205-3">Frontend</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:3.08622861000000004;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3.08622880000000022, 12.34491520999999992;stroke-dashoffset:0"
+       id="rect4209-0"
+       width="287.96326"
+       height="439.20828"
+       x="437.44693"
+       y="253.38628"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="444.28571"
+       y="265.08221"
+       id="text4227-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4229-4"
+         x="444.28571"
+         y="265.08221">LQFB Core</tspan></text>
+    <g
+       id="g4276-8"
+       transform="translate(114.28572,135.72002)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-75">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-9"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-6"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-9"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-2"
+           sodipodi:role="line">vote</tspan></text>
+    </g>
+    <g
+       id="g4276-4-0"
+       transform="translate(229.60925,137.30488)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-4-4">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-82-8"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-7-3"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-3-8"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-9-0"
+           sodipodi:role="line">delegation</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 698.18162,182.65363 -167.38884,90"
+       id="path4372-63"
+       inkscape:path-effect="#path-effect4374-7"
+       inkscape:original-d="m 698.18162,182.65363 -167.38884,90"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 699.33701,181.0822 -78.17427,90"
+       id="path4372-6-2"
+       inkscape:path-effect="#path-effect4374-6-5"
+       inkscape:original-d="m 699.33701,181.0822 -78.17427,90"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <g
+       id="g4276-3-1-4"
+       transform="translate(113.89497,353.87631)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-7-1-4">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-89-8-7"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-5-0-5"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-0-3-0"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-4-1-6"
+           sodipodi:role="line">battle</tspan></text>
+    </g>
+    <g
+       id="g4276-3-1-2-3"
+       transform="translate(115.32353,462.73345)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         transform="matrix(1.5017763,0,0,1,-170.00542,0)"
+         id="g4251-7-1-5-2">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1556052;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-89-8-4-7"
+           width="65.817299"
+           height="54.285713"
+           x="339.28571"
+           y="159.50504" />
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.28349829;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-5-0-2-8"
+           width="66.023598"
+           height="20.494501"
+           x="339.1925"
+           y="139.27083" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-0-3-3-0"
+         y="153.18472"
+         x="344.71762"
+         style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="153.18472"
+           x="344.71762"
+           id="tspan4229-5-4-1-9-7"
+           sodipodi:role="line">initiative</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 471.47223,570.77252 1.43359,32.33365"
+       id="path4372-9-9-8-6"
+       inkscape:path-effect="#path-effect4374-0-3-4-8"
+       inkscape:original-d="m 471.47223,570.77252 1.43359,32.33365"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="477.1575"
+       y="586.67841"
+       id="text4227-7-3-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="477.1575"
+         y="586.67841"
+         id="tspan6628-3-2">calculate_ranks()</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="800.52747"
+       y="143.51607"
+       id="text4201-2-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="800.52747"
+         y="143.51607"
+         id="tspan4207-1-2">Solon</tspan><tspan
+         sodipodi:role="line"
+         x="800.52747"
+         y="158.51607"
+         id="tspan4205-3-9">client</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#999999;stroke-width:3.08622861000000004;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3.08622880000000022, 12.34491520999999992;stroke-dashoffset:0"
+       id="rect4209-0-7"
+       width="287.96326"
+       height="439.20828"
+       x="764.58978"
+       y="253.90091"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="960.57147"
+       y="265.59683"
+       id="text4227-3-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4229-4-8"
+         x="960.57147"
+         y="265.59683">Solon server(s)</tspan></text>
+    <g
+       style="overflow:visible"
+       id="g7621"
+       transform="matrix(0.68656352,0,0,0.47843505,862.08216,406.11818)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <path
+         style="fill:#242424;fill-rule:evenodd;stroke:none"
+         id="path3"
+         d="m 57.309237,28.613758 c 12.105066,0 19.901411,12.698531 20.064004,28.445686 l -40.128009,0 C 37.407825,41.312289 45.204171,28.613758 57.309237,28.613758 z m 0,-15.722765 c -18.860815,0 -34.144579,19.958319 -34.144579,44.574934 l 0.0081,0.617854 c -6.414303,2.349472 -10.983173,8.487366 -10.983173,15.690247 l 0,39.209352 c 0,17.45439 20.202209,31.60813 45.119622,31.60813 24.917412,0 45.119623,-14.15374 45.119623,-31.60813 l 0,-39.209352 c 0,-7.202881 -4.568869,-13.340775 -10.983179,-15.690247 l 0.0081,-0.617854 c 0,-24.616615 -15.28376,-44.574934 -34.144574,-44.574934 z M 44.50502,94.138832 c 0,-7.04842 5.731411,-12.763571 12.804217,-12.763571 7.072805,0 12.804216,5.715151 12.804216,12.763571 0,4.51196 -2.349472,8.479228 -5.894004,10.747408 l 0,11.74736 -13.820425,0 0,-11.74736 C 46.854492,102.61806 44.50502,98.650792 44.50502,94.138832 z"
+         inkscape:connector-curvature="0" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 788.88477,182.1479 88.75902,90"
+       id="path4372-63-1"
+       inkscape:path-effect="#path-effect4374-7-3"
+       inkscape:original-d="m 788.88477,182.1479 88.75902,90"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 788.27212,180.57647 41.45241,90"
+       id="path4372-6-2-2"
+       inkscape:path-effect="#path-effect4374-6-5-2"
+       inkscape:original-d="m 788.27212,180.57647 41.45241,90"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="829.6286"
+       y="205.55833"
+       id="text4227-3-3-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4229-4-8-6"
+         x="829.6286"
+         y="205.55833">Private vote</tspan><tspan
+         sodipodi:role="line"
+         x="829.6286"
+         y="220.55833"
+         id="tspan7713">(direct or delegated)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans;text-anchor:end;text-align:end"
+       x="605.09302"
+       y="209.88701"
+       id="text4227-3-3-2-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4229-4-8-6-7"
+         x="483.13016"
+         y="209.88701">Public vote</tspan><tspan
+         sodipodi:role="line"
+         x="483.13016"
+         y="224.88701"
+         id="tspan7713-6">(direct or delegated)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="774.20593"
+       y="351.50574"
+       id="text4227-7-3-4-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="774.20593"
+         y="351.50574"
+         id="tspan6628-3-2-0">getPublicVotes()</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 806.69204,524.22402 -255.2301,1.41571"
+       id="path4372-6-1-7"
+       inkscape:path-effect="#path-effect4374-6-1-1"
+       inkscape:original-d="m 806.69204,524.22402 -255.2301,1.41571"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <g
+       id="g7822"
+       transform="translate(0,12)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 527.60768,322.82692 264.78951,-0.82106"
+         inkscape:path-effect="#path-effect4374-6-1"
+         id="path4372-6-1"
+         d="m 527.60768,322.82692 264.78951,-0.82106"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)" />
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 528.28571,306.6479 0,15.71428"
+         inkscape:path-effect="#path-effect7816"
+         id="path7814"
+         d="m 528.28571,306.6479 0,15.71428"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 607.14286,308.07647 0,14.28571"
+         inkscape:path-effect="#path-effect7820"
+         id="path7818"
+         d="m 607.14286,308.07647 0,14.28571"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="773.68805"
+       y="542.24414"
+       id="text4227-7-3-4-4-7"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="773.68805"
+         y="542.24414"
+         id="tspan6628-3-2-0-8">returnResults()</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="486.89352"
+       y="367.47876"
+       id="text7868"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7870"
+         x="486.89352"
+         y="367.47876"
+         style="font-style:italic">state = public_voting_closed</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="485.68719"
+       y="419.19086"
+       id="text7868-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7870-1"
+         x="485.68719"
+         y="419.19086"
+         style="font-style:italic">state = private_voting_closed</tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       inkscape:original-d="m 681.55231,418.76403 99.6,-0.82106"
+       inkscape:path-effect="#path-effect4374-6-1-3"
+       id="path4372-6-1-1"
+       d="m 681.55231,418.76403 99.6,-0.82106"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="795.70715"
+       y="421.29694"
+       id="text4227-7-3-4-4-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_voting_data_flow_with_solon.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="795.70715"
+         y="421.29694"
+         id="tspan6628-3-2-0-6">calculation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="578.9292"
+       y="556.51068"
+       id="text7868-2-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7870-1-2"
+         x="578.9292"
+         y="556.51068"
+         style="font-style:italic">state = calculating</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="569.7135"
+       y="663.73352"
+       id="text7868-2-9-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan7870-1-2-3"
+         x="569.7135"
+         y="663.73352"
+         style="font-style:italic">state = closed</tspan></text>
+  </g>
+</svg>

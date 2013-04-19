@@ -1,0 +1,23 @@
+vote table contains the actual votes
+=> this can be re-used for public votes. real secret votes are of course not stored anywhere.
+
+battle table contains the pairwise rankings calculated from the votes
+=> The external voting system will provide these results, they can be stored in this table
+=> Somewhere is a stored procedure that calculates these results, it needs to be disabled with system setting
+
+delegating_voter is written to when votes are counted. 
+=> This information is not public now.
+=> Also delegations have a public counterpart. This could again be reused. Otoh this can be confusing as it is not the same as actual delegations.
+=> In any case, public delegations must never be counted as real votes towards any issue.
+=> There could be a system where a member's weight is calculated from a few past *actual* delegations in each area. Even if we do not know who delegates to whom, we know the sum of delegated votes for each voting result. For instance, a member could be given the weight of geometric average of previous votes in each area.
+=> Similar issues arise with delegating_*_snapshot tables
+
+delegation
+=> Not public info, but could be re-used for publicly signaled delegation.
+
+direct_voter
+
+initiative table contains various info about the voting result. Possibly this can remain as is - ie doesn't require info of actual votes.
+
+There needs to be a new phase where public voting ends but private votes can still be cast
+=> TABLE policy.public_voting_time and TYPE issue_state.public_voting_closed

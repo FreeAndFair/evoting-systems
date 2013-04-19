@@ -1,0 +1,4 @@
+This directory contains pg_dump snapshots of a Liquid Feedback Core
+going through the various stages of drafting and voting on an issue.
+It is helpful to try to understand the states an issue can be in
+during its lifecycle.

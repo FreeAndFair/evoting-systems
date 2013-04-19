@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="homomorphic_evoting_explained.svg">
+  <defs
+     id="defs4">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect7820"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect7816"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6599"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6403"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect5075"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4822"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path4383"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3767"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3763"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-6"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-58"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-88"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-85"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-589"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3-4"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-2"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3-4-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6809"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6811"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-3-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8-3"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-58-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6403-6"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect6599-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6818"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6820"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-0-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6823"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6825"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-5"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6828"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path6830"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-7"
+       is_visible="true" />
+    <linearGradient
+       y2="43.4874"
+       x2="234.9888"
+       y1="-2.0796001"
+       x1="234.9888"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_1_-1">
+      <stop
+         id="stop3982-4"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop3984-1"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop3986-2"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop3988-4"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop3990-6"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop3992-9"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.938202"
+       x2="108.5477"
+       y1="10.8496"
+       x1="83.852501"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_2_-3">
+      <stop
+         id="stop3999-6"
+         style="stop-color:#D1E4A5"
+         offset="0" />
+      <stop
+         id="stop4001-4"
+         style="stop-color:#ACD479"
+         offset="0.5" />
+      <stop
+         id="stop4003-1"
+         style="stop-color:#76B83F"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="36.175201"
+       x2="82.073898"
+       y1="10.7197"
+       x1="58.209499"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_3_-0">
+      <stop
+         id="stop4008-3"
+         style="stop-color:#F37E5F"
+         offset="0" />
+      <stop
+         id="stop4010-4"
+         style="stop-color:#EC1C24"
+         offset="0.5" />
+      <stop
+         id="stop4012-9"
+         style="stop-color:#CF232A"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="32.586399"
+       x2="48.277"
+       y1="9.5396004"
+       x1="40.476601"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_4_-0">
+      <stop
+         id="stop4017-3"
+         style="stop-color:#2BC4F3"
+         offset="0" />
+      <stop
+         id="stop4019-1"
+         style="stop-color:#00AEEE"
+         offset="0.5" />
+      <stop
+         id="stop4021-4"
+         style="stop-color:#0095DA"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="36.206699"
+       x2="30.7013"
+       y1="9.2593002"
+       x1="19.1777"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_5_-6">
+      <stop
+         id="stop4026-3"
+         style="stop-color:#2BC4F3"
+         offset="0" />
+      <stop
+         id="stop4028-6"
+         style="stop-color:#00AEEE"
+         offset="0.5" />
+      <stop
+         id="stop4030-4"
+         style="stop-color:#0095DA"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="35.430901"
+       x2="132.92551"
+       y1="11.3696"
+       x1="115.1201"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_6_-8">
+      <stop
+         id="stop4035-2"
+         style="stop-color:#FFE7A3"
+         offset="0" />
+      <stop
+         id="stop4037-5"
+         style="stop-color:#FFCA05"
+         offset="0.5" />
+      <stop
+         id="stop4039-4"
+         style="stop-color:#FAAC18"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.0219"
+       x2="299.32669"
+       y1="9.2631998"
+       x1="299.32669"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_7_-2">
+      <stop
+         id="stop4044-5"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop4046-9"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop4048-1"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop4050-9"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop4052-3"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop4054-2"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.0219"
+       x2="443.56451"
+       y1="9.2631998"
+       x1="443.56451"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_8_-1">
+      <stop
+         id="stop4059-8"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop4061-8"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop4063-1"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop4065-3"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop4067-6"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop4069-7"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="34.0219"
+       x2="153.7578"
+       y1="9.2631998"
+       x1="153.7578"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_9_-4">
+      <stop
+         id="stop4074-7"
+         style="stop-color:#FFFFFF"
+         offset="0" />
+      <stop
+         id="stop4076-0"
+         style="stop-color:#FBFBFB"
+         offset="0.3992" />
+      <stop
+         id="stop4078-0"
+         style="stop-color:#F3F3F4"
+         offset="0.6213" />
+      <stop
+         id="stop4080-6"
+         style="stop-color:#E7E8E9"
+         offset="0.7999" />
+      <stop
+         id="stop4082-1"
+         style="stop-color:#D7D9DA"
+         offset="0.9545" />
+      <stop
+         id="stop4084-4"
+         style="stop-color:#D1D3D4"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="32.694"
+       x2="156.96809"
+       y1="12.6055"
+       x1="150.1689"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_10_-7">
+      <stop
+         id="stop4091-7"
+         style="stop-color:#2BC4F3"
+         offset="0" />
+      <stop
+         id="stop4093-0"
+         style="stop-color:#00AEEE"
+         offset="0.5" />
+      <stop
+         id="stop4095-2"
+         style="stop-color:#0095DA"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="29.825399"
+       x2="154.6628"
+       y1="12.1348"
+       x1="153.0298"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_11_-5">
+      <stop
+         id="stop4100-6"
+         style="stop-color:#64C08A"
+         offset="0" />
+      <stop
+         id="stop4102-2"
+         style="stop-color:#00A550"
+         offset="0.5" />
+      <stop
+         id="stop4104-9"
+         style="stop-color:#00914C"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       y2="32.093899"
+       x2="446.56299"
+       y1="12.207"
+       x1="439.832"
+       gradientUnits="userSpaceOnUse"
+       id="SVGID_12_-4">
+      <stop
+         id="stop4109-6"
+         style="stop-color:#64C08A"
+         offset="0" />
+      <stop
+         id="stop4111-1"
+         style="stop-color:#00A550"
+         offset="0.5" />
+      <stop
+         id="stop4113-9"
+         style="stop-color:#00914C"
+         offset="1" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3763-5"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3767-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-7"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-7-3"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7664"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7666"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-5-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-76"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-28"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-78"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-1-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-02"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-6-1-3"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-72"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-285"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-63"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-0"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-63-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-61"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-92"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-3"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-614"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-20"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-3-4"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-17"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-46"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-3-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-63"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-10"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-3-5"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-5"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-91"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-3-0"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-21"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-54"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-13"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-64"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4383-200"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4374-63-3"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3763-0"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3767-1"
+       is_visible="true" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="11"
+     inkscape:cy="570.95307"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="753"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:0.69365048;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect7848-0"
+       width="326.5997"
+       height="661.32245"
+       x="23.839005"
+       y="24.592691"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <g
+       id="g3769"
+       transform="translate(-32.857143,-120.42857)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <path
+         transform="translate(1.0101525,-2)"
+         d="m 159.6041,183.12592 c 0,10.32099 -8.36683,18.68782 -18.68782,18.68782 -10.321,0 -18.68783,-8.36683 -18.68783,-18.68782 0,-10.321 8.36683,-18.68783 18.68783,-18.68783 10.32099,0 18.68782,8.36683 18.68782,18.68783 z"
+         sodipodi:ry="18.687822"
+         sodipodi:rx="18.687822"
+         sodipodi:cy="183.12592"
+         sodipodi:cx="140.91628"
+         id="path2987"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2989"
+         d="m 141.40105,199.81374 0,40.4061"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         inkscape:path-effect="#path-effect3763"
+         id="path3761"
+         d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.198,207.89496 37.37564,0"
+         inkscape:path-effect="#path-effect3767"
+         id="path3765"
+         d="m 123.198,207.89496 37.37564,0"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <rect
+       style="fill:none;stroke:#999999;stroke-width:2.51127625;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2.51127647, 10.04510584;stroke-dashoffset:0"
+       id="rect4209"
+       width="144.24654"
+       height="580.54382"
+       x="188.30409"
+       y="87.951981"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="195.14285"
+       y="101.64792"
+       id="text4227"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4229"
+         x="195.14285"
+         y="101.64792">Bulletin board</tspan></text>
+    <g
+       id="g4276"
+       transform="translate(-320.14939,128.02329)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         id="g3181"
+         transform="translate(188,-153)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.57288837;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8"
+           width="99.152672"
+           height="20.494501"
+           x="339.38583"
+           y="139.27083" />
+        <text
+           xml:space="preserve"
+           style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+           x="342.59436"
+           y="153.18472"
+           id="text4227-2"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4229-5"
+             x="342.59436"
+             y="153.18472">encrypted vote</tspan></text>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 257.18357,228.34677 -0.61688,51.94578"
+       id="path4372"
+       inkscape:path-effect="#path-effect4374"
+       inkscape:original-d="m 257.18357,228.34677 -0.61688,51.94578"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79257387;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 140.47782,124.1888 58.62405,0.1983"
+       id="path4372-5"
+       inkscape:path-effect="#path-effect4374-63"
+       inkscape:original-d="m 140.47782,124.1888 58.62405,0.1983"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 262.32707,572.98737 -0.36976,20.3482"
+       id="path4372-7"
+       inkscape:path-effect="#path-effect4374-13"
+       inkscape:original-d="m 262.32707,572.98737 -0.36976,20.3482"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <g
+       transform="translate(-14.95649,529.30534)"
+       id="g3400-7"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <rect
+         y="83.253036"
+         x="224.38016"
+         height="22.317436"
+         width="99.152672"
+         id="rect4231-8-7-0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.64135087;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text4227-2-3-0"
+         y="98.166931"
+         x="274.99808"
+         style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+         xml:space="preserve"><tspan
+           y="98.166931"
+           x="274.99808"
+           sodipodi:role="line"
+           id="tspan3432-9">results</tspan></text>
+    </g>
+    <g
+       id="g3769-0"
+       transform="translate(-35.11535,-2.644814)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <path
+         transform="translate(1.0101525,-2)"
+         d="m 159.6041,183.12592 c 0,10.32099 -8.36683,18.68782 -18.68782,18.68782 -10.321,0 -18.68783,-8.36683 -18.68783,-18.68782 0,-10.321 8.36683,-18.68783 18.68783,-18.68783 10.32099,0 18.68782,8.36683 18.68782,18.68783 z"
+         sodipodi:ry="18.687822"
+         sodipodi:rx="18.687822"
+         sodipodi:cy="183.12592"
+         sodipodi:cx="140.91628"
+         id="path2987-4"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         sodipodi:type="arc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path2989-0"
+         d="m 141.40105,199.81374 0,40.4061"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         sodipodi:nodetypes="ccc"
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         inkscape:path-effect="#path-effect3763-0"
+         id="path3761-5"
+         d="m 123.57546,265.5759 17.88687,-25.13652 18.83576,25.01397"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 123.198,207.89496 37.37564,0"
+         inkscape:path-effect="#path-effect3767-1"
+         id="path3765-8"
+         d="m 123.198,207.89496 37.37564,0"
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       id="g4276-5"
+       transform="translate(-322.4076,209.80704)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003">
+      <g
+         id="g3181-5"
+         transform="translate(188,-153)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.57288837;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+           id="rect4231-8-8"
+           width="99.152672"
+           height="20.494501"
+           x="339.38583"
+           y="139.27083" />
+        <text
+           xml:space="preserve"
+           style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+           x="342.59436"
+           y="153.18472"
+           id="text4227-2-64"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4229-5-2"
+             x="342.59436"
+             y="153.18472">encrypted vote</tspan></text>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.79257387;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
+       d="m 139.05927,205.97255 58.62406,0.1983"
+       id="path4372-5-6"
+       inkscape:path-effect="#path-effect4374-63-3"
+       inkscape:original-d="m 139.05927,205.97255 58.62406,0.1983"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.57;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4231-8-7-0-7"
+       width="99.152672"
+       height="115.08614"
+       x="208.42366"
+       y="291.55838"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="259.0416"
+       y="306.47226"
+       id="text4227-2-3-0-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         id="tspan3432-9-2"
+         sodipodi:role="line"
+         x="259.0416"
+         y="306.47226">encrypted v</tspan><tspan
+         id="tspan3281"
+         sodipodi:role="line"
+         x="259.0416"
+         y="321.47226">*</tspan><tspan
+         id="tspan3283"
+         sodipodi:role="line"
+         x="259.0416"
+         y="336.47226">encrypted v</tspan><tspan
+         id="tspan3285"
+         sodipodi:role="line"
+         x="259.0416"
+         y="351.47226">*</tspan><tspan
+         id="tspan3287"
+         sodipodi:role="line"
+         x="259.0416"
+         y="366.47226">...</tspan><tspan
+         id="tspan3289"
+         sodipodi:role="line"
+         x="259.0416"
+         y="381.47226">*</tspan><tspan
+         id="tspan3291"
+         sodipodi:role="line"
+         x="259.0416"
+         y="396.47226">encrypted v</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.57000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect4231-8-7-0-7-1"
+       width="99.152672"
+       height="115.08614"
+       x="209.42366"
+       y="443.81912"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="257.84766"
+       y="458.67273"
+       id="text4227-2-3-0-8-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         id="tspan3291-8"
+         sodipodi:role="line"
+         x="257.84766"
+         y="458.67273">decrypted v</tspan><tspan
+         sodipodi:role="line"
+         x="257.84766"
+         y="473.67273"
+         id="tspan4319">+</tspan><tspan
+         sodipodi:role="line"
+         x="257.84766"
+         y="488.67273"
+         id="tspan4327">decrypted v</tspan><tspan
+         sodipodi:role="line"
+         x="257.84766"
+         y="503.67273"
+         id="tspan4331">+</tspan><tspan
+         sodipodi:role="line"
+         x="257.84766"
+         y="518.67273"
+         id="tspan4333">...</tspan><tspan
+         sodipodi:role="line"
+         x="257.84766"
+         y="533.67273"
+         id="tspan4335">+</tspan><tspan
+         sodipodi:role="line"
+         x="257.84766"
+         y="548.67273"
+         id="tspan4329">decrypted v</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="256.84766"
+       y="426.67273"
+       id="text4227-2-3-0-8-0-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/homomorphic_evoting_explained.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="256.84766"
+         y="426.67273"
+         id="tspan4329-6">=</tspan></text>
+  </g>
+</svg>

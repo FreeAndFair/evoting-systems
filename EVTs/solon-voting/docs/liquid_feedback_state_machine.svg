@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="liquid_feedback_state_machine.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path4117"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-7"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-65"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-17"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-0"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-69"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-3"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-17-0"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-80"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-84"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-4"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-64"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-9"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-6"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-1-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-64"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-67"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-1-8-4"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-33"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-16"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-1-8-4-9"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4963"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4965"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-1-8-6"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4968"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4970"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-1-9"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4973"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4975"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-13"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4978"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4980"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4983"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4985"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-73"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4988"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4990"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-17-0-9"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4993"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4995"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-7"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4998"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5000"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-17-4"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5003"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5005"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-1-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker5008"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path5010"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-0"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-1-9-2"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-10"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-70"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-13-8"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-06"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-37"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-13-8-6"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-5"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-13-8-1"
+       is_visible="true" />
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-36"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4117-18"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect3160-178-2-7-7-13-8-5"
+       is_visible="true" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="622.76759"
+     inkscape:cy="565.51335"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="753"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1"
+     inkscape:object-nodes="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect5534-2"
+       width="738.5578"
+       height="507.13055"
+       x="6.7210999"
+       y="-3.2030869"
+       ry="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect5534"
+       width="738.5578"
+       height="651.13055"
+       x="7.442215"
+       y="555.23163"
+       ry="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="opacity:1;fill:#fff8dc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.31555723999999996;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2985"
+       width="70.432419"
+       height="69.1035"
+       x="1933.223"
+       y="1532.3087"
+       transform="matrix(0.96745407,0.25304667,-0.96745407,0.25304667,0,0)"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.29999995000000013;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987"
+       width="112.3403"
+       height="37.012531"
+       x="332.61807"
+       y="34.907539"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="352.9278"
+       y="57.237595"
+       id="text2989"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991"
+         x="352.9278"
+         y="57.237595">Admission</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2"
+       width="112.3403"
+       height="37.012531"
+       x="332.81857"
+       y="123.36076"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="353.1283"
+       y="145.69081"
+       id="text2989-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8"
+         x="353.1283"
+         y="145.69081">Discussion</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9"
+       width="112.3403"
+       height="37.012531"
+       x="332.89978"
+       y="170.23389"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="353.2095"
+       y="192.56395"
+       id="text2989-5-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7"
+         x="353.2095"
+         y="192.56395">Verification</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-4"
+       width="112.3403"
+       height="37.012531"
+       x="334.05209"
+       y="319.64508"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="366.36179"
+       y="341.9751"
+       id="text2989-5-4-3"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-6"
+         x="366.36179"
+         y="341.9751">Voting</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.88998610000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2"
+       width="220.11626"
+       height="37.012531"
+       x="76.23024"
+       y="40.812531"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="80.331314"
+       y="55.142593"
+       id="text2989-5-4-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3"
+         x="80.331314"
+         y="55.142593">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="80.331314"
+         y="70.142593"
+         id="tspan3076">revoked before accepted</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.89165664000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0"
+       width="220.94337"
+       height="37.012531"
+       x="75.396652"
+       y="85.20343"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="79.706375"
+       y="99.533493"
+       id="text2989-5-4-6-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3"
+         x="79.706375"
+         y="99.533493">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="79.706375"
+         y="114.53349"
+         id="tspan3076-9">issue not accepted</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.88998610000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-7"
+       width="220.11626"
+       height="37.012531"
+       x="76.788849"
+       y="130.22878"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="80.249512"
+       y="144.55884"
+       id="text2989-5-4-6-8-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3-2"
+         x="80.249512"
+         y="144.55884">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="80.249512"
+         y="159.55884"
+         id="tspan3076-9-7">after revocation during discussion</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.88998610000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-6"
+       width="220.11626"
+       height="37.012531"
+       x="75.793533"
+       y="176.39122"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="79.503326"
+       y="190.7213"
+       id="text2989-5-4-6-8-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3-5"
+         x="79.503326"
+         y="190.7213">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="79.503326"
+         y="205.7213"
+         id="tspan3076-9-3">after revocation during verification</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.89345014000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-8"
+       width="221.83308"
+       height="37.012531"
+       x="74.427109"
+       y="223.38615"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="78.736832"
+       y="237.71623"
+       id="text2989-5-4-6-8-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3-8"
+         x="78.736832"
+         y="237.71623">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="78.736832"
+         y="252.71623"
+         id="tspan3076-9-1">no initiative admitted</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 330.70445,53.196972 -37.37564,9.09137"
+       id="path3158"
+       inkscape:path-effect="#path-effect3160"
+       inkscape:original-d="m 330.70445,53.196972 -37.37564,9.09137"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 335.25014,142.89034 -37.37564,9.09137"
+       id="path3158-8"
+       inkscape:path-effect="#path-effect3160-1"
+       inkscape:original-d="m 335.25014,142.89034 -37.37564,9.09137"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 333.18923,190.36751 -37.37565,9.09137"
+       id="path3158-88"
+       inkscape:path-effect="#path-effect3160-17"
+       inkscape:original-d="m 333.18923,190.36751 -37.37565,9.09137"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="M 333.67218,58.021582 298.4423,102.01127"
+       id="path3158-2"
+       inkscape:path-effect="#path-effect3160-178"
+       inkscape:original-d="M 333.67218,58.021582 298.4423,102.01127"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 332.66453,192.36938 -34.22472,45.07027"
+       id="path3158-88-8"
+       inkscape:path-effect="#path-effect3160-17-0"
+       inkscape:original-d="m 332.66453,192.36938 -34.22472,45.07027"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 387.0084,70.124642 0.0825,53.017778"
+       id="path3158-2-8"
+       inkscape:path-effect="#path-effect3160-178-2"
+       inkscape:original-d="m 387.0084,70.124642 0.0825,53.017778"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 385.19198,158.51805 0.0825,11.48168"
+       id="path3158-2-8-3"
+       inkscape:path-effect="#path-effect3160-178-2-7"
+       inkscape:original-d="m 385.19198,158.51805 0.0825,11.48168"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.06331277;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 386.24746,208.24867 0.0825,109.24167"
+       id="path3158-2-8-3-8"
+       inkscape:path-effect="#path-effect3160-178-2-7-7"
+       inkscape:original-d="m 386.24746,208.24867 0.0825,109.24167"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-4-9"
+       width="112.3403"
+       height="37.012531"
+       x="332.11301"
+       y="396.20352"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="352.4227"
+       y="418.53354"
+       id="text2989-5-4-3-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-6-8"
+         x="352.4227"
+         y="418.53354">Calculation</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.89345014000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-8-9"
+       width="221.83308"
+       height="37.012531"
+       x="69.19397"
+       y="396.24411"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="81.503693"
+       y="418.57419"
+       id="text2989-5-4-6-8-1-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="81.503693"
+         y="418.57419"
+         id="tspan3076-9-1-0">Finished without winner</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.29999995000000013;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-8-9-2"
+       width="221.83308"
+       height="37.012531"
+       x="491.83871"
+       y="398.34564"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="504.14844"
+       y="420.67572"
+       id="text2989-5-4-6-8-1-4-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="504.14844"
+         y="420.67572"
+         id="tspan3076-9-1-0-1">Finished with winner</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.87959898;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 387.20245,360.19079 0.0825,34.48489"
+       id="path3158-2-8-3-8-2"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-1"
+       inkscape:original-d="m 387.20245,360.19079 0.0825,34.48489"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 444.78919,416.90847 44.57172,-0.0825"
+       id="path3158-2-8-3-8-2-0"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-1-8"
+       inkscape:original-d="m 444.78919,416.90847 44.57172,-0.0825"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.97326922;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 333.67241,411.8577 -42.2207,-0.0825"
+       id="path3158-2-8-3-8-2-0-4"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-1-8-4"
+       inkscape:original-d="m 333.67241,411.8577 -42.2207,-0.0825"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="opacity:0.43200001;fill:none;stroke:#000000;stroke-width:2.17531347;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2.17531335, 8.70125337;stroke-dashoffset:0"
+       id="rect4920"
+       width="700.17108"
+       height="257.45105"
+       x="27.905918"
+       y="11.780716"
+       ry="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="30.689152"
+       y="24.912704"
+       id="text4922"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4924"
+         x="30.689152"
+         y="24.912704">Issue drafting process</tspan></text>
+    <rect
+       style="opacity:0.43200001;fill:none;stroke:#000000;stroke-width:1.87164545;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1.8716456, 7.48658239;stroke-dashoffset:0"
+       id="rect4920-5"
+       width="700.17108"
+       height="190.58917"
+       x="26.717014"
+       y="291.45819"
+       ry="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="29.747471"
+       y="304.59015"
+       id="text4922-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_original.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4924-8"
+         x="29.747471"
+         y="304.59015">Voting</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.29999995000000013;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-0"
+       width="112.3403"
+       height="37.012531"
+       x="334.15442"
+       y="594.35846"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="354.46414"
+       y="616.68848"
+       id="text2989-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-4"
+         x="354.46414"
+         y="616.68848">Admission</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-92"
+       width="112.3403"
+       height="37.012531"
+       x="334.35489"
+       y="682.81165"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="354.66461"
+       y="705.14172"
+       id="text2989-5-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-0"
+         x="354.66461"
+         y="705.14172">Discussion</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-0"
+       width="112.3403"
+       height="37.012531"
+       x="334.43613"
+       y="729.68481"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="354.74582"
+       y="752.01483"
+       id="text2989-5-4-4"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-0"
+         x="354.74582"
+         y="752.01483">Verification</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-4-2"
+       width="112.3403"
+       height="37.012531"
+       x="238.00768"
+       y="932.82886"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="270.31738"
+       y="955.159"
+       id="text2989-5-4-3-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-6-2"
+         x="270.31738"
+         y="955.159">Voting</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.88998610000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-8"
+       width="220.11626"
+       height="37.012531"
+       x="77.766556"
+       y="600.26343"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="81.86763"
+       y="614.59351"
+       id="text2989-5-4-6-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-7"
+         x="81.86763"
+         y="614.59351">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="81.86763"
+         y="629.59351"
+         id="tspan3076-2">revoked before accepted</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.89165664000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-87"
+       width="220.94337"
+       height="37.012531"
+       x="76.932968"
+       y="644.65436"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="81.242691"
+       y="658.98438"
+       id="text2989-5-4-6-8-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3-9"
+         x="81.242691"
+         y="658.98438">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="81.242691"
+         y="673.98438"
+         id="tspan3076-9-0">issue not accepted</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.88998610000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-7-4"
+       width="220.11626"
+       height="37.012531"
+       x="78.32515"
+       y="689.67969"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="81.785812"
+       y="704.00977"
+       id="text2989-5-4-6-8-2-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3-2-0"
+         x="81.785812"
+         y="704.00977">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="81.785812"
+         y="719.00977"
+         id="tspan3076-9-7-9">after revocation during discussion</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.88998610000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-6-2"
+       width="220.11626"
+       height="37.012531"
+       x="77.329849"
+       y="735.8421"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="81.039627"
+       y="750.17218"
+       id="text2989-5-4-6-8-4-7"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3-5-6"
+         x="81.039627"
+         y="750.17218">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="81.039627"
+         y="765.17218"
+         id="tspan3076-9-3-4">after revocation during verification</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.89345014000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-8-0"
+       width="221.83308"
+       height="37.012531"
+       x="75.963425"
+       y="782.83704"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="80.273148"
+       y="797.16711"
+       id="text2989-5-4-6-8-1-8"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-3-3-8-5"
+         x="80.273148"
+         y="797.16711">Canceled</tspan><tspan
+         sodipodi:role="line"
+         x="80.273148"
+         y="812.16711"
+         id="tspan3076-9-1-4">no initiative admitted</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 332.24077,612.64789 -37.37565,9.09137"
+       id="path3158-7"
+       inkscape:path-effect="#path-effect3160-0"
+       inkscape:original-d="m 332.24077,612.64789 -37.37565,9.09137"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 336.78645,702.34127 -37.37564,9.09137"
+       id="path3158-8-0"
+       inkscape:path-effect="#path-effect3160-1-2"
+       inkscape:original-d="m 336.78645,702.34127 -37.37564,9.09137"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 334.72554,749.81844 -37.37565,9.09137"
+       id="path3158-88-4"
+       inkscape:path-effect="#path-effect3160-17-4"
+       inkscape:original-d="m 334.72554,749.81844 -37.37565,9.09137"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 335.2085,617.4725 -35.22989,43.98969"
+       id="path3158-2-82"
+       inkscape:path-effect="#path-effect3160-178-7"
+       inkscape:original-d="m 335.2085,617.4725 -35.22989,43.98969"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 334.20084,751.82031 -34.22472,45.07027"
+       id="path3158-88-8-0"
+       inkscape:path-effect="#path-effect3160-17-0-9"
+       inkscape:original-d="m 334.20084,751.82031 -34.22472,45.07027"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 388.54471,629.57555 0.0825,53.0178"
+       id="path3158-2-8-0"
+       inkscape:path-effect="#path-effect3160-178-2-73"
+       inkscape:original-d="m 388.54471,629.57555 0.0825,53.0178"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 386.72829,717.96898 0.0825,11.48168"
+       id="path3158-2-8-3-4"
+       inkscape:path-effect="#path-effect3160-178-2-7-1"
+       inkscape:original-d="m 386.72829,717.96898 0.0825,11.48168"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.06331277;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 387.78377,767.6996 0.0825,109.24167"
+       id="path3158-2-8-3-8-8"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-13"
+       inkscape:original-d="m 387.78377,767.6996 0.0825,109.24167"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.63580650000000005;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-4-9-4"
+       width="112.3403"
+       height="37.012531"
+       x="333.64932"
+       y="1095.6545"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="353.95905"
+       y="1117.9844"
+       id="text2989-5-4-3-6-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-6-8-0"
+         x="353.95905"
+         y="1117.9844">Calculation</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.89345014000000000;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-8-9-29"
+       width="221.83308"
+       height="37.012531"
+       x="70.73027"
+       y="1095.6948"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="83.039993"
+       y="1118.025"
+       id="text2989-5-4-6-8-1-4-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="83.039993"
+         y="1118.025"
+         id="tspan3076-9-1-0-9">Finished without winner</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.29999995000000013;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-2-0-8-9-2-9"
+       width="221.83308"
+       height="37.012531"
+       x="493.37506"
+       y="1097.7964"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="505.68478"
+       y="1120.1266"
+       id="text2989-5-4-6-8-1-4-4-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="505.68478"
+         y="1120.1266"
+         id="tspan3076-9-1-0-1-1">Finished with winner</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 466.80608,966.47544 0.0825,14.51785"
+       id="path3158-2-8-3-8-2-5"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-1-9"
+       inkscape:original-d="m 466.80608,966.47544 0.0825,14.51785"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 446.3255,1116.3594 44.57172,-0.082"
+       id="path3158-2-8-3-8-2-0-2"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-1-8-6"
+       inkscape:original-d="m 446.3255,1116.3594 44.57172,-0.082"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.97326922;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 335.20872,1111.3086 -42.2207,-0.082"
+       id="path3158-2-8-3-8-2-0-4-1"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-1-8-4-9"
+       inkscape:original-d="m 335.20872,1111.3086 -42.2207,-0.082"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <rect
+       style="opacity:1;fill:none;stroke:#808080;stroke-width:2.17531346999999986;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2.17531335000000015, 8.70125336999999988;stroke-dashoffset:0"
+       id="rect4920-54"
+       width="700.17108"
+       height="257.45105"
+       x="29.442215"
+       y="571.23163"
+       ry="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="32.225449"
+       y="584.36359"
+       id="text4922-13"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4924-0"
+         x="32.225449"
+         y="584.36359">Issue drafting process</tspan></text>
+    <rect
+       style="opacity:1;fill:none;stroke:#808080;stroke-width:2.50456857999999993;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:2.50456881999999981, 10.01827525000000030;stroke-dashoffset:0"
+       id="rect4920-5-1"
+       width="700.17108"
+       height="341.28479"
+       x="28.253311"
+       y="850.90906"
+       ry="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="31.283768"
+       y="864.04102"
+       id="text4922-1-1"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan4924-8-8"
+         x="31.283768"
+         y="864.04102">Voting</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="333.65091"
+       y="897.73682"
+       id="text2989-5-4-4-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-0-8"
+         x="333.65091"
+         y="897.73682">ext_voting_service</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#cd4747;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-4-2-6"
+       width="112.3403"
+       height="37.012531"
+       x="410.57205"
+       y="931.91119"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="442.88177"
+       y="954.24133"
+       id="text2989-5-4-3-8-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-6-2-0"
+         x="442.88177"
+         y="954.24133">Voting</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#cd4747;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-4-2-6-6"
+       width="112.3403"
+       height="37.012531"
+       x="410.39902"
+       y="980.9823"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="466.88858"
+       y="996.94843"
+       id="text2989-5-4-3-8-9-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="466.88858"
+         y="996.94843"
+         id="tspan5338">Public voting</tspan><tspan
+         sodipodi:role="line"
+         x="466.88858"
+         y="1011.9484"
+         id="tspan5342">closed</tspan></text>
+    <rect
+       style="opacity:1;fill:#f6f6f9;fill-opacity:1;fill-rule:nonzero;stroke:#cd4747;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2987-2-9-4-2-6-6-0"
+       width="112.3403"
+       height="37.012531"
+       x="410.64163"
+       y="1026.4209"
+       ry="13.512511"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="467.1312"
+       y="1042.387"
+       id="text2989-5-4-3-8-9-2-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         x="467.1312"
+         y="1042.387"
+         id="tspan5338-7">Private voting</tspan><tspan
+         sodipodi:role="line"
+         x="467.1312"
+         y="1057.387"
+         id="tspan5342-5">closed</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 466.22307,1015.4048 0.0825,14.5178"
+       id="path3158-2-8-3-8-2-5-0"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-1-9-2"
+       inkscape:original-d="m 466.22307,1015.4048 0.0825,14.5178"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="M 336.15181,900.68677 302.70873,929.032"
+       id="path3158-2-8-3-8-8-1"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-13-8"
+       inkscape:original-d="M 336.15181,900.68677 302.70873,929.032"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 422.02271,902.74271 32.76698,29.12417"
+       id="path3158-2-8-3-8-8-1-1"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-13-8-6"
+       inkscape:original-d="m 422.02271,902.74271 32.76698,29.12417"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 451.59221,1064.5952 -33.44308,28.3452"
+       id="path3158-2-8-3-8-8-1-9"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-13-8-1"
+       inkscape:original-d="m 451.59221,1064.5952 -33.44308,28.3452"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Lend)"
+       d="m 280.21689,971.79885 91.51867,120.82155"
+       id="path3158-2-8-3-8-8-1-0"
+       inkscape:path-effect="#path-effect3160-178-2-7-7-13-8-5"
+       inkscape:original-d="m 280.21689,971.79885 91.51867,120.82155"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="443.25003"
+       y="915.03412"
+       id="text2989-5-4-4-0-7"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-0-8-8"
+         x="443.25003"
+         y="915.03412">=TRUE</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans;-inkscape-font-specification:Sans"
+       x="272.48776"
+       y="913.57306"
+       id="text2989-5-4-4-0-7-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/hingo/hacking/solon/solon-voting/docs/liquid_feedback_state_machine_with_solon_patch.png"
+       inkscape:export-xdpi="73.120003"
+       inkscape:export-ydpi="73.120003"><tspan
+         sodipodi:role="line"
+         id="tspan2991-8-7-0-8-8-4"
+         x="272.48776"
+         y="913.57306">=FALSE</tspan></text>
+  </g>
+</svg>
