@@ -1,0 +1,13 @@
+Source: addergui
+Section: x11
+Priority: optional
+Maintainer: Michael J. Korman <mkorman@cse.uconn.edu>
+Build-Depends: debhelper (>= 4.0.0), autotools-dev
+Standards-Version: 3.6.2
+
+Package: addergui
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, qca-openssl
+Description: g  raphical frontend for the Adder Voting System
+ This is a graphical frontend for the Adder Voting System. It provides
+ features relating to administration, auditing, and voting.

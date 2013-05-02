@@ -1,0 +1,78 @@
+.\" Copyright (C) 2004 David Walluck.
+.\"
+.\" Permission is granted to copy, distribute and/or modify this document
+.\" under the terms of the GNU Free Documentation License, Version 1.1
+.\" or any later version published by the Free Software Foundation;
+.\" with the Invariant Sections being no invariant sections, with the
+.\" Front-Cover Texts being no front-cover texts, and with the Back-Cover
+.\" Texts being no back-cover texts. A copy of the license is included with
+.\" this package in the file "COPYING.DOC."
+.TH @PACKAGE_NAME@.conf 5 "26 May 2004" "version @PACKAGE_VERSION@"
+
+.SH NAME
+@PACKAGE_NAME@.conf \- configuration file for @PACKAGE_NAME@.8
+
+.SH DESCRIPTION
+This file carries all configuartion options for the adder server.
+Each option has to be written on a line for itself. Comments start with `#'.
+Each line is of the form `<key> <value>'. The end of the file should not
+contain a newline, due to a bug.
+
+.SH OPTIONS
+Available  options are the following:
+.TP
+logging <on|off|syslog>
+Set the logging type. Valid values are `on' (stdout), `off' and `syslog',
+which is the syslog under Unix systems and the eventlog on Windows systems.
+The default is `syslog'.
+.TP
+port <portnum>
+Set the port that the server will listen on. Valid values are any port number.
+The default is `6999'.
+.TP
+daemon <true|false>
+Set whether or not we launch as a daemon. Valid values are `true' and `false'.
+The default is `true'.
+This option currently does nothing on Windows.
+.TP
+db_hostname <hostname>
+Set the database hostname. Valid values are any valid hostname.
+The default is `localhost'.
+.TP
+db_port <port>
+Set the database port. Valid values are any valid port number.
+The default is the default MySQL port (usually 3306).
+.TP
+db_username <string>
+Set the database username. Valid values are any valid (non-null) string.
+The default is the empty string.
+.TP
+db_password <string>
+Set the database password. Valid values are any valid (non-null) string.
+The default is the empty string.
+.TP
+db_database <string>
+Set the database name. Valid values are any valid (non-null) string.
+The default is the empty string.
+.TP
+session_time_limit <int>
+Set the session time limit. Valid values are any integer.
+.TP
+.SH FILES
+.nf
+/etc/@PACKAGE_NAME@.conf  The @PACKAGE_NAME@ configuration file
+.fi
+.SH AUTHORS
+Michael J. Korman
+
+.br
+David Walluck
+
+.br
+http://www.cse.uconn.edu/~adder/
+
+.SH BUGS
+The end of the file must not contain a newline.
+
+.SH "SEE ALSO"
+.BR @PACKAGE_NAME@ "(8)

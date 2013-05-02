@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="libadder-java" default="all" basedir=".">
+  <description>Adder library and applet for Java.</description>
+  <property name="libadder.version.spec" value="0.0" />
+  <property name="libadder.version" value="0.0.1" />
+  <property name="build" value="${basedir}/build" />
+  <property name="build.instrumented" value="${build}/instrumented" />
+  <property name="doc" value="${basedir}/doc" />
+  <property name="bindir" value="/usr/bin" />
+  <property name="destdir" value="" />
+  <property name="javadir" value="/usr/share/java" />
+  <property name="jvmdir" value="/usr/lib/jvm" />
+  <property name="javadoc" value="${build}/javadoc" />
+  <property name="asm2.jar" value="${javadir}/asm2/asm2.jar" />
+  <property name="cobertura.jar" value="${javadir}/cobertura.jar" />
+  <property name="junit.jar" value="${javadir}/junit.jar" />
+  <property name="log4j.jar" value="${javadir}/log4j.jar" />
+  <property name="findbugs.home" value="${javadir}/findbugs" />
+  <property name="checkstyle.dir" value="/usr/share/checkstyle" />
+  <property name="src" value="${basedir}/src" />
+  <property name="build.compiler" value="modern" />
+  <property name="options.optimize" value="off" />
+  <property name="options.deprecation" value="on" />
+  <property name="options.debug" value="on" />
+  <property name="java.javadoc" value="/usr/share/javadoc/java" />
+  <property name="junit.javadoc" value="/usr/share/javadoc/junit" />
+  <property file="${user.home}/.libadder-javarc" />
+  <target name="prop" description="Show environment we are running under">
+    <echo message="JVM: ${java.vm.name} ${java.vm.version} (${java.vm.vendor})" />
+    <echo message="JRE: Java ${java.version} (${java.vendor} &lt;${java.vendor.url}&gt;) [${java.home}]" />
+  </target>
+  <target name="all" depends="jar,javadoc,dist"
+   description="Build jar, execute tests, and build javadocs" /> 
+  <target name="init">
+    <antcall target="prop" />
+    <mkdir dir="${build}" /> 
+  </target>
+  <target name="manifest">
+    <manifest file="${build}/manifest.mf">
+      <attribute name="Extension-Name" value="edu.uconn.cse.adder" />
+      <attribute name="Specification-Vendor" value="The Adder Team" />
+      <attribute name="Specification-Version"
+       value="${libadder.version.spec}" />
+      <attribute name="Implementation-Vendor-Id" value="edu.uconn" />
+      <attribute name="Implementation-Vendor" value="The Adder Team" />
+      <attribute name="Implementation-Version" value="${libadder.version}" />
+    </manifest>
+  </target>
+  <target name="jar" depends="compile,manifest" description="Build jar">
+    <jar destfile="${build}/libadder-java-${libadder.version}.jar"
+     manifest="${build}/manifest.mf" index="true">
+      <fileset dir="${build}">
+        <include name="edu/**/*.class" />
+      </fileset>
+    </jar>
+    <antcall target="signjar" />
+    <copy todir="${build}" preservelastmodified="true">
+      <fileset dir="${doc}">
+        <include name="*.html" />
+        <include name="*.js" />
+      </fileset>
+    </copy>
+  </target>
+  <target name="compile" depends="fixcrlf,depend"
+   description="Compile source code">
+    <javac srcdir="${src}" debug="${options.debug}"
+     deprecation="${options.deprecation}" optimize="${options.optimize}"
+     destdir="${build}">
+<!--      <compilerarg value="-Xlint:all" /> -->
+    </javac>
+  </target>
+  <target name="javadoc" description="Build javadocs">
+    <mkdir dir="${javadoc}" />
+    <javadoc sourcepath="${src}" destdir="${javadoc}" use="true" 
+     version="true" author="true" linksource="true"
+     overview="${src}/overview.html" encoding="utf8" docencoding="utf8">
+      <classpath>
+        <pathelement path="${junit.jar}" />
+      </classpath>
+      <packageset dir="${src}">
+        <include name="edu/uconn/cse/adder/**" />
+      </packageset>
+      <link href="${java.javadoc}" />
+      <link href="${junit.javadoc}" />
+    </javadoc>
+  </target>
+  <target name="clean" description="Clean build">
+    <delete dir="${build}" />
+    <delete file="cobertura.ser" />
+    <delete>
+      <fileset dir="${basedir}" includes="*~,**/*~"/>
+      <fileset dir="${basedir}" includes="*.tar.*z*"/>
+      <fileset dir="${basedir}" includes="*.zip"/>
+      <fileset dir="${basedir}" includes="*.sha1"/>
+    </delete>
+  </target>
+  <target name="test" depends="compile" description="Execute tests">
+    <junit haltonfailure="yes" printsummary="yes" showoutput="yes"
+     fork="yes" forkmode="once">
+      <jvmarg value="-ea:edu.uconn.cse.adder..." />
+      <jvmarg value="-Xmx256M" />
+      <classpath>
+        <pathelement path="${build.instrumented}" />
+        <pathelement path="${build}" />
+        <pathelement path="${cobertura.jar}" />
+      </classpath>
+      <formatter type="xml" usefile="true" />
+      <batchtest todir="${build}">
+        <fileset dir="${src}">
+          <include name="**/*Test*.java" />
+          <exclude name="**/AllTests.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+    <junitreport todir="${build}">
+      <fileset dir="${build}">
+        <include name="TEST-*.xml" />
+      </fileset>
+      <report format="frames" todir="${build}/junit" />
+    </junitreport>
+  </target>
+  <target name="findbugs" depends="jar">
+    <taskdef name="findbugs"
+     classname="edu.umd.cs.findbugs.anttask.FindBugsTask" />
+    <findbugs home="${findbugs.home}" output="text"
+     outputfile="${build}/findbugs.txt" reportlevel="experimental"
+     quieterrors="true" failonerror="false" workhard="true">
+      <auxclasspath>
+        <pathelement path="${junit.jar}" />
+      </auxclasspath>
+      <sourcepath path="${src}" />
+      <class location="${build}/libadder-java-${libadder.version}.jar" />
+    </findbugs>
+  </target>
+  <target name="clean-instrumented">
+    <delete dir="${build.instrumented}" />
+  </target>
+  <target name="instrument" depends="clean-instrumented,compile">
+    <taskdef classpath="${cobertura.jar}"
+     resource="tasks.properties" />
+    <cobertura-instrument todir="${build.instrumented}">
+      <classpath>
+        <pathelement path="${asm2.jar}" />
+      </classpath>
+      <fileset dir="${build}">
+        <include name="**/*.class" />
+        <exclude name="**/*Test*.class" />
+        <exclude name="**/*Exception.class" />
+        <!-- <exclude name="**/plugin/*.class" /> -->
+      </fileset>
+    </cobertura-instrument>
+  </target>
+  <target name="coverage" depends="instrument,test"
+   description="Check test coverage">
+   <taskdef classpath="${cobertura.jar}"
+    resource="tasks.properties" />
+    <cobertura-report destdir="${build}/coverage" srcdir="${src}">
+    </cobertura-report>
+  </target>
+  <target name="checkstyle" depends="init">
+    <taskdef resource="checkstyletask.properties" />
+    <checkstyle config="libadder-java_checks.xml" failonviolation="false">
+      <fileset dir="${src}" includes="**/*.java" />
+      <formatter type="xml" toFile="${build}/checkstyle.xml" />
+      <property key="checkstyle.cache.file" file="${build}/checkstyle.cache" />
+      <classpath>
+        <pathelement path="${build}" />
+      </classpath>
+    </checkstyle>
+    <style processor="trax" basedir="${build}"
+     includes="checkstyle.xml" destdir="${build}/checkstyle"
+     style="${checkstyle.dir}/checkstyle-frames.xsl" />
+  </target>
+  <target name="signjar">
+    <signjar alias="${libadder.signjar.alias}" sigfile="adder" verbose="true"
+     jar="${build}/libadder-java-${libadder.version}.jar"
+     keypass="${libadder.signjar.keypass}"
+     keystore="${libadder.signjar.keystore}"
+     storepass="${libadder.signjar.storepass}"
+     storetype="${libadder.signjar.storetype}" />
+  </target>
+  <target name="depend">
+    <depend cache="${build}/depend" destdir="${build}" srcdir="${src}"
+     includes="**/*.java" closure="true" dump="true" />
+  </target>
+  <target name="dist-bzip2" depends="distdir">
+     <tar basedir="${build}"
+      destfile="${basedir}/libadder-java-${libadder.version}.tar.bz2"
+      compression="bzip2" includes="libadder-java-${libadder.version}/**"
+      longfile="gnu" />
+  </target>
+  <target name="dist-gzip" depends="distdir">
+     <tar basedir="${build}"
+      destfile="${basedir}/libadder-java-${libadder.version}.tar.gz"
+      compression="gzip" includes="libadder-java-${libadder.version}/**"
+      longfile="gnu" />
+  </target>
+  <target name="dist-zip" depends="distdir">
+     <zip basedir="${build}"
+      destfile="${basedir}/libadder-java-${libadder.version}.zip"
+      includes="libadder-java-${libadder.version}/**" />
+  </target>
+  <target name="distdir">
+    <delete dir="${build}/libadder-java-${libadder.version}" />
+    <mkdir dir="${build}/libadder-java-${libadder.version}" />
+    <copy todir="${build}/libadder-java-${libadder.version}"
+     preservelastmodified="true">
+      <fileset dir="${basedir}">
+        <include name="*.xml" />
+        <include name="doc/**" />
+        <include name="src/**" />
+      </fileset>
+    </copy>
+    <chmod perm="755" type="dir" verbose="true">
+     <fileset dir="${build}/libadder-java-${libadder.version}">
+       <include name="**" />
+     </fileset>
+    </chmod>
+    <chmod perm="644" type="file" verbose="true">
+     <fileset dir="${build}/libadder-java-${libadder.version}">
+       <include name="**" />
+     </fileset>
+    </chmod>
+  </target>
+  <target name="dist"
+   depends="distdir,dist-bzip2,dist-gzip,dist-zip,checksum"
+   description="Build source archives (tar.bz2, tar.gz, zip)" />
+  <target name="checksum">
+    <checksum algorithm="sha1">
+      <fileset dir="${basedir}" includes="*.bz2,*.gz,*.zip" />
+    </checksum>
+  </target>
+  <target name="install" depends="jar" description="Install jar">
+    <mkdir dir="${destdir}${javadir}" />
+    <copy file="${build}/libadder-java-${libadder.version}.jar"
+     todir="${destdir}${javadir}"
+     preservelastmodified="true" />
+    <symlink
+     resource="${javadir}/libadder-java-${libadder.version}.jar"
+     link="${javadir}/libadder-java.jar" overwrite="true" />
+  </target>
+  <target name="uninstall" description="Uninstall jar">
+    <delete file="${javadir}/libadder-java-${libadder.version}.jar" />
+    <delete file="${javadir}/libadder-java.jar" />
+  </target>
+  <target name="fixcrlf">
+    <fixcrlf srcdir="${basedir}" tab="remove" tablength="8" eof="remove"
+     eol="lf" javafiles="yes" includes="**/*.java" />
+  </target>
+</project>

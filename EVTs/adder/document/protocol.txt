@@ -1,0 +1,829 @@
+ADDER protocol version 1.9
+--------------------------
+
+enum STAGE {
+    STAGE_NOTSTARTED, /**< Procedure has not yet been started. */
+    STAGE_WAITKEYS, /**< Waiting for the public keys of the authorities. */
+    STAGE_WAITPOLYNOMIAL, /**< Waiting for the authorities to submit their polynomial data. */
+    STAGE_WAITGETPRIVKEYS, /**< Waiting for authorities to get their privkey data. */
+    STAGE_COMPUTINGPUBKEY, /**< Computing the public key. */
+    STAGE_VOTING, /**< Inside the voting process. */
+    STAGE_ADDCIPHER, /**< Sums the votes to get the cipher sum. */
+    STAGE_WAITDECRYPT, /**< Waiting for the authorities to submit their decryptions. */
+    STAGE_DECRYPTING, /**< Waiting for the system to decrypt the result. */
+    STAGE_FINISHED, /**< The election is finished and the result has been posted. */
+    STAGE_HALT, /**< An error has occurred and the election cannot continue. */
+    STAGE_NONEXIST, /**< This procedure does not exist. */
+};
+
+GLOBAL EXCEPTIONS:
+        1. Unrecognized command or parameter count.
+                Output: BADCOMMAND
+
+SENDPUBLICKEY 
+Description:
+        Called when an authority wishes to submit a public key.
+Preconditions:
+        1. User is logged in as an authority.
+        2. Stage is STAGE_WAITKEYS.
+        3. Procedure exists.
+Postconditions:
+        1. Authority's key is stored in the database.
+Input: 
+        <public key>:string - The user's public key.
+        <procedure>:string  - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Unauthenticated user.
+        3. Bad stage.
+        4. Duplicate key.
+        5. Invalid key.
+Output:
+        Success: SENDPUBLICKEY OK
+        Ex 1:    SENDPUBLICKEY BADPROCEDURE
+        Ex 2:    SENDPUBLICKEY BADUSER
+        Ex 3:    SENDPUBLICKEY BADSTAGE
+        Ex 4:    SENDPUBLICKEY DUPLICATE
+        Ex 5:    SENDPUBLICKEY BADKEY
+
+SENDVOTE
+Description:
+        Called when a user wishes to submit a vote.
+Preconditions:
+        1. User is logged in.
+        2. Stage is STAGE_VOTING.
+        3. Procedure exists.
+        4. User has not already voted.
+Postconditions:
+        1. User's vote is stored in the database.
+        2. Ballot proof is computed.
+Input: 
+        <vote>:string      - The vote.
+        <proof>:string     - The ballot proof.
+        <procedure>:string - The procedure ID
+Exceptions:
+        1. Invalid procedure.
+        2. Unauthenticated user.
+        3. Bad stage.
+        4. Duplicate vote.
+        5. Malformed vote.
+        6. Malformed proof.
+        7. Invalid proof.
+        8. Improper number of choices.
+Output:
+        Success: SENDVOTE OK
+        Ex 1:    SENDVOTE BADPROCEDURE
+        Ex 2:    SENDVOTE BADUSER
+        Ex 3:    SENDVOTE BADSTAGE
+        Ex 4:    SENDVOTE DUPLICATE
+        Ex 5:    SENDVOTE BADVOTE
+        Ex 6:    SENDVOTE BADPROOF
+        Ex 7:    SENDVOTE INVALIDPROOF
+        Ex 8:    SENDVOTE BADNUMCHOICES
+
+SENDSUM
+Description:
+        Called when an authority wishes to submit a partial decryption.
+Preconditions:
+        1. User is logged in.
+        2. Stage is STAGE_WAITDECRYPT.
+        3. Procedure exists.
+        4. Authority has not already submitted a sum.
+        5. Authority's stage is STAGE_WAITGETPRIVKEYS.
+Postconditions:
+        1. Authority's partial decryption is stored in the database.
+        2. Authority's stage is updated to STAGE_WAITDECRYPT.
+Input: 
+        list of <decryption>:int - The list of partial decryptions.
+        <procedure>:string       - The procedure ID
+Exceptions:
+        1. Invalid procedure.
+        2. Unauthenticated user.
+        3. Bad stage.
+        4. Duplicate sum.
+        5. Bad authority stage.
+Output:
+        Success: SENDSUM OK
+        Ex 1:    SENDSUM BADPROCEDURE
+        Ex 2:    SENDSUM BADUSER
+        Ex 3:    SENDSUM BADSTAGE
+        Ex 4:    SENDSUM DUPLICATE
+        Ex 5:    SENDSUM BADAUTHSTAGE
+
+SENDPOLYLIST 
+Description:
+        Called when an authority wishes to submit a list of polynomial values.
+Preconditions:
+        1. User is logged in.
+        2. Stage is STAGE_WAITPOLYNOMIAL.
+        3. Procedure exists.
+        4. Authority has not already submitted polynomial values.
+        5. Authority's stage is STAGE_WAITKEYS.
+        6. Authority has not already submitted g-values.
+Postconditions:
+        1. Authority's polynomial list is stored in the database.
+        2. Authority's stage is updated to STAGE_WAITPOLYNOMIAL.
+Input: 
+        list of (<auth id>:string, <polynomial>:string) - The list of auth_id,
+                                                          value pairs.
+        list of (<number>:int, <value>:string)          - The list of number,
+                                                          g-value pairs.
+        <procedure>:string - The procedure ID
+Exceptions:
+        1. Invalid procedure.
+        2. Unauthenticated user.
+        3. Bad stage.
+        4. Duplicate polynomial values.
+        5. Malformed polynomial values.
+        6. Duplicate g-values.
+        7. Malformed g-values.
+        8. Bad authority stage.
+Output:
+        Success: SENDPOLYLIST OK
+        Ex 1:    SENDPOLYLIST BADPROCEDURE
+        Ex 2:    SENDPOLYLIST BADUSER
+        Ex 3:    SENDPOLYLIST BADSTAGE
+        Ex 4:    SENDPOLYLIST DUPLICATEPOLYLIST
+        Ex 5:    SENDPOLYLIST BADPOLYLIST
+        Ex 6:    SENDPOLYLIST DUPLICATEGVALUES
+        Ex 7:    SENDPOLYLIST BADGVALUES
+        Ex 8:    SENDPOLYLIST BADAUTHSTAGE
+
+CREATEPROCEDURE
+Description:
+        Called to create a procedure.
+Preconditions:
+        1. Client has administrator privileges.
+Postconditions:
+        1. Procedure is created and provided info is stored in database.
+        2. Master key info is created and stored in database.
+Input: 
+        <title>:string               - The displayed title of the procedure.
+        <text>:string                - The text to be displayed on the ballot.
+        <threshold>:int              - Number of authorities needed to advance 
+                                       stages.
+        <publickeytime seconds>:int  - Seconds of public key submission phase.
+        <polynomialtime seconds>:int - Seconds of polynomial submission phase.
+        <secretkeytime seconds>:int  - Seconds of secret key retrieval phase.
+        <votetime seconds>:int       - Seconds of voting phase.
+        <keylength>:int              - Key length in bits.
+        <robustness factor>:real     - Robustness factor.
+        <min choices>:int            - Minimum required choices.
+        <max choices>:int            - Maximum allowed choices.
+        list of <choices>:string     - Text descriptions of choices.
+        list of <auths>:string       - Authority IDs.
+Exceptions:
+        1. Malformed title.
+        2. Malformed text.
+        3. Malformed threshold.
+        4. Malformed publickeytime.
+        5. Malformed polynomialtime.
+        6. Malformed secretkeytime.
+        7. Malformed votetime.
+        8. Malformed robustness factor.
+        9. Malformed choices.
+        10. Malformed authorities.
+        11. Malformed min/max choices.
+        12. Client does not have administrator privileges.
+Output:
+        Success: SENDCREATEPROCEDURE OK
+        Ex 1:    SENDCREATEPROCEDURE BADTITLE
+        Ex 2:    SENDCREATEPROCEDURE BADTEXT
+        Ex 3:    SENDCREATEPROCEDURE BADTHRESHOLD
+        Ex 4:    SENDCREATEPROCEDURE BADPUBLICKEYTIME
+        Ex 5:    SENDCREATEPROCEDURE BADPOLYNOMIALTIME
+        Ex 6:    SENDCREATEPROCEDURE BADSECRETKEYTIME
+        Ex 7:    SENDCREATEPROCEDURE BADVOTETIME
+        Ex 8:    SENDCREATEPROCEDURE BADROBUSTNESS
+        Ex 9:    SENDCREATEPROCEDURE CHOICES
+        Ex 10:   SENDCREATEPROCEDURE AUTHORITIES
+        Ex 11:   SENDCREATEPROCEDURE BADMINMAXCHOICES
+        Ex 12:   SENDCREATEPROCEDURE NOTADMIN
+
+DELETEPROCEDURE
+Description:
+        Called to delete a procedure.
+Preconditions:
+        1. Procedure exists.
+        2. Client has administrator privileges.
+Postconditions:
+        1. Procedure is removed from the database.
+Input: 
+        <procedure>:string - The procedure ID
+Exceptions:
+        1. Invalid procedure.
+        2. Client does not have administrator privileges.
+Output:
+        Success: DELETEPROCEDURE OK
+        Ex 1:    DELETEPROCEDURE BADPROCEDURE
+        Ex 2:    DELETEPROCEDURE NOTADMIN
+
+GETSUM
+Description:
+        To retrieve the encrypted sum of a procedure.
+Preconditions:
+        1. Stage is at least STAGE_WAITDECRYPT.
+        2. Procedure exists.
+Postconditions:
+        1. Encrypted sum is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+Output:
+        Success: GETSUM <sum>:string
+        Ex 1:    GETSUM BADPROCEDURE
+        Ex 2:    GETSUM BADSTAGE
+
+GETSTAGE
+Description:
+        To retrieve the stage of a procedure.
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Stage is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETSTAGE <stage>:int
+        Ex 1:    GETSTAGE BADPROCEDURE
+
+GETTHRESHOLD
+Description:
+        To retrieve the authority threshold of a procedure.
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Authority threshold is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETTHRESHOLD <threshold>:int
+        Ex 1:    GETTHRESHOLD BADPROCEDURE
+
+GETREMAINING
+Description:
+        To retrieve the number of authorities needed to advance to the
+        next phase of a procedure.  
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Remaining authority count is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETREMAINING <remaining>:int
+        Ex 1:    GETREMAINING BADPROCEDURE
+
+GETNUMVOTES
+Description:
+        To retrieve the number number of users who have voted in a
+        procedure.  
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Number of votes is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETNUMVOTES <numvotes>:int
+        Ex 1:    GETNUMVOTES BADPROCEDURE
+
+GETPUBKEY
+Description:
+        To retrieve the master public key of the procedure.
+Preconditions:
+        1. Stage is at least STAGE_VOTING.
+        2. Procedure exists.
+Postconditions:
+        1. Public key is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+Output:
+        Success: GETPUBKEY <pubkey>:string
+        Ex 1:    GETPUBKEY BADPROCEDURE
+        Ex 2:    GETPUBKEY BADSTAGE
+
+GETRESULTS
+Description:
+        To retrieve the results of a procedure.
+Preconditions:
+        1. Stage is at least STAGE_FINISHED.
+        2. Procedure exists.
+Postconditions:
+        1. Procedure results are returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+Output:
+        Success: GETRESULTS list of (<choice>:string, <sum>:int)
+        Ex 1:    GETRESULTS BADPROCEDURE
+        Ex 2:    GETRESULTS BADSTAGE
+
+GETDESCRIPTION
+Description:
+        To retrieve the description of a procedure.
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Procedure description is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETDESCRIPTION <description>:string
+        Ex 1:    GETDESCRIPTION BADPROCEDURE
+
+GETTITLE
+Description:
+        To retrieve the title of a procedure.
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Procedure title is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETTITLE <title>:string
+        Ex 1:    GETTITLE BADPROCEDURE
+
+GETCHOICES
+Description:
+        To retrieve the choices of a procedure.
+Preconditions:
+        None
+Postconditions:
+        1. Procedure choices are returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETCHOICES list of (<choice_text>:string, <choice_id>:int)
+        Ex 1:    GETCHOICES BADPROCEDURE
+
+GETNUMCHOICES
+Description:
+        To retrieve the number of choices for a procedure, as well as
+        the minimum and maximum required selections.
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Number of choices is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETNUMCHOICES <numchoices>:int <minchoices>:int <maxchoices>:int
+        Ex 1:    GETNUMCHOICES BADPROCEDURE
+
+GETAUTHPUBKEYS
+Description:
+        To retrieve all of the public keys of the authorities.
+Preconditions:
+        1. Procedure exists
+        2. Stage is at least STAGE_WAITPOLYNOMIAL.
+Postconditions:
+        1. Public keys are returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+Output:
+        Success: GETAUTHPUBKEYS list of (<auth_num>:int, <pubkey>:string)
+        Ex 1:    GETAUTHPUBKEYS BADPROCEDURE
+        Ex 2:    GETAUTHPUBKEYS BADSTAGE
+
+GETPRIVKEYLIST
+Description:
+        To retrieve the polynomial data for an authority.
+Preconditions:
+        1. Procedure exists
+        2. Stage is at least STAGE_WAITGETPRIVKEYS.
+        3. User is logged in.
+        4. User is an authority in this procedure.
+        5. Authority has stage at least STAGE_WAITPOLYNOMIAL.
+Postconditions:
+        1. Polynomial data are returned.
+        2. Authority's stage is set to STAGE_WAITGETPRIVKEYS.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+        3. User not authenticated.
+        4. User not an authority.
+        5. Authority stage wrong.
+Output:
+        Success: GETPRIVKEYLIST list of <value>:string
+        Ex 1:    GETPRIVKEYLIST BADPROCEDURE
+        Ex 2:    GETPRIVKEYLIST BADSTAGE
+        Ex 3.    GETPRIVKEYLIST BADUSER
+        Ex 4:    GETPRIVKEYLIST NOTAUTHORITY
+        Ex 5:    GETPRIVKEYLIST BADAUTHSTAGE
+
+GETKEYCONSTANTS
+Description:
+        To retrieve the key constants for a procedure.
+Preconditions:
+        1. Procedure exists
+Postconditions:
+        1. Key constants are returned in the form of a public key.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. No key.
+Output:
+        Success: GETKEYCONSTANTS <keyconstants>:string
+        Ex 1:    GETKEYCONSTANTS BADPROCEDURE
+        Ex 2:    GETKEYCONSTANTS NOKEY
+
+GETPROCEDURELIST
+Description:
+        To retrieve a list of procedures.
+Preconditions:
+        None
+Postconditions:
+        1. Procedure list is returned.
+Input: 
+        None
+Exceptions:
+        None
+Output:
+        Success: GETPROCEDURELIST list of (<proc_id>:string, <title>:string, 
+                                           <stage>:int,
+                                           <auths_remaining>:int,
+                                           <threshold>:int,
+                                           <robustness>:int,
+                                           <minchoices>:int,
+                                           <maxchoices>:int)
+
+GETUSERLIST
+Description:
+        To retrieve a list of users.
+Preconditions:
+        None
+Postconditions:
+        1. User list is returned.
+Input: 
+        None
+Exceptions:
+        None
+Output:
+        Success: GETUSERLIST list of <user_id>:string
+
+GETPUBKEYLIST
+Description:
+        To retrieve a list of all authorities who have submitted public keys.
+Preconditions:
+        1. Procedure exists
+        2. Stage is at least STAGE_WAITKEYS.
+Postconditions:
+        1. List of authorities is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+Output:
+        Success: GETPUBKEYLIST list of <user_id>:string
+        Ex 1:    GETPUBKEYLIST BADPROCEDURE
+        Ex 2:    GETPUBKEYLIST BADSTAGE
+
+GETVOTELIST
+Description:
+        To retrieve a list of all users who have submitted votes.
+Preconditions:
+        1. Procedure exists.
+        2. Stage is at least STAGE_VOTING.
+Postconditions:
+        1. List of users is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+Output:
+        Success: GETVOTELIST list of (<user_id>:string, <time_stamp>:timestamp)
+        Ex 1:    GETVOTELIST BADPROCEDURE
+        Ex 2:    GETVOTELIST BADSTAGE
+        
+GETAUTHPUBKEY
+Description:
+        To retrieve the public key of an authority.
+Preconditions:
+        1. Procedure exists.
+        2. Stage is at least STAGE_WAITKEYS.
+        3. Authority has submitted a public key.
+Postconditions:
+        1. Authority's public key is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+        <auth_id>:string   - The authority ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Bad stage.
+        3. Authority has not yet submitted a public key.
+Output:
+        Success: GETAUTHPUBKEY <pub_key>:string
+        Ex 1:    GETAUTHPUBKEY BADPROCEDURE
+        Ex 2:    GETAUTHPUBKEY BADSTAGE
+        Ex 3:    GETAUTHPUBKEY NOKEY
+
+GETAUTHSTAGE
+Description:
+        To retrieve the stage of an authority.
+Preconditions:
+        1. Procedure exists.
+        2. Authority exists.
+Postconditions:
+        1. Authority's stage is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+        <auth_id>:string   - The authority ID.
+Exceptions:
+        1. Invalid procedure.
+        2. Authority does not exist.
+Output:
+        Success: GETAUTHSTAGE <stage>:int
+        Ex 1:    GETAUTHSTAGE BADPROCEDURE
+        Ex 2:    GETAUTHSTAGE INVALIDAUTHORITY
+
+GETVOTE
+Description:
+        To retrieve the vote of a user.
+Preconditions:
+        1. Procedure exists.
+        2. User exists.
+        3. Stage is at least STAGE_VOTING.
+        4. User has voted.
+Postconditions:
+        1. User's vote is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+        <user_id>:string   - The user ID.
+Exceptions:
+        1. Invalid procedure.
+        2. User does not exist.
+        3. Bad stage.
+        4. User has not voted.
+Output:
+        Success: GETVOTE <vote>:string
+        Ex 1:    GETVOTE BADPROCEDURE
+        Ex 2:    GETVOTE INVALIDUSER
+        Ex 3:    GETVOTE BADSTAGE
+        Ex 4:    GETVOTE NOVOTE
+
+GETBALLOTPROOF
+Description:
+        To retrieve the ballot proof of a user.
+Preconditions:
+        1. Procedure exists.
+        2. User exists.
+        3. Stage is at least STAGE_VOTING.
+        4. User has voted.
+Postconditions:
+        1. User's proof is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+        <user_id>:string   - The user ID.
+Exceptions:
+        1. Invalid procedure.
+        2. User does not exist.
+        3. Bad stage.
+        4. User has not voted.
+Output:
+        Success: GETBALLOTPROOF <proof>:string
+        Ex 1:    GETBALLOTPROOF BADPROCEDURE
+        Ex 2:    GETBALLOTPROOF INVALIDUSER
+        Ex 3:    GETBALLOTPROOF BADSTAGE
+        Ex 4:    GETBALLOTPROOF NOVOTE
+
+GETSHORTHASH
+Description:
+        To retrieve the short hash of a user.
+Preconditions:
+        1. Procedure exists.
+        2. User exists.
+        3. Stage is at least STAGE_VOTING.
+        4. User has voted.
+Postconditions:
+        1. User's short hash is returned.
+Input: 
+        <procedure>:string - The procedure ID.
+        <user_id>:string   - The user ID.
+Exceptions:
+        1. Invalid procedure.
+        2. User does not exist.
+        3. Bad stage.
+        4. User has not voted.
+Output:
+        Success: GETSHORTHASH <hash>:string
+        Ex 1:    GETSHORTHASH BADPROCEDURE
+        Ex 2:    GETSHORTHASH INVALIDUSER
+        Ex 3:    GETSHORTHASH BADSTAGE
+        Ex 4:    GETSHORTHASH NOVOTE
+
+GETTIMES
+Description:
+        To retrieve the times of a procedure.
+Preconditions:
+        1. Procedure exists.
+Postconditions:
+        1. Procedure times are returned.
+Input: 
+        <procedure>:string - The procedure ID.
+Exceptions:
+        1. Invalid procedure.
+Output:
+        Success: GETTIMES <createtime_unixtime>:int
+                          <publickeytime_seconds>:int
+                          <polynomialtime_seconds>:int
+                          <secretkeytime_seconds>:int
+                          <votetime_seconds>:int
+        Ex 1:    GETTIMES BADPROCEDURE
+
+MAKEUSER
+Description:
+        To create a user.
+Preconditions:
+        1. User does not already exist.
+        2. Client has administrator privileges.
+Postconditions:
+        1. User name and password hash are added to the database.
+Input: 
+        <user_id>:string - The ID of the user.
+        <password>:string - The password of the user.
+Exceptions:
+        1. User already exists.
+        2. Username is malformed.
+        3. Password is malformed.
+        4. Client does not have administrator privileges.
+Output:
+        Success: MAKEUSER OK
+        Ex 1:    MAKEUSER USEREXISTS
+        Ex 2:    MAKEUSER BADUSERNAME
+        Ex 3:    MAKEUSER BADPASSWORD
+        Ex 4:    MAKEUSER NOTADMIN
+
+PROGRESSPROCEDURE
+Description:
+        To advance a procedure to the next stage.
+Preconditions:
+        1. Procedure exists.
+        2. Stage is less than STAGE_HALT.
+        3. Client has administrator privileges.
+Postconditions:
+        1. Procedure stage is advanced.
+Input: 
+        <procedure_id>:string - The ID of the procedure.
+Exceptions:
+        1. Procedure does not exist.
+        2. Bad stage.
+        3. Client does not have administrator privileges.
+Output:
+        Success: PROGRESSPROCEDURE OK
+        Ex 1:    PROGRESSPROCEDURE BADPROCEDURE
+        Ex 2:    PROGRESSPROCEDURE BADSTAGE
+        Ex 3:    PROGRESSPROCEDURE NOTADMIN
+
+SESSION
+Description:
+        To login a user based on a session .
+Preconditions:
+        1. Session has not timed out.
+        2. User exists.
+        3. Procedure exists.
+Postconditions:
+        1. User is logged in.
+Input: 
+        <session_id>:string
+        <procedure_id>:string
+Exceptions:
+        1. Procedure does not exist.
+        2. Invalid name or password.
+        3. Invalid session.
+Output:
+        Success: SESSION <is_authority>:bool <user_id>:string
+        Ex 1:    SESSION BADPROCEDURE
+        Ex 2:    SESSION BADUSER
+        Ex 3:    SESSION BADSESSION
+
+STARTPROCEDURE
+Description:
+        To start a procedure.
+Preconditions:
+        1. Procedure exists.
+        2. Stage is STAGE_NOTSTARTED.
+        3. Client has administrator privileges.
+Postconditions:
+        1. Procedure data are erased:
+                polynomials, g-values, authpubkeys, 
+                authstages, authcount, votes, encrypted result, partial sums,
+                plaintext result, master public key.
+        2. Procedure is started.
+        3. Procedure stage set to STAGE_WAITKEYS.
+        4. Creation time is set to start time.
+        5. Timer is set for public key submission.
+Input: 
+        <procedure_id>:string
+Exceptions:
+        1. Procedure does not exist.
+        2. Bad stage.
+        3. Client does not have administrator privileges.
+Output:
+        Success: STARTPROCEDURE OK
+        Ex 1:    STARTPROCEDURE BADPROCEDURE
+        Ex 2:    STARTPROCEDURE BADSTAGE
+        Ex 3:    STARTPROCEDURE NOTADMIN
+
+STOPPROCEDURE
+Description:
+        To stop a procedure.
+Preconditions:
+        1. Procedure exists.
+        2. Client has administrator privileges.
+Postconditions:
+        1. Procedure is stopped.
+        2. Procedure stage set to STAGE_NOTSTARTED.
+Input: 
+        <procedure_id>:string
+Exceptions:
+        1. Procedure does not exist.
+        2. Client does not have administrator privileges.
+Output:
+        Success: STOPPROCEDURE OK
+        Ex 1:    STOPPROCEDURE BADPROCEDURE
+        Ex 2:    STOPPROCEDURE NOTADMIN
+
+USER
+Description:
+        To login a user based on a name and password.
+Preconditions:
+        1. User exists.
+        2. Procedure exists.
+Postconditions:
+        1. User is logged in.
+        2. Session ID is created and stored.
+Input: 
+        <user_id>:string      - The ID of the user.
+        <password>:string     - The plaintext password of the user.
+        <procedure_id>:string - The procedure ID.
+Exceptions:
+        1. Procedure does not exist.
+        2. Invalid name or password.
+        3. User is not an authority but stage is an authority-only stage.
+Output:
+        Success: USER <is_authority>:bool <session_id>:string
+        Ex 1:    USER BADPROCEDURE
+        Ex 2:    USER BADUSER
+        Ex 3:    USER BADSTAGE
+
+VERSION
+Description:
+        To get the version of the ADDER protocol that the server is running.
+Preconditions:
+        None
+Postconditions:
+        1. Client is expected to drop connection if the returned version is 
+           not equal to the client's.
+Input:
+        <version>:string - The client's version.
+Exceptions:
+Output:
+        Success: VERSION <version>:string
+
+ADMIN
+Description:
+        To acquire administrator privileges.
+Preconditions:
+        None
+Postconditions:
+        1. Client can now execute administrator functions.
+Input:
+        <password:string - The administrator password.
+Exceptions:
+        1. Password is incorrect.
+Output:
+        Success: ADMIN OK
+        Ex 1:    ADMIN BADPASSWORD

@@ -1,0 +1,11 @@
+We assume you are reading this file because you wish to run your own
+Adder server, or compile the AdderGUI.  If this is not the case,
+please visit the README file in the top-level directory.
+
+The dependencies of libadder are:
+
+- GMP, version >= 4.1.3
+- OpenSSL
+
+Doxygen API documentation can be built by running 'doxygen' in the
+'src' directory.

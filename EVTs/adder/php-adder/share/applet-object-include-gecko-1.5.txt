@@ -1,0 +1,4 @@
+<object id="adderObject"
+        name="adderObject"
+        type="application/x-java-applet;version=1.5"
+        width="0" height="0">

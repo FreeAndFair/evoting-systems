@@ -1,0 +1,338 @@
+<chapter id="introduction">
+  <title>Introduction</title>
+
+  <section id="introduction-what">
+    <title>What is Adder?</title>
+
+    <para>
+      <application>Adder</application> is a <emphasis>free</emphasis>
+      and <emphasis>open-source</emphasis> electronic voting system.
+      employing strong cryptography. Our system is a fully functional
+      e-voting platform and enjoys a number of security properties,
+      such as robustness, trust distribution, ballot privacy,
+      auditability and verifiability. It can readily implement and
+      carry out various voting procedures in parallel and can be used
+      for small scale boardroom/department-wide voting as well as
+      large-scale elections. In addition,
+      <application>Adder</application> employs a flexible voting
+      scheme which allows the system to carry out procedures such as
+      surveys or other data collection
+      activities. <application>Adder</application> offers a unique
+      opportunity to study cryptographic voting protocols from a
+      systems perspective and to explore the security and usability of
+      electronic voting systems.
+    </para>
+
+    <para>
+      By "free," we mean that you are free to do with
+      <application>Adder</application> as you please.  You can run it in
+      your organization, study the source code, make changes, share it
+      with your friends, sell it, or anything else you like.  We feel
+      that reliable electronic voting is something that everyone should
+      have access to, which is why we created this system.
+    </para>
+
+    <para>
+      By "open-source," we mean that the source code to
+      <application>Adder</application> is out in the open.  We believe
+      that this is the only realistic way to create an electronic voting
+      system.  Commercial vendors of electronic voting systems often
+      hide their source code, possibly to avoid revealing embarassing
+      security flaws.  With <application>Adder</application>, you can be
+      assured that the software blueprints are visible at all times.  If
+      you would like to use <application>Adder</application> to conduct
+      an election, you can perform your own audit of the code to ensure
+      its security and correctness.  If you are not yourself a
+      programmer, you can hire someone to inspect the code for you.
+    </para>
+  </section>
+
+  <section id="introduction-goals">
+    <title>Goals</title>
+    <para>
+      We hope that <application>Adder</application> will be used for
+      many types of elections, not just large-scale political ones.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>Small political elections</emphasis>.  If there is little risk of a
+          large-scale attack on the system, then <application>Adder</application> would be
+          well-suited.  For example, <application>Adder</application> would be well-suited for
+          town government elections.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Student government elections</emphasis>.  <application>Adder</application>'s easy-to-use voting
+          applet is ideal for students to run over the Web.  <application>Adder</application> can
+          help students at universities and colleges become more
+          involved in their schools.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Organizational elections</emphasis>. In small
+          organizations, where voting members are likely to know each
+          other, election privacy may be important.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Experimenting with cryptography</emphasis>.
+          <application>Adder</application>'s cryptographic library is
+          well-documented, and we hope that people who are interested
+          in cryptography will explore it.
+          <application>Adder</application> provides an interesting
+          opportunity as a cryptographic system that is designed to be
+          used by non-technical users.  It will hopefully provide good
+          insight into how ordinary users understand security and
+          cryptography.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      From a technological perspective, <application>Adder</application>
+      strives toward the following goals.
+    </para>
+    
+    <orderedlist>
+      <listitem>
+        <para>
+          <emphasis>Transparency</emphasis>. All of the data in the main
+          server database should be accessible to the public. This
+          includes the encrypted votes, public encryption keys, and
+          final totals. The main server database does not store secrets.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Universal Verifiability</emphasis>. Any result
+          obtained by the system should be verifiable by any third
+          party. By inspecting the election transcript, it should be
+          possible to perform a complete audit of any procedure.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Privacy</emphasis>. All voters in an election
+          should be confident that their individual choices will
+          remain hidden. Only the total is made available to the
+          public.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Distributed Trust</emphasis>. Each procedure is
+          "supervised" by multiple authorities, and the final sum
+          cannot be revealed without the cooperation of a given number
+          of authorities. Any attempt to undermine the procedure will
+          require the corruption of a set number of
+          authorities. Authorities and voters may overlap
+          arbitrarily. Thus, it is possible for the voters themselves
+          to ensure trustworthiness.
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+
+  <section id="introduction-installation">
+    <title>Installation</title>
+
+    <para>
+      <application>Adder</application> consists of the following components.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          libadder - the cryptographic library
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          cryptoserver - the main server
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          php-adder - a set of php scripts to allow voting over the Web
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          mozilla-plugin-adder/<application>Adder</application>Ctrl/libadder-java - respectively,
+          Mozilla plugin, IE control, and Java applet to be used with
+          php-adder (all henceforth refered to as "browser plugins.")
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <application>Adder</application>GUI - a Qt-based GUI and verification suite for administration
+          and advanced election functionality.
+        </para>
+      </listitem>
+    </orderedlist>
+
+    <para>
+      If you would like to administer your own election server, you will
+      want to install libadder, cryptoserver, and php-adder on the server,
+      and <application>Adder</application>GUI and/or a browser plugin on each of the clients.
+      If you would like to participate in <application>Adder</application> elections that are already
+      running, you will only need to install either a browser plugin or
+      <application>Adder</application>GUI.
+    </para>
+    
+    <section id="introduction-installation-libadder">
+      <title>Cryptographic Library</title>
+
+      <para>The dependencies of libadder are:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>GMP, version 4.1.3 or greater</para>
+        </listitem>
+        <listitem>
+          <para>OpenSSL</para>
+        </listitem>
+      </orderedlist>
+
+      <para>Doxygen API documentation can be built by running 'doxygen' in the
+      'src' directory.</para>
+    </section>
+
+    
+    <section id="introduction-installation-addergui">
+    <title><application>Adder</application>GUI</title>
+    <para>
+      The system requirements of <application>Adder</application>GUI are:
+    </para>
+      <orderedlist>
+        <listitem>
+          <para>libadder</para>
+        </listitem>
+
+        <listitem>
+          <para>Qt 4</para>
+        </listitem>
+
+
+        <listitem>
+          <para>QConf</para>
+        </listitem>
+
+
+        <listitem>
+          <para>Boost.Regex</para>
+        </listitem>
+
+
+        <listitem>
+          <para>QCA2</para>
+        </listitem>
+
+
+        <listitem>
+          <para>QCA2-OpenSSL
+          </para>
+        </listitem>
+      </orderedlist>
+
+      <para>Type the following commands to build and install <application>Adder</application>GUI:</para>
+      
+      <screen>
+$ qconf
+$ ./configure --prefix=&lt;prefix&gt; --bindir=&lt;bindir&gt; --qtdir=&lt;qtdir&gt;
+$ make
+$ make INSTALL_ROOT=&lt;INSTALL_ROOT&gt; install
+      </screen>
+      
+      <important>
+        <para>
+          There seems to be a problem with <application>GCC
+          4.1</application>.  It takes forever to compile
+          <filename>Client.cpp</filename>.  Stick with
+          <application>GCC 4.0</application> for now.
+        </para>
+      </important>
+</section>
+
+  <section id="introduction-installation-cryptoserver">
+    <title>CryptoServer</title>
+    
+    <para>To install an <application>Adder</application> server, you
+    must install the following components.</para>
+    
+    <orderedlist>
+      <listitem><para>libadder</para></listitem>
+      <listitem><para>cryptoserver</para></listitem>
+      <listitem><para>php-adder</para></listitem>
+    </orderedlist>
+    
+    <para>
+      This section explains how to configure the cryptoserver.  For
+      help with libadder and php-adder, you should read the sections
+      on those two components.
+    </para>
+
+    <para>The dependencies of cryptoserver are:</para>
+
+    <orderedlist>
+      <listitem><para>libadder</para></listitem>
+      <listitem><para>ACE, version 5.4.2 or greater</para></listitem>
+      <listitem><para>MySQL++, version 1.7.19</para></listitem>
+      <listitem><para>MySQL, version 4.0.21 or greater</para></listitem>
+      <listitem><para>OpenSSL, version 0.9.7d or greater</para></listitem>
+    </orderedlist>
+
+    <para>Once all of the dependencies are installed, you can compile and
+    install cryptoserver as follows.</para>
+
+    <screen>
+$ ./configure
+$ make
+$ make install
+    </screen>
+
+    <para>Next, you must configure the MySQL database.  Change into the
+    'database' directory, and enter the following commands.
+    </para>
+
+    <screen>
+# mysqladmin create adder
+# mysql adder &lt; schema.sql
+# mysql adder &lt; permissions.sql
+    </screen>
+
+    <para>
+      You should now configure the
+      <filename>/etc/cryptoserver.conf</filename> file to your liking.
+    </para>
+
+    <warning>
+      <para>
+        In our experience running Ubuntu on linux/ppc, MySQL++ does
+        <emphasis>not</emphasis> work with the cryptoserver.  It will
+        crash frequently.
+      </para>
+    </warning>
+  </section>
+
+  <section id="introduction-installation-web">
+    <title>Web Interface</title>
+    <para>
+    </para>
+  </section>
+</section>
+</chapter>

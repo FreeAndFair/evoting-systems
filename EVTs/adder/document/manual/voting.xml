@@ -1,0 +1,259 @@
+<chapter id="voting">
+  <title>Voting</title>
+
+  <para>Please read this chapter if you are a voter trying to use
+  Adder.</para>
+
+  <section id="before">
+    <title>Before You Can Vote</title>
+
+    <para>
+      Before you can cast your vote, you need to have some
+      authentication credentials.  When you were registered as a voter
+      on the Adder server, you should have been presented with a
+      username and password.  If you have not received these credentials,
+      then you should contact the system administrator who set up the
+      election server and ask for them.
+    </para>
+
+    <para>
+      Provided you have received your username and password, there
+      are two ways you can cast your vote. The first is through the
+      Adder Web interface, and the second is through the AdderGUI.  If
+      you are simply a voter, then you probably want to use the Adder
+      Web interface.  In this case, please proceed to <xref
+      linkend="adder-web" />.  If you are also functioning as an
+      authority or an auditor in the election, then you will probably
+      want to use the AdderGUI interface, as it provides you with
+      several enhanced options.  In this case, please proceed to <xref
+      linkend="addergui" />.
+    </para>
+  </section>
+
+  <section id="adder-web">
+    <title>Using the Web Interface</title>
+
+    <para>
+      The Adder Web interface provides an easy way to voters to cast
+      ballots without needing to install any additional software.
+    </para>
+
+    <para>
+      The election administrator should have provided you with a URL,
+      a username, and a password.  To begin, point your browser at the
+      provided URL.  You should be presented with a page as in <xref
+      linkend="fig-web-participate" />.
+    </para>
+
+    <figure id="fig-web-participate">
+      <title>The Participation Page</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/screen-web-participate.png" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      This page provides a list of actively running procedures, with
+      the option to log in next to each one.  When you have located
+      the procedure you would like to participate in, click on the
+      <option>Login</option> link below its name.  You will be
+      presented with the Login page, shown in <xref
+      linkend="fig-web-login" />.
+    </para>
+
+    <figure id="fig-web-login">
+      <title>The Login Page</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/screen-web-login.png" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      Once you have logged in successfully, you may vote.  You will be
+      shown the Vote page, as in <xref linkend="fig-web-vote" />
+    </para>
+
+    <figure id="fig-web-vote">
+      <title>The Vote Page</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/screen-web-vote.png" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      Select the choices that you would like to vote for, and then
+      click on <guibutton>Submit Encrypted Vote</guibutton>.  When you
+      are presented with a page indicating success, then you are all
+      set.  If you receive an error message, contact your election
+      administrator.
+    </para>
+
+  </section>
+
+  <section id="addergui">
+    <title>Using the Graphical Frontend</title>
+
+    <para>
+      Your administrator should have provided you with a username, a
+      password, a hostname, a procedure name, and an SSL certificate.
+      You will need all of these pieces of information in order to use
+      AdderGUI for voting.
+    </para>
+
+    <section id="addergui-ssl">
+      <title>Installing the SSL Certificate</title>
+      <para>
+        To begin with, launch AdderGUI. If you have not already entered
+        the SSL certificate into AdderGUI, you must do so now.  The
+        certificate should be in the form of a PEM file.  That is, it
+        will look something like below.
+      </para>
+
+      <programlisting>
+-----BEGIN CERTIFICATE-----
+MIICsDCCAhmgAwIBAgIJAMSPY0eacRVuMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
+BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+aWRnaXRzIFB0eSBMdGQwHhcNMDUxMTE0MDIzMDQxWhcNMDUxMjE0MDIzMDQxWjBF
+MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKB
+gQCx/Etjk4lSZxvSZKsp1ODy38LNjNNkQZTvXsCENV2xBMGFY09HY6O5KJpI2ehp
+jXO+dHcxmfDf3WAzfYigGktvxHqI2kv+mzZAQbdOIYwn0Je3+hE/V59qik5Ueh2q
+UWDJGwdpddBsGEcF93N9KeBkIjaty2AJRAn8noLr6cgIVQIDAQABo4GnMIGkMB0G
+A1UdDgQWBBTOU105Lit4QxpQb2u45FNyZ6C8iDB1BgNVHSMEbjBsgBTOU105Lit4
+QxpQb2u45FNyZ6C8iKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUt
+U3RhdGUxITAfBgNVBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMSPY0ea
+cRVuMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAqJTlDXQGBChFNzEn
+qf7IPfHzL1d/MIfJSeN7+BHrxIIXO+l6JRRhZqBmEaxHA34+OTumCBX/72ugRHx4
+l7Ys11rFeNvjmL2OQJBf+bj4eqCJwEet3LILnP0puu999MRumcMIlrHYQCgn0Y+w
+hWeBvDENaPzo8JS19+HZp4y5p8E=
+-----END CERTIFICATE-----
+      </programlisting>
+
+      <important>
+        <para>
+          You must install the SSL certificate before trying to
+          connect to the server.
+        </para>
+      </important>
+
+      <para>
+        To install the certificate, select the
+        <guimenuitem>Options</guimenuitem> item from the
+        <guimenu>Tools</guimenu> list.  Next, select the
+        <guimenuitem>SSL</guimenuitem> item.  You will be presented
+        with the dialog shown in <xref
+        linkend="fig-screen-ssl-certificate" />.  Copy the certificate
+        text into the box as shown.  Finally, select
+        <guibutton>OK</guibutton>.
+      </para>
+
+      <figure id="fig-screen-ssl-certificate">
+        <title>The SSL Settings Dialog</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/screen-ssl-certificate.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section id="addergui-connecting">
+      <title>Connecting to the Server</title>
+      <para>
+        Select the <guimenuitem>Connect</guimenuitem> option from the
+        <guimenu>Server</guimenu> menu.  You will be presented with
+        the <guilabel>Connect to Server</guilabel> dialog.  At this
+        point, you should enter the hostname your administrator has
+        provided you with.  Unless you are told otherwise by your
+        administrator, leave the <guilabel>Port</guilabel> setting at
+        the default of 6999.  Finally, ensure that the <guilabel>Use
+        SSL</guilabel> box is checked.  Once the dialog looks similar
+        to that in <xref linkend="fig-screen-connect" />, press
+        <guibutton>Connect</guibutton>.
+      </para>
+
+      <figure id="fig-screen-connect">
+        <title>The Connect to Server Dialog</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/screen-connect.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section id="addergui-voting">
+      <title>Voting</title>
+      <para>
+        Once you are connected to the server, you should select the
+        procedure given to you by your administrator.  In the example
+        shown in <xref linkend="fig-screen-vote-select-procedure" />,
+        there is only one procedure.  Select it, and click on the
+        <guibutton>Participate</guibutton> button, as shown in the
+        screenshot.
+      </para>
+
+      <important>
+        <para>
+          You must ensure that the <guilabel>Stage</guilabel> field of
+          the procedure reads "Voting" before you try to vote.  If it
+          reads anything else, check to ensure that you are voting at
+          the correct time.  If you are voting at the correct time,
+          then please contact your election administrator for
+          assistance.
+        </para>
+      </important>
+
+      <figure id="fig-screen-vote-select-procedure">
+        <title>The Procedure Selection Window</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/screen-vote-select-procedure.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>
+        AdderGUI will prompt you for your name and password, which you
+        should now enter.  You will then be presented with the
+        <guilabel>Select Choice</guilabel> dialog, shown in <xref
+        linkend="fig-screen-select-choice" />
+      </para>
+
+      <figure id="fig-screen-select-choice">
+        <title>The Select Choice Dialog</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="figures/screen-vote.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>
+        This dialog shows you the ballot question, i.e., the issue to
+        be voted on, followed by a list of choices.  You should also
+        notice that there are two election parameters, the
+        <guilabel>Minimum</guilabel> and <guilabel>Maximum</guilabel>,
+        indicating the minimum and maximum number of choices you are
+        allowed to select.  You may toggle between selecting and
+        unselecting a choice by clicking on it.  Once you are through
+        filling out your ballot, click on <guibutton>Encrypt and
+        Submit Choice</guibutton>.
+      </para>
+
+      <para>
+        When AdderGUI informs you that the ballot has been cast
+        successfully, you are now done voting.  If AdderGUI gives you
+        any error message after you submit your ballot, contact your
+        election administrator.
+      </para>
+    </section>
+  </section>
+
+</chapter>

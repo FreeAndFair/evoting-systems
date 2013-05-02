@@ -1,0 +1,94 @@
+%define name	@PACKAGE_NAME@
+%define version	@PACKAGE_VERSION@
+%define release	1mdk
+
+%define lib_major	0
+%define lib_name_orig	%mklibname adder
+%define lib_name	%{lib_name_orig}%{lib_major}
+
+Summary:	Adder Private Summary Register Library
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Epoch:		0
+URL:		http://www.cse.uconn.edu/
+Source0:	%{name}-%{version}.tar.bz2
+License:	GPL
+Group:		System/Libraries
+BuildRequires:	gmp-devel
+Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-root
+
+%description
+Adder Private Summary Register Library
+
+%package -n %{lib_name}
+Summary:        Main library for the libadder library
+Group:          System/Libraries
+
+%description -n %{lib_name}
+This package contains the libraries needed to run programs dynamically 
+linked with the libadder library.
+
+%package -n %{lib_name}-devel
+Group:		Development/C++
+Summary:	Shared libraries and header files for the libadder library
+Provides:	%{name}-devel
+Provides:	%{lib_name_orig}-devel
+Requires:	%{lib_name} = %{epoch}:%{version}
+Requires:	gmp-devel
+
+%description -n %{lib_name}-devel
+The %{name} package contains the shared libraries and header files 
+needed for developing libadder applications.
+
+%package -n %{lib_name}-static-devel
+Group:		Development/C++
+Summary:	Static libraries for the libadder library
+Provides:	%{name}-static-devel
+Requires:	%{lib_name}-devel = %{epoch}:%{version}
+Requires:	gmp-devel
+
+%description -n %{lib_name}-static-devel
+The %{name} package contains the static libraries needed for developing 
+libadder applications.
+
+%prep
+%setup -q
+
+%build
+%configure2_5x
+%make
+
+%check
+%make check
+
+%install
+%{__rm} -rf %{buildroot}
+%makeinstall
+
+%clean
+%{__rm} -rf %{buildroot}
+
+%files -n %{lib_name}
+%defattr(-,root,root)
+%doc AUTHORS BUGS ChangeLog COPYING INSTALL NEWS README THANKS VERSION
+%{_libdir}/*.so.*
+
+%files -n %{lib_name}-devel
+%defattr(-,root,root)
+%dir %{_includedir}/%{name}
+%{_includedir}/%{name}/*.h*
+%{_libdir}/*.so
+%{_libdir}/*.la
+%{_libdir}/pkgconfig/*.pc
+
+%files -n %{lib_name}-static-devel
+%defattr(-,root,root)
+%{_libdir}/*.a
+
+%post -n %{lib_name} -p /sbin/ldconfig
+%postun -n %{lib_name} -p /sbin/ldconfig
+
+%changelog
+* Sat Jan 31 2004 David Walluck <adder@cse.uconn.edu> 0:@PACKAGE_VERSION@-1mdk
+- release

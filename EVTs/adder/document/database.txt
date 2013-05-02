@@ -1,0 +1,54 @@
+Tables
+------
+
+choice
+    operation_id*   user_id*    choice      time_stamp
+
+cipher_result
+    operation_id*   cipher_sum  vote_count
+
+operation
+    operation_id*   text
+
+operation_choice
+    operation_id*   choice_id*  text
+
+operation_pubkey
+    operation_id*   public_key
+
+preresult
+    operation_id*   user_id*    partial_decryption_sum
+
+pubkey
+    operation_id*   user_id*    public_key
+
+result
+    operation_id*   choice_id*  sum
+
+user
+    user_id*        password    is_authority    deleted
+
+
+
+Permissions
+-----------
+
++-----------+--------+---------------+-----------+------------------+
+|           | choice | cipher_result | operation | operation_choice |
++-----------+--------+---------------+-----------+------------------+
+| admin     |        |               | SIU       | SIU              |
+| auditor   | S      | S             | S         | S                |
+| authority |        | S             |           |                  |
+| server    |        | I             |           |                  |
+| user      | SI     |               | S         | S                |
++-----------+--------+---------------+-----------+------------------+
+
++-----------+------------------+-----------+--------+--------+------+
+|           | operation_pubkey | preresult | pubkey | result | user |
++-----------+------------------+-----------+--------+--------+------+
+| admin     |                  |           |        |        | SIU  |
+| auditor   | S                | S         | S      | S      |      |
+| authority |                  | I         | I      |        |      |
+| server    | I                | S         |        | I      |      |
+| user      | S                |           |        |        | S    |
++-----------+------------------+-----------+--------+--------+------+

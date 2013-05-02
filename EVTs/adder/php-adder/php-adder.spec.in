@@ -1,0 +1,65 @@
+%define name		@PACKAGE_NAME@
+%define version		@PACKAGE_VERSION@
+%define release		1mdk
+
+%define wwwdir		%{_var}/www/adder
+%define vardir		%{_var}/lib/%{name}
+%define logdir		%{_var}/log/{name}
+%define confdir		%{_sysconfdir}
+%define datadir		%{_datadir}/%{name}
+
+Summary:	PHP Adder
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Epoch:		0
+URL:		http://www.cse.uconn.edu/
+Source0:	%{name}-%{version}.tar.bz2
+License:	GPL
+Group:		System/Cryptography
+Requires(post):	apache-base
+Requires(postun): apache-base
+Requires:	apache
+Requires:	cryptoserver
+Requires:	mod_php
+Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-root
+Buildarch:	noarch
+
+%description
+PHP Adder.
+
+%prep
+%setup -q
+
+%build
+%configure2_5x
+%make
+
+%install
+%{__rm} -rf %{buildroot}
+%makeinstall_std
+
+%clean
+%{__rm} -rf %{buildroot}
+
+%post
+%{_post_webapp}
+
+%postun
+%{_postun_webapp}
+
+%files
+%defattr(0644,root,root,0755)
+%doc AUTHORS ChangeLog BUGS COPYING INSTALL NEWS README THANKS VERSION www/images/*.tif
+%defattr(0664,root,root,0775)
+%{wwwdir}
+%defattr(0664,apache,apache,0775)
+%{vardir}
+%{logdir}
+%defattr(0664,root,root,0775)
+%{datadir}
+%config(noreplace) %attr(0640,root,apache) %{confdir}/%{name}.conf
+
+%changelog
+* Fri Mar 19 2004 David Walluck <adder@cse.uconn.edu> 0:@PACKAGE_VERSION@-1mdk
+- release

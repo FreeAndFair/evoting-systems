@@ -1,0 +1,3 @@
+* Better SSL error handling and certificate support.
+* Create user accounts and send emails.
+* Display authorities and authority data.

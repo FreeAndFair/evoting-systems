@@ -1,0 +1,26 @@
+We assume you are reading this file because you wish to run the
+AdderGUI graphical interface to the Adder voting system.  If this is
+not the case, please visit the README file in the top-level directory.
+
+System Requirements
+-------------------
+1. libadder
+2. Qt 4
+3. QConf
+4. Boost.Regex
+5. QCA2
+6. QCA2-OpenSSL
+
+Compilation Instructions
+------------------------
+Type the following commands to build and install AdderGUI:
+
+$ qconf
+$ ./configure --prefix=<prefix> --bindir=<bindir> --qtdir=<qtdir>
+$ make
+$ make INSTALL_ROOT=<INSTALL_ROOT> install
+
+Note: There seems to be a problem with GCC 4.1.  It takes forever to
+compile Client.cpp.  Stick with GCC 4.0 for now.
+
+Comments and questions should be addressed to adder@cse.uconn.edu.

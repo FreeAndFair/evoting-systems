@@ -1,0 +1,8 @@
+This list contains descriptions of all files in this directory:
+
+dpsr.sxi - OpenOffice.org conversion of 2/11 ppt presentation.
+protocol.txt - Description of the Web server/Cryptoserver protocol.
+description.tex - Description of our project.
+diagram.eps - Diagram that goes along with description.tex.
+adder-manual.tex - Adder Manual
+img/ - PNG images (screenshots) for the Adder Manual

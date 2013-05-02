@@ -1,0 +1,11 @@
+logging	on
+port 6999
+daemon false
+db_hostname localhost
+db_port 3306
+db_username adder_su
+db_password password
+db_database adder
+session_time_limit 1800
+admin true
+admin_password password

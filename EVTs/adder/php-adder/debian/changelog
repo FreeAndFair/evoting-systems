@@ -1,0 +1,11 @@
+php-adder (0.1.0) unstable; urgency=low
+
+  * Initial public release.
+
+ -- Michael J. Korman <mkorman@cse.uconn.edu>  Fri, 23 Feb 2007 10:46:21 -0500
+
+php-adder (0.0.1-0.20041114.1) unstable; urgency=low
+
+  * Initial debian package.
+
+ -- Michael J. Korman <mkorman@cse.uconn.edu>  Sun, 14 Nov 2004 00:11:27 -0500
