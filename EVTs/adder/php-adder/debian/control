@@ -1,0 +1,12 @@
+Source: php-adder
+Section: web
+Priority: optional
+Maintainer: Michael J. Korman <mkorman@cse.uconn.edu>
+Build-Depends-Indep: debhelper (>= 4.1.16)
+Standards-Version: 3.6.1.1
+
+Package: php-adder
+Architecture: all
+Depends: libapache2-mod-php5
+Description: PHP code for the Adder project
+ This package contains the PHP code for the Adder project.

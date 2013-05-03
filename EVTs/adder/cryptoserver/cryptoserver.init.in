@@ -1,0 +1,96 @@
+#!/bin/sh
+#
+# @PACKAGE_NAME@:       Starts the adder daemon
+#
+# chkconfig: 345 95 05
+# description: Adder daemon
+# processname: @PACKAGE_NAME@
+# config: /etc/@PACKAGE_NAME@.conf
+#
+### BEGIN INIT INFO
+# Provides: @PACKAGE_NAME@
+# Required-Start: httpd mysqld $local_fs $network $remote_fs $syslog $time
+# Required-Stop: httpd mysqld $local_fs $network $remote_fs $syslog $time
+# Default-Start: 3 4 5
+# Short-Description: Adder daemon
+# Description: Adder daemon
+### END INIT INFO
+
+# Source function library.
+if [ -f /etc/init.d/functions ]; then
+	. /etc/init.d/functions
+elif [ -f /etc/rc.d/init.d/functions ]; then
+	. /etc/rc.d/init.d/functions
+else
+	exit 0
+fi
+
+if [ -f /etc/init.d/network ]; then
+	. /etc/sysconfig/network
+
+	# Check that networking is up.
+	[ ${NETWORKING} = "no" ] && exit 0
+fi
+
+RETVAL=0
+
+start() {
+	echo -n "Starting adder daemon: "
+        daemon --user=adder /usr/sbin/@PACKAGE_NAME@ --daemon
+        RETVAL=$?
+        echo
+	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/@PACKAGE_NAME@
+	return $RETVAL
+}
+
+stop() {
+        echo -n "Stopping adder daemon: "
+        killproc @PACKAGE_NAME@
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/@PACKAGE_NAME@
+        echo
+	return $RETVAL
+}
+
+restart() {
+	stop
+	start
+}       
+
+reload() {
+	echo -n "Reloading adder daemon configuration: "
+	killproc @PACKAGE_NAME@ -HUP
+	retval=$?
+	echo
+	return $RETVAL
+}       
+
+# See how we were called.
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  status)
+	status @PACKAGE_NAME@
+	;;
+  restart)
+	restart
+	;;
+  reload)
+	reload
+	;;
+  condrestart)
+	if [ -f /var/lock/subsys/@PACKAGE_NAME@ ]; then
+	    stop
+	    start
+	fi
+	;;
+  *)
+	echo -n "Usage: %s {start|stop|status|restart|reload|condrestart}\n" "$0"
+	exit 1
+esac
+
+exit $RETVAL

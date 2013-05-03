@@ -1,0 +1,59 @@
+.\" Copyright (C) 2004 David Walluck.
+.\"
+.\" Permission is granted to copy, distribute and/or modify this document
+.\" under the terms of the GNU Free Documentation License, Version 1.1
+.\" or any later version published by the Free Software Foundation;
+.\" with the Invariant Sections being no invariant sections, with the
+.\" Front-Cover Texts being no front-cover texts, and with the Back-Cover
+.\" Texts being no back-cover texts. A copy of the license is included with
+.\" this package in the file "COPYING.DOC."
+.TH @PACKAGE_NAME@ 8 "19 Mar 2004" "version @PACKAGE_VERSION@"
+
+.SH NAME
+@PACKAGE_NAME@ \- Adder server
+
+.SH SYNOPSIS
+.BI "@PACKAGE_NAME@ [options]"
+.sp
+.B [ <config file> ]
+.br
+
+.SH DESCRIPTION
+\fB@PACKAGE_NAME@\fP is a server for Adder.
+
+.PP
+\fB@PACKAGE_NAME@\fP operates by connecting to the localhost (default port 6999) and waiting to
+accept client connections.
+
+.SH OPTIONS
+
+.TP
+.B "config file"
+Load only the file specified by "config file".
+
+.SH FILES
+
+.TP
+.B @SYSCONFDIR@/@PACKAGE_NAME@.conf
+The system-wide configuration file.
+
+.TP
+.B $HOME/.@PACKAGE_NAME@.conf
+Per-user configuration file.
+
+.TP
+.B ./@PACKAGE_NAME@.conf
+Current-directory configuration file.
+
+.SH AUTHORS
+Michael J. Korman
+
+.br
+David Walluck
+
+.br
+http://www.cse.uconn.edu/~adder/
+
+.SH BUGS
+
+.SH "SEE ALSO"

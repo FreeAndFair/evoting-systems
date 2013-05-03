@@ -1,0 +1,211 @@
+<chapter id="concepts">
+  <title>Basic Concepts</title>
+
+  <para>This chapter gives an overview of the Adder system.  It
+  explains some of the cryptographic background necessary to
+  understand the operation of the system, as well as how an Adder
+  election procedure is conducted.</para>
+
+<!--   <section id="public-key-cryptography"> -->
+<!--     <title>Public-Key Cryptography</title> -->
+<!--     <para></para> -->
+<!--   </section> -->
+
+  <section id="system-roles">
+    <title>System Roles</title>
+
+    <para>
+      We can divide users of a voting system into four distinct roles:
+      <emphasis>voters</emphasis>, <emphasis>authorities</emphasis>,
+      <emphasis>auditors</emphasis>, and
+      <emphasis>administrators</emphasis>.
+    </para>
+
+    <para>
+      As expected, voters are the players who cast ballots.
+    </para>
+
+    <para>Authorities are responsible for maintaining the integrity of
+    the election.  They possess shares of the secret decryption key
+    needed to recover the final election result. Authorities do not
+    have more power than any other users.</para>
+
+    <para>Administrators are tasked with creating and maintaining current
+    elections.</para>
+
+    <para>Auditors can consist of members of the previous three groups, as well
+    as members of the public at large.  They are able to perform tasks
+    guaranteed by the property of universal verifiability, e.g.,
+    inspecting the election transcript, double-checking the final tally,
+    etc.</para>
+
+    <para>These groups may overlap arbitrarily.  For instance, it may
+    be desirable to make the authorities a subset of the voters, so that
+    the voters themselves can ensure the integrity of the election.
+    Furthermore, the administrators might contain some members who are
+    authorities, and some who are neutral parties. Finally, the auditors
+    would contain all of the above members, as well as additional
+    neutral parties.</para>
+  </section>
+
+  <section id="procedure-outline">
+    <title>Outline of a Procedure</title>
+
+    <para>
+      An Adder procedure is complicated, and it is important to go
+      through the steps one by one.  A graphical depiction of the
+      procedure is shown in <xref linkend="fig-sequence" />
+    </para>
+
+    <figure id="fig-sequence">
+      <title>A Sequence Diagram of an Adder Procedure</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/sequence.png" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <orderedlist>
+      <listitem>
+        <para>
+          <emphasis>Procedure creation</emphasis>. An election begins
+          when an administrator logs onto the bulletin board server
+          and submits the procedure creation data.  Among the
+          parameters specified are the procedure identifier, the
+          identities of voters and authorities that are eligible to
+          participate, the authority threshold, the minimum and
+          maximum number of candidates that voters can select, the
+          list of candidates, and the election duration.  Once the
+          administrator submits this form, the bulletin board server
+          populates the database with the corresponding information.
+        </para>
+        <para>
+          The bulletin board server subsequently generates the cryptographic
+          values for the election.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Authority public key generation</emphasis>.  Once
+          the procedure has been created, the authorities collaborate
+          to create the public encryption key of the system.  At the
+          end of the election, they each contribute a part to the
+          decryption of the result.  Note that no authority has the
+          ability to decrypt a single vote because the actual private
+          key of the system does not exist in the private memory of
+          any one entity.  Rather, it is broken up in the form of the
+          authorities' individual private keys.  In order to decrypt a
+          single vote, an amount of authorities greater than the
+          authority threshold would all have to collaborate.  To
+          counter this, election officials should designate
+          authorities with differing political interests, so they
+          would have no incentive to collude.
+        </para>
+        <para>
+          An authority downloads the cryptographic parameters from the
+          bulletin board. He then generates a public key, and stores
+          the corresponding secret key. The public key is stored on
+          the bulletin board.  Once all authorities have completed
+          this stage, the public key of each authority is stored on
+          the bulletin board. If not enough authorities complete this
+          step, then the server terminates the procedure.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Polynomial generation</emphasis>. At this stage,
+          the authorities will participate in a protocol that will
+          compute the public key for the election using a distributed
+          key generation protocol.
+        </para>
+        <para>
+          An authority logs in, reads the public keys for all
+          authorities, and the authority threshold.  The authority
+          creates his secret share information, and publishes a value
+          as a form of encryption using each other authority's public
+          key. Again, if too few authorities participate, the server
+          terminates the procedure.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Private key generation</emphasis>. Each authority
+          connects to the bulletin board server and reads the secret
+          share encryption from each other authority.  Note that
+          authority can decrypt all of these values, as they were
+          encrypted with his public key.  Thus, he retrieves his
+          private key from his private memory.  He decrypts these
+          values, combines them, and stores the result in private
+          memory.  Once more, if less than the threshold number of
+          authorities completes this step, the server terminates the
+          procedure.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Public key publication</emphasis>. The bulletin
+          board server combines the secret share information publishes
+          by each authority into a public key, and publishes this
+          value. This key serves as the public key of the procedure,
+          which voters will use when they encrypt their ballots.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Voting</emphasis>. Now, the election may
+          begin. Each voter downloads the public key from the bulletin
+          board, as well as the cryptographic parameters.  The voter
+          is permitted to vote between a minimum and maximum number of
+          candidates. The voter thus forms a ciphertext for each
+          candidate, encrypting 1 if the voter votes for that
+          candidate, and 0 otherwise. The encrypted vote is therefore
+          a vector of ciphertexts, one for each candidate. Along with
+          the encrypted vote, the voter computes a proof of ballot
+          validity.
+        </para>
+        <para>
+          The bulletin board server then verifies the proof.  If the
+          proof is valid, and the voter has not already voted, it
+          posts the vote and proof on the bulletin board.  Otherwise,
+          it discards the vote and proof and returns an error.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Result tabulation</emphasis>. When duration of the
+          election has expired, or when an administrator manually ends
+          the election, result tabulation occurs. The encrypted sum of
+          the votes is computed by the bulletin board server combining
+          the votes according to the homomorphic property of the
+          encryption.  This combined sum is then posted on the
+          bulletin board.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Authority decryption</emphasis>. Now, each
+          authority logs in again, downloads the encrypted result of
+          the election, and submits his partial decryption.  These
+          partial decryptions are posted on the bulletin board.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Result decryption</emphasis>.  Once each authority
+          has submitted his partial decryption, the bulletin board
+          server combines the partial decryptions and decrypts the
+          result.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Result publication</emphasis>. The end result is
+          finally published on the bulletin board.  The election is
+          over, and no more logins are accepted.  Anyone can now view
+          the final result.
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+</chapter>

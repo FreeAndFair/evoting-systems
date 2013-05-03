@@ -1,0 +1,100 @@
+%define	name	@PACKAGE_NAME@	
+%define	version	@PACKAGE_VERSION@
+%define	release	1mdk
+
+Summary:	Adder server
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Epoch:		0
+License:	GPL
+Group:		System/Servers
+Source0:	%{name}-%{version}.tar.bz2
+URL:		http://www.cse.uconn.edu/
+Requires(post):	MySQL
+Requires(post):	MySQL-client
+Requires(post): coreutils
+Requires(post): pwgen
+Requires(post): sed
+Requires(post):	rpm-helper
+Requires(postun): rpm-helper
+Requires(preun): rpm-helper
+Requires(pre):	rpm-helper
+BuildRequires:	libace-devel
+BuildRequires:	libadder-devel
+BuildRequires:	libboost-devel
+BuildRequires:	libmysql-devel
+BuildRequires:	libmysqlpp-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+
+%description
+Cryptoserver is the adder daemon, written in C++.
+
+%prep
+%setup -q
+%{__perl} -pi -e 's|^logging.*|logging syslog|' src/cryptoserver.conf.ex
+%{__perl} -pi -e 's|^daemon.*|daemon true|' src/cryptoserver.conf.ex
+
+%build
+%configure2_5x
+%{__perl} -pi -e 's|^#define PID_FILE.*|#define PID_FILE "%{_var}/run/%{name}/cryptoserver.pid"|' config.h
+%make
+
+%install
+%{__rm} -rf %{buildroot}
+%makeinstall
+
+%{__mkdir_p} %{buildroot}%{_var}/run/%{name}
+
+%{__mkdir_p} %{buildroot}%{_initrddir}
+%{__install} -m 644 %{name}.init %{buildroot}%{_initrddir}/%{name}
+%{__mkdir_p} %{buildroot}%{_localstatedir}/%{name}
+
+%clean
+%{__rm} -rf %{buildroot}
+
+%post
+if [ "$1" = "1" ]; then
+    (
+        ADDER_PASSWORD=`%{_bindir}/pwgen -s -N 1 63`
+        ADMIN_PASSWORD=`%{_bindir}/pwgen -s -N 1 63`
+        [ -n "$HOSTNAME" ] || HOSTNAME=localhost
+        %{__perl} -pi -e 's/^db_password.*/db_password '$ADDER_PASSWORD'/' %{_sysconfdir}/%{name}.conf
+        %{__perl} -pi -e 's/^admin true.*/admin false/' %{_sysconfdir}/%{name}.conf
+        %{__perl} -pi -e 's/^admin_password.*/admin_password '$ADMIN_PASSWORD'/' %{_sysconfdir}/%{name}.conf
+        %{__perl} -pi -e 's/^db_hostname.*/db_hostname '$HOSTNAME'/' %{_sysconfdir}/%{name}.conf
+        %{_bindir}/mysqladmin create adder
+        %{_bindir}/mysql adder < %{_docdir}/%{name}-%{version}/database/schema.sql
+        %{__cp} -a %{_docdir}/%{name}-%{version}/database/permissions.sql %{_docdir}/%{name}-%{version}/database/permissions.sql.new
+        %{__sed} -i -e 's/password/'$ADDER_PASSWORD'/g' -e 's/localhost/'$HOSTNAME'/g' \
+            %{_docdir}/%{name}-%{version}/database/permissions.sql.new
+        %{_bindir}/mysql adder < %{_docdir}/%{name}-%{version}/database/permissions.sql.new
+        %{__rm} -f %{_docdir}/%{name}-%{version}/database/permissions.sql.new
+        %{_bindir}/mysql adder < %{_docdir}/%{name}-%{version}/database/test-data.sql
+        ADDER_PASSWORD=
+    ) || :
+fi
+%_post_service %{name}
+
+%preun
+%_preun_service %{name}
+
+%pre
+%_pre_useradd adder %{_localstatedir}/%{name} /bin/false
+
+%postun
+%_postun_userdel adder
+
+%files
+%defattr(0644,root,root,0755)
+%doc AUTHORS ChangeLog COPYING INSTALL NEWS README THANKS database
+%attr(0755,root,root) %{_sbindir}/%{name}
+%{_mandir}/*/*
+%attr(0700,adder,adder) %dir %{_localstatedir}/%{name}
+%attr(0700,adder,adder) %dir %{_var}/run/%{name}
+%attr(0755,root,root) %config(noreplace) %{_initrddir}/%{name}
+%verify(not md5 size mtime) %attr(0600,adder,adder) %config(noreplace) %{_sysconfdir}/%{name}.conf
+
+%changelog
+* Fri Mar 19 2004 David Walluck <adder@cse.uconn.edu> 0:@PACKAGE_VERSION@-1mdk
+- release

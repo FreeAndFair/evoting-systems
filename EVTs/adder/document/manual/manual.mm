@@ -1,0 +1,46 @@
+<map version="0.8.0">
+<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
+<node CREATED="1171897603773" ID="Freemind_Link_618463995" MODIFIED="1171897608903" TEXT="Adder Manual">
+<node CREATED="1171897612170" ID="_" MODIFIED="1171897615129" POSITION="right" TEXT="Introduction">
+<node CREATED="1171897967548" ID="Freemind_Link_848070817" MODIFIED="1171897969977" TEXT="What is Adder?"/>
+<node CREATED="1171897977497" ID="Freemind_Link_1195804552" MODIFIED="1171897979630" TEXT="Goals">
+<node CREATED="1171922230444" ID="Freemind_Link_427432259" MODIFIED="1171922233949" TEXT="Security Goals"/>
+<node CREATED="1171922234459" ID="Freemind_Link_277844552" MODIFIED="1171922241350" TEXT="Possible scenarios"/>
+</node>
+<node CREATED="1171897997154" ID="Freemind_Link_1077870872" MODIFIED="1171897999110" TEXT="Installation">
+<node CREATED="1171898079887" ID="Freemind_Link_229768919" MODIFIED="1171898094660" TEXT="cryptoserver"/>
+<node CREATED="1171898095108" ID="Freemind_Link_904009645" MODIFIED="1171898096995" TEXT="libadder"/>
+<node CREATED="1171898097236" ID="Freemind_Link_196785266" MODIFIED="1171898098488" TEXT="addergui"/>
+<node CREATED="1171898099156" ID="Freemind_Link_1996912056" MODIFIED="1171898100505" TEXT="php-adder"/>
+<node CREATED="1171898102965" ID="Freemind_Link_1241312135" MODIFIED="1171898106788" TEXT="web plugin"/>
+</node>
+</node>
+<node CREATED="1171897616258" ID="Freemind_Link_591937953" MODIFIED="1171897762393" POSITION="right" TEXT="Basic Concepts">
+<node CREATED="1171897763627" ID="Freemind_Link_971295200" MODIFIED="1171897768739" TEXT="Public-key Cryptography"/>
+<node CREATED="1171897776852" ID="Freemind_Link_1459132536" MODIFIED="1171897785402" TEXT="System roles"/>
+<node CREATED="1171897785881" ID="Freemind_Link_365934074" MODIFIED="1171897791172" TEXT="Outline of procedure"/>
+</node>
+<node CREATED="1171897700836" ID="Freemind_Link_504607609" MODIFIED="1171897701759" POSITION="right" TEXT="Voting"/>
+<node CREATED="1171897680814" ID="Freemind_Link_1544517432" MODIFIED="1171897700326" POSITION="right" TEXT="Being an Authority">
+<node CREATED="1171931471901" ID="Freemind_Link_707917697" MODIFIED="1171931480000" TEXT="Participating"/>
+<node CREATED="1171922164317" ID="Freemind_Link_1196041674" MODIFIED="1171922168779" TEXT="Security checklist">
+<node CREATED="1171923889730" ID="Freemind_Link_1979126585" MODIFIED="1171923946572" TEXT="Protecting key files from reading"/>
+<node CREATED="1171923947371" ID="Freemind_Link_155478483" MODIFIED="1171923956918" TEXT="Protecting key files from deletion"/>
+<node CREATED="1171923980371" ID="Freemind_Link_194007596" MODIFIED="1171923987398" TEXT="Passwords are secret"/>
+<node CREATED="1171924016707" ID="Freemind_Link_850922017" MODIFIED="1171924021108" TEXT="SSL certificate"/>
+<node CREATED="1171924044941" ID="Freemind_Link_1779470444" MODIFIED="1171924061906" TEXT="Notify administrator of suspicions"/>
+</node>
+</node>
+<node CREATED="1171899089026" ID="Freemind_Link_1949026425" MODIFIED="1171899092716" POSITION="right" TEXT="Auditing an Election"/>
+<node CREATED="1171897703824" ID="Freemind_Link_502210399" MODIFIED="1171897710660" POSITION="right" TEXT="Administering an Election">
+<node CREATED="1171898018207" ID="Freemind_Link_866460264" MODIFIED="1171898023653" TEXT="Creating a Procedure"/>
+<node CREATED="1171898024144" ID="Freemind_Link_100806296" MODIFIED="1171898027155" TEXT="Registering users"/>
+<node CREATED="1171898030568" ID="Freemind_Link_1226145592" MODIFIED="1171898034769" TEXT="Managing an election"/>
+<node CREATED="1171922296116" ID="Freemind_Link_413361649" MODIFIED="1171922305621" TEXT="Security checklist">
+<node CREATED="1171924085352" ID="Freemind_Link_1798359967" MODIFIED="1171924091768" TEXT="Send protected emails"/>
+<node CREATED="1171924093967" ID="Freemind_Link_1069331972" MODIFIED="1171924099545" TEXT="Keep SSL certificates up-to-date"/>
+<node CREATED="1171924114511" ID="Freemind_Link_976714405" MODIFIED="1171924122229" TEXT="Restrict access to machine, other standard practices"/>
+</node>
+</node>
+</node>
+</map>

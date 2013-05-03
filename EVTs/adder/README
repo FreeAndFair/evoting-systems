@@ -1,0 +1,34 @@
+Thanks for trying Adder, a secure Internet-based voting system.  To
+understand what Adder is all about, please browse our Web site at
+http://cryptodrm.engr.uconn.edu/adder.  Be sure to read the Frequently
+Asked Questions.
+
+Comments and questions on Adder should be addressed to
+adder@cse.uconn.edu.
+
+Adder consists of the following components:
+
+1) libadder - the cryptographic library
+
+2) cryptoserver - the main server
+
+3) php-adder - a set of php scripts to allow voting over the Web
+
+4) mozilla-plugin-adder/AdderCtrl/libadder-java - respectively,
+   Mozilla plugin, IE control, and Java applet to be used with
+   php-adder (all henceforth refered to as "browser plugins.")
+
+5) AdderGUI - a Qt-based GUI and verification suite for administration
+   and advanced election functionality.
+
+If you would like to administer your own election server, you will
+want to install libadder, cryptoserver, and php-adder on the server,
+and AdderGUI and/or a browser plugin on each of the clients.
+
+If you would like to participate in Adder elections that are already
+running, you will only need to install either a browser plugin or
+AdderGUI.
+
+These components are divided into their own subdirectories.  For help
+on installing the individual components, visit each of the
+subdirectories.

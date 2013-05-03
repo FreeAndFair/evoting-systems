@@ -1,0 +1,34 @@
+First you will need to download and compile GMP4WIN as described in
+README.WIN32.
+
+You then need to set up the following directory structure (from the
+root directory of your drive):
+
+\gmp-static
+	gmpDebug.lib
+	gmp.h
+	gmp.lib
+
+Then you can go ahead and load up `libadder.sln' and build libadder.
+When built, you should copy the files to the following directory
+structure so that you can build applications which depend on
+libadder (for example, the Mozilla plugin):
+
+\libadder-static
+	CipherSum.h
+	common.h
+	Context.h
+	exceptions.h
+	libadder.h
+	libadder.lib
+	libadderDebug.lib
+	misc.h
+	Polynomial.h
+	PrivateKey.h
+	PublicKey.h
+	radix64.h
+	Vote.h
+
+--
+David Walluck
+July 17, 2004

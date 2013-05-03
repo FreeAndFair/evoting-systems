@@ -1,0 +1,10 @@
+# Defaults for cryptoserver initscript
+# sourced by /etc/init.d/cryptoserver
+# installed at /etc/default/cryptoserver by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Additional options that are passed to the Daemon.
+DAEMON_OPTS=""

@@ -1,0 +1,49 @@
+We assume you are reading this file because you wish to run your own
+Adder server.  If this is not the case, please visit the README file
+in the top-level directory.
+
+To install an Adder server, you must install the following components.
+
+1) libadder
+2) cryptoserver
+3) php-adder
+
+This document explains how to configure the cryptoserver.  For help
+with libadder and php-adder, you should read the README files in the
+'libadder' and 'php-adder' directories, respectively.
+
+Installation of cryptoserver
+----------------------------
+
+The dependencies of cryptoserver are:
+
+- libadder
+- ACE, version >= 5.4.2
+- MySQL++, version = 1.7.19
+- MySQL, version >= 4.0.21
+- libpopt
+- OpenSSL, version >= 0.9.7d
+
+Once all of the dependencies are installed, you can compile and
+install cryptoserver as follows.
+
+$ ./configure
+$ make
+$ make install
+
+Next, you must configure the MySQL database.  Change into the
+'database' directory, and enter the following commands.
+
+# mysqladmin create adder
+# mysql adder < schema.sql
+# mysql adder < permissions.sql
+
+You should now configure the /etc/cryptoserver.conf file to your
+liking.
+
+Notes
+-----
+
+1) In our experience running Ubuntu on linux/ppc, MySQL++ does *not*
+   work with the cryptoserver.  It will crash frequently.
+

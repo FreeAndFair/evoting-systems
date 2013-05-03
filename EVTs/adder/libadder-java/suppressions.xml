@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+    "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
+
+<suppressions>
+    <suppress checks="MethodLength"
+              files="AdderOriginalTest.java"
+              lines="38"/>
+    <suppress checks="MethodLength"
+              files="AdderTest.java"
+              lines="40"/>
+    <suppress checks="MethodLength"
+              files="PrivateKeyTest.java"
+              lines="34"/>
+</suppressions>

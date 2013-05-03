@@ -1,0 +1,5 @@
+<object id="adderObject"
+        classid="clsid:CAFEEFAC-0014-0002-0004-ABCDEFFEDCBA"
+        codebase="http://java.sun.com/update/1.4.2/jinstall-1_4_2_11-windows-i586.cab#Version=1,4,2,11"
+        width="0"
+        height="0">

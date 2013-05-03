@@ -1,0 +1,138 @@
+.url {
+	display: none;
+}
+
+div.menu {
+	display: block;
+	text-align: center;
+	padding: 10px 10px;
+	margin: 0 0 2px;
+	left: auto;
+	width: auto;
+	float: left;
+	position: fixed;
+	background-color: #dddddd;
+        border: thin solid;
+           font-style: italic;
+           font-family: serif;
+}
+
+div.menu p {
+	color: white;
+	background-color: #eeeeee;
+}
+
+div.menu h1 { 
+	text-align: center;
+	font-size: large;
+	font-family: sans-serif;
+	color: white;
+	font-weight: bold;
+}
+
+div.menu a:link { 
+	text-decoration: none; 
+	color: black; 
+	background-color: transparent;
+}
+
+div.menu a:visited { 
+	text-decoration: none;
+	background-color: transparent;
+        color: black;
+}
+
+div.menu a:hover {
+	background: #ddddbb;
+}
+
+.page {
+	background-color: white;
+	top: 26px;
+	left: 25px;
+	right: 25px;
+	margin-left: 12em;
+	color: black;
+	padding: 2em;
+	border: thin solid;
+	font-family: sans-serif;
+/*        text-align: justify;*/
+/*	font-size: small;*/
+}
+
+body {
+	color: black;
+}
+
+h2 {
+	color: #aa4400;
+	font-family: serif;
+     font-style: italic;
+         text-align: left;
+	font-family: "URW Palladio L", serif;
+     }
+
+h3 {
+	color: #aa4400;
+	font-family: sans-serif;
+         text-align: left;
+	font-family: "URW Palladio L", serif;
+}
+
+h1 { 
+	font-family: "URW Palladio L", serif;
+/*     font-style: italic;*/
+        font-size: 150%;
+	color: black;
+	background-color: #ddddbb;
+        border: thin solid;
+	text-align: center;
+}
+
+img { 
+	border: 0;
+}
+
+A:hover {
+	background-color: #ddddbb
+}
+
+A:visited { 
+    color: #888877;
+}
+
+A:link { 
+    color: #555533;
+}
+
+blockquote {
+	color: #333333;
+	font-family: serif;
+	background-color: #eeeeee;
+	border: thin dotted;
+	padding: 5px
+}
+
+div.footer {
+  color: #777777;
+  font-family: serif;
+  font-size: 75%;
+  background-color: #eeeeee;
+  border: thin solid;
+}
+
+pre {
+	color: teal;
+	font-family: monospace;
+	background-color: #eeeeee;
+	border: thin dotted;
+	padding: 5px
+}
+
+div.contents {
+	font-family: sans-serif;
+	background-color: #eeeeee;
+	border: thin solid;
+	padding: 4px 4px;
+        font-size: 90%;
+}
