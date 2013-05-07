@@ -1,0 +1,132 @@
+<chapter id="administrator">
+  <title>Administering an Election</title>
+
+  <para>
+    To administer an election, you must have installed the
+    cryptoserver on a machine accessible to AdderGUI over the
+    network. In <filename>/etc/cryptoserver.conf</filename>, you must
+    specify a line with the administrator password as
+    <screen>
+admin_password mypassword
+    </screen>
+    where 'mypassword' is replaced by a password of your
+    choosing. Once your password is set, use AdderGUI to open a
+    connection to the server, specifying your password as shown in
+    <xref linkend="fig-screen-admin-connect" />.
+  </para>
+
+  <figure id="fig-screen-admin-connect">
+    <title>Connecting as an Administrator</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="figures/screen-admin-connect.png" />
+      </imageobject>
+    </mediaobject>
+  </figure>
+
+  <section id="administrator-create">
+    <title>Creating a Procedure</title>
+
+    <para>
+      To create a new procedure, select the <guibutton>Create
+      Procedure</guibutton> item as shown in <xref
+      linkend="fig-screen-admin-create" />. You will be presented with
+      the Procedure Creation Wizard, which will guide you through the
+      process of creating a new procedure.
+    </para>
+
+    <figure id="fig-screen-admin-create">
+      <title>The Procedure Creation Option</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/screen-admin-create.png" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
+
+  <section id="administrator-register">
+    <title>Registering Users</title>
+
+    <para>
+      To create a new user, select the <guimenuitem>Create
+      Users</guimenuitem> item from the <guimenu>Tools</guimenu> menu.
+      Fill out the form shown in <xref linkend="fig-screen-admin-user"
+      /> to create the user.
+    </para>
+
+    <figure id="fig-screen-admin-user">
+      <title>The User Creation Dialog</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/screen-admin-user.png" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
+
+  <section id="administrator-manage">
+    <title>Managing Procedures</title>
+
+    <para>
+      You can perform the following procedure administration functions
+      from AdderGUI.
+    </para>
+
+    <orderedlist>
+      <listitem>
+        <para>
+          <emphasis>Advance/Start</emphasis>. Begin a new procedure,
+          or advance the stage of a running one.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Reset</emphasis>. Return a procedure back to a
+          non-running state.  This procedure will still show up in the
+          procedure list.  Be aware that any votes cast, or any other
+          data stored in the procedure will be lost if you reset it.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          <emphasis>Delete</emphasis>.  This will completely delete
+          the procedure.  Any data will be lost.
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+
+  <section id="administrator-checklist">
+    <title>Security Checklist</title>
+
+    <para>
+      Please ensure that you have taken the following security
+      measures.
+    </para>
+
+    <orderedlist>
+      <listitem>
+        <para>
+          Make sure that it is not possible for emails that are sent
+          to your users to be tampered with.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Keep SSL certificates up-to-date.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Restrict access to the server machine, and follow other
+          standard security practices.
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+</chapter>

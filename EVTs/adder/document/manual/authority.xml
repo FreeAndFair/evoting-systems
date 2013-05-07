@@ -1,0 +1,93 @@
+<chapter id="authority">
+  <title>Being an Authority</title>
+
+  <para>
+    As an authority, you are tasked with sharing the responsibility of
+    maintaining the security of an election.  As daunting as that
+    sounds, this job fortunately requires little work on your part.
+  </para>
+
+  <para>
+    If you would like a greater understanding of the reasons behind
+    why Adder uses a multi-authority system, refer to <xref
+    linkend="concepts" />.
+  </para>
+
+  <section id="authority-before">
+    <title>Before You Begin</title>
+
+    <para>
+      Before you can begin functioning as an authority, you must have
+      the proper information from your election administrator,
+      including a username, password, hostname, and an SSL certficate.
+      Assuming you have this information, following the instructions
+      in <xref linkend="addergui-ssl" /> to install the SSL certficate
+      and in <xref linkend="addergui-connecting" /> to connect to the
+      server.  Next, you must select a key directory as shown in <xref
+      linkend="fig-screen-auth-keydirs" />. This must be a directory
+      that you have write access to. The default filenames should be
+      fine.
+    </para>
+
+    <figure id="fig-screen-auth-keydirs">
+      <title>The Key Locations Dialog</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/screen-auth-keydirs.png" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
+
+  <section id="authority-participating">
+    <title>Participating</title>
+    <para>
+      As an authority, you are required to participate in several
+      stages of an election.  Once you connect to the server, you
+      should be able to perform these tasks by selecting the
+      <guibutton>Participate</guibutton> option, logging in, and
+      following the instructions.
+    </para>
+  </section>
+
+  <section id="authority-security">
+    <title>Security Checklist</title>
+    <para>
+      Please ensure that you have taken as the following security measures.
+    </para>
+    
+    <orderedlist>
+      <listitem>
+        <para>
+          Protecting key files from being read by anyone else.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Protecting key files from being accidentally deleted.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Ensuring that your passwords is kept secret
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Verifying that you install the correct SSL certificate as
+          given to you by the election administrator.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Notifying the administrator of <emphasis>and</emphasis>
+          suspicions you notice.
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+</chapter>

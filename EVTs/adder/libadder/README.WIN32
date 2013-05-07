@@ -1,0 +1,17 @@
+GMP4WIN
+=======
+
+The version of GMP used to build the Windows version of the Adder
+library was compiled using `patches' obtained from The Core Library
+(``CORE'') Project at NYU <http://www.cs.nyu.edu/exact/core/>. The
+source code for the version used in the adder project can be
+obtained at
+<http://www.cs.nyu.edu/exact/core/download/core_v1.6x/core_v1.6x_full.tgz>.
+
+Incidently, the `gmp.h' header included in the source code refers to
+4.1.0 even though the source code shipped is version 4.1.2.
+
+--
+David Walluck
+May 13, 2004
+

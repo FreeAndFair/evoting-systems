@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+Step #1: Create keypair and submit public key
+Step #2: Generate and submit secret share
+Step #3: Save private key
+Step #4: Vote
+Step #5: Submit decryption
+-->
+
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 1st September 2004), see www.w3.org" />
+
+  <title>Adder Applet/Plugin Test Page</title>
+  <meta name="author" content="David Walluck" />
+  <meta http-equiv="Content-Type" content=
+  "text/html; charset=us-ascii" />
+<style type="text/css">
+  /* <![CDATA[ */
+
+  /* ]]> */
+</style>
+</head>
+
+<body>
+  <h1>Adder Applet/Plugin Test Page</h1><script src=
+  "mozilla-plugin-adder.js" type="text/javascript">
+</script>
+<!--  <object id="adderObject" type="application/adder;version=0.0.1" codebase="AdderCtrl.cab" width="0" height="0">
+  </object> -->
+
+<script type="text/javascript">
+  if (adderIsIE()) {
+      //document.writeln('<object id="adderObject" classid="clsid:CAFEEFAC-0015-0000-0001-ABCDEFFEDCBA" codebase="http://java.sun.com/update/1.5.0/jinstall-1_5_0_01-windows-i586.cab#Version=1,5,0,10" width="0" height="0">');
+      document.writeln('<object id="adderObject" classid="clsid:CAFEEFAC-0014-0002-0000-ABCDEFFEDCBA" codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_2-windows-i586.cab#Version=1,4,2,0" width="0" height="0">');
+  } else {
+      //document.writeln('<object id="adderObject" type="application/x-java-applet;jpi-version=1.5.0_01" width="0" height="0">');
+      document.writeln('<object id="adderObject" type="application/x-java-applet;version=1.4" width="0" height="0">');
+  }
+
+  document.writeln('  <param name="name" value="Adder" />');
+  document.writeln('  <param name="code" value="edu.uconn.cse.adder.plugin.AdderApplet" />');
+  //document.writeln('  <param name="codebase" value="." />');
+  document.writeln('  <param name="archive" value="libadder-java-0.0.1.jar" />');
+  //document.writeln('  <param name="cache_option" value="plugin" />');
+  //document.writeln('  <param name="cache_archive" value="libadder-java-0.0.1.jar" />');
+  //document.writeln('  <param name="cache_version" value="0.0.1.0" />');
+  //document.writeln('  <param name="cache_archive_ex" value="libadder-java-0.0.1.jar;preload;0.0.1.0" />');
+  //document.writeln('  <param name="type" value="application/x-java-applet;jpi-version=1.5.0_01" />');
+  document.writeln('  <param name="type" value="application/x-java-applet;version=1.4" />');
+  document.writeln('  <param name="scriptable" value="true" />');
+  document.writeln('  <param name="libadder-version" value="0.0.1" />');
+  document.writeln('</object>');
+</script>
+
+  <!-- <script src="plugin.js" type="text/javascript">
+</script> -->
+<script language="javascript" type="text/javascript">
+  /* <![CDATA[ */
+     /* begin step #1 */
+     var adder = document.adderObject;
+
+     function createKeyPair() {
+         var user = document.forms.createKeyForm.user.value;
+         var procedure = document.forms.createKeyForm.procedure.value;
+         var keyConstants = document.forms.createKeyForm.keyConstants.value;
+         var result = adder.createKeyPair(user, procedure, keyConstants, false);
+
+         if (result) {
+             alert("Your private keypair has been created and stored in your home directory.");
+             return true;
+         } else {
+             alert("error: failed to create keypair");
+             return false;
+         }
+     }
+
+     function readPubKey() {
+         var user = document.forms.createKeyForm.user.value;
+         var procedure = document.forms.createKeyForm.procedure.value;
+         var pubKey = adder.readPubKey(user, procedure);
+
+         if (pubKey == null) {
+            alert("Failed to read public key");
+            return false;
+         } else {
+            document.forms.createKeyForm.authPubKey.value = pubKey;
+            //document.forms.createKeyForm.submit();
+            alert("Read public key: " + pubKey);
+            return true;
+         }
+     }
+     /* end step #1 */
+     /* begin step #2 */
+     var adder = document.adderObject;
+
+     function createPolynomial() {
+         var user = document.forms.createPolynomialForm.user.value;
+         var procedure = document.forms.createPolynomialForm.procedure.value;
+         var keyStr = document.forms.createPolynomialForm.keyStr.value;
+         var threshold = document.forms.createPolynomialForm.threshold.value;
+         var result = adder.encryptPoly(user, procedure, keyStr, threshold);
+
+         if (result == null) {
+            alert("Failed to encrypt polynomial");
+            return false;
+         } else {
+             document.forms.createPolynomialForm.authPolynomial.value = result;
+             alert("encrypted polynomial:" + result);
+         }
+
+         var gValues = adder.encryptGValue(user, procedure);
+
+         if (gValues == null) {
+            alert("Failed to create g-values");
+            return false;
+         } else {
+             document.forms.createPolynomialForm.gValues.value = gValues;
+             //document.forms.createPolynomialForm.submit();
+             alert("Create g-values:" + gValues);
+             return true;
+         }
+     }
+     /* end step #2 */
+     /* begin step #3 */
+     var adder = document.adderObject;
+
+     function savePrivateKey() {
+         var user = document.forms.savePrivateKeyForm.user.value;
+         var procedure = document.forms.savePrivateKeyForm.procedure.value;
+         var privKeyComponents = document.forms.savePrivateKeyForm.privKeyComponents.value;
+         adder.computeSecretKey(user, procedure, privKeyComponents);
+         alert("The private key has been saved to your computer.");
+         //document.location = "saveprivatekeysuccess.inc.php";
+         return true;
+     }
+     /* end step #3 */
+     /* begin step #4 */
+     var adder = document.adderObject;
+
+     function encryptVote() {
+         var user = document.forms.securityForm.user.value;
+         var procedure = document.forms.securityForm.procedure.value;
+         var serverPublicKey = document.forms.securityForm.serverPublicKey.value;
+         var base = document.forms.securityForm.base.value;
+         var numChoices = document.forms.securityForm.numChoices.value;
+         var vote = -1;
+         var voted = false;
+
+         for (var i = 0; i < document.forms.securityForm.vote.length; i++) {
+             if (document.forms.securityForm.vote[i].checked == true) {
+                 voted = true;
+                 vote = document.forms.securityForm.vote[i].value;
+                 var encryptedVote = adder.encryptVote(serverPublicKey, vote, base, numChoices);
+                 var shortHash = adder.shortHash(encryptedVote);
+                 var voteText = document.getElementById("vote" + i).nextSibling.innerHTML; 
+
+                 if (!encryptedVote) {
+                     alert("error: failed to encrypt vote");
+                 } else if (confirm("Your vote is [" + voteText + "] and your confirmation code is: [" + shortHash + "].\n\nSubmit vote?")) {
+                     document.forms.securityForm.encryptedVote.value = encryptedVote;
+                     //document.forms.securityForm.submit();
+                  }
+
+                  document.forms.securityForm.vote[i].checked = false;
+
+                  break;
+              }
+          }
+
+          if (!voted) {
+              alert("Please select a vote before submitting.");
+              return false;
+          }
+
+          return true;
+     }
+     /* end step #4 */
+     /* begin step #5 */
+     var adder = document.adderObject;
+
+     function decryptSum() {
+         var user = document.forms.decryptionForm.user.value;
+         var procedure = document.forms.decryptionForm.procedure.value;
+         var cipherSum = document.forms.decryptionForm.cipherSum.value;
+         var result = adder.decryptSum(user, procedure, cipherSum);
+
+         if (result) {
+             document.forms.decryptionForm.partialDecryption.value = result;
+             //document.forms.decryptionForm.submit();
+             alert("Partial decryption is: " + result);
+             return true;
+         } else {
+             alert("error: decrypting sum failed");
+             return false;
+         }
+     }     
+     /* end step #5 */
+  /* ]]> */
+</script><script type="text/javascript">
+//<![CDATA[
+  /* placeholder */
+//]]>
+</script><!-- begin step #1 -->
+
+  <p><strong>Step #1</strong></p>
+
+  <div id="step1">
+    <form id="createKeyForm" name="createKeyForm" action="post">
+      <input type="hidden" name="user" value="adder" />
+      <input type="hidden" name="procedure" value=
+      "b5a1ff28-835a-40b2-8bc3-60d0635fc929" /> <input type=
+      "hidden" name="pubkeySubmitted" value="1" /> <input type=
+      "hidden" name="keyConstants" value=
+      "p125489087238195737954347303072014181609743210685664342148563282627702888711600616104630041189823615830151059574742027596462279644487544647092987402728428983866463990803061712929699319731954518354611104476983414003271056663266811843871036977620134268053541312343523587317149772597056898709288705318111363439959g109135231680917042422692501444133476280632516262629214844622116022293008564463791334200484553869876471573602121294791542106289308468724855115518801270682843627313318516484278802058935937860636501548553940524614989657851083539604147077887555581647702701663570369670468916047494206781026778469783617204808400316h0f97684481064078355405666534014949348515785623393315597235924182332913393696677100651325336640036328244756931918867298435966626632889626452343809104262080980030313692002398206421063988123407286705301856210738100890565833808773073345604903042025247757246475330861733957714673997201937132675462366545907561472561" />
+       <input id="authPubKey" name="authPubKey" type="hidden" />
+      <input type="button" name="createKey" value=
+      "Create Private Keypair" onclick="createKeyPair()" />
+
+      <p><em>Creates a private key pair and stores it in your home
+      directory.</em></p><input type="button" name="submitKey"
+      value="Submit Public Key" onclick="readPubKey()" />
+
+      <p><em>Submits your public key to the Adder server.</em></p>
+    </form>
+  </div><!-- end step #1 -->
+  <!-- begin step #2 -->
+
+  <p><strong>Step #2</strong></p>
+
+  <div id="step2">
+    <form id="createPolynomialForm" name="createPolynomialForm"
+    action="post">
+      <input type="hidden" name="user" value="adder" />
+      <input type="hidden" name="procedure" value=
+      "b5a1ff28-835a-40b2-8bc3-60d0635fc929" /> <input type=
+      "hidden" name="polynomialSubmitted" value="1" /> <input type=
+      "hidden" name="threshold" value="1" /> <input type="hidden"
+      name="keyStr" value=
+      "1 p125489087238195737954347303072014181609743210685664342148563282627702888711600616104630041189823615830151059574742027596462279644487544647092987402728428983866463990803061712929699319731954518354611104476983414003271056663266811843871036977620134268053541312343523587317149772597056898709288705318111363439959g109135231680917042422692501444133476280632516262629214844622116022293008564463791334200484553869876471573602121294791542106289308468724855115518801270682843627313318516484278802058935937860636501548553940524614989657851083539604147077887555581647702701663570369670468916047494206781026778469783617204808400316h58452731081249603980955649301498764091862326970179307599357206718396546870796112972899676357644035188212633588489911968985447754074584252806801956027401259578181117282344591253928185917092989989666158141316758568363747138732411734438032546672657599595791445177553364199061482567901781690716058166288192527321f97684481064078355405666534014949348515785623393315597235924182332913393696677100651325336640036328244756931918867298435966626632889626452343809104262080980030313692002398206421063988123407286705301856210738100890565833808773073345604903042025247757246475330861733957714673997201937132675462366545907561472561 " />
+       <input id="authPolynomial" name="authPolynomial" type=
+      "hidden" /> <input id="gValues" name="gValues" type=
+      "hidden" /> <input type="button" name="create_polynomial"
+      value="Generate Secret Share" onclick="createPolynomial()" />
+
+      <p><em>Creates a secret share and sends the necessary
+      information to the server.</em></p>
+    </form>
+  </div><!-- end step #2 -->
+  <!-- begin step #3 -->
+
+  <p><strong>Step #3</strong></p>
+
+  <div class="step3">
+    <form id="savePrivateKeyForm" name="savePrivateKeyForm" action=
+    "post">
+      <input type="hidden" name="user" value="adder" />
+      <input type="hidden" name="procedure" value=
+      "b5a1ff28-835a-40b2-8bc3-60d0635fc929" /> <input type=
+      "hidden" name="privKeyComponents" value=
+      "p125489087238195737954347303072014181609743210685664342148563282627702888711600616104630041189823615830151059574742027596462279644487544647092987402728428983866463990803061712929699319731954518354611104476983414003271056663266811843871036977620134268053541312343523587317149772597056898709288705318111363439959G58452731081249603980955649301498764091862326970179307599357206718396546870796112972899676357644035188212633588489911968985447754074584252806801956027401259578181117282344591253928185917092989989666158141316758568363747138732411734438032546672657599595791445177553364199061482567901781690716058166288192527321H22186601400943032762374787693579031242301735872868805695786898184819364026471123982913276880939436060064207436673105179657506294182290821687228733077056636798088870694085787508820778642042459686449742635924398214427165765983611276034204390922823319110915616586527268010095307446216625040197342652343576578311" />
+       <input type="button" name="saveKey" value="Save Private Key"
+      onclick="savePrivateKey()" />
+
+      <p><em>Saves the private key in your home directory.</em></p>
+    </form>
+  </div><!-- end step #3 -->
+  <!-- begin step #4 -->
+
+  <p><strong>Step #4</strong></p>
+
+  <div id="step4">
+    <p><strong>Test Question</strong></p>
+
+    <form id="securityForm" action="post" name="securityForm">
+      <input type="hidden" name="user" value="adder" />
+      <input type="hidden" name="procedure" value=
+      "b5a1ff28-835a-40b2-8bc3-60d0635fc929" /> <input type=
+      "hidden" name="voteSubmitted" value="1" /> <input id=
+      "serverPublicKey" type="hidden" value=
+      "p125489087238195737954347303072014181609743210685664342148563282627702888711600616104630041189823615830151059574742027596462279644487544647092987402728428983866463990803061712929699319731954518354611104476983414003271056663266811843871036977620134268053541312343523587317149772597056898709288705318111363439959g109135231680917042422692501444133476280632516262629214844622116022293008564463791334200484553869876471573602121294791542106289308468724855115518801270682843627313318516484278802058935937860636501548553940524614989657851083539604147077887555581647702701663570369670468916047494206781026778469783617204808400316h58452731081249603980955649301498764091862326970179307599357206718396546870796112972899676357644035188212633588489911968985447754074584252806801956027401259578181117282344591253928185917092989989666158141316758568363747138732411734438032546672657599595791445177553364199061482567901781690716058166288192527321f97684481064078355405666534014949348515785623393315597235924182332913393696677100651325336640036328244756931918867298435966626632889626452343809104262080980030313692002398206421063988123407286705301856210738100890565833808773073345604903042025247757246475330861733957714673997201937132675462366545907561472561" />
+       <input id="numChoices" type="hidden" value="5" /> <input id=
+      "base" type="hidden" value="26" /> <input type="radio" id=
+      "vote0" name="vote" value="0" /><label for="vote0">Answer 1</label><br />
+      <input type="radio" id="vote1" name="vote" value=
+      "1" /><label for="vote1">Answer 2</label><br />
+      <input type="radio" id="vote2" name="vote" value=
+      "2" /><label for="vote2">Answer 3</label><br />
+      <input type="radio" id="vote3" name="vote" value=
+      "3" /><label for="vote3">Answer 4</label><br />
+      <input type="radio" id="vote4" name="vote" value=
+      "4" /><label for="vote4">Answer 5</label><br />
+      <input id="encryptedVote" name="encryptedVote" type=
+      "hidden" /><br />
+
+      <div>
+        <input type="button" value="Submit Encrypted Vote" onclick=
+        "encryptVote()" /><input id="reset" name="reset" type=
+        "reset" />
+      </div>
+    </form>
+  </div><!-- end step #4 -->
+  <!-- begin step #5 -->
+
+  <p><strong>Step #5</strong></p>
+
+  <div id="step5">
+    <form id="decryptionForm" action="post" name="decryptionForm">
+      <input type="hidden" name="user" value="adder" />
+      <input type="hidden" name="procedure" value=
+      "b5a1ff28-835a-40b2-8bc3-60d0635fc929" /> <input type=
+      "hidden" name="decryptionSubmitted" value="1" /> <input type=
+      "hidden" name="cipherSum" value=
+      "p125489087238195737954347303072014181609743210685664342148563282627702888711600616104630041189823615830151059574742027596462279644487544647092987402728428983866463990803061712929699319731954518354611104476983414003271056663266811843871036977620134268053541312343523587317149772597056898709288705318111363439959G58452731081249603980955649301498764091862326970179307599357206718396546870796112972899676357644035188212633588489911968985447754074584252806801956027401259578181117282344591253928185917092989989666158141316758568363747138732411734438032546672657599595791445177553364199061482567901781690716058166288192527321H52632371028836962428244157654687144326439810873597206394121218050245926257332547626484279201602545261877807417790646180294231686280077890135252670898276186005055606085692231841802591965119581494879048851967772905505373971903122106438339950266943674379227972485555684540494787161379533753686227355245948876516" />
+       <input type="hidden" name="partialDecryption" value="" /> 
+      <!-- 1 people have submitted votes. -->
+
+      <div>
+        <input name="post" type="button" value="Submit decryption"
+        onclick="decryptSum()" />
+      </div>
+    </form>
+  </div><!-- end step #5 -->
+</body>
+</html>

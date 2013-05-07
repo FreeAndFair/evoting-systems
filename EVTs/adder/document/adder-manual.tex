@@ -1,0 +1,359 @@
+\documentclass[letterpaper,10pt]{article}
+
+%\usepackage[active]{srcltx}
+\usepackage{graphicx}
+
+\usepackage{fullpage}
+
+\title{Using the Adder System}
+
+\author{Eric Dutko \and Jason Grusauskas \and Michael Korman
+\and David Walluck \and Aggelos Kiayias (faculty advisor)}
+
+\begin{document}
+
+\maketitle
+
+\section{Setting up Adder}
+
+Setting up Adder on the client system is a simple process. In the
+most secure setting, the plugin would come pre-verified and
+pre-installed on a dedicated voting machine. Internet voting,
+however, requires an additional level of security.
+
+\subsection{Plugin Installation}
+
+This section is intended for Adder administrators only. Adder users
+may skip to the next section.
+
+If Internet voting is allowed from, say, a user's home computer
+system, then the most secure way becomes offering a
+cryptographically signed Mozilla installer. The Mozilla installer is
+referred to as an XPI (cross-platform installer).
+
+The XPI is signed with a Netscape tool know as \texttt{signtool}
+which is part of the Netscape Security Suite (NSS).
+
+In order to sign the installer, the system admin execute a command
+similar to the following in the directory containing the plugin
+files:
+
+\begin{footnotesize}
+\begin{verbatim}
+signtool -d"/home/david/.netscape" -k"certs.adder.cse.uconn.edu/signing" \
+  -p"password" .
+\end{verbatim}
+\end{footnotesize}
+
+He may then check the result by executing
+
+\begin{footnotesize}
+\begin{verbatim}
+signtool -v"/var/www/html/securevote/mozilla-plugin-adder.xpi"
+\end{verbatim}
+\end{footnotesize}
+
+\begin{footnotesize}
+\begin{verbatim}
+using certificate directory: /home/david/.netscape
+archive "/var/www/html/securevote/mozilla-plugin-adder.xpi" has passed crypto
+verification.
+
+          status   path
+    ------------   -------------------
+        verified   plugins/npadder.xpt
+        verified   plugins/libnpadder.so
+        verified   windows/npadder.dll
+        verified   windows/npadder.xpt
+        verified   install.js
+\end{verbatim}
+\end{footnotesize}
+
+The installer contains a file inside it called
+\texttt{META-INF/manifest.mf}, also used in JAR files.
+
+A typical manifest entry inside the Mozilla XPI file (which is
+really just a ZIP file containing a file called \texttt{install.js}
+looks like
+
+\begin{footnotesize}
+\begin{verbatim}
+Name: plugins/npadder.xpt
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: XiANyrohHSEeN07goQZnQQ==
+SHA1-Digest: e20TrROsMC7GyafACvllkfB+9eE=
+\end{verbatim}
+\end{footnotesize}
+
+and contains both the MD5 and SHA1 hash for each file contained
+within the archive.
+
+\subsection{Installing the Adder CA Certificate}
+
+This section deals with the system user who is sitting at his web
+browser. The Mozilla plugin supports both Windows and Unix systems.
+
+The plugin has two modes, signed and unsigned. If the install XPI
+is unsigned, you can skip this section.
+
+The install XPI can be cryptographically signed with an MD5 or SHA1
+hash. This verifies the integrity of the installer. The current
+certificate fingerprints are listed below.
+
+\begin{footnotesize}
+\begin{verbatim}
+SHA1 Fingerprint: 0C:D7:02:46:48:08:9F:D4:E3:8B:6C:EF:06:11:FF:C2:44:E5:40:34
+MD5 Fingerprint:  75:14:93:47:5A:62:B5:EC:03:5A:EC:4B:FA:76:71:84
+\end{verbatim}
+\end{footnotesize}
+
+A user can click `View' to examine the certificate fingerprint and
+verify that the certificate is correct. Of course, security is
+subverted if the user does not bother to check the origin of the
+certificate. This is yet an additional problem for Internet voting
+which is separate from the Adder system itself.
+
+When the user first accesses the Adder website, he will see a status
+message indicating that he should install the certificate if he
+hasn't already. Once you click the link you should get a box as
+follows:
+
+\includegraphics*[width=\textwidth]{img/cert}
+
+You should select at least `Identify Software Developers'.
+Selecting `Identify websites' will allow the same certificate to be
+used for the Adder website as well.
+
+\subsection{Installing the Adder Plugin}
+
+Click the appropriate link to begin the installation. When you do,
+you will be presented with a box as follows:
+
+\includegraphics*[width=\textwidth]{img/inst1}
+
+If the XPI installer is signed, you will see
+\textbf{certs.adder.cse.uconn.edu}. Otherwise, you will see
+\textbf{Unsigned}.
+
+After clicking OK, if all goes well, you should see a box as
+follows:
+
+\includegraphics*[width=\textwidth]{img/inst2}
+
+After a successful installation, you will need to restart your
+browser. Incidently, the plugin (usually with extension \texttt{.so}
+on Unix, and \texttt{.dll} on Windows) is able to be used without
+restarting, but the scriptable component (with extension
+\texttt{.xpt} required by the plugin will not be usable until after
+a browser restart.
+
+\subsection{Verifying Plugin Installation}
+
+Upon restarting, the statusbar at the bottom of the page should say
+`Plugin integrity check: passed'. The integrity check makes sure
+that all scriptable functions are available. It should look
+something like:
+
+\includegraphics*[width=\textwidth]{img/stat1}
+
+Also, going to \texttt{about:plugins} in the location bar should
+show the plugin is installed.
+
+\includegraphics*[width=\textwidth]{img/about}
+
+\section{Using Adder}
+
+You can use adder in two ways, either as an authority, or as a
+normal user (voter).Adder has functionality which is shared between
+authorities and users.
+
+\subsubsection{Secure Logout}
+
+The first of this functionality is secure logout. Adder has the
+ability to end your session and log you out of the adder system.
+Note that Adder cannot control whether or not you have saved your
+password in your browser. For maximum, security, it is recommended
+that you do not save your password, particularly if you are an
+authority.
+
+\includegraphics*[width=\textwidth]{img/00-logout}
+
+\subsubsection{Procedure Selection}
+
+The initial page lists a set of currently active voting procedures.
+Here a user is able to either log-in to a procedure, or view the
+current procedure status.
+
+Any active procedures are listed when you log in. If there are no
+active procedures, the page will be empty.
+
+\includegraphics*[width=\textwidth]{img/01-procedure-selection}
+
+\subsubsection{Logging In}
+
+When presented with the login page, the user will enter his name and
+password. The system knows which accounts are authority accounts and
+which account are normal user accounts. Based on the state of the
+system, the authority will either be able to submit his key, or
+enter the voting process. A normal user will either be able to vote
+only if the authorities have completed what is required to set up a
+voting procedure.
+
+\includegraphics*[width=\textwidth]{img/02-login1}
+
+\subsubsection{Entering your password}
+
+To login, enter your login name and password into their respective
+boxes.
+
+\includegraphics*[width=\textwidth]{img/03-login2}
+
+\subsection{Using Adder as an Authority}
+
+Authorities must initiative an election before users may vote.
+Initiating a voting procedure takes multiple steps.
+
+\subsubsection{Creating a key pair}
+
+The first step is to create a keypair. This key pair will be used to
+encrypt the authorities' polynomials. It is crucial that you do not
+allow other users to access this directory.
+
+\includegraphics*[width=\textwidth]{img/04-create-keypair1}
+
+When the key is created successfully, a dialog box will appear. At
+this stage you will have files with the \texttt{.adder} extension in
+a directory called \texttt{.adder} which is created under your
+\texttt{\$HOME} directory on Unix systems. On Windows, the location
+may vary. On multiuser systems, such as Windows NT, Windows 2000,
+and Windows XP, the environmental variable \texttt{USERPROFILE} is
+used. On Windows 9x systems, the Windows directory is used. As a
+last resort, the \texttt{/} directory is used. Note that as an
+authority, you should not be using a Windows 9x system which does
+not provide file protection via permissions or access lists.
+
+\includegraphics*[width=\textwidth]{img/05-create-keypair2}
+
+After creating the keypair, click the second button that will submit
+the key to the server. A success page should appear.
+
+\includegraphics*[width=\textwidth]{img/06-key-success}
+
+At this point, you may view the server status.
+
+\includegraphics*[width=\textwidth]{img/07-status}
+
+If any other authorities are waiting to submit keys, you will see
+the following stage.
+
+\includegraphics*[width=\textwidth]{img/08-status-waitkeys}
+
+\subsection{Submitting the polynomial}
+
+At this point you may submit the polynomial, encrypted with your
+key, to the server.
+
+\includegraphics*[width=\textwidth]{img/09-generate-polynomial}
+
+If successful, you will see the following page.
+
+\includegraphics*[width=\textwidth]{img/10-polynomial-success}
+
+\textbf{This happens when you log in, why is the screenshot here?}
+
+\includegraphics*[width=\textwidth]{img/11-save-private-key}
+
+\subsection{Accepting votes}
+
+At this point the server should be ready to accept votes. The status
+page should appear as shown below.
+
+\includegraphics*[width=\textwidth]{img/12-status-accepting-votes}
+
+\subsection{Using Adder as a Voter}
+
+\subsubsection{Placing a vote}
+
+Voting is what the user will be most interesting in. After logging
+in to a procedure, the user will be presented with a page that
+contains a description or question followed by a list on possible
+choices. Next to each choice is a radio button. By default, no
+choices should be selected.
+
+\includegraphics*[width=\textwidth]{img/13-voting1}
+
+\subsubsection{Confirming your vote}
+
+Before submitting the vote, you should be sure that the system
+agrees with the vote that you think you have submitted. A dialog box
+will appear that will show your current choice, as well as what the
+choice looks like when encrypted. You are able to write this down
+and verify later that the system has indeed recorded the correct
+vote for you.
+
+\includegraphics*[width=\textwidth]{img/14-voting2}
+
+\subsubsection{Submitting the vote}
+
+If your vote is incorrect, you may pick \texttt{Cancel} and choose
+again. Otherwise, click \texttt{OK} to submit your vote.
+
+After submitting, you should see a success page like the one shown
+below.
+
+\includegraphics*[width=\textwidth]{img/15-vote-success}
+
+\subsubsection{Checking voting status}
+
+If you check the server status during voting, you will see a page
+like the one shown below. On this page you will see a list of users
+who have voted as well as a icon next to their vote. Click the icon
+to see or verify the encrypted vote.
+
+\includegraphics*[width=\textwidth]{img/16-status-accepting-votes2}
+
+\subsubsection{Verifying a vote}
+
+When the icon is clicked, you will see a vote that looks like the
+one shown below. Every vote is unique. An adversary will not be able
+to tell who or what you have voted for, but you, on the other hand,
+will be able to check that the system has correctly recorded your
+vote.
+
+\includegraphics*[width=\textwidth]{img/17-show-vote}
+
+\subsection{Decrypting the voting results}
+
+After the voting session has ended the authorities must decrypt the
+vote. The authority will see a page like the one shown below after
+he has logged in.
+
+\includegraphics*[width=\textwidth]{img/18-decrypt}
+
+If the decryption was successful, you will see a success page like
+the one shown.
+
+\includegraphics*[width=\textwidth]{img/19-decrypt-success}
+
+\subsubsection{Checking the decryption status}
+
+During this stage, you can still check users votes. The server will
+let you know that it is waiting for authorities in order to be able
+to retrieve the results of the election.
+
+\includegraphics*[width=\textwidth]{img/20-status-waitdecrypt}
+
+After the election has ended, the status will change to let you
+know, but all other functionality still remains available during
+this time.
+
+\includegraphics*[width=\textwidth]{img/21-status-done}
+
+\subsection{Viewing the results}
+
+In the final stage you will see the final votes of the voting
+procedure. This page may vary depending on the type of vote held.
+
+\includegraphics*[width=\textwidth]{img/22-results}
+
+\end{document}

@@ -1,0 +1,22 @@
+Source: libadder
+Priority: optional
+Maintainer: Michael J. Korman <mkorman@cse.uconn.edu>
+Build-Depends: debhelper (>= 4.0.0), libgmp3-dev, pkg-config
+Standards-Version: 3.6.1.1
+
+Package: libadder0
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: cryptographic library for the ADDER e-voting system
+ Libadder is the cryptographic library used by the ADDER e-voting
+ system. It provides threshold ElGamal encryption.
+
+Package: libadder-dev
+Section: libdevel
+Architecture: any
+Depends: libadder0 (= ${Source-Version}), libgmp3-dev, pkg-config
+Description: cryptographic library for the ADDER e-voting system
+ This package contains the header files for libadder, the
+ cryptographic library used by the Adder e-voting system. It provides
+ threshold Elgamal encryption.

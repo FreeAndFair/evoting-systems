@@ -1,0 +1,17 @@
+<div>
+<?php
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $is_msie = strstr($user_agent, 'MSIE') ? true : false;
+    $is_gecko = strstr($user_agent, 'Gecko') ? true : false;
+
+    if ($is_msie) {
+        require_once 'applet-object-include-msie-1.4.txt';
+    } elseif ($is_gecko) {
+        require_once 'applet-object-include-gecko-1.4.txt';
+    } else {
+        require_once 'applet-object-include-gecko-1.4.txt';
+    }
+
+    require_once 'applet-object-include-1.4.txt';
+?>
+</div>

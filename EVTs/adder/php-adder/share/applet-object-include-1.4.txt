@@ -1,0 +1,8 @@
+    <param name="name" value="Adder" />
+    <param name="code" value="edu.uconn.cse.adder.plugin.AdderApplet" />
+    <param name="codebase" value="." />
+    <param name="archive" value="libadder-java-0.0.1.jar" />
+    <param name="type" value="application/x-java-applet;version=1.4" />
+    <param name="scriptable" value="true" />
+    <param name="libadder-version" value="0.0.1" />
+</object>

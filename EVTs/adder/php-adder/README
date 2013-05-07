@@ -1,0 +1,7 @@
+Installation of adder-web
+-------------------------
+
+The dependencies of adder-web are:
+
+- A web server that supports PHP4 (i.e., Apache)
+- PHP4

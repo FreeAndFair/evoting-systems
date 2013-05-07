@@ -1,0 +1,12 @@
+Source: cryptoserver
+Section: net
+Priority: optional
+Maintainer: Michael J. Korman <mkorman@cse.uconn.edu>
+Build-Depends: debhelper (>= 4.0.0), libace-dev, libadder-dev, libmysqlclient15-dev, libmysql++-dev, libboost-dev
+Standards-Version: 3.6.1.1
+
+Package: cryptoserver
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Main server for the Adder project
+ This is the main server for the Adder project.

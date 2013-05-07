@@ -1,0 +1,10 @@
+<applet name="adderObject"
+        id="adderObject"
+        code="edu.uconn.cse.adder.plugin.AdderApplet"
+        archive="libadder-java-0.0.1.jar"
+        codebase="."
+        width="0"
+        height="0"
+        scriptable="true">
+  <param name="libadder-version" value="0.0.1" />
+</applet>

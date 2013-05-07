@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "/afs/cern.ch/sw/XML/XMLBIN/share/www.oasis-open.org/docbook/xmldtd-4.2/docbookx.dtd"
+[
+<!ENTITY introduction SYSTEM "introduction.xml">
+<!ENTITY concepts SYSTEM "concepts.xml">
+<!ENTITY voting SYSTEM "voting.xml">
+<!ENTITY authority SYSTEM "authority.xml">
+<!ENTITY auditing SYSTEM "auditing.xml">
+<!ENTITY administrator SYSTEM "administrator.xml">
+<!ENTITY fdl SYSTEM "fdl.xml">
+]>
+<book id="adder" lang="en">
+  <bookinfo>
+    <edition>First</edition>
+    <author>
+      <firstname>Michael</firstname>
+      <surname>Korman</surname>
+      <affiliation>University of Connecticut</affiliation>
+    </author>
+    <copyright>
+      <year>2007</year>
+      <holder>The Adder Team</holder>
+    </copyright>
+    <legalnotice>
+      <para>
+        Permission is granted to copy, distribute and/or modify this
+        document under the terms of the GNU Free Documentation
+        License, Version 1.1 or any later version published by the
+        Free Software Foundation; with the Invariant Sections being
+        just <xref linkend="introduction-what" />, with no Front-Cover
+        Texts, and with no Back-Cover Texts.  A copy of the license is
+        included in the section entitled "GNU Free Documentation
+        License".
+      </para>
+    </legalnotice>
+
+    <title>The Adder User's Guide</title>
+    <pubdate>February, 2007</pubdate>
+  </bookinfo>  
+  
+  &introduction;
+  &concepts;
+  &voting;
+  &authority;
+<!--  &auditing;-->
+  &administrator;
+  &fdl;
+</book>
