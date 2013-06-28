@@ -1,0 +1,43 @@
+<!--  -->
+<!-- This material is subject to the VoteHere Source Code Evaluation -->
+<!-- License Agreement ("Agreement").  Possession and/or use of this -->
+<!-- material indicates your acceptance of this Agreement in its entirety. -->
+<!-- Copies of the Agreement may be found at www.votehere.net. -->
+<!--  -->
+<!-- Copyright 2004 VoteHere, Inc.  All Rights Reserved -->
+<!--  -->
+<!-- You may not download this Software if you are located in any country -->
+<!-- (or are a national of a country) subject to a general U.S. or -->
+<!-- U.N. embargo or are deemed to be a terrorist country (i.e., Cuba, -->
+<!-- Iran, Iraq, Libya, North Korea, Sudan and Syria) by the United States -->
+<!-- (each a "Prohibited Country") or are otherwise denied export -->
+<!-- privileges from the United States or Canada ("Denied Person"). -->
+<!-- Further, you may not transfer or re-export the Software to any such -->
+<!-- country or Denied Person without a license or authorization from the -->
+<!-- U.S. government.  By downloading the Software, you represent and -->
+<!-- warrant that you are not a Denied Person, are not located in or a -->
+<!-- national of a Prohibited Country, and will not export or re-export to -->
+<!-- any Prohibited Country or Denied Party. -->
+<CommittedAuthority>
+<Authority AuthFingerprint="Trustee_2"><Certificate><GeneralPurposePublicKey><IdentInfo>Trustee_2</IdentInfo><SigningPublicKey>-----BEGIN PUBLIC KEY-----
+MIIBtzCCASwGByqGSM44BAEwggEfAoGBAMwg9YRKZJ3zrIAVHvRtknHFB5W8FGjg
++s34zeppvev8m2KX9scFOcePy7zxsjUUsWPiYHK5cI58FCumvzkXrzPw3phqaZ3R
+i1TGyKsyLeU8q58AIvjxxuibCxdh7tqRCb52HuMLBtV5pTijJp3IG9t25A10tPyf
+GWlT5sMRYx8bAhUAgOhkBo+I8NdzHhxSmUxP0Nh56m8CgYEAwDrotnKPnptVZOoa
+f1ru4xIVwps3p4U+JlRn6Vh0lUYCC29hyYenJw3mkWMOlz455rb28kQGbylk9JU3
+gQqWe+fZIWIIWssiwK+vDMuq0+Frqa1v+4uvJknSjkh/3PkTBbDDOnelr/jI+M8f
+6EjGKVzimt+8lQLUYCzaG7Hdr/cDgYQAAoGAetGFB0buhC4IQ4hWrHLuRoqY/2qu
+Ux1N3hNytK/urF9g8vocJf5iyZ9IYuoHzqGj2IGRgc4+46devmLECPDMcGLUabIr
+Uu0vKQho0LvWOeWCQLfPJmmDr+ALqiMDtFStmEF6AYaTppcpUZx35QtbxLyr0gha
+FPO813YpuKcrweE=
+-----END PUBLIC KEY-----
+</SigningPublicKey><EncryptionPublicKey>-----BEGIN PUBLIC KEY-----
+MIGdMA0GCSqGSIb3DQEBAQUAA4GLADCBhwKBgQC+ECYk5X0bwC18pnbbEjgKcI4+
+mITy6GRGL5+s3p23aabHYnp8w6fLoE/UbcpFY5zYi9LOYQZ8vO94gpCKynFArEHm
+ouAKXmASC2M/Kz06s/yTUX/s6giIIk3HS1Xxo53IsaDTqZgxmUXZyJtu3PAXeOP+
+AT23qmN+xddgqvs+rQIBAw==
+-----END PUBLIC KEY-----
+</EncryptionPublicKey></GeneralPurposePublicKey></Certificate><AuthorityEvaluationPoint Encoding="DEC">1101659406706352185928775585996985587491838109027</AuthorityEvaluationPoint>
+</Authority>
+<KeyShareCommitment AuthFingerprint="Trustee_2" Encoding="DEC">5396264306732111917998046191871022804356684957054255586845175645616991576748395755105704640751279134209184736206705663876684438681608053740363937096502109917190771506953557341993402002441083777764759147713934640510923778953337554877932226742117805341575016746196612182108498532655126093309490695712434013115</KeyShareCommitment>
+</CommittedAuthority>

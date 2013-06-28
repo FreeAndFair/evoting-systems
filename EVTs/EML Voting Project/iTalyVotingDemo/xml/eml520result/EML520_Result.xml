@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://openvotingsolutions.info/iTalyVotingDemo/xml/eml520result/ovs-EML520-results.xsl"?>
+<EML xmlns:ovs="http://www.openvotingsolutions.com" Id="520" SchemaVersion="4.0">
+<TransactionId>2006-09-12</TransactionId>
+<Result>
+<Election>
+<EventIdentifier Id="ITALY" />
+<Contest>
+<ContestIdentifier Id="District Election - 2007" />
+<Selection>
+<CandidateIdentifier ID="C2" DisplayOrder="1">
+<CandidateName>CASINI</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>UDC</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>6</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A7" DisplayOrder="2">
+<CandidateName>VERDI</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>LUNIONE</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A3" DisplayOrder="3">
+<CandidateName>DEMOCRAZIA</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>MARGHERITA</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>10</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B1" DisplayOrder="4">
+<CandidateName>SARDIGNA</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>NATZIONE</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>11</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C5" DisplayOrder="5">
+<CandidateName>AUTONOMIST</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>CRITIANA</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>7</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A8" DisplayOrder="6">
+<CandidateName>DEMOCRATICI</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>SINISTRA</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C3" DisplayOrder="7">
+<CandidateName>ALLENZA</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>FINI</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>8</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B2" DisplayOrder="8">
+<CandidateName>FACE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>FORWARD-FACE</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>13</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A6" DisplayOrder="9">
+<CandidateName>DIPIETRO</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>VALORI</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>5</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A1" DisplayOrder="10">
+<CandidateName>MASTELLA</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>POPALARI</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>6</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C4" DisplayOrder="11">
+<CandidateName>FIAMMA</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>TRICOLORE</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>7</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A2" DisplayOrder="12">
+<CandidateName>RIFONDAZIONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>PARITTO COMUNISTA</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>6</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B3" DisplayOrder="13">
+<CandidateName>INDIPENDENTZIA</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>REPUBRICA</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>17</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A5" DisplayOrder="14">
+<CandidateName>LAICI</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>RADICALI</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C7" DisplayOrder="15">
+<CandidateName>MUSSOLINI</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>MUSSO</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>4</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C1" DisplayOrder="16">
+<CandidateName>FORZA</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>BERLUSCONI</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>6</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A4" DisplayOrder="17">
+<CandidateName>PENSIONATI</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>PENSIONATI-PARTY</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>5</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C6" DisplayOrder="18">
+<CandidateName>Leaf</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>LEAF</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+</Contest>
+</Election>
+</Result>
+</EML>

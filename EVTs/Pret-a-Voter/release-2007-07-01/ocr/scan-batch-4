@@ -1,0 +1,17 @@
+#! /bin/sh
+
+if test -d scanbatch; then
+  echo "scanbatch directory exists"
+else
+  echo "Creating scanbatch directory"
+  mkdir scanbatch
+fi
+
+file=`mktemp scanbatch/scan-XXXXXXXXXX` || exit 1
+echo "program output to $file"
+
+/usr/bin/scanadf -d 'hpaio:/usb/Officejet_5600_series?serial=CN6BTDG70Z04B2' --source ADF --mode Lineart --batch-scan=yes -l 50 -x 113 -y 297 --resolution 300 --scan-script postvote4 --no-overwrite -o $file-%d.pbm
+
+echo -e "\n"
+echo -e "scanadf result was $?"
+

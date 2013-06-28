@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://openvotingsolutions.info/iTalyVotingDemo/xml/eml520result/ovs-EML520-results.xsl"?>
+<EML xmlns:ovs="http://www.openvotingsolutions.info" Id="520" SchemaVersion="4.0">
+<TransactionId>2006-09-12</TransactionId>
+<Result>
+<Election>
+<EventIdentifier Id="ITALY" />
+<Contest>
+<ContestIdentifier Id="District Election - 2007" />
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A1" DisplayOrder="1">
+ <CandidateName>MASTELLA</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Mastella Udeur</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="MAS">
+ <RegisteredName>POPALARI</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>5</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A2" DisplayOrder="2">
+ <CandidateName>RIFONDAZIONE</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Rifondazione Europia</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="RIF">
+ <RegisteredName>PARITTO COMUNISTA</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>7</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A3" DisplayOrder="3">
+ <CandidateName>DEMOCRAZIA</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mrs. Democrazia Liberta</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="DEM">
+ <RegisteredName>MARGHERITA</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>10</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A4" DisplayOrder="4">
+ <CandidateName>PENSIONATI</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Pensionati</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="PEN">
+ <RegisteredName>PENSIONATI-PARTY</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>0</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A5" DisplayOrder="5">
+ <CandidateName>LAICI</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Laici Social</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="LAI">
+ <RegisteredName>RADICALI</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>20</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A6" DisplayOrder="6">
+ <CandidateName>DIPIETRO</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Dipietro Dei</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="DIP">
+ <RegisteredName>VALORI</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>41</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A7" DisplayOrder="7">
+ <CandidateName>VERDI</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Verdi Luni</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="VER">
+ <RegisteredName>LUNIONE</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>0</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="A8" DisplayOrder="8">
+ <CandidateName>DEMOCRATICI</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Democratici Sinistra</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="SIN">
+ <RegisteredName>SINISTRA</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>0</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="B1" DisplayOrder="9">
+ <CandidateName>SARDIGNA</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Sardigna Nati</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="SAR">
+ <RegisteredName>NATZIONE</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>22</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="B2" DisplayOrder="10">
+ <CandidateName>FACE</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Face</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="FAC">
+ <RegisteredName>FORWARD-FACE</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>0</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="B3" DisplayOrder="11">
+ <CandidateName>INDIPENDENTZIA</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Idipend</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="IND">
+ <RegisteredName>REPUBRICA</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>90</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="C1" DisplayOrder="12">
+ <CandidateName>FORZA</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Forza Italia</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="FOR">
+ <RegisteredName>BERLUSCONI</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>0</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="C2" DisplayOrder="13">
+ <CandidateName>CASINI</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Casini</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="UDC">
+ <RegisteredName>UDC</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>101</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="C3" DisplayOrder="14">
+ <CandidateName>ALLENZA</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Allenza Nationale</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="FIN">
+ <RegisteredName>FINI</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>0</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="C4" DisplayOrder="15">
+ <CandidateName>FIAMMA</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Fiamma Tri</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="FIA">
+ <RegisteredName>TRICOLORE</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>12</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="C5" DisplayOrder="16">
+ <CandidateName>AUTONOMIST</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Autonomist</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="AUT">
+ <RegisteredName>CRITIANA</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>0</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="C6" DisplayOrder="17">
+ <CandidateName>Leaf</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Italy Leaf</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="ITA">
+ <RegisteredName>LEAF</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>10</Votes>
+ </Selection>
+ <Selection Independent="No">
+ <CandidateIdentifier Id="C7" DisplayOrder="18">
+ <CandidateName>MUSSOLINI</CandidateName>
+ </CandidateIdentifier>
+ <CandidateFullName>Mr. Alessandra</CandidateFullName>
+ <Affiliation>
+ <AffiliationIdentifier Id="ALE">
+ <RegisteredName>MUSSO</RegisteredName>
+ </AffiliationIdentifier>
+ </Affiliation>
+ <Logo /> <Votes>70</Votes>
+ </Selection>
+</Contest>
+</Election>
+</Result>
+</EML>

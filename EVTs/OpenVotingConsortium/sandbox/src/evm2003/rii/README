@@ -1,0 +1,87 @@
+Reading Impaired Interface (RII).
+
+The source code and the audio files can be downloaded from:
+
+  http://sourceforge.net/projects/evm2003
+
+either from the CVS Repository or from the Files section.
+
+Put the audio files in a subdirectory 'audio' to the directory 'rii'.
+
+The script is written to run under Linux (the platform chosen for the
+demo). But to make it available to a wider audience for testing, it
+has also been ported for Windows. It is tested under Windows 2000, but
+should hopefully work for other windoses as well.
+
+Linux:
+
+  The script calls the program sox to play the audio files. This was
+  installed by default on my RedHat 9 system. It is available from:
+
+    http://sox.sourceforge.net.
+
+  If some other audio player is used, or if sox is not installed as
+  /usr/bin/sox, the script must be modified to reflect this. Search for
+  'sox' in RII.py.
+
+Windows:
+
+  The Python Win32 Extensions must be installed:
+
+    http://starship.python.net/crew/mhammond/
+
+  Put the audio player WAV.EXE in the same directory as RII.py. It is
+  included in the BVA application, also available from Sourceforge above.
+  If some other tool is used, the code needs to modified accordingly.
+
+It is possible to run the application (runrii.py) without the audio
+files - text will be printed that is supposed to be read out. Note that,
+along with the text, the name of the corresponding audio file is written.
+
+The application can be reset by pressing Ctrl-C. Terminate with two
+quick Ctrl-C.
+
+Text mode (no audio) is forced by calling the script with the command
+line option -t. This makes it a bit quicker to test. You can use the
+option -p to print to a printer. You will need to configure the printing
+command, defined at the top of the file RII.py for this. There is also an
+option -d that gives some debugging output.
+
+The ballot is saved as postscript in the file ballot.ps. To view postscript
+files, you can use ghostscript (installed by default on Linux) together
+with previewers gv (Unix/Linux) or gsview (Windows). Download from:
+
+  http://www.cs.wisc.edu/~ghost/index.html
+
+This implementation is more structured than the first version. It has a
+number of methods that are called after each valid key-press. Which method
+that is to be called depends on which key is pressed, and what the current
+state in the voting process is. For example, if in the candidate selection
+state (the slow list), and the voter selects a candidate by pressing the
+down arrow key - then the select_down() method is called.
+
+Things to be done:
+
+ * Implement the arrow key chase - you know like "no, that's the Shift
+   key. The arrow keys are to the right." etc. I'm not sure if this is
+   really necessary, though. Since there is a possibility that another
+   voter left in the middle of the process, shouldn't a pollworker
+   follow the voter to the voting booth and make sure that the app is
+   its initial stage. Then he can at the same time give instructions:
+   "Here are the arrow keys, use them to navigate. This is the Escape
+   key, press it for help.". A person that isn't used to computer
+   keyboards must probably be instructed anyway; "Press a key" does not
+   mean "press and hold", etc.
+
+ * Some instructions need rewriting. For example Printing.wav has the
+   order of events wrong (insertion into the privacy folder must precede
+   checking for accuracy). Also, Intro2.wav need to be reformulated.
+   Cory Hamma is working with this.
+
+ * If the wrong key is pressed, this is signaled with a beep. Maybe in
+   some cases it should be by some instruction instead.
+
+ * The ballot data is hardcoded (data.py). It should be taken from
+   ballot.xml but its structure has not yet been fixed (or?).
+
+ * Improve the documentation.

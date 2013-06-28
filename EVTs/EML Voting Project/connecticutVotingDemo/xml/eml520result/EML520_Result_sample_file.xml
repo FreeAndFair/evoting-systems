@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://openvotingsolutions.info/connecticutVotingDemo/xml/eml520result/ovs-EML520-results.xsl"?>
+<EML xmlns:ovs="http://www.openvotingsolutions.com" Id="520" SchemaVersion="4.0">
+<TransactionId>2006-09-12</TransactionId>
+<Result>
+<Election>
+<EventIdentifier Id="Connecticut" />
+<Contest>
+<ContestIdentifier Id="Governor and Lieutenant Governor - 2006"/>
+
+<Selection>
+<CandidateIdentifier ID="C2" DisplayOrder="1">
+ <CandidateName>M. Jodi Reli and Micheal Fedele</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>75</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A7" DisplayOrder="2">
+<CandidateName>John DeStefano and Mary Messina Glassman</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>58</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A3" DisplayOrder="3">
+<CandidateName>Joseph A. Zdonczyk and Jose E. Garcia</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Concerned Citizens</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>39</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B1" DisplayOrder="4">
+<CandidateName>Clifford W. Thornton, Jr. and Jean de Smet</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>43</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C5" DisplayOrder="5">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>n/a</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>16</Votes>
+</Selection>
+</Contest>
+
+<Contest>
+<ContestIdentifier Id="United States Senator - 2006"/>
+
+<Selection>
+<CandidateIdentifier ID="C2" DisplayOrder="1">
+ <CandidateName>Alan Schlesinger</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>11</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A7" DisplayOrder="2">
+<CandidateName>Ned Lamont</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>35</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A3" DisplayOrder="3">
+<CandidateName>Timothy A. Knibbs</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Concerned Citizens</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>52</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B1" DisplayOrder="4">
+<CandidateName>Ralph A. Ferrucci</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>27</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B1" DisplayOrder="4">
+<CandidateName>Joe Lieberman</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Connecticut for Lieberman</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>44</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C5" DisplayOrder="5">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>n/a</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>7</Votes>
+</Selection>
+</Contest>
+
+<Contest>
+<ContestIdentifier Id="Representative in Congress - 2006"/>
+
+<Selection>
+<CandidateIdentifier ID="C2" DisplayOrder="1">
+ <CandidateName>Christopher Shays</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>79</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A7" DisplayOrder="2">
+<CandidateName>Diane Farrell</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>72</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A3" DisplayOrder="3">
+<CandidateName>Philip Z. Maymin</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Libertarian</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>34</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C5" DisplayOrder="5">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>n/a</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>17</Votes>
+</Selection>
+</Contest>
+
+</Election>
+</Result>
+</EML>

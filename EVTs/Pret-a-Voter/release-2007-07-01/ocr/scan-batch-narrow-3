@@ -1,0 +1,17 @@
+#! /bin/sh
+
+if test -d scans-narrow; then
+  echo "scans-narrow directory exists"
+else
+  echo "Creating scans-narrow directory"
+  mkdir scans-narrow
+fi
+
+file=`mktemp scans-narrow/scan-XXXXXXXXXX` || exit 1
+# echo "program output to $file"
+
+/usr/bin/scanadf -d 'hpaio:/usb/Officejet_5600_series?serial=CN6BODE12904B2' --source ADF --mode Lineart --batch-scan=yes -l 50 -x 113 -y 297 --resolution 300 --no-overwrite -o $file-%d.pbm
+
+# echo -e "\n"
+# echo -e "scanadf result was $?"
+

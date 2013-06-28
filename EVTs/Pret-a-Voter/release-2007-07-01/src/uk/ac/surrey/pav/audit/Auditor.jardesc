@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="F:/SVN/live/jars/Auditor.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/VoteComp/src/uk/ac/surrey/pav/audit/Auditor.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.audit{AuditorGUI.java[AuditorGUI" manifestLocation="/VoteComp/src/uk/ac/surrey/pav/audit/auditor.manifest" manifestVersion="1.0" reuseManifest="false" saveManifest="true" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="false" exportOutputFolder="true">
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.audit"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.tools"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.ballotform"/>
+    </selectedElements>
+</jardesc>

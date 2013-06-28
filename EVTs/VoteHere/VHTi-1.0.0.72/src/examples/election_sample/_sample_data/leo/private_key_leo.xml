@@ -1,0 +1,48 @@
+<!--  -->
+<!-- This material is subject to the VoteHere Source Code Evaluation -->
+<!-- License Agreement ("Agreement").  Possession and/or use of this -->
+<!-- material indicates your acceptance of this Agreement in its entirety. -->
+<!-- Copies of the Agreement may be found at www.votehere.net. -->
+<!--  -->
+<!-- Copyright 2004 VoteHere, Inc.  All Rights Reserved -->
+<!--  -->
+<!-- You may not download this Software if you are located in any country -->
+<!-- (or are a national of a country) subject to a general U.S. or -->
+<!-- U.N. embargo or are deemed to be a terrorist country (i.e., Cuba, -->
+<!-- Iran, Iraq, Libya, North Korea, Sudan and Syria) by the United States -->
+<!-- (each a "Prohibited Country") or are otherwise denied export -->
+<!-- privileges from the United States or Canada ("Denied Person"). -->
+<!-- Further, you may not transfer or re-export the Software to any such -->
+<!-- country or Denied Person without a license or authorization from the -->
+<!-- U.S. government.  By downloading the Software, you represent and -->
+<!-- warrant that you are not a Denied Person, are not located in or a -->
+<!-- national of a Prohibited Country, and will not export or re-export to -->
+<!-- any Prohibited Country or Denied Party. -->
+<GeneralPurposePrivateKey><IdentInfo>LEO</IdentInfo><SigningPrivateKey>-----BEGIN DSA PRIVATE KEY-----
+MIIBugIBAAKBgQCbgflSNHKXroa3GjXapF4543JAssKSIB06PV3WtLX/g4c9Lv+w
+/dUjEEZfFWmO1ASZxFgtlUp/E+a0S5Du+sk7ipvrsK6afnoXvOSh6USwyxOPvfzO
+O71i1QgyKX1PPvEflJSAvtD4BzZK3YMOOZbPXT3LlVoBq/igLEhjPGEctwIVAJ4/
+8hTcIBXqTeiWjTluDFOxkVGnAoGAbZj58D1tkJlC1z5AC4Xixhz9U2mNjvp12VTN
+b0S38/NWG/uUXfef0VshkebfdTT0+IgRMWvnm6a7IwC0zBLxPPw0+MpEpnY4hGZP
++6iEP+CciqnIb6b/jk2hidH6hUbjjtXStOpUf7bTMnjrulJrz9g8R916qpvnN5G1
+TJBDSAACgYAEWsO/3SvwNWOWLoxqgg1rBFZdAS+9Uj2srupj2GQoC7w3auGoLMAF
+dJcxRbw3XAt2X3L7l2gcvuoQ4TVFq3cuwLLfg4jrbjkE1KCJIgSGZUDo2nFXVkTJ
+nYRKkRwK/U6W4DNOf3nhQb11hdSaZLrsHiLinsIVwj6ukaBfmrh6OQIUEKvd746w
+grmzM2GHc4TT92gYdl4=
+-----END DSA PRIVATE KEY-----
+</SigningPrivateKey><EncryptionPrivateKey>-----BEGIN RSA PRIVATE KEY-----
+MIICXAIBAAKBgQDXxw2DBdQihjJ7EBuy93HTCm+7Wwn0ntSM8xRH7dQVJXMRbOW2
+Bzl4TR1+17sFCoEVYKIAso06qQv0Gp6IrpWvkW2docThszKLAO0DVYYJRGs3Nr+W
+BSWTVQPI+Fala8Zl2E2vRhD5T2V/5rEt2HvfipxGHerYQEWplFgRAE6mqQIBAwKB
+gQCP2gkCA+LBrsxSCr0h+kviBvUnkgajFI2zTLgv8+K4w6ILne55WiZQM2j/Onyu
+BwC46xarIbN8cLKivGmwdGPJJuV6SN8Ihf6MzYRV4t9mYfv0/Ns207PqKo0eCzSl
+R0GKAO/2vovUDVwFOiTpG0ywFbf+a4q6Q7ZxTz4lGIQGgwJBAPsP78oS6CVoKWWq
+s7pw/BiLy/NKn4zJX/dG45gClbrCUNwy59+RRUdk/98cWjnrYolqcqD5JH5vWNxM
+JPFfeWMCQQDcBXZqY2zEzI5m+87GxfOY5XvILCQ6zlQd6ThPhRfGIcX6stVIrfXz
+9ngwXXX1nXTgndXboZxcRKbBLrRqKSODAkEAp1/1MWHwGPAbmRx30aCoEF0yojG/
+szDqpNntEAG5Jyw16CHv6mDY2kNVP2g8JpzsW5xMa1DC/vTl6DLDS5T7lwJBAJKu
+TvGXndiIXu9SidnZTRCY/TAdbXyJjWlGJYpYuoQWg/x3ONseo/f5pXWTo/kTo0Bp
+OT0WaD2DGdYfIvFwwlcCQFCXKMiLBJC0ig08HVlPxIPp5juTQvHKYrxGJyxL4ilF
+BS1/WRv1xR8gxPZD0aEXoymkQCcnCO4saM0RFV9vUbI=
+-----END RSA PRIVATE KEY-----
+</EncryptionPrivateKey></GeneralPurposePrivateKey>

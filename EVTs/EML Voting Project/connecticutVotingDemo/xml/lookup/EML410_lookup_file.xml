@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EML Id="410" SchemaVersion="5.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:ns1="urn:oasis:names:tc:ciq:xsdschema:xNL:2.0"
+ xmlns:ns2="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"
+ xmlns="urn:oasis:names:tc:evs:schema:eml"
+ >
+ <TransactionId>2007-04-01</TransactionId>
+ <MessageLanguage>en-US</MessageLanguage>
+ <ManagingAuthority>
+     <AuthorityIdentifier>Connecticut</AuthorityIdentifier>
+     <AuthorityAddress/>
+     <ResponsibleOfficer>
+         <Responsibility>Election Board</Responsibility>
+         <Name PartyType="Employee" Code="CT-100"></Name>
+     </ResponsibleOfficer>
+ </ManagingAuthority>
+ <IssueDate>2006-05-04T18:13:51.0Z</IssueDate>
+ <Ballots>
+   <EventIdentifier Id="Official_Ballot" DisplayOrder="1">
+       <EventName>State Election</EventName>
+       <EventQualifier Id="CT-2007-1">CT-2007-Wilton</EventQualifier>
+   </EventIdentifier>
+   <EventDescription><Message/>
+   </EventDescription>
+   <Ballot>
+    <ReportingUnitIdentifier Id="Wilton">Town of Wilton</ReportingUnitIdentifier>
+     <Election>
+         <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="11" Completed="no">
+             <ContestIdentifier Id="CT-2007-1">
+                 <ContestName>Governor and Lieutenant Governor</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="101" Independent="no">
+                   <CandidateIdentifier Id="1A" ShortCode="A1">
+                       <CandidateName>M. Jodi Reli and Micheal Fedele</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Team" Code="T001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="102" Independent="no">
+                   <CandidateIdentifier Id="1B" ShortCode="A2">
+                       <CandidateName>John DeStefano and Mary Messina Glassman</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Team" Code="T001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="103" Independent="no">
+                   <CandidateIdentifier Id="1D" ShortCode="A4">
+                       <CandidateName>Joseph A. Zdonczyk and Jose E. Garcia</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Team" Code="T001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Group">Concerned Citizens</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id16" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id16.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="104" Independent="no">
+                   <CandidateIdentifier Id="1E" ShortCode="A5">
+                       <CandidateName>Clifford W. Thornton, Jr. and Jean de Smet</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Team" Code="T001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Green</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id17" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id17.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="105" Independent="yes">
+                   <CandidateIdentifier Id="1G" ShortCode="A7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+          </BallotChoices>
+        </Contest>
+       </Election>
+       <Election>
+         <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="12" Completed="no">
+             <ContestIdentifier Id="CT-2007-2">
+                 <ContestName>United States Senator</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="201" Independent="no">
+                   <CandidateIdentifier Id="2A" ShortCode="B1">
+                       <CandidateName>Alan Schlesinger</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="202" Independent="no">
+                   <CandidateIdentifier Id="2B" ShortCode="B2">
+                       <CandidateName>Ned Lamont</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="203" Independent="no">
+                   <CandidateIdentifier Id="2D" ShortCode="B4">
+                       <CandidateName>Timothy A. Knibbs</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="T001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Group">Concerned Citizens</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id16" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id16.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="204" Independent="no">
+                   <CandidateIdentifier Id="2E" ShortCode="B5">
+                       <CandidateName>Ralph A. Ferrucci</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Green</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id17" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id17.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="205" Independent="yes">
+                   <CandidateIdentifier Id="2F" ShortCode="B6">
+                       <CandidateName>Joe Lieberman</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Group">Connecticut for Lieberman</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id17" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id17.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="206" Independent="yes">
+                   <CandidateIdentifier Id="2G" ShortCode="B7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+              </BallotChoices>
+            </Contest>
+         </Election>
+         <Election>
+                <ElectionIdentifier Id="2007-01">
+                    <ElectionName>State Election Officers</ElectionName>
+                    <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+                    <ElectionCategory>State</ElectionCategory>
+                </ElectionIdentifier>
+                <Description><Message/>
+                </Description>
+                <Contest DisplayOrder="13" Completed="no">
+                    <ContestIdentifier Id="CT-2007-3">
+                        <ContestName>Representative in Congress</ContestName>
+                    </ContestIdentifier>
+                    <ContestScope>State Wide</ContestScope>
+                    <ElectionType>Ballot</ElectionType>
+                    <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+                    <VotingMethod>FPP</VotingMethod>
+                    <ChoiceType>Y/N</ChoiceType>
+                    <MaxVotes>1</MaxVotes>
+                    <MinVotes>0</MinVotes>
+                    <MaxWriteIn>1</MaxWriteIn>
+                    <BallotChoices Contested="yes" Partisan="no">
+                     <Candidate DisplayOrder="301" Independent="no">
+                         <CandidateIdentifier Id="3A" ShortCode="C1">
+                             <CandidateName>Christopher Shays</CandidateName>
+                         </CandidateIdentifier>
+                         <CandidateFullName PartyType="Candidate" Code="C001">
+                             <ns1:OrganisationNameDetails Type="Sponsor">
+                                     <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                             </ns1:OrganisationNameDetails>
+                         </CandidateFullName>
+                         <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+                     </Candidate>
+                     <Candidate DisplayOrder="302" Independent="no">
+                         <CandidateIdentifier Id="3B" ShortCode="C2">
+                             <CandidateName>Diane Farrell</CandidateName>
+                         </CandidateIdentifier>
+                         <CandidateFullName PartyType="Candidate" Code="C001">
+                             <ns1:OrganisationNameDetails Type="Sponsor">
+                                     <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                             </ns1:OrganisationNameDetails>
+                         </CandidateFullName>
+                         <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+                     </Candidate>
+                     <Candidate DisplayOrder="303" Independent="no">
+                         <CandidateIdentifier Id="3C" ShortCode="C3">
+                             <CandidateName>Philip Z. Maymin</CandidateName>
+                         </CandidateIdentifier>
+                         <CandidateFullName PartyType="Candidate" Code="T001">
+                             <ns1:OrganisationNameDetails Type="Sponsor">
+                                     <ns1:OrganisationName Type="Party">Libertarian</ns1:OrganisationName>
+                             </ns1:OrganisationNameDetails>
+                         </CandidateFullName>
+                         <Logo Id="Id15" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id15.jpg</URL></Logo>
+                     </Candidate>
+                     <Candidate DisplayOrder="306" Independent="yes">
+                         <CandidateIdentifier Id="3G" ShortCode="C7">
+                             <CandidateName>Write-in Votes</CandidateName>
+                         </CandidateIdentifier>
+                         <CandidateFullName PartyType="Write-In" Code="W001">
+                         </CandidateFullName>
+                     </Candidate>
+                 </BallotChoices>
+            </Contest>
+         </Election>
+         <Election>
+                <ElectionIdentifier Id="2007-01">
+                    <ElectionName>State Election Officers</ElectionName>
+                    <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+                    <ElectionCategory>State</ElectionCategory>
+                </ElectionIdentifier>
+                <Description><Message/>
+                </Description>
+                <Contest DisplayOrder="14" Completed="no">
+                    <ContestIdentifier Id="CT-2007-4">
+                        <ContestName>State Senator</ContestName>
+                    </ContestIdentifier>
+                    <ContestScope>State Wide</ContestScope>
+                    <ElectionType>Ballot</ElectionType>
+                    <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+                    <VotingMethod>FPP</VotingMethod>
+                    <ChoiceType>Y/N</ChoiceType>
+                    <MaxVotes>1</MaxVotes>
+                    <MinVotes>0</MinVotes>
+                    <MaxWriteIn>1</MaxWriteIn>
+                    <BallotChoices Contested="yes" Partisan="no">
+                       <Candidate DisplayOrder="401" Independent="no">
+                           <CandidateIdentifier Id="4A" ShortCode="D1">
+                               <CandidateName>Judith G. Freedman</CandidateName>
+                           </CandidateIdentifier>
+                           <CandidateFullName PartyType="Candidate" Code="C001">
+                               <ns1:OrganisationNameDetails Type="Sponsor">
+                                       <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                               </ns1:OrganisationNameDetails>
+                           </CandidateFullName>
+                           <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+                       </Candidate>
+                       <Candidate DisplayOrder="402" Independent="no">
+                           <CandidateIdentifier Id="4B" ShortCode="D2">
+                               <CandidateName>Craig Rebecca Schiavone</CandidateName>
+                           </CandidateIdentifier>
+                           <CandidateFullName PartyType="Candidate" Code="C001">
+                               <ns1:OrganisationNameDetails Type="Sponsor">
+                                       <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                               </ns1:OrganisationNameDetails>
+                           </CandidateFullName>
+                           <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+                       </Candidate>
+                       <Candidate DisplayOrder="506" Independent="yes">
+                           <CandidateIdentifier Id="4G" ShortCode="D7">
+                               <CandidateName>Write-in Votes</CandidateName>
+                           </CandidateIdentifier>
+                           <CandidateFullName PartyType="Write-In" Code="W001">
+                           </CandidateFullName>
+                       </Candidate>
+                 </BallotChoices>
+            </Contest>
+         </Election>
+         <Election>
+           <ElectionIdentifier Id="2007-01">
+               <ElectionName>State Election Officers</ElectionName>
+               <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+               <ElectionCategory>State</ElectionCategory>
+           </ElectionIdentifier>
+           <Description><Message/>
+           </Description>
+           <Contest DisplayOrder="15" Completed="no">
+               <ContestIdentifier Id="CT-2007-5">
+                   <ContestName>State Representative</ContestName>
+               </ContestIdentifier>
+               <ContestScope>State Wide</ContestScope>
+               <ElectionType>Ballot</ElectionType>
+               <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+               <VotingMethod>FPP</VotingMethod>
+               <ChoiceType>Y/N</ChoiceType>
+               <MaxVotes>1</MaxVotes>
+               <MinVotes>0</MinVotes>
+               <MaxWriteIn>1</MaxWriteIn>
+               <BallotChoices Contested="yes" Partisan="no">
+                  <Candidate DisplayOrder="601" Independent="no">
+                      <CandidateIdentifier Id="5A" ShortCode="E1">
+                          <CandidateName>Tony Boucher</CandidateName>
+                      </CandidateIdentifier>
+                      <CandidateFullName PartyType="Candidate" Code="C001">
+                          <ns1:OrganisationNameDetails Type="Sponsor">
+                                  <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                          </ns1:OrganisationNameDetails>
+                      </CandidateFullName>
+                      <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+                  </Candidate>
+                  <Candidate DisplayOrder="606" Independent="yes">
+                      <CandidateIdentifier Id="5G" ShortCode="E7">
+                          <CandidateName>Write-in Votes</CandidateName>
+                      </CandidateIdentifier>
+                      <CandidateFullName PartyType="Write-In" Code="W001">
+                      </CandidateFullName>
+                  </Candidate>
+            </BallotChoices>
+          </Contest>
+       </Election>
+       <Election>
+         <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="16" Completed="no">
+             <ContestIdentifier Id="CT-2007-6">
+                 <ContestName>Secretary of the State</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="701" Independent="no">
+                   <CandidateIdentifier Id="6A" ShortCode="F1">
+                       <CandidateName>Richard J. Abbate</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="702" Independent="no">
+                   <CandidateIdentifier Id="6B" ShortCode="F2">
+                       <CandidateName>Susan Bysiewicz</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="703" Independent="no">
+                   <CandidateIdentifier Id="6C" ShortCode="F3">
+                       <CandidateName>Ken Mosher</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Libertarian</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id24" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id24.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="704" Independent="no">
+                   <CandidateIdentifier Id="6D" ShortCode="F4">
+                       <CandidateName>Jean Marie Burness</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="T001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Group">Concerned Citizens</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id16" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id16.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="705" Independent="no">
+                   <CandidateIdentifier Id="6E" ShortCode="F5">
+                       <CandidateName>S. Michael Derosa</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Green</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id17" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id17.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="707" Independent="yes">
+                   <CandidateIdentifier Id="6G" ShortCode="F7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+              </BallotChoices>
+            </Contest>
+        </Election>
+        <Election>
+         <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="17" Completed="no">
+             <ContestIdentifier Id="CT-2007-7">
+                 <ContestName>Treasurer</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="801" Independent="no">
+                   <CandidateIdentifier Id="7A" ShortCode="G1">
+                       <CandidateName>Linda Roberts</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="802" Independent="no">
+                   <CandidateIdentifier Id="7B" ShortCode="G2">
+                       <CandidateName>Denise L. Nappier</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="803" Independent="no">
+                   <CandidateIdentifier Id="7C" ShortCode="G3">
+                       <CandidateName>Steven Edelman</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Libertarian</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id24" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id24.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="804" Independent="no">
+                   <CandidateIdentifier Id="7D" ShortCode="G4">
+                       <CandidateName>Mimi M. Knibbs</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="T001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Group">Concerned Citizens</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id16" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id16.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="805" Independent="no">
+                   <CandidateIdentifier Id="7E" ShortCode="G5">
+                       <CandidateName>S. David Bue</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Green</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id17" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id17.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="807" Independent="yes">
+                   <CandidateIdentifier Id="7G" ShortCode="G7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+              </BallotChoices>
+            </Contest>
+         </Election>
+         <Election>
+          <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="18" Completed="no">
+             <ContestIdentifier Id="CT-2007-8">
+                 <ContestName>Comptroller</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="901" Independent="no">
+                   <CandidateIdentifier Id="8A" ShortCode="H1">
+                       <CandidateName>Cathy Cook</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="902" Independent="no">
+                   <CandidateIdentifier Id="8B" ShortCode="H2">
+                       <CandidateName>Nancy Wyman</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="903" Independent="no">
+                   <CandidateIdentifier Id="8C" ShortCode="H3">
+                       <CandidateName>Richard C. Connelly, Jr.</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Libertarian</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id24" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id24.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="905" Independent="no">
+                   <CandidateIdentifier Id="8E" ShortCode="H5">
+                       <CandidateName>Colin Daniel Bennett</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Green</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id17" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id17.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="907" Independent="yes">
+                   <CandidateIdentifier Id="8G" ShortCode="H7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+              </BallotChoices>
+            </Contest>
+         </Election>
+         <Election>
+          <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="19" Completed="no">
+             <ContestIdentifier Id="CT-2007-9">
+                 <ContestName>Attorney General</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="9011" Independent="no">
+                   <CandidateIdentifier Id="9A" ShortCode="I1">
+                       <CandidateName>Robert Farr</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="9012" Independent="no">
+                   <CandidateIdentifier Id="9B" ShortCode="I2">
+                       <CandidateName>Richard Blumenthal</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="9015" Independent="no">
+                   <CandidateIdentifier Id="9E" ShortCode="I5">
+                       <CandidateName>Nancy Burton</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Green</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id17" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id17.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="9017" Independent="yes">
+                   <CandidateIdentifier Id="9G" ShortCode="I7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+              </BallotChoices>
+            </Contest>
+         </Election>
+         <Election>
+          <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="20" Completed="no">
+             <ContestIdentifier Id="CT-2007-10">
+                 <ContestName>Judge of Probate</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="9021" Independent="no">
+                   <CandidateIdentifier Id="10A" ShortCode="J1">
+                       <CandidateName>Anthony J. DePanfilis</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="9027" Independent="yes">
+                   <CandidateIdentifier Id="10G" ShortCode="J7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+              </BallotChoices>
+            </Contest>
+         </Election>
+         <Election>
+          <ElectionIdentifier Id="2007-01">
+             <ElectionName>State Election Officers</ElectionName>
+             <ElectionGroup Id="CT-01">Connecticut</ElectionGroup>
+             <ElectionCategory>State</ElectionCategory>
+         </ElectionIdentifier>
+         <Description><Message/>
+         </Description>
+         <Contest DisplayOrder="21" Completed="no">
+             <ContestIdentifier Id="CT-2007-11">
+                 <ContestName>Registrar of Voters</ContestName>
+             </ContestIdentifier>
+             <ContestScope>State Wide</ContestScope>
+             <ElectionType>Ballot</ElectionType>
+             <ReportingUnitIdentifier Id="CT-Wilton" >CT-Wilton</ReportingUnitIdentifier>
+             <VotingMethod>FPP</VotingMethod>
+             <ChoiceType>Y/N</ChoiceType>
+             <MaxVotes>1</MaxVotes>
+             <MinVotes>0</MinVotes>
+             <MaxWriteIn>1</MaxWriteIn>
+             <BallotChoices Contested="yes" Partisan="no">
+               <Candidate DisplayOrder="9031" Independent="no">
+                   <CandidateIdentifier Id="11A" ShortCode="K1">
+                       <CandidateName>Tina Gardner</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Republican</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id12" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id12.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="9032" Independent="no">
+                   <CandidateIdentifier Id="11B" ShortCode="K2">
+                       <CandidateName>Margaret 'Peggy' Reeves</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Candidate" Code="C001">
+                       <ns1:OrganisationNameDetails Type="Sponsor">
+                               <ns1:OrganisationName Type="Party">Democratic</ns1:OrganisationName>
+                       </ns1:OrganisationNameDetails>
+                   </CandidateFullName>
+                   <Logo Id="Id14" ItemType="logo" ><URL>http://ovsdemo.com/logos/Id14.jpg</URL></Logo>
+               </Candidate>
+               <Candidate DisplayOrder="9037" Independent="yes">
+                   <CandidateIdentifier Id="11G" ShortCode="K7">
+                       <CandidateName>Write-in Votes</CandidateName>
+                   </CandidateIdentifier>
+                   <CandidateFullName PartyType="Write-In" Code="W001">
+                   </CandidateFullName>
+               </Candidate>
+              </BallotChoices>
+            </Contest>
+         </Election>
+   </Ballot>
+  </Ballots>
+</EML>

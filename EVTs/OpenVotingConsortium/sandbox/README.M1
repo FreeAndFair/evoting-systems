@@ -1,0 +1,38 @@
+EVM Integrator Release
+
+To form into one whole; to make entire; to complete; to
+      renew; to restore; to perfect. ``That conquest rounded and
+      integrated the glorious empire.'' --De Quincey.
+
+EVM Milestone 1 release goals - Voting Machine User Interface
+
+1)Integrate existing components under a very simple static graphical user interface (GUI)
+2)Link the new graphical and the audio (RII) UI to the printing system
+3)Create a smooth work flow for both the GUI and RII
+4)Create a reliable RPM based install for Redhat 9 with installation instructions
+
+GUI use case for Integrator M1
+
+1)Display instructions screen with a "Continue" button.
+2)Display the Ballot screen*
+3)User makes selections and presses "Finished"**
+4)System prints ballot and returns to step 1 
+
+In debug mode at step 4:
+4) System writes a temporary file and displays the postscript file.
+
+* The display needs to be as simple as possible and yet accurately representing the ballot in an approved form.  A simple graphic (e.g. PNG) fits these requirements.
+
+** A confirmation step may be inserted here, possibly a view of the printed form of the ballot with an option to return to voting or to print now (TBD).
+
+EVM Milestone 1 release goals - Ballot Reconciliation System User Interface
+
+1) Create the 8 basic screens defined by Allan on the Wiki:
+
+http://gnosis.python-hosting.com/cgi-bin/wiki.cgi?BallotReconciliation
+
+2) Link the screens in a basic work flow
+3) Integrate the existing bar code reading software
+4) Generate the tally results and integrate these with the screens
+5) File system updates as stated in the Wiki requirements
+

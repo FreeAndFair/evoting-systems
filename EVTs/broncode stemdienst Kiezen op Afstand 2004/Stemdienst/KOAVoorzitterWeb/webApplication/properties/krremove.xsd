@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="creationtime" type="xs:dateTime"/>
+	<xs:element name="import">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="metadata"/>
+				<xs:element ref="kiezer" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="action" type="xs:string" fixed="delete"/>
+			<xs:attribute name="contenttype" type="xs:string" fixed="kiezersregister"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="kiezer">
+		<xs:complexType>
+			<xs:attribute name="id" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="99999999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="kiezercount">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="metadata">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="requestreference"/>
+				<xs:element ref="creationtime"/>
+				<xs:element ref="kiezercount"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="requestreference">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:minLength value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

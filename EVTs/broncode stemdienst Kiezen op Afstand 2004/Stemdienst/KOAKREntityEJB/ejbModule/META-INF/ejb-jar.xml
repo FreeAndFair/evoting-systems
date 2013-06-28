@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN" "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd">
+<ejb-jar id="ejb-jar_ID">
+	<display-name>KOAKREntityEJB</display-name>
+	<enterprise-beans>
+		<entity id="ContainerManagedEntity_1">
+			<ejb-name>Kiezers</ejb-name>
+			<home>com.logicacmg.koa.kr.beans.KiezersHome</home>
+			<remote>com.logicacmg.koa.kr.beans.Kiezers</remote>
+			<ejb-class>com.logicacmg.koa.kr.beans.KiezersBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.kr.beans.KiezersKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_1">
+				<field-name>stemcode</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_2">
+				<field-name>kiezeridentificatie</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_3">
+				<field-name>hashedwachtwoord</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_4">
+				<field-name>districtnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_5">
+				<field-name>kieskringnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_6">
+				<field-name>reedsgestemd</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_7">
+				<field-name>invalidlogins</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_8">
+				<field-name>loginattemptsleft</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_9">
+				<field-name>timelastsuccesfullogin</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_10">
+				<field-name>accountlocked</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_11">
+				<field-name>timestampunlock</field-name>
+			</cmp-field>
+            <cmp-field id="CMPAttribute_19">
+				<field-name>verwijderd</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_20">
+				<field-name>modaliteit</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_21">
+				<field-name>timestampgestemd</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_25">
+				<field-name>transactienummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_22">
+				<field-name>validlogins</field-name>
+			</cmp-field>
+		</entity>
+		<entity id="KRFingerprints">
+			<ejb-name>KRFingerprints</ejb-name>
+			<home>com.logicacmg.koa.kr.beans.KRFingerprintsHome</home>
+			<remote>com.logicacmg.koa.kr.beans.KRFingerprints</remote>
+			<ejb-class>com.logicacmg.koa.kr.beans.KRFingerprintsBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.kr.beans.KRFingerprintsKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_12">
+				<field-name>id</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_13">
+				<field-name>type</field-name>
+			</cmp-field>
+				<cmp-field id="CMPAttribute_14">
+				<field-name>fingerprint</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_15">
+				<field-name>timestamp</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_16">
+				<field-name>systemstatus</field-name>
+			</cmp-field>
+		</entity>
+		<entity id="KRSequenceEJB">
+			<ejb-name>KRSequenceEJB</ejb-name>
+			<home>com.logicacmg.koa.kr.beans.KRSequenceEJBHome</home>
+			<remote>com.logicacmg.koa.kr.beans.KRSequenceEJB</remote>
+			<ejb-class>com.logicacmg.koa.kr.beans.KRSequenceEJBBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.kr.beans.KRSequenceEJBKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_17">
+				<field-name>tablename</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_18">
+				<field-name>nextid</field-name>
+			</cmp-field>
+		</entity>
+		<entity id="Transactioncode">
+			<ejb-name>Transactioncode</ejb-name>
+			<home>com.logicacmg.koa.kr.beans.TransactioncodeHome</home>
+			<remote>com.logicacmg.koa.kr.beans.Transactioncode</remote>
+			<ejb-class>com.logicacmg.koa.kr.beans.TransactioncodeBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.kr.beans.TransactioncodeKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_24">
+				<field-name>alreadyused</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_26">
+				<field-name>transactienummer</field-name>
+			</cmp-field>
+		</entity>
+	</enterprise-beans>
+</ejb-jar>

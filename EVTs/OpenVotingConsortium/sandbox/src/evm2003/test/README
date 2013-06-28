@@ -1,0 +1,28 @@
+Very brief, sorry...
+
+To run the scripts, you need to set your PYTHONPATH environment variable
+to include the src directory where the code was downloaded. On Unix/Linux
+with something like:
+
+   PYTHONPATH=/home/jan/voting-project/src; export PYTHONPATH
+or
+   setenv PYTHONPATH /home/jan/voting-project/src
+
+depending on what shell you have. Under Windows I believe you can set it
+via the Control Panel, or by editing AUTOEXEC.BAT on older windoses.
+
+To use the code, you will also need to install the gnosis XML parser:
+
+   http://gnosis.cx/download/Gnosis_Utils-1.1.0.tar.gz
+
+In the directory src/evm2003/test you will find two scripts that generate
+a paper ballot: lp.py prints directly to a printer, and ps.py writes
+postscript to a file.
+
+There is also a sample file vote-selection.xml that is used by lp.py
+and ps.py.
+
+The script bva.py is a simple barcode vocalization machine.
+
+You need to edit lp.py and bva.py to reflect your local environment; see
+the comments within the scripts.

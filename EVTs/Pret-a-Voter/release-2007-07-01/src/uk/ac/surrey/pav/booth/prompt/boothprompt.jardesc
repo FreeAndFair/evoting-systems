@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="F:/SVN/live/jars/Boothprompt.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/VoteComp/src/uk/ac/surrey/pav/booth/prompt/boothprompt.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.booth.prompt{BoothPrompt.java[BoothPrompt" manifestLocation="/VoteComp/src/uk/ac/surrey/pav/booth/prompt/boothprompt.manifest" manifestVersion="1.0" reuseManifest="false" saveManifest="true" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="false" exportOutputFolder="true">
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard.tablemodels"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.administrator.treenodes"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.common.interfaces"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard.events"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard.batches"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.teller"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard.tally"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.administrator"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard.exceptions"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.tools"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.ballotform"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard.entities"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.administrator.registry"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.common"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.booth.prompt"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard"/>
+    </selectedElements>
+</jardesc>

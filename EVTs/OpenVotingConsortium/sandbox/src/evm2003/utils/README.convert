@@ -1,0 +1,3 @@
+The votes2digits() function has the candidate names hardcoded.
+That data should instead come from ballot-election.xml - once its
+structure has been specified.

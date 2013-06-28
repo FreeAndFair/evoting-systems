@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EML xmlns:ovs="http://www.openvotingsolutions.com" xmlns:xdp="http://www.adobe.com/xdp" xmlns:xfa="http://www.adobe.com/xfa" Id="440" schemaVersion="4.0">
+<TransactionId Id="1174269819371" />
+<CastVote>
+<EventIdentifier Id="Italy Voting" />
+<Election>
+<ElectionIdentifier Id="District Election - 2006" />
+<Contest>
+<ContestIdentifier>Row1</ContestIdentifier>
+<Selection Shortcode="8" Value="0">
+<CandidateIdentifier Id="A8" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="A2" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="A6" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="A7" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="1">
+<CandidateIdentifier Id="A4" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="A3" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="A1" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="A5" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier>Row2</ContestIdentifier>
+<Selection Shortcode="3" Value="1">
+<CandidateIdentifier Id="B3" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="B2" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="B1" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier>Row3</ContestIdentifier>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="C4" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="C6" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="C2" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="C1" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="1">
+<CandidateIdentifier Id="C3" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="C7" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="C5" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+</Election>
+</CastVote>
+</EML>

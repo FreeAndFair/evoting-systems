@@ -1,0 +1,85 @@
+#! /bin/sh
+
+input="$1"
+printer="$2"
+echo "postvote $input"
+
+if test -d ocrbatch; then
+  echo "ocrbatch directory exists"
+else
+  echo "Creating ocrbatch directory"
+  mkdir ocrbatch
+fi
+
+if test -d rcptbatch; then
+  echo "rcptbatch directory exists"
+else
+  echo "Creating rcptbatch directory"
+  mkdir rcptbatch
+fi
+
+ocrtext=`mktemp ocrbatch/ocr-XXXXXXXXXX` || exit 1
+echo -e "\n"
+echo "Calling Ballot10: output to $ocrtext"
+
+java -Xmx200m Ballot10 $input > $ocrtext
+echo -e "\n"
+echo -e "Ballot10 finished - result code was $?\n"
+
+# If form was unreadable, send static file to printer.
+# Send everything else to David
+# code 0 - forgot to set exit code.
+# add code 10 - seems OK + 7 commas
+# add code 11 - 7 strings follows
+# add code 12 - failed horribly - also send to David.  
+
+rcpttext=`mktemp rcptbatch/rcpt-XXXXXXXXXX` || exit 1
+echo -e "\n"
+echo "Calling Boothprompt: output to $rcpttext"
+
+
+echo "java -Djava.security.policy=./security.policy -jar ./Boothprompt.jar < $ocrtext > $rcpttext"
+java -Djava.security.policy=./security.policy -jar ./Boothprompt.jar < $ocrtext > $rcpttext
+# java -jar Boothprompt.jar `cat ../../$ocrtext` > ../../$rcpttext
+# java uk/ac/surrey/pav/booth/prompt/BoothPrompt `cat ../../$ocrtext` > ../../$rcpttext
+echo -e "Boothprompt finished - result code was $? \n"
+
+# add printouts of static files for error conditions
+# send rest to James
+
+# cd ../../james/release
+if test -d rcptbatch; then
+  echo "rcptbatch directory exists"
+else
+  echo "Creating rcptbatch directory"
+  mkdir rcptbatch
+fi
+
+echo "java -jar ./BallotForms2Latex.jar < $rcpttext > ${rcpttext}.tex"
+java -jar ./BallotForms2Latex.jar < $rcpttext > ${rcpttext}.tex
+echo -e "BallotForms2Latex finished - result code was $? \n"
+
+cd ../latex
+
+echo "latex -output-directory=../ocr/rcptbatch -interaction=batchmode ../ocr/$rcpttext"
+latex -output-directory=../ocr/rcptbatch -interaction=batchmode ../ocr/$rcpttext
+echo -e "latex finished - result code was $? \n"
+
+
+echo "dvips -q -f < ../ocr/${rcpttext}.dvi > ../ocr/${rcpttext}.ps"
+dvips -f < ../ocr/${rcpttext}.dvi > ../ocr/${rcpttext}.ps
+echo -e "dvips finished - result code was $? \n"
+
+echo "ps2ps -sPAPERSIZE=a4 ../ocr/${rcpttext}.ps ../ocr/${rcpttext}2.ps"
+ps2ps -sPAPERSIZE=a4 ../ocr/${rcpttext}.ps ../ocr/${rcpttext}2.ps
+echo -e "ps2ps finished - result code was $? \n"
+
+cd ../ocr
+
+# cp ${rcpttext}2.ps ../../${rcpttext}.ps
+
+# cd ../..
+# lpr -P${printer} ${rcpttext}.ps
+lpr -P${printer} ${rcpttext}2.ps
+echo -e "lpr finished - result code was $? \n"
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config> 
+  <form-beans>
+    <form-bean name="loginForm"
+               type="forms.LoginForm" />
+    <form-bean name="voterForm" 
+    		   type="forms.VoterForm" />
+   <form-bean name="countingForm" 
+    		   type="forms.CountingForm" />    		   
+  </form-beans>
+  <!-- =========================================== Global Forward Definitions -->
+  
+      <global-forwards>
+          <!-- Default forward to "Welcome" action -->
+          <!-- Demonstrates using index.jsp to forward -->
+          <forward
+              name="welcome"
+              path="welcome.do"/>
+    </global-forwards>
+    
+  <action-mappings>
+   
+   <action
+    path="/welcome"
+            forward="/web/screens/common/loginPage.jsp"/>
+            
+     <action path="/actions/login" 
+            type="action.LoginAction"
+            name="loginForm"
+            scope="request" 
+            input="/web/screens/common/loginPage.jsp">
+      <forward name="loginpage" 
+               path="loginPage" />
+      <forward name="logoutpage" 
+               path="logoutPage" />
+      <forward name="countingpage" 
+               path="countingPage" />
+      <forward name="success" 
+               path="scanBarCodePage" />
+    </action>
+    
+     <action path="/actions/scanvoter" 
+            type="action.VoterAction"
+            name="voterForm"
+            scope="request" 
+            input="/web/screens/voter/scanBarCodePage.jsp">
+      <forward name="defaultPage" 
+               path="scanBarCodePage" />
+      <forward name="success" 
+               path="/xml/connecticutBallot/voting_ballot.xml" />
+    </action>
+    
+    <action path="/actions/counting" 
+            type="action.CountingAction"
+            name="countingForm"
+            scope="request" 
+            input="/web/screens/counting/countingPage.jsp">
+      <forward name="defaultPage" 
+               path="countingPage" />
+      <forward name="success" 
+               path="/xml/eml520result/EML520_Result.xml" />
+    </action>
+    
+  </action-mappings>
+  
+	<!-- =============== Message Resources =============== -->	
+	 <message-resources parameter="resources.application" />	
+	 
+	  <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+      <!-- Path to XML definition file -->
+      <set-property property="definitions-config"
+                       value="/web/tiles/tiles.xml" />
+      <!-- Set Module-awareness to true -->
+      <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+</struts-config>

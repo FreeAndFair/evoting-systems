@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# scan-batch-2 &
+# scan-batch-3 &
+./scan-batch-4 &
+./scan-batch-5 &
+./scan-batch-6 &
+./scan-batch-8 &
+

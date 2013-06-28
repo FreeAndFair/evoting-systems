@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <EML Id="510" schemaVersion="4.0">
+<EventIdentifier Id="New York State" />
+<Election>
+<ElectionIdentifier Id="District Election " />
+<Contest>
+<ContestIdentifier>2006</ContestIdentifier>
+<TotalVotes>
+<Selection>
+<CandidateIdentifier ID="C2"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A7"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A3"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B1"/>
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C5"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A8"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C3"/>
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B2"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A6"/>
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A1"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C4"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A2"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B3"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A5"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C7"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C1"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A4"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="C6"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+</Election>
+</EML>

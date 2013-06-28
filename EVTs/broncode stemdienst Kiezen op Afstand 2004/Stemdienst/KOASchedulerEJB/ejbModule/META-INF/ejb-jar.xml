@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN" "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd">
+<ejb-jar id="ejb-jar_ID">
+	<display-name>KOASchedulerEJB</display-name>
+	<enterprise-beans>
+		<entity id="ContainerManagedEntity_1">
+			<ejb-name>Scheduledjob</ejb-name>
+			<home>com.logicacmg.koa.scheduler.beans.ScheduledjobHome</home>
+			<remote>com.logicacmg.koa.scheduler.beans.Scheduledjob</remote>
+			<ejb-class>com.logicacmg.koa.scheduler.beans.ScheduledjobBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.scheduler.beans.ScheduledjobKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_1">
+				<field-name>jobid</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_2">
+				<field-name>starttime</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_3">
+				<field-name>stoptime</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_4">
+				<field-name>priority</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_5">
+				<field-name>status</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_6">
+				<field-name>retrycount</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_7">
+				<field-name>lastupdate</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_8">
+				<field-name>context</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_9">
+				<field-name>message</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_18">
+				<field-name>jobtype_typeid</field-name>
+			</cmp-field>
+			<ejb-ref id="EjbRef_1">
+				<ejb-ref-name>ejb/Jobtype</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.scheduler.beans.JobtypeHome</home>
+				<remote>com.logicacmg.koa.scheduler.beans.Jobtype</remote>
+				<ejb-link>Jobtype</ejb-link>
+			</ejb-ref>
+		</entity>
+		<entity id="ContainerManagedEntity_2">
+			<ejb-name>Jobtype</ejb-name>
+			<home>com.logicacmg.koa.scheduler.beans.JobtypeHome</home>
+			<remote>com.logicacmg.koa.scheduler.beans.Jobtype</remote>
+			<ejb-class>com.logicacmg.koa.scheduler.beans.JobtypeBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.scheduler.beans.JobtypeKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_10">
+				<field-name>typeid</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_11">
+				<field-name>name</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_12">
+				<field-name>firsttime</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_13">
+				<field-name>interval</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_14">
+				<field-name>successor</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_15">
+				<field-name>implementationclass</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_16">
+				<field-name>defaultcontext</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_17">
+				<field-name>priority</field-name>
+			</cmp-field>
+			<ejb-ref id="EjbRef_2">
+				<ejb-ref-name>ejb/Scheduledjob</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.scheduler.beans.ScheduledjobHome</home>
+				<remote>com.logicacmg.koa.scheduler.beans.Scheduledjob</remote>
+				<ejb-link>Scheduledjob</ejb-link>
+			</ejb-ref>
+		</entity>
+		<session id="SchedulerAdmin">
+			<ejb-name>SchedulerAdmin</ejb-name>
+			<home>com.logicacmg.koa.scheduler.beans.SchedulerAdminHome</home>
+			<remote>com.logicacmg.koa.scheduler.beans.SchedulerAdmin</remote>
+			<ejb-class>com.logicacmg.koa.scheduler.beans.SchedulerAdminBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+		<session id="JobTarget">
+			<ejb-name>JobTarget</ejb-name>
+			<home>com.logicacmg.koa.scheduler.beans.JobTargetHome</home>
+			<remote>com.logicacmg.koa.scheduler.beans.JobTarget</remote>
+			<ejb-class>com.logicacmg.koa.scheduler.beans.JobTargetBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Bean</transaction-type>
+		</session>
+	</enterprise-beans>
+	<assembly-descriptor>
+		<container-transaction>
+			<method>
+				<ejb-name>Jobtype</ejb-name>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>SchedulerAdmin</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>pollForScheduledJobs</method-name>
+			</method>
+			<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>JobTarget</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>performExecute</method-name>
+				<method-params>
+					<method-param>java.math.BigDecimal</method-param></method-params>
+			</method>
+			<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>Scheduledjob</ejb-name>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+	</assembly-descriptor>
+</ejb-jar>

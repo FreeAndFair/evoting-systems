@@ -1,0 +1,101 @@
+<ballotLookup>
+  <column ID="1" name="Governor and Lieutenant Governor">
+    <checkbox ID="1" name="Republican" CandidateName="M. Jodi Reli and Micheal Fedele" DisplayOrder="1">1A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="John DeStefano and Mary Messina Glassman" DisplayOrder="1">1B</checkbox>
+    <checkbox ID="3" name="" CandidateName="NONE" DisplayOrder="1">1C</checkbox>
+    <checkbox ID="4" name="Concerned Citizens" CandidateName="Joseph A. Zdonczyk and Jose E. Garcia" DisplayOrder="1">1D</checkbox>
+    <checkbox ID="5" name="Green" CandidateName="Clifford W. Thornton, Jr. and Jean de Smet" DisplayOrder="1">1E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">1F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">1G</checkbox>
+  </column>
+  <column ID="2" name="United States Senator">
+   <checkbox ID="1" name="Republican"  CandidateName="Alan Schlesinger" DisplayOrder="1">2A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Ned Lamont" DisplayOrder="1">2B</checkbox>
+    <checkbox ID="3" name="" CandidateName="NONE" DisplayOrder="1">2C</checkbox>
+    <checkbox ID="4" name="Concerned Citizens" CandidateName="Timothy A. Knibbs" DisplayOrder="1">2D</checkbox>
+    <checkbox ID="5" name="Green" CandidateName="Ralph A. Ferrucci" DisplayOrder="1">1E</checkbox>
+    <checkbox ID="6" name="Connecticut for Lieberman" CandidateName="Joe Lieberman" DisplayOrder="1">2F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">2G</checkbox>
+   </column>
+  <column ID="3" name="Representative in Congress">
+    <checkbox ID="1" name="Republican" CandidateName="Christopher Shays" DisplayOrder="1">3A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Diane Farrell" DisplayOrder="1">3B</checkbox>
+    <checkbox ID="3" name="Libertarian" CandidateName="Philip Z. Maymin" DisplayOrder="1">3C</checkbox>
+    <checkbox ID="4" name="" CandidateName="NONE" DisplayOrder="1">3D</checkbox>
+    <checkbox ID="5" name="" CandidateName="NONE" DisplayOrder="1">3E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">3F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">3G</checkbox>
+   </column>
+   <column ID="4" name="State Senator">
+    <checkbox ID="1" name="Republican" CandidateName="Judith G. Freedman" DisplayOrder="1">4A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Craig Rebecca Schiavone" DisplayOrder="1">4B</checkbox>
+    <checkbox ID="3" name="" CandidateName="NONE" DisplayOrder="1">4C</checkbox>
+    <checkbox ID="4" name="" CandidateName="NONE" DisplayOrder="1">4D</checkbox>
+    <checkbox ID="5" name="" CandidateName="NONE" DisplayOrder="1">4E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">4F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">4G</checkbox>
+   </column>
+   <column ID="5" name="State Representative">
+    <checkbox ID="1" name="Republican" CandidateName="Tony Boucher" DisplayOrder="1">5A</checkbox>
+    <checkbox ID="2" name="" CandidateName="NONE" DisplayOrder="1">5B</checkbox>
+    <checkbox ID="3" name="" CandidateName="NONE" DisplayOrder="1">5C</checkbox>
+    <checkbox ID="4" name="" CandidateName="NONE" DisplayOrder="1">5D</checkbox>
+    <checkbox ID="5" name="" CandidateName="NONE" DisplayOrder="1">5E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">5F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">5G</checkbox>
+   </column>
+   <column ID="6" name="Secretary of the State">
+    <checkbox ID="1" name="Republican" CandidateName="Richard J. Abbate" DisplayOrder="1">6A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Susan Bysiewicz" DisplayOrder="1">6B</checkbox>
+    <checkbox ID="3" name="Libertarian" CandidateName="Ken Mosher" DisplayOrder="1">6C</checkbox>
+    <checkbox ID="4" name="Concerned Citizens" CandidateName="Jean Marie Burness" DisplayOrder="1">6D</checkbox>
+    <checkbox ID="5" name="Green" CandidateName="S. Michael Derosa" DisplayOrder="1">6E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">6F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">6G</checkbox>
+   </column>
+   <column ID="7" name="Treasurer">
+    <checkbox ID="1" name="Republican" CandidateName="Linda Roberts" DisplayOrder="1">7A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Denise L. Nappier" DisplayOrder="1">7B</checkbox>
+    <checkbox ID="3" name="Libertarian" CandidateName="Steven Edelman" DisplayOrder="1">7C</checkbox>
+    <checkbox ID="4" name="Concerned Citizens" CandidateName="Mimi M. Knibbs" DisplayOrder="1">7D</checkbox>
+    <checkbox ID="5" name="Green" CandidateName="S. David Bue" DisplayOrder="1">7E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">7F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">7G</checkbox>
+   </column>
+   <column ID="8" name="Comptroller">
+    <checkbox ID="1" name="Republican" CandidateName="Cathy Cook" DisplayOrder="1">8A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Nancy Wyman" DisplayOrder="1">8B</checkbox>
+    <checkbox ID="3" name="Libertarian" CandidateName="Richard C. Connelly, Jr." DisplayOrder="1">8C</checkbox>
+    <checkbox ID="4" name="" CandidateName="NONE" DisplayOrder="1">8D</checkbox>
+    <checkbox ID="5" name="Green" CandidateName="Colin Daniel Bennett" DisplayOrder="1">8E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">8F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">8G</checkbox>
+   </column>
+   <column ID="9" name="Attorney General">
+    <checkbox ID="1" name="Republican" CandidateName="Robert Farr" DisplayOrder="1">9A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Richard Blumenthal" DisplayOrder="1">9B</checkbox>
+    <checkbox ID="3" name="" CandidateName="NONE" DisplayOrder="1">9C</checkbox>
+    <checkbox ID="4" name="" CandidateName="NONE" DisplayOrder="1">9D</checkbox>
+    <checkbox ID="5" name="Green" CandidateName="Nancy Burton" DisplayOrder="1">9E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">9F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">9G</checkbox>
+   </column>
+   <column ID="10" name="Judge of Probate">
+    <checkbox ID="1" name="Republican" CandidateName="Anthony J. DePanfilis" DisplayOrder="1">10A</checkbox>
+    <checkbox ID="2" name="" CandidateName="NONE" DisplayOrder="1">10B</checkbox>
+    <checkbox ID="3" name="" CandidateName="NONE" DisplayOrder="1">10C</checkbox>
+    <checkbox ID="4" name="" CandidateName="NONE" DisplayOrder="1">10D</checkbox>
+    <checkbox ID="5" name="" CandidateName="NONE" DisplayOrder="1">10E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">10F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">10G</checkbox>
+  </column>
+  <column ID="11" name="Registrar of Voters">
+    <checkbox ID="1" name="Republican" CandidateName="Tina Gardner" DisplayOrder="1">11A</checkbox>
+    <checkbox ID="2" name="Democratic" CandidateName="Margaret 'Peggy' Reeves" DisplayOrder="1">11B</checkbox>
+    <checkbox ID="3" name="" CandidateName="NONE" DisplayOrder="1">11C</checkbox>
+    <checkbox ID="4" name="" CandidateName="NONE" DisplayOrder="1">11D</checkbox>
+    <checkbox ID="5" name="" CandidateName="NONE" DisplayOrder="1">11E</checkbox>
+    <checkbox ID="6" name="" CandidateName="NONE" DisplayOrder="1">11F</checkbox>
+    <checkbox ID="7" name="Write-in" CandidateName="Write-in Votes" DisplayOrder="1">11G</checkbox>
+   </column>
+  </ballotLookup>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xfa="http://www.adobe.com/xfa"
+    xmlns:xdp="http://www.adobe.com/xdp"
+    xmlns:ovs="http://www.openvotingsolutions.com"
+    xmlns:saxon="http://icl.com/saxon" exclude-result-prefixes="saxon">
+	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
+
+	<xsl:template match="//xfa:datasets/xfa:data/xdp:xdp/xfa:datasets/xfa:data/EML">
+					<!-- Now write the vote details out just here -->
+					<xsl:apply-templates/>
+	</xsl:template>
+
+	<xsl:template match="EML/CastVote">
+		<xsl:choose>
+			<xsl:when test="string-length(EventIdentifier) =0 ">
+			</xsl:when>
+			<xsl:otherwise>
+<EML Id="440" schemaVersion="4.0">
+ <TransactionId><xsl:attribute name="Id"><xsl:value-of select="//EML/@schemaVersion"/></xsl:attribute></TransactionId>
+ <CastVote>
+  <EventIdentifier><xsl:attribute name="Id"><xsl:value-of select="//EventIdentifier"/></xsl:attribute></EventIdentifier>
+  <Election>
+    <ElectionIdentifier><xsl:attribute name="Id"><xsl:value-of select="//ElectionIdentifier"/></xsl:attribute></ElectionIdentifier>
+   <Contest>
+    <ContestIdentifier>2006</ContestIdentifier>
+      <Selection Shortcode="A1"><xsl:attribute name="Value"><xsl:value-of select="//Selection1A"/></xsl:attribute>
+        <CandidateIdentifier Id="22" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName1"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="A2"><xsl:attribute name="Value"><xsl:value-of select="//Selection2A"/></xsl:attribute>
+        <CandidateIdentifier Id="23" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName2"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="A3"><xsl:attribute name="Value"><xsl:value-of select="//Selection3A"/></xsl:attribute>
+        <CandidateIdentifier Id="24" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName3"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="A4"><xsl:attribute name="Value"><xsl:value-of select="//Selection4A"/></xsl:attribute>
+        <CandidateIdentifier Id="25" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName4"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="A5"><xsl:attribute name="Value"><xsl:value-of select="//Selection5A"/></xsl:attribute>
+        <CandidateIdentifier Id="26" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName5"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="A6"><xsl:attribute name="Value"><xsl:value-of select="//Selection6A"/></xsl:attribute>
+        <CandidateIdentifier Id="27" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName6"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="A7"><xsl:attribute name="Value"><xsl:value-of select="//Selection7A"/></xsl:attribute>
+        <CandidateIdentifier Id="28" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName7"/></WriteinCandidateName>
+      </Selection>
+
+      <Selection Shortcode="B1"><xsl:attribute name="Value"><xsl:value-of select="//Selection1B"/></xsl:attribute>
+        <CandidateIdentifier Id="22" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName1"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="B2"><xsl:attribute name="Value"><xsl:value-of select="//Selection2B"/></xsl:attribute>
+        <CandidateIdentifier Id="23" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName2"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="B3"><xsl:attribute name="Value"><xsl:value-of select="//Selection3B"/></xsl:attribute>
+        <CandidateIdentifier Id="24" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName3"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="B4"><xsl:attribute name="Value"><xsl:value-of select="//Selection4B"/></xsl:attribute>
+        <CandidateIdentifier Id="25" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName4"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="B5"><xsl:attribute name="Value"><xsl:value-of select="//Selection5B"/></xsl:attribute>
+        <CandidateIdentifier Id="26" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName5"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="B6"><xsl:attribute name="Value"><xsl:value-of select="//Selection6B"/></xsl:attribute>
+        <CandidateIdentifier Id="27" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName6"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="B7"><xsl:attribute name="Value"><xsl:value-of select="//Selection7B"/></xsl:attribute>
+        <CandidateIdentifier Id="28" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName7"/></WriteinCandidateName>
+      </Selection>
+
+      <Selection Shortcode="C1"><xsl:attribute name="Value"><xsl:value-of select="//Selection1C"/></xsl:attribute>
+        <CandidateIdentifier Id="22" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName1"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="C2"><xsl:attribute name="Value"><xsl:value-of select="//Selection2C"/></xsl:attribute>
+        <CandidateIdentifier Id="23" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName2"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="C3"><xsl:attribute name="Value"><xsl:value-of select="//Selection3C"/></xsl:attribute>
+        <CandidateIdentifier Id="24" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName3"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="C4"><xsl:attribute name="Value"><xsl:value-of select="//Selection4C"/></xsl:attribute>
+        <CandidateIdentifier Id="25" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName4"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="C5"><xsl:attribute name="Value"><xsl:value-of select="//Selection5C"/></xsl:attribute>
+        <CandidateIdentifier Id="26" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName5"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="C6"><xsl:attribute name="Value"><xsl:value-of select="//Selection6C"/></xsl:attribute>
+        <CandidateIdentifier Id="27" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName6"/></WriteinCandidateName>
+      </Selection>
+      <Selection Shortcode="C7"><xsl:attribute name="Value"><xsl:value-of select="//Selection7C"/></xsl:attribute>
+        <CandidateIdentifier Id="28" />
+        <WriteinCandidateName><xsl:value-of select="//WriteInCandidateName7"/></WriteinCandidateName>
+      </Selection>
+					<!-- Now write the end of vote -->
+   </Contest>
+  </Election>
+</CastVote>
+</EML>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+</xsl:stylesheet>

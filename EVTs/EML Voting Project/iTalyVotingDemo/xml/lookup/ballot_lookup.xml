@@ -1,0 +1,26 @@
+<ballotLookup>
+  <row ID="1" >
+    <checkbox ID="1" grp="1" select="1">A1</checkbox>
+    <checkbox ID="2" grp="1" select="1">A2</checkbox>
+    <checkbox ID="3" grp="1" select="1">A3</checkbox>
+    <checkbox ID="4" grp="1" select="1">A4</checkbox>
+    <checkbox ID="5" grp="1" select="1">A5</checkbox>
+    <checkbox ID="6" grp="1" select="1">A6</checkbox>
+    <checkbox ID="7" grp="1" select="1">A7</checkbox>
+    <checkbox ID="8" grp="1" select="1">A8</checkbox>
+  </row>
+  <row ID="2">
+    <checkbox ID="1" grp="2" select="1">B1</checkbox>
+    <checkbox ID="2" grp="2" select="1">B2</checkbox>
+    <checkbox ID="3" grp="2" select="1">B3</checkbox>
+  </row>
+  <row ID="3">
+    <checkbox ID="1" grp="3" select="1">C1</checkbox>
+    <checkbox ID="2" grp="3" select="1">C2</checkbox>
+    <checkbox ID="3" grp="3" select="1">C3</checkbox>
+    <checkbox ID="4" grp="3" select="1">C4</checkbox>
+    <checkbox ID="5" grp="3" select="1">C5</checkbox>
+    <checkbox ID="6" grp="3" select="1">C6</checkbox>
+    <checkbox ID="7" grp="3" select="1">C7</checkbox>
+  </row>
+ </ballotLookup>

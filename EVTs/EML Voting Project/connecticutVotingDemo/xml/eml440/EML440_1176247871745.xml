@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EML xmlns:ovs="http://www.openvotingsolutions.com" xmlns:xdp="http://www.adobe.com/xdp" xmlns:xfa="http://www.adobe.com/xfa" Id="440" schemaVersion="4.0">
+<TransactionId Id="1176247871745" />
+<CastVote>
+<EventIdentifier Id="State Of Connecticut - USA" />
+<Election>
+<ElectionIdentifier Id="State Election - 2007" />
+<Contest>
+<ContestIdentifier Id="1"></ContestIdentifier>
+<Selection Shortcode="1" Value="1">
+<CandidateIdentifier Id="1A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="1B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="1C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="1D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="1E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="1F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="1G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="2"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="2A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="2B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="2C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="2D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="1E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="2F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="2G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="3"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="3A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="3B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="3C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="3D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="3E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="3F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="3G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="4"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="4A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="4B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="4C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="4D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="4E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="4F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="4G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="5"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="5A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="5B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="5C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="5D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="5E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="5F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="5G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="6"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="6A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="6B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="6C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="6D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="6E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="6F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="6G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="7"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="7A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="7B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="7C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="7D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="7E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="7F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="7G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="8"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="8A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="8B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="8C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="8D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="8E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="8F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="8G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="9"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="9A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="9B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="9C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="9D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="9E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="9F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="9G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="10"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="10A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="10B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="10C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="10D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="10E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="10F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="10G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="11"></ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="11A" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="0">
+<CandidateIdentifier Id="11B" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="3" Value="0">
+<CandidateIdentifier Id="11C" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="4" Value="0">
+<CandidateIdentifier Id="11D" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="5" Value="0">
+<CandidateIdentifier Id="11E" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="6" Value="0">
+<CandidateIdentifier Id="11F" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="0">
+<CandidateIdentifier Id="11G" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+</Election>
+</CastVote>
+</EML>

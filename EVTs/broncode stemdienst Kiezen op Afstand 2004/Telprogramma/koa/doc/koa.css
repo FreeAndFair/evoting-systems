@@ -1,0 +1,51 @@
+BODY {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-family: serif;
+        background: white;
+        color: black;
+        font-size: 12pt;
+}
+
+PRE {
+        font-family: monospace;
+}
+
+A:link {
+        text-decoration: none;
+        font-family: serif;
+}
+
+A:visited {
+        text-decoration: none;
+        font-family: serif;
+}
+
+TT {
+        font-family: monospace;
+        font-size: 10pt;
+}
+
+H1 {
+        font-size: 200%;
+}
+
+H2 {
+        font-size: 166%;
+}
+
+H3 {
+        font-size: 133%;
+}
+
+H4 {
+        font-size: 100%;
+}
+
+H5 {
+        font-size: 75%;
+}
+
+H6 {
+        font-size: 50%;
+}

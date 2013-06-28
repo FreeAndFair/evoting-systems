@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/antlr.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/derby.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-digester.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-validator.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jakarta-oro.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/struts.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/iText.jar"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

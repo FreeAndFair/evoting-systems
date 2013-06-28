@@ -1,0 +1,129 @@
+NP01	For President: No preference was indicated.
+NP02	For United States Senate: No preference was indicated.
+NP03	For U.S. Representative: No preference was indicated.
+NP04	For State Treasurer: No preference was indicated.
+NP05	For State Attorney General: No preference was indicated.
+NP06	For State Commissioner of Education: No preference was indicated.
+NP07	For State Senator: No preference was indicated.
+NP08	For State Assembly: No preference was indicated.
+NP09	No preference was indicated for the Transportation Initiative.
+NP10	No preference was indicated for the Universal Health Care Initiative.
+NP11	No preference was indicated on the Term limits referendum for County Commissioner.
+NP12	No preference was indicated for Cat Catcher position.
+NP13	No preference was indicated for County Commissioner.
+SEL001	For President: George Washington, Abraham Lincoln for Vice-President, Republican party.
+SEL002	For President: Thomas Jefferson, Harry S. Truman for Vice-President, Democratic party.
+SEL003	For President: Rachel Carson, John Muir for Vice-President , Green party.
+SEL004	For President: Susan B. Anthony, Betsy Ross for Vice-President, Libertarian party.
+SEL005	For President: V. I. Lenin, Karl Marx for Vice-President, Socialist party.
+SEL006	For President: Martin Luther King, John Anderson for Vice-President, Reform party.
+SEL007	For President: Helen Keller, Amelia Earhart for Vice-President, Workers party.
+SEL008	For President and Vice-President: Write-in candidates were indicated.
+SEL009	For U.S. Senate: Frances E. Willard, Green party.
+SEL010	For U.S. Senate: Lucy Stone, Libertarian.
+SEL011	For U.S. Senate: Karl Menninger, Democrat.
+SEL012	For U.S. Senate: Jane Addams, Workers party.
+SEL013	For U.S. Senate: Clarence Darrow, Socialist party.
+SEL014	For U.S. Senate: William Lloyd Garrison, Labor party.
+SEL015	For U.S. Senate: Sidney Hillman, Republican.
+SEL016	For United States Senator: A write-in candidate was indicated.
+SEL017	For U.S. Representative: Ignace Paderewski, Democrat.
+SEL018	For U.S. Representative: Lillian Hellman, Republican.
+SEL019	For U.S. Representative: A write-in candidate was indicated.
+SEL020	For Treasurer: Tom Cosgrove, Republican.
+SEL021	For Treasurer: John Gallagher, Democrat.
+SEL022	For Treasurer: A write-in candidate was indicated.
+SEL023	For Attorney General: Dewitt Clinton, Green party.
+SEL024	For Attorney General: Charles Parnell, Republican.
+SEL025	For Attorney General: Thomas P. O'Neill, Democrat.
+SEL026	For Attorney General: A write-in candidate was indicated.
+SEL027	For Commissioner of Education: Christian Doppler, Republican.
+SEL028	For Commissioner of Education: Carl Sagan, Democrat.
+SEL029	For Commissioner of Education: A write-in candidate was indicated.
+SEL030	For State Senator: Robert Ingersoll, Democrat.
+SEL031	For State Senator: Martin Luther, Republican.
+SEL032	For State Senator: Barbara Jordon, Green party.
+SEL033	For State Senator: A write-in candidate was indicated.
+SEL034	For State Assembly: Don Lee, Republican.
+SEL035	For State Assembly: Langston Hughes, Democrat.
+SEL036	For State Assembly: A write-in candidate was indicated.
+SEL037	On the Transportation Initiative: Yes for approval.
+SEL038	On the Transportation Initiative: No for rejection.
+SEL039	On the Universal Health Care Initiative: Yes for approval.
+SEL040	On the Universal Health Care Initiative: No for rejection.
+SEL041	On the Referendum for Term limits for County Commissioners: Yes for approval.
+SEL042	On the Referendum for Term limits for County Commissioners: No for rejection.
+SEL043	For Cat Catcher: Regis Philbin.
+SEL044	For Cat Catcher: Oprah Winfrey.
+SEL045	For Cat Catcher: Howard Stern.
+SEL046	For Cat Catcher: Charlie Rose.
+SEL047	For Cat Catcher: Rosie O'Donnell.
+SEL048	For Cat Catcher: Carrie Fisher.
+SEL049	For Cat Catcher: Steven Spielberg.
+SEL050	For Cat Catcher: Queen Latifah.
+SEL051	For Cat Catcher: Eddie Murphy.
+SEL052	For Cat Catcher: A write-in candidate.
+SEL053	For County Commissioner: David Packard ranked first.
+SEL054	For County Commissioner: David Packard ranked second.
+SEL055	For County Commissioner: David Packard ranked third.
+SEL056	For County Commissioner: David Packard ranked fourth.
+SEL057	For County Commissioner: David Packard ranked fifth.
+SEL058	For County Commissioner: David Packard ranked sixth.
+SEL059	For County Commissioner: David Packard ranked seventh.
+SEL060	For County Commissioner: David Packard ranked eighth.
+SEL061	For County Commissioner: William Hewlett ranked first.
+SEL062	For County Commissioner: William Hewlett ranked second.
+SEL063	For County Commissioner: William Hewlett ranked third.
+SEL064	For County Commissioner: William Hewlett ranked fourth.
+SEL065	For County Commissioner: William Hewlett ranked fifth.
+SEL066	For County Commissioner: William Hewlett ranked sixth.
+SEL067	For County Commissioner: William Hewlett ranked seventh.
+SEL068	For County Commissioner: William Hewlett ranked eighth.
+SEL069	For County Commissioner: Steve Jobs ranked first.
+SEL070	For County Commissioner: Steve Jobs ranked second.
+SEL071	For County Commissioner: Steve Jobs ranked third.
+SEL072	For County Commissioner: Steve Jobs ranked fourth.
+SEL073	For County Commissioner: Steve Jobs ranked fifth.
+SEL074	For County Commissioner: Steve Jobs ranked sixth.
+SEL075	For County Commissioner: Steve Jobs ranked seventh.
+SEL076	For County Commissioner: Steve Jobs ranked eighth.
+SEL077	For County Commissioner: Steve Wozniak ranked first.
+SEL078	For County Commissioner: Steve Wozniak ranked second.
+SEL079	For County Commissioner: Steve Wozniak ranked third.
+SEL080	For County Commissioner: Steve Wozniak ranked fourth.
+SEL081	For County Commissioner: Steve Wozniak ranked fifth.
+SEL082	For County Commissioner: Steve Wozniak ranked sixth.
+SEL083	For County Commissioner: Steve Wozniak ranked seventh.
+SEL084	For County Commissioner: Steve Wozniak ranked eighth.
+SEL085	For County Commissioner: William Shockely ranked first.
+SEL086	For County Commissioner: William Shockely ranked second.
+SEL087	For County Commissioner: William Shockely ranked third.
+SEL088	For County Commissioner: William Shockely ranked fourth.
+SEL089	For County Commissioner: William Shockely ranked fifth.
+SEL090	For County Commissioner: William Shockely ranked sixth.
+SEL091	For County Commissioner: William Shockely ranked seventh.
+SEL092	For County Commissioner: William Shockely ranked eighth.
+SEL093	For County Commissioner: Gordon Moore ranked first.
+SEL094	For County Commissioner: Gordon Moore ranked second.
+SEL095	For County Commissioner: Gordon Moore ranked third.
+SEL096	For County Commissioner: Gordon Moore ranked fourth.
+SEL097	For County Commissioner: Gordon Moore ranked fifth.
+SEL098	For County Commissioner: Gordon Moore ranked sixth.
+SEL099	For County Commissioner: Gordon Moore ranked seventh.
+SEL100	For County Commissioner: Gordon Moore ranked eighth.
+SEL101	For County Commissioner: Philip Kahn ranked first.
+SEL102	For County Commissioner: Philip Kahn ranked second.
+SEL103	For County Commissioner: Philip Kahn ranked third.
+SEL104	For County Commissioner: Philip Kahn ranked fourth.
+SEL105	For County Commissioner: Philip Kahn ranked fifth.
+SEL106	For County Commissioner: Philip Kahn ranked sixth.
+SEL107	For County Commissioner: Philip Kahn ranked seventh.
+SEL108	For County Commissioner: Philip Kahn ranked eighth.
+SEL109	For County Commissioner: A write-in candidate was ranked first.
+SEL110	For County Commissioner: A write-in candidate was ranked second.
+SEL111	For County Commissioner: A write-in candidate was ranked third.
+SEL112	For County Commissioner: A write-in candidate was ranked fourth.
+SEL113	For County Commissioner: A write-in candidate was ranked fifth.
+SEL114	For County Commissioner: A write-in candidate was ranked sixth.
+SEL115	For County Commissioner: A write-in candidate was ranked seventh.
+SEL116	For County Commissioner: A write-in candidate was ranked eighth.

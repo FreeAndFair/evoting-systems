@@ -1,0 +1,173 @@
+*************************************
+OSOSS (http://www.ososs.nl)
+Dutch translation of “GPL v.2.0”
+Translation version 1.1 d.d. 27-10-2003
+
+This is an unofficial translation of the GNU General Public License (GPL) into Dutch. It was not published by the Free Software Foundation (http://www.fsf.org), and does not legally state the distribution terms for software that uses the GNU GPL--only the original English text of the GNU GPL does that. Besides, only the original English text of the GPL is acknowledged by the Open Source Initiative (OSI, http://www.opensource.org) as an open source license. This translation is not approved by OSI and is not suitable as a legal document. However, we hope that this translation will help Dutch speakers to understand the GPL better. We note that it will depend on the circumstances whether the conditions of the GPL license will have legal force. Therefore it is recommended to seek judicial advisory in case you have legal questions regarding the license. The footnotes (marked with #) were added for explanatory reasons and are not part of the original text.
+
+
+OSOSS (http://www.ososs.nl)
+Nederlandse vertaling van “GPL v.2.0”
+Vertaling versie 1.1 d.d. 27-10-2003
+
+Dit is een onofficiële vertaling van de GNU General Public License (GPL) licentie in het Nederlands. Deze licentie is geen uitgave van de Free Software Foundation (http://www.fsf.org) en vormt geen erkende overeenkomst betreffende de verspreiding van software waarop de GPL van toepassing is. Alleen de originele Engelse tekst van de GPL wordt als zodanig erkend en dient daarvoor te worden gebruikt. Bovendien wordt alleen de originele Engelse tekst van de GPL  erkend door de Open Source Initiative (OSI, (http://www.opensource.org). Deze Nederlandstalige versie is niet goedgekeurd door OSI en is niet geschikt voor gebruik als juridisch document. Programmabureau OSOSS hoopt echter dat deze vertaling de Nederlandstaligen helpt de GPL beter te begrijpen. Volledigheidshalve zij opgemerkt dat het afhangt van de omstandigheden van het geval of op de bepalingen van de GPL in rechte een beroep kan worden gedaan. Het verdient derhalve aanbeveling om in voorkomende situaties juridisch advies hieromtrent in te winnen. De voetnoten (gemarkeerd met #) zijn toegevoegd ter verduidelijking en maken geen deel uit van de originele tekst. 
+*************************************
+
+<begin licentie>
+
+                        GNU General Public License
+               Nederlandse vertaling van Versie 2, juni 1991 
+
+            Copyright (c) 1989, 1991 Free Software Foundation, Inc.
+             59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+Het is eenieder toegestaan om deze licentieovereenkomst ongewijzigd te kopiëren en te verspreiden; er wijzigingen in aanbrengen is echter niet toegestaan. 
+
+VOORWOORD
+
+  De licenties voor de meeste software zijn zo opgesteld dat u de vrijheid wordt ontnomen de software te delen en te wijzigen. De GNU General Public License daarentegen is bedoeld om de vrijheid te garanderen zogenoemde 'vrije software' ('free software') met anderen te delen en te wijzigen -- om te verzekeren dat de software vrij beschikbaar is voor al haar gebruikers. De General Public License is van toepassing op het merendeel van de software van de Free Software Foundation, alsmede elk ander programma, waarvan de auteur zich heeft gebonden aan de voorwaarden van de GPL. (Op menig andere software van de Free Software Foundation is de GNU Library General Public License van toepassing in plaats van de GPL). U kunt deze eveneens van toepassing verklaren op uw software.
+
+  Wanneer wij spreken over vrije software, maken wij een verwijzing naar het begrip vrijheid en niet naar het begrip prijs. Onze General Public Licenses zijn ontworpen om ervoor te zorgen dat u de vrijheid heeft exemplaren van vrije software te verspreiden (en dat u voor deze dienst kosten in rekening kunt brengen), dat u de broncode ontvangt of op verzoek kunt verkrijgen, dat u de software kunt wijzigen of gedeelten ervan kunt gebruiken in nieuwe vrije software en dat u ervan op de hoogte bent dat deze mogelijkheden bestaan. 
+	
+  Teneinde uw rechten te beschermen, leggen wij in deze overeenkomst voorwaarden vast  die het eenieder verbieden u deze rechten te ontzeggen of u te verzoeken deze rechten over te dragen. Deze beperkingen brengen bepaalde verantwoordelijkheden voor u met zich mee wanneer u exemplaren van software verspreidt of de software wijzigt. 
+
+  Als u bijvoorbeeld exemplaren van een dergelijk programma, kosteloos of tegen vergoeding verspreidt, dan dient u de ontvangers alle rechten te verschaffen die u zelf hebt. U dient zich ervan te verzekeren dat zij ook de broncode (kunnen) ontvangen. Bovendien moet u hun deze bepalingen kenbaar maken, zodat zij op de hoogte kunnen zijn van hun rechten. 
+
+  Wij beschermen uw rechten doordat: (1) de software auteursrechtelijk is beschermd, en (2) wij bieden u deze licentie, welke u het recht geeft de software te kopiëren, verspreiden en/of te wijzigen. 
+
+  Ter bescherming van elke auteur en onszelf, willen wij er zeker van zijn dat iedereen begrijpt dat er geen enkele garantie bestaat met betrekking tot deze vrije software. Indien de software gewijzigd is door iemand anders en is doorgegeven, dan willen wij dat de ontvangers ervan weten dat wat zij hebben verkregen niet het origineel is, zodat problemen veroorzaakt door anderen niet van invloed zijn op de reputatie van de oorspronkelijke auteur. 
+
+  Tot slot, elk vrij programma wordt voortdurend bedreigd door softwareoctrooien. Wij willen het gevaar vermijden dat distributeurs van vrije software octrooi verkrijgen op deze programma's, waardoor zij de software in feite tot eigendomssoftware maken. Teneinde dit te voorkomen, hebben wij duidelijk gemaakt dat elk softwareoctrooi moet worden verleend onder de voorwaarde dat iedereen er vrij gebruik van kan maken of anders helemaal niet moet worden verleend. 
+
+  De exacte bepalingen en voorwaarden voor het kopiëren, distribueren en wijzigen volgen hierna. 
+
+                        GNU GENERAL PUBLIC LICENSE
+       BEPALINGEN EN VOORWAARDEN VOOR HET KOPIËREN, DISTRIBUEREN EN WIJZIGEN
+
+  0. Deze Licentie is van toepassing op elk programma of ander werk dat een opschrift bevat van de auteursrechthebbende, inhoudende dat het programma verspreid mag worden onder de bepalingen van de General Public License. Het begrip "Programma" in deze Licentie verwijst naar een dergelijk programma of werk, en het begrip "werk gebaseerd op het Programma" verwijst naar het Programma of enig afgeleid werk vallend onder het auteursrecht: dat wil zeggen, een werk dat het Programma of een gedeelte ervan bevat, letterlijk of in gewijzigde vorm en/of vertaald. (Hierna valt een vertaling zonder meer onder het begrip "wijziging"). Elke licentienemer wordt aangeduid met "u". 
+Andere handelingen dan kopiëren, distribueren en wijzigen vallen buiten de reikwijdte van deze Licentie en worden derhalve niet gedekt door deze Licentie. De handeling om het Programma te laden en in beeld te brengen wordt niet beperkt en de output van het Programma wordt enkel door deze Licentie gedekt indien de inhoud ervan een werk vormt gebaseerd op het Programma (onafhankelijk of de output een gevolg is van het laden en in beeld brengen van het Programma). Of dit het geval is hangt af van de functie van het Programma. 
+
+  1. Het is u toegestaan letterlijke kopieën van de broncode van het Programma, zoals u dit hebt ontvangen, te kopiëren en te verspreiden, in elke vorm, op voorwaarde dat u op elk exemplaar duidelijk zichtbaar en op passende wijze een geschikt copyright notice en afstand van garantie aanbrengt, alsmede dat u alle verwijzingen naar deze Licentie en naar het ontbreken van elke garantie onaangetast laat en dat u elke ontvanger van dit Programma voorziet van een kopie van deze Licentie, bijgevoegd bij het Programma. 
+
+Het is u toegestaan kosten in rekening te brengen voor de fysieke daad van het verstrekken van een exemplaar. Voorts mag u, indien gewenst, garanties verstrekken in ruil voor een geldelijke beloning. 
+
+  2. Het is u toegestaan uw exemplaar of exemplaren van het Programma of een gedeelte ervan te wijzigen, aldus een werk vormend gebaseerd op het Programma. Deze wijzigingen mag u kopiëren en verspreiden onder de bepalingen van artikel 1 van de Licentie, op voorwaarde dat u eveneens aan onderstaande voorwaarden voldoet:
+
+(a) U dient de gewijzigde bestanden te voorzien van duidelijke opschriften inhoudende dat u de bestanden gewijzigd hebt. Daarbij dient de datum van wijziging vermeld te worden.
+
+(b) U dient elk werk dat u verspreidt of openbaar maakt en dat volledig of gedeeltelijk bestaat uit het Programma of ervan is afgeleid, als geheel kosteloos te licentiëren aan alle derde partijen onder de bepalingen van deze Licentie.#1
+
+(c) Indien het gewijzigde programma gewoonlijk bij het laden en in beeld brengen interactief opdrachten inleest, dient u ervoor te zorgen dat, wanneer het Programma voor een dergelijk interactief gebruik wordt gestart, het Programma een boodschap print of vertoont, inhoudende een geschikt copyright notice en afstand van garantie#2 (of anders een bepaling waarmee u garantie verleent) en dat gebruikers het programma mogen herdistribueren onder deze voorwaarden. Bovendien moet de boodschap het de gebruiker duidelijk maken hoe hij een kopie van deze Licentie kan inzien. (Het voorgaande lijdt uitzondering indien het Programma zelf interactief is, maar het normaal niet een dergelijke boodschap print. In dat geval is het niet vereist dat uw werk gebaseerd op het Programma, zo'n boodschap print). 
+
+ Deze vereisten zijn van toepassing op het gewijzigde werk als geheel. Indien identificeerbare gedeelten van dat werk niet zijn afgeleid van het Programma en redelijkerwijs beschouwd kunnen worden als onafhankelijke en afzonderlijke werken op zich, dan is deze Licentie met haar bepalingen niet van toepassing op die gedeelten, indien u deze als afzonderlijke werken verspreidt. Indien u deze werken echter verspreidt als deel van een groter geheel, dat een werk is gebaseerd op het Programma, dan dient de distributie van het geheel volgens de bepalingen van de Licentie te geschieden, welke bepalingen voor andere licentienemers betrekking hebben op het grotere geheel en derhalve op elke gedeelte, ongeacht wie de auteur ervan is. 
+
+  Het is derhalve niet de bedoeling van dit artikel om rechten te claimen of uw rechten op het werk dat geheel door u zelf geschreven is te betwisten; het is eerder de bedoeling om het recht tot controle op de distributie van afgeleide of geïntegreerde werken, zoals hierboven bedoeld, gebaseerd op het Programma, uit te oefenen.
+
+  Voorts brengt de enkele bundeling van een ander werk dat niet gebaseerd is op het Programma met het Programma (of met een werk gebaseerd op het Programma) op een opslag- of distributiemedium, het andere werk niet onder de werking van deze Licentie. 
+
+  3. Het is u toegestaan het Programma in objectcode#3 of uitvoerbare vorm te kopiëren en te verspreiden (of een werk dat erop gebaseerd is volgens artikel 2 van de Licentie) onder de bepalingen van artikel 1 en 2 van de Licentie, op voorwaarde dat u tevens aan een van de volgende voorwaarden voldoet:
+
+(a) Voeg de volledig corresponderende, voor de computer leesbare, broncode bij op een medium dat gewoonlijk gebruikt wordt voor het uitwisselen van software. Deze dient te worden gedistribueerd onder de bepalingen van artikel 1 en 2 van de Licentie; of, 
+
+(b) Voeg een schriftelijk aanbod bij dat tenminste drie jaar geldig is en dat elke derde de mogelijkheid geeft om een volledige, voor de computer leesbare, kopie van de bijbehorende broncode te verkrijgen op een medium dat gewoonlijk gebruikt wordt voor het uitwisselen van software. Slechts de fysieke distributie van de broncode kan in rekening worden gebracht en distributie dient plaats te vinden overeenkomstig de bepalingen van artikel 1 en 2 van de Licentie; of,
+
+(c) Voeg de informatie bij welke u zelf ontvangen hebt met betrekking tot het aanbod om de bijbehorende broncode te verkrijgen. (Dit alternatief is alleen toegestaan voor niet-commerciële distributie en alleen indien u het programma in objectcode of uitvoerbare vorm hebt ontvangen, tezamen met een dergelijk aanbod overeenkomstig artikel 3 sub b van de Licentie). 
+
+  Met de broncode van een werk wordt die vorm van het werk bedoeld, welke bij voorkeur wordt gebruikt om er wijzigingen in aan te brengen. Met betrekking tot een uitvoerbaar werk wordt onder de volledige broncode verstaan: de broncode van alle modules die het werk bevat, alsmede alle bijbehorende 'interface definition files' en de scripts die gebruikt worden voor compilatie en installatie. De gedistribueerde broncode dient echter niet datgene te bevatten dat normaliter (in broncode of binaire vorm) wordt gedistribueerd tezamen met de hoofdcomponenten (compiler, kernel, etc.) van het besturingssysteem waarop het Programma draait, tenzij de desbetreffende component bij het uitvoerbare programma#4 hoort. 
+
+  Indien de distributie van het uitvoerbare programma of de objectcode wordt bewerkstelligd door het bieden van toegang tot het kopiëren vanaf een aangewezen plek, dan geldt het bieden van eenzelfde toegang tot het kopiëren van de broncode vanaf dezelfde plek, als distributie van de broncode, zelfs als derden zo niet wordt verplicht de broncode tegelijk met de objectcode te kopiëren. 
+
+  4. Het is u niet toegestaan het Programma te kopiëren, wijzigen, sublicentiëren of te distribueren, behalve zoals uitdrukkelijk toegestaan krachtens deze Licentie. Elke andere poging het Programma te kopiëren, wijzigen, sublicentiëren of te distribueren is verboden en beëindigt automatisch uw rechten uit hoofde van deze Licentie. De licentieovereenkomsten van derden die kopieën of rechten krachtens deze Licentie van u hebben verkregen, zullen niettemin in stand blijven zolang zij overeenkomstig de Licentie handelen. 
+
+  5. Aangezien u deze Licentie niet hebt ondertekend, bent u niet verplicht deze te aanvaarden. Niets geeft u dan echter het recht het Programma of afgeleide werken te wijzigen of te distribueren. Deze acties zijn bij wet verboden als u de Licentie niet aanvaardt. Door het Programma (of enig werk gebaseerd op het Programma) daadwerkelijk te wijzigen of te distribueren, aanvaardt u deze Licentie en al haar bepalingen en voorwaarden betreffende het kopiëren, distribueren of wijzigen van het Programma of werken daarop gebaseerd. 
+
+  6. Telkens als u het Programma (of enig werk gebaseerd op het Programma) herdistribueert, ontvangt de verkrijger automatisch een licentie van de oorspronkelijke licentiegever om het Programma onder deze bepalingen en voorwaarden te kopiëren, distribueren of te wijzigen. Het is u niet toegestaan nadere beperkingen te stellen aan de rechten van de licentienemer, zoals die voortvloeien uit deze Licentie. U bent niet verantwoordelijk voor de naleving door derden aan deze Licentie. 
+
+  7. Indien als gevolg van een rechterlijke uitspraak, beschuldiging van octrooi-inbreuk, of enig andere reden (niet beperkt tot octrooi-kwesties), u maatregelen zijn opgelegd (bij gerechtelijk bevel, overeenkomst of anderszins) die in tegenspraak zijn met de bepalingen van deze Licentie, dan stellen zij de voorwaarden van de Licentie niet terzijde. Indien u niet bij machte bent het Programma dusdanig te verspreiden dat u tegelijkertijd voldoet aan uw verplichtingen krachtens deze Licentie en andere van toepassing zijnde verplichtingen, dan is het u als gevolg daarvan in het geheel niet toegestaan het Programma te verspreiden. Indien een octrooilicentie bijvoorbeeld royalty-vrije distributie van het Programma niet zou toestaan door eenieder die via u direct of indirect kopieën verkrijgt, dan is de enige manier om zowel aan die licentie als aan de GPL te voldoen, geheel af te zien van distributie van het Programma. 
+
+Indien een deel van dit artikel ongeldig wordt verklaard of onder bepaalde omstandigheden niet kan worden afgedwongen, dan wordt de rest van dit artikel geacht toepasselijk te zijn. In andere gevallen geldt dit artikel in zijn geheel. 
+
+Het doel van dit artikel is niet u aan te zetten tot inbreuk op octrooien of andere eigendomsrechten of de geldigheid van dergelijke rechten te betwisten. Het enige doel van dit artikel is de integriteit te beschermen van het systeem voor verspreiding van vrije software, dat wordt toegepast door middel van het verlenen van 'publieke' licenties. Vertrouwende op de consequente toepassing van dit systeem, heeft menigeen royale bijdragen geleverd aan dit veelomvattende systeem voor softwaredistributie. Het is aan de auteur om te bepalen of hij bereid is de software door middel van een ander systeem te verspreiden. Een licentienemer kan deze keuze niet opleggen. 
+
+Dit artikel#5 is bedoeld om duidelijk te maken wat de gevolgen zijn van de rest van deze Licentie. 
+
+  8. Indien distributie en/of gebruik van het Programma in bepaalde landen wordt beperkt door hetzij octrooien, hetzij auteursrechtelijk beschermde interfaces#6, dan mag de oorspronkelijke auteursrechthebbende die deze Licentie van toepassing heeft verklaard op het Programma, een expliciete geografische distributiebeperking aanbrengen, waardoor die landen worden uitgesloten zodat distributie enkel wordt toegestaan in of tussen landen die niet zijn uitgesloten. In dat geval wordt de beperking geacht deel uit te maken van deze Licentie, als ware zij schriftelijk hierin opgenomen. 
+
+  9. Het is de Free Software Foundation toegestaan van tijd tot tijd herziene en/of nieuwe versies van de General Public License te publiceren. De nieuwe versies zijn in de geest van de huidige versie geschreven, maar kunnen in detail verschillen om nieuwe problemen of kwesties aan te pakken. 
+
+Elke versie bevat een onderscheidend versienummer. Als het Programma aangeeft dat een bepaald versienummer van deze Licentie van toepassing is, alsmede "alle latere versies", dan is aan u de keuze om òf de bepalingen en voorwaarden van de desbetreffende versie te volgen, òf die van een latere versie welke is gepubliceerd door de Free Software Foundation. Als het Programma geen versienummer van deze Licentie aanduidt, dan is het u toegestaan een versie te kiezen die ooit door de Free Software Foundation is gepubliceerd. 
+
+  10. Indien u delen van het Programma wenst te verenigen met andere vrije programma's waarvan de distributievoorwaarden anders zijn, dan dient u de auteur van dat programma om toestemming te vragen. Wat software betreft waarvan het auteursrecht berust bij de Free Software Foundation, dient u de Free Software Foundation aan te schrijven; soms worden hiervoor uitzonderingen gemaakt. Het besluit van de Free Software Foundation zal worden genomen op basis van de twee doelstellingen, te weten het in stand houden van de vrije status van alle afgeleide werken van vrije software en het bevorderen van het delen en hergebruiken van software in het algemeen. 
+
+                           GEEN GARANTIE
+
+  11. VOOR ZOVER DIT IS TOEGESTAAN KRACHTENS DE TOEPASSELIJKE WETGEVING, WORDT ER GEEN GARANTIE GEGEVEN VOOR HET PROGRAMMA, AANGEZIEN HET PROGRAMMA KOSTELOOS IN LICENTIE WORDT GEGEVEN. BEHALVE INDIEN SCHRIFTELIJK ANDERS IS BEPAALD, LEVEREN DE AUTEURSRECHTHEBBENDE EN/OF DERDEN HET PROGRAMMA "IN DE STAAT WAARIN HET ZICH BEVINDT" ("AS IS")#7 ZONDER ENIGE GARANTIE. DIT GEBEURT EXPLICIET OF IMPLICIET EN HEEFT BETREKKING OP, MAAR IS NIET BEPERKT TOT, IMPLICIETE GARANTIE VAN VERHANDELBAARHEID EN GESCHIKTHEID VOOR EEN BEPAALD DOEL. HET VOLLEDIGE RISICO BETREFFENDE DE KWALITEIT EN PRESTATIES VAN HET PROGRAMMA LIGT BIJ U. MOCHT HET PROGRAMMA DEFECT BLIJKEN, DAN NEEMT U DE KOSTEN VAN ALLE NOODZAKELIJKE DIENSTEN, REPARATIES OF VERBETERINGEN OP ZICH.#8 
+
+  12. IN GEEN GEVAL, TENZIJ VOORTVLOEIEND UIT  DE TOEPASSELIJKE WETGEVING OF SCHRIFTELIJK OVEREENGEKOMEN, ZAL EEN AUTEURSRECHTHEBBENDE OF EEN DERDE DIE HET PROGRAMMA MAG WIJZIGEN EN/OF HERDISTRIBUEREN, ZOALS HIERBOVEN TOEGESTAAN, AANSPRAKELIJK ZIJN JEGENS U VOOR SCHADE#9, DAT WIL ZEGGEN ELKE ALGEMENE, SPECIALE, INCIDENTELE OF GEVOLGSCHADE VOORTKOMENDE UIT HET (ONVERMOGEN TOT) GEBRUIK VAN HET PROGRAMMA. HIERONDER WORDT BEGREPEN, MAAR IS NIET BEPERKT TOT, DATAVERLIES, ONZORGVULDIGE GEGEVENSVERWERKING, VERLIEZEN GELEDEN DOOR U OF DERDEN OF EEN GEBREK VAN HET PROGRAMMA OM SAMEN TE WERKEN MET ANDERE PROGRAMMA'S. HET VOORGAANDE GELDT ZELFS INDIEN DE AUTEURSRECHTHEBBENDE OF DERDE IS GEWEZEN OP DE MOGELIJKHEID VAN DERGELIJKE SCHADE. 
+
+                EINDE VAN DE BEPALINGEN EN VOORWAARDEN
+
+
+         Hoe deze bepalingen toe te passen op uw nieuwe programma's
+
+Indien u een nieuw programma ontwikkelt en u wilt dat het programma publiekelijk van het grootst mogelijke nut is, dan is de beste manier om dit te bereiken door het programma tot vrije software te maken, zodat iedereen de software kan herdistribueren en wijzigen onder deze bepalingen. 
+
+Dit bereikt u door de volgende boodschap bij het programma te voegen. Het veiligst is om de boodschap aan het begin van elk bronbestand te voegen, zodat de uitsluiting van garantie het meest effectief wordt overgebracht. Voorts dient elk bestand tenminste de "copyright" aanhef te bevatten, alsmede een verwijzing naar de volledige tekst van de boodschap.
+
+<één regel voor de naam van het programma met een korte omschrijving.>
+Copyright (C) <jaartal> <naam auteur>
+	
+Dit programma is vrije software; u kunt het herdistribueren en/of wijzigen onder de bepalingen van de GNU General Public License zoals gepubliceerd door de Free Software Foundation; gebruik hetzij versie 2 van de Licentie, hetzij (naar vrije keuze) een latere versie. 
+	
+Dit programma wordt verspreid in de hoop dat het van nut zal zijn, maar ZONDER ENIGE GARANTIE; zelfs zonder de impliciete garantie van VERHANDELBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU General Public License voor meer details. 
+
+U zou een kopie van de GNU General Public License ontvangen moeten hebben samen met dit programma. Mocht u deze niet ontvangen hebben, schrijf dan naar de Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA. 
+
+Voeg eveneens informatie bij over hoe men u per (elektronische) post kan bereiken. 
+
+Indien het een interactief programma betreft, laat het dan, wanneer het programma in de interactieve modus wordt opgestart,  een korte boodschap tonen zoals deze:
+Gnomovision version 69, Copyright (C) jaartal, naam van de auteur
+Gnomovision wordt ZONDER ENIGE GARANTIE geleverd; typ 'show w' voor nadere details. 
+
+Dit is vrije software en het is u toegestaan het te herdistribueren onder bepaalde voorwaarden; typ 'show c' voor nadere details. 
+
+De hypothetische commando's 'show w' en 'show c' zouden de toepasselijke bepalingen van de General Public License moeten tonen. De door u gehanteerde commando's kunnen uiteraard anders zijn dan 'show w' en 'show c'; het zouden zelfs mouse-clicks of menu items kunnen zijn--wat het beste bij uw programma past.
+
+Indien van toepassing op uw situatie, dient u uw werkgever (indien u als programmeur werkt) of uw school, een "copyright disclaimer" voor het programma te laten tekenen. Hieronder volgt een voorbeeld; de namen dienen veranderd te worden:
+Yoyodyne, Inc., doet hiermee afstand van alle auteursrechtelijke aanspraken op het programma 'Gnomovision' (dat 'passes' maakt voor compilers), geschreven door James Hacker. Een en ander voor zover is toegestaan krachtens de toepasselijke wetgeving.#10
+<handtekening van Ty Coon>, 1 april 1989
+Ty Coon, vice-president
+
+Deze General Public License verbiedt het verenigen van uw programma met eigendomssoftware. Indien uw programma een subroutine#11-bibliotheek is, dan kan het zinvoller zijn uw bibliotheek te linken met applicaties van eigendomssoftware. Indien u dit wenst, gebruik dan de GNU Library General Public License in plaats van deze Licentie. 
+
+</einde licentie>
+
+*************************************
+Footnotes / Voetnoten:
+
+#1 Dit wordt wel de virale ('besmettende') werking van de GPL genoemd. Ook wel de essentie van de copyleft-methode. Elke wijziging van het programma dient eveneens onder de bepalingen van de GPL verspreid te worden. 
+
+#2 Aan het einde van de bepalingen en voorwaarden van de GPL wordt aangegeven hoe deze afstand van garantie moet worden getoond.
+
+#3 De objectcode vormt de tussenliggende stap tussen broncode en uitvoerbare machinetaal. De objectcode wordt gegenereerd door een compileer- of assembleerprogramma en bestaat grotendeels uit machinetaal, onopgeloste labels en gegevens om fouten op te sporen en te corrigeren. Het kan niet direct door de processor worden verwerkt. Sommige compileerprogramma's hebben een ingebouwd montageprogramma zodat het compileerprogramma direct uitvoerbare code kan vervaardigen. 
+Een compileerprogramma is een programma dat broncode, geschreven in een hogere programmeertaal, decodeert en een programma in machinetaal vervaardigt voordat dit wordt uitgevoerd. 
+
+#4 Het uitvoerbare programma is het programma dat gereed is om te worden verwerkt. Deze aanduiding heeft meestal betrekking op een gecompileerd programma dat in machinecode is vertaald in een opmaak die in het geheugen kan worden geladen en door de processor kan worden verwerkt. 
+
+#5 Artikel 7 GPL. 
+
+#6 Programmatuur, met behulp waarvan een programma met de gebruiker kan samenwerken. 
+
+#7 Leveren op 'As is basis' is een leveringsvoorwaarde waarbij de afnemer het product moet accepteren zoals het op dat moment is. De leverancier aanvaardt geen enkele aansprakelijkheid voor eventuele tekortkomingen, storingen of schade die uit het gebruik kunnen voortvloeien. 
+
+#8 Er bestaat thans nog geen Nederlandse jurisprudentie omtrent de afdwingbaarheid van de bepalingen van de GPL. De rechtsgeldigheid van de bepalingen is afhankelijk van de omstandigheden van het geval. Het inwinnen van juridisch advies op maat wordt derhalve geadviseerd.  
+
+#9 Onder de bepalingen van de GPL wordt derhalve alle aansprakelijkheid uitgesloten voorzover toegestaan krachtens de toepasselijke wetgeving (men denke hierbij aan productenaansprakelijkheid, opzet en grove schuld). 
+
+#10 Zelfs indien het gehele auteursrecht zou worden overgedragen, blijven de zogenoemde morele rechten (persoonlijkheidsrechten) bij de maker berusten. Art. 25 Aw somt de  droits morals op. Naar zijn aard is het droit moral namelijk niet overdraagbaar en blijft bij de maker, ook als deze zijn exploitatierecht (auteursrecht) heeft overgedragen. Tot op zekere hoogte kan de auteur echter afstand doen van zijn droit moral, dat wil zeggen zich verbinden er tegenover de wederpartij geen beroep op te zullen doen. De Nederlandse auteurswet beperkt deze mogelijkheid tot het recht op naamsvermelding en het recht van de maker zich te verzetten tegen wijzigingen in het werk of in de benaming daarvan. 
+
+#11 Subroutine staat voor een opeenvolgende reeks opdrachten die in één of meer programma's en op één of meer punten binnen een programma kan worden gebruikt. 
+
+
+
+

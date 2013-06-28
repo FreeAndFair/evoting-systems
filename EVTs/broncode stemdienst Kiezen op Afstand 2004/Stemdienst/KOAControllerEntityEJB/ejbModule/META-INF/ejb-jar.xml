@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN" "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd">
+<ejb-jar id="ejb-jar_ID">
+	<display-name>KOAControllerEntityEJB</display-name>
+	<enterprise-beans>
+		<entity id="ContainerManagedEntity_1">
+			<ejb-name>Koa_state</ejb-name>
+			<home>com.logicacmg.koa.controller.beans.Koa_stateHome</home>
+			<remote>com.logicacmg.koa.controller.beans.Koa_state</remote>
+			<ejb-class>com.logicacmg.koa.controller.beans.Koa_stateBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.controller.beans.Koa_stateKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_1">
+				<field-name>id</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_2">
+				<field-name>current_state</field-name>
+			</cmp-field>
+		</entity>
+	</enterprise-beans>
+	<assembly-descriptor>
+		<container-transaction>
+			<method>
+				<ejb-name>Koa_state</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>setCurrent_state</method-name>
+				<method-params>
+					<method-param>java.lang.String</method-param></method-params>
+			</method>
+			<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>Koa_state</ejb-name>
+				<method-intf>Home</method-intf>
+				<method-name>findByPrimaryKey</method-name>
+				<method-params>
+					<method-param>com.logicacmg.koa.controller.beans.Koa_stateKey</method-param></method-params>
+			</method>
+			<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>
+		<container-transaction>
+			<method>
+				<ejb-name>Koa_state</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>getCurrent_state</method-name>
+			</method>
+			<trans-attribute>RequiresNew</trans-attribute>
+		</container-transaction>
+	</assembly-descriptor>
+</ejb-jar>

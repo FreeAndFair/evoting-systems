@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="F:/SVN/live/jars/Administrator.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/VoteComp/src/uk/ac/surrey/pav/administrator/administrator.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="false" mainClassHandleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.administrator{VisualAdministrator.java[VisualAdministrator" manifestLocation="/VoteComp/src/uk/ac/surrey/pav/administrator/administrator.manifest" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="false" exportOutputFolder="true">
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.ballotform"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.bulletinboard.entities"/>
+        <javaElement handleIdentifier="=VoteComp/src&lt;uk.ac.surrey.pav.administrator"/>
+    </selectedElements>
+</jardesc>

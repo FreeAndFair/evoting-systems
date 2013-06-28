@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN" "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd">
+<ejb-jar id="ejb-jar_ID">
+	<display-name>KOAEntityEJB</display-name>
+	<enterprise-beans>
+		<entity id="ContainerManagedEntity_2">
+			<ejb-name>Kieskringen</ejb-name>
+			<home>com.logicacmg.koa.koaschema.KieskringenHome</home>
+			<remote>com.logicacmg.koa.koaschema.Kieskringen</remote>
+			<ejb-class>com.logicacmg.koa.koaschema.KieskringenBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.koaschema.KieskringenKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_1">
+				<field-name>kieskringnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_2">
+				<field-name>kieskringnaam</field-name>
+			</cmp-field>
+			<ejb-ref id="EjbRef_2">
+				<ejb-ref-name>ejb/Districten</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.DistrictenHome</home>
+				<remote>com.logicacmg.koa.koaschema.Districten</remote>
+				<ejb-link>Districten</ejb-link>
+			</ejb-ref>
+			<ejb-ref id="EjbRef_3">
+				<ejb-ref-name>ejb/Kieslijsten</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.KieslijstenHome</home>
+				<remote>com.logicacmg.koa.koaschema.Kieslijsten</remote>
+				<ejb-link>Kieslijsten</ejb-link>
+			</ejb-ref>
+		</entity>
+		<entity id="ContainerManagedEntity_1">
+			<ejb-name>Districten</ejb-name>
+			<home>com.logicacmg.koa.koaschema.DistrictenHome</home>
+			<remote>com.logicacmg.koa.koaschema.Districten</remote>
+			<ejb-class>com.logicacmg.koa.koaschema.DistrictenBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.koaschema.DistrictenKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_3">
+				<field-name>districtnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_4">
+				<field-name>districtnaam</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_10">
+				<field-name>fk_dist_kkr_kieskringnummer</field-name>
+			</cmp-field>
+			<ejb-ref id="EjbRef_1">
+				<ejb-ref-name>ejb/Kieskringen</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.KieskringenHome</home>
+				<remote>com.logicacmg.koa.koaschema.Kieskringen</remote>
+				<ejb-link>Kieskringen</ejb-link>
+			</ejb-ref>
+		</entity>
+		<entity id="ContainerManagedEntity_4">
+			<ejb-name>Kandidaatcodes</ejb-name>
+			<home>com.logicacmg.koa.koaschema.KandidaatcodesHome</home>
+			<remote>com.logicacmg.koa.koaschema.Kandidaatcodes</remote>
+			<ejb-class>com.logicacmg.koa.koaschema.KandidaatcodesBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.koaschema.KandidaatcodesKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_5">
+				<field-name>kandidaatcode</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_11">
+				<field-name>fk_kkrklpn_1_positienummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_12">
+				<field-name>fk_kkrklpn_1_fk_klkr_1_kieslijstnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_13">
+				<field-name>fk_kkrklpn_1_fk_klkr_1_fk_kkr_1_kieskringnummer</field-name>
+			</cmp-field>
+			<ejb-ref id="EjbRef_6">
+				<ejb-ref-name>ejb/Lijstposities</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.LijstpositiesHome</home>
+				<remote>com.logicacmg.koa.koaschema.Lijstposities</remote>
+				<ejb-link>Lijstposities</ejb-link>
+			</ejb-ref>
+		</entity>
+		<entity id="ContainerManagedEntity_3">
+			<ejb-name>Kieslijsten</ejb-name>
+			<home>com.logicacmg.koa.koaschema.KieslijstenHome</home>
+			<remote>com.logicacmg.koa.koaschema.Kieslijsten</remote>
+			<ejb-class>com.logicacmg.koa.koaschema.KieslijstenBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.koaschema.KieslijstenKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_6">
+				<field-name>kieslijstnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_7">
+				<field-name>lijstnaam</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_14">
+				<field-name>fk_kkr_1_kieskringnummer</field-name>
+			</cmp-field>
+			<ejb-ref id="EjbRef_4">
+				<ejb-ref-name>ejb/Kieskringen</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.KieskringenHome</home>
+				<remote>com.logicacmg.koa.koaschema.Kieskringen</remote>
+				<ejb-link>Kieskringen</ejb-link>
+			</ejb-ref>
+			<ejb-ref id="EjbRef_5">
+				<ejb-ref-name>ejb/Lijstposities</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.LijstpositiesHome</home>
+				<remote>com.logicacmg.koa.koaschema.Lijstposities</remote>
+				<ejb-link>Lijstposities</ejb-link>
+			</ejb-ref>
+		</entity>
+		<entity id="ContainerManagedEntity_5">
+			<ejb-name>Lijstposities</ejb-name>
+			<home>com.logicacmg.koa.koaschema.LijstpositiesHome</home>
+			<remote>com.logicacmg.koa.koaschema.Lijstposities</remote>
+			<ejb-class>com.logicacmg.koa.koaschema.LijstpositiesBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.koaschema.LijstpositiesKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_8">
+				<field-name>positienummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_15">
+				<field-name>fk_klkr_1_kieslijstnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_16">
+				<field-name>fk_klkr_1_fk_kkr_1_kieskringnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_9">
+				<field-name>achternaam</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_17">
+				<field-name>voorletters</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_18">
+				<field-name>roepnaam</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_19">
+				<field-name>geslacht</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_20">
+				<field-name>woonplaats</field-name>
+			</cmp-field>
+			<ejb-ref id="EjbRef_7">
+				<ejb-ref-name>ejb/Kandidaatcodes</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.KandidaatcodesHome</home>
+				<remote>com.logicacmg.koa.koaschema.Kandidaatcodes</remote>
+				<ejb-link>Kandidaatcodes</ejb-link>
+			</ejb-ref>
+			<ejb-ref id="EjbRef_8">
+				<ejb-ref-name>ejb/Kieslijsten</ejb-ref-name>
+				<ejb-ref-type>Entity</ejb-ref-type>
+				<home>com.logicacmg.koa.koaschema.KieslijstenHome</home>
+				<remote>com.logicacmg.koa.koaschema.Kieslijsten</remote>
+				<ejb-link>Kieslijsten</ejb-link>
+			</ejb-ref>
+		</entity>
+	</enterprise-beans>
+</ejb-jar>

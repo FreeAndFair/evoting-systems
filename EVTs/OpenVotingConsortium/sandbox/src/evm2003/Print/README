@@ -1,0 +1,6 @@
+See the README file in the 'test' directory for usage information.
+
+Lines will wrap if long write-in names are given, so there will not
+be any overflow to the right. But if several long write-in names are
+given, the text may overflow at the bottom of the page. So some
+restriction on the write-in names is necessary.

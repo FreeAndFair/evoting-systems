@@ -1,0 +1,57 @@
+<!--  -->
+<!-- This material is subject to the VoteHere Source Code Evaluation -->
+<!-- License Agreement ("Agreement").  Possession and/or use of this -->
+<!-- material indicates your acceptance of this Agreement in its entirety. -->
+<!-- Copies of the Agreement may be found at www.votehere.net. -->
+<!--  -->
+<!-- Copyright 2004 VoteHere, Inc.  All Rights Reserved -->
+<!--  -->
+<!-- You may not download this Software if you are located in any country -->
+<!-- (or are a national of a country) subject to a general U.S. or -->
+<!-- U.N. embargo or are deemed to be a terrorist country (i.e., Cuba, -->
+<!-- Iran, Iraq, Libya, North Korea, Sudan and Syria) by the United States -->
+<!-- (each a "Prohibited Country") or are otherwise denied export -->
+<!-- privileges from the United States or Canada ("Denied Person"). -->
+<!-- Further, you may not transfer or re-export the Software to any such -->
+<!-- country or Denied Person without a license or authorization from the -->
+<!-- U.S. government.  By downloading the Software, you represent and -->
+<!-- warrant that you are not a Denied Person, are not located in or a -->
+<!-- national of a Prohibited Country, and will not export or re-export to -->
+<!-- any Prohibited Country or Denied Party. -->
+<VoterRoll><Certificate><GeneralPurposePublicKey><IdentInfo>your name</IdentInfo><SigningPublicKey>-----BEGIN PUBLIC KEY-----
+MIIBtjCCASsGByqGSM44BAEwggEeAoGBAI13fcpS9ErHqEk0X3Yqz7PpUGE23QBh
+sRH1USr5aSidIPr+SeXJUITKbfX1rLdqtFuvRmRkw+Zev8tndVoDZgXSd5mbkcFv
+sWStrAgcSHC2tqm1kqFX5T44kChOTOOWqB+6JnNdR9x4++UuG34qKC2JhX99gs34
+ueDFCr97q4hTAhUAtGrty7ff7swV6QaEqyk/EsMEfmMCgYBxSCm/pjKhFoj0y557
+uzfLqer5BBzjsL4sQTuNa1TNOSxAwu8hmILNl3os59I3p9hcY/0qDUIg9ScG8nLp
+iTjGaR9OXceNyc23nIiLsmpvfsyn2+z2vgbPCQQciw1yMHLw70AMXXZFhhf1kl8S
+FhsBMGbQtL3k0iJnwyYSpf3zogOBhAACgYBD6OHEz8I/MjKKOANLWyBBibkIo2Hb
+Do0git7kRyR5ayhcLkzOAZQK6a7STyL9KzwGGcLDEOVd3b4tGQsxblciWndH88GM
+ULFXmgM5fHcAqB317xWe2rsDzUJQfLkeXaJWwCqhR+86yMi3bS8IlKAEFz15uQzS
+flIdGgXMY2Yafg==
+-----END PUBLIC KEY-----
+</SigningPublicKey><EncryptionPublicKey>-----BEGIN PUBLIC KEY-----
+MIGdMA0GCSqGSIb3DQEBAQUAA4GLADCBhwKBgQC1EzeErebsj1pWCOIkRZhVM/o9
+Dd776SMUz77ywst6T1ypb+eebPBh6YWqokJdBd2NZhte2qqu3rRpMmyfSHtQTf9d
+5dnxfh+mJSNqYMReeVh9nHU21qyPV67ZdNh3KkeelHt+3wt2v1yu3rdSvuGGvzZ6
+c7vNgY/YbGKcAA6lBwIBAw==
+-----END PUBLIC KEY-----
+</EncryptionPublicKey></GeneralPurposePublicKey></Certificate><Certificate><GeneralPurposePublicKey><IdentInfo>your name</IdentInfo><SigningPublicKey>-----BEGIN PUBLIC KEY-----
+MIIBtjCCASsGByqGSM44BAEwggEeAoGBAI13fcpS9ErHqEk0X3Yqz7PpUGE23QBh
+sRH1USr5aSidIPr+SeXJUITKbfX1rLdqtFuvRmRkw+Zev8tndVoDZgXSd5mbkcFv
+sWStrAgcSHC2tqm1kqFX5T44kChOTOOWqB+6JnNdR9x4++UuG34qKC2JhX99gs34
+ueDFCr97q4hTAhUAtGrty7ff7swV6QaEqyk/EsMEfmMCgYBxSCm/pjKhFoj0y557
+uzfLqer5BBzjsL4sQTuNa1TNOSxAwu8hmILNl3os59I3p9hcY/0qDUIg9ScG8nLp
+iTjGaR9OXceNyc23nIiLsmpvfsyn2+z2vgbPCQQciw1yMHLw70AMXXZFhhf1kl8S
+FhsBMGbQtL3k0iJnwyYSpf3zogOBhAACgYBD6OHEz8I/MjKKOANLWyBBibkIo2Hb
+Do0git7kRyR5ayhcLkzOAZQK6a7STyL9KzwGGcLDEOVd3b4tGQsxblciWndH88GM
+ULFXmgM5fHcAqB317xWe2rsDzUJQfLkeXaJWwCqhR+86yMi3bS8IlKAEFz15uQzS
+flIdGgXMY2Yafg==
+-----END PUBLIC KEY-----
+</SigningPublicKey><EncryptionPublicKey>-----BEGIN PUBLIC KEY-----
+MIGdMA0GCSqGSIb3DQEBAQUAA4GLADCBhwKBgQC1EzeErebsj1pWCOIkRZhVM/o9
+Dd776SMUz77ywst6T1ypb+eebPBh6YWqokJdBd2NZhte2qqu3rRpMmyfSHtQTf9d
+5dnxfh+mJSNqYMReeVh9nHU21qyPV67ZdNh3KkeelHt+3wt2v1yu3rdSvuGGvzZ6
+c7vNgY/YbGKcAA6lBwIBAw==
+-----END PUBLIC KEY-----
+</EncryptionPublicKey></GeneralPurposePublicKey></Certificate></VoterRoll>

@@ -1,0 +1,722 @@
+ \NeedsTeXFormat{LaTeX2e}
+
+ \ProvidesPackage{pav}
+
+ \RequirePackage{ifthen}
+ \RequirePackage{tabularx}
+ \RequirePackage{multicol}
+ \RequirePackage{calc}
+ \RequirePackage{vmargin}
+ \RequirePackage{forloop}
+ \RequirePackage{eso-pic}
+ \RequirePackage{type1cm}
+ \RequirePackage{pstricks}
+ \newboolean{nopsmin}
+ \DeclareOption{old-dvips}{\setboolean{nopsmin}{true}}
+
+ \ProcessOptions
+
+ \ifthenelse{\boolean{nopsmin}}{\RequirePackage{graphicx}}{\RequirePackage{graphicx-psmin}}
+
+{\catcode`\%=11\global\gdef\pscomment#1{\special{ps: %#1}}}
+
+\let\xnormalfont=\normalfont
+\renewcommand{\normalfont}{\xnormalfont\sffamily}
+
+\newcount\candctr
+\newcounter{maxcandctr}
+\def\pick#1#2{\setcounter{maxcandctr}{0}\candctr=1\@for\@cand:=#1\do{\advance\candctr by1\ifnum\candctr=#2\@cand\fi\stepcounter{maxcandctr}}}
+
+\def\showcands#1{\count0=0\expandafter\@writecands#1.\\\hline}
+\def\@writecands{\@ifnextchar.\@ignore\@writecand}
+\def\@ignore.{\relax}
+\def\@writecand#1{\ifnum\count0>0\\\hline\fi\advance\count0 by1\writecand{#1}\@writecands}
+
+\def\shownums#1{\count0=0\expandafter\@writenums#1.\\\hline}
+\def\@writenums{\@ifnextchar.\@ignore\@writenum}
+\def\@writenum#1{\ifnum\count0>0\\\hline\fi\advance\count0 by1\writenum{#1}\@writenums}
+
+\newcount\votectr
+%\def\blankvotes#1{\votectr=0\@makeblanks\\\hline}
+%\def\@makeblanks{\ifnum\votectr>0\\\hline\fi\advance\votectr
+%by1\makeblankvote\ifnum\votectr<3\@makeblanks\fi}
+\def\blankvotes#1{\forLoop{1}{#1}{candidatectr}{\makeblankvote\\\hline}}
+
+\newcommand{\makeblankvote}{\ifthenelse{\equal{\currentcandlist}{\refcand}}{\blankcrossvote}{\blankdigitvote}}
+
+
+%\def\showcandidates#1{\@for\@candnum:=#1\do{\ifnum\@candnum>0\writecand{\@candnum}\fi}}
+%\def\showcandidates#1{\forLoop{1}{3}{candidatectr}{\renewcommand{\currentcand}{\pick{#1}{\value{candidatectr}}}\currentcand}}
+%\newcommand{\currentcand}{~}
+
+%\newcommand{\createbarcode}[1]{\raisebox{-2.21cm}{\parbox[t]{1.5in}{\rule{0cm}{1in}\hspace{4mm}\psbarcode{#1}{includetext
+%height=1}{ean13}}}}
+
+\newlength{\candidatenameheight}
+\setlength{\candidatenameheight}{1.1cm}
+
+\newlength{\gutterwidth}
+\setlength{\gutterwidth}{0.8cm}
+
+\newcommand{\candidate}[1]{\parbox[c][\candidatenameheight]{5.21cm-0.5\gutterwidth}{\raggedleft
+#1}}
+
+\newcommand{\boxentry}[1]{\parbox[c][\candidatenameheight]{\linewidth}{#1}}
+
+\newcommand{\digitfile}{dashed-.eps}
+\newcommand{\crossfile}{dashedx.eps}
+
+\newcommand{\receiptfile}[1]{receipt#1.eps}
+
+\ifthenelse{\boolean{nopsmin}}{}{\loadgraphics{\digitfile}
+\loadgraphics{\crossfile}}
+
+\newsavebox{\blankdigit}
+\savebox{\blankdigit}{\pscomment{jah:
+blank-digit}\includegraphics[height=\candidatenameheight-2mm]{\digitfile}}
+\newsavebox{\blankcross}
+\savebox{\blankcross}{\pscomment{jah:
+blank-cross}\includegraphics[height=\candidatenameheight-5.1mm]{\crossfile}}
+
+\newcommand{\blankdigitvote}{\blankvote{\usebox{\blankdigit}}}
+
+\newcommand{\blankcrossvote}{\blankvote{\usebox{\blankcross}}}
+
+\newcommand{\receiptdigitvote}[1]{\blankvote{\includegraphics[height=\candidatenameheight-2mm]{\receiptfile{#1}}}}
+
+\newcommand{\receiptcrossvote}[1]{\blankvote{\includegraphics[height=\candidatenameheight-5.1mm]{\receiptfile{#1}}}}
+
+\newcommand{\blankvote}[1]{\hfill\parbox[c][\candidatenameheight]{\candidatenameheight-5.2mm}{\hfill{}#1\hfill{}}\hfill}
+
+
+\newcounter{candidatectr}
+%\newcommand{\blankvotes}[1]{\forLoop{1}{#1}{candidatectr}{\ifthenelse{\equal{\currentcandlist}{\refcand}}{\blankcrossvote}{\blankdigitvote}\hline}}
+%\newcommand{\receiptvotes}[1]{\@for\@votenum:=#1\do{\receiptvote{\@votenum}\hline}}
+
+\newcommand{\writenum}[1]{\ifthenelse{\equal{#1}{?}}{\blankvote{\Huge\itshape ?}}%
+  {\ifthenelse{\equal{#1}{x} \or \equal{#1}{o}}{\receiptcrossvote{#1}}{\receiptdigitvote{#1}}}}
+
+\newenvironment{voteboxes}{\begin{tabular}[t]{|c|}}{\end{tabular}}
+
+\newlength{\ballotheaderlength}
+\setlength{\ballotheaderlength}{1.5\baselineskip}
+
+\setlength{\columnsep}{\gutterwidth} \setlength{\premulticols}{0pt}
+\setlength{\postmulticols}{\premulticols}
+\setlength{\multicolsep}{0mm} \setlength{\columnseprule}{0pt}
+
+\setlength{\arrayrulewidth}{1mm} \setlength{\arraycolsep}{0pt}
+
+\newcommand{\makeballotheader}[1]{\begin{minipage}[t][\ballotheaderlength]{\linewidth}\bfseries\large #1\end{minipage}}
+
+\newcommand{\ballotheader}[1]{\begin{multicols}{2}\makeballotheader{#1}\columnbreak \par \makeballotheader{#1}\end{multicols}}
+
+\newcommand{\setballothash}[1]{\def\ballothash{#1}}
+
+\newcommand{\ballotbarcode}{~}
+%\newcommand{\ballotblurb}{}
+%\newcommand{\setballotblurb}[1]{\renewcommand{\ballotblurb}{#1}}
+
+\newcommand{\@ballottitle}{~}
+
+\newcommand{\celllines}[1]{\def\edachash{#1}}
+
+\newenvironment{ballotform}[1]{\setboolean{displayhints}{true}\begin{ballotlightform}{\bfseries #1}}{\end{ballotlightform}}
+
+\newenvironment{ballotlightform}[1]{\vfill\renewcommand{\@ballottitle}{#1}\begin{multicols}{2}}{\end{multicols}\vfill}
+
+\newenvironment{ballotreceipt}[1]{\begin{ballotlightreceipt}{\bfseries #1}}{\end{ballotlightreceipt}}
+
+\newenvironment{ballotlightreceipt}[1]{\vfill\renewcommand{\@ballottitle}{#1}}{\vfill}
+
+\newenvironment{ballotremote}[1]{\begin{ballotlightremote}{\bfseries #1}}{\end{ballotlightremote}}
+
+\newenvironment{ballotlightremote}[1]{\vfill\renewcommand{\@ballottitle}{#1}}{\vfill}
+
+\newlength{\cellsize}
+\setlength{\cellsize}{\candidatenameheight/8}
+\newlength{\cellsmallsize}
+\setlength{\cellsmallsize}{\cellsize/2}
+
+\newsavebox{\darkcell}
+\savebox{\darkcell}{\rule{\cellsize}{\cellsize}}
+\newsavebox{\lightcell}
+\savebox{\lightcell}{\rule{0mm}{\cellsize}\rule{\cellsize}{0mm}}
+
+\newcommand{\cell}[1]{\ifthenelse{\equal{#1}{1}}{\usebox{\darkcell}}{\usebox{\lightcell}}}
+
+\newcommand{\cells}[1]{\@for\@cellnum:=#1\do{\cell{\@cellnum}}}
+
+\newcommand{\cellhex}[1]{\ifx a#1\cells{1,0,1,0}\else
+  \ifx b#1\cells{1,0,1,1}\else
+  \ifx c#1\cells{1,1,0,0}\else
+  \ifx d#1\cells{1,1,0,1}\else
+  \ifx e#1\cells{1,1,1,0}\else
+  \ifx f#1\cells{1,1,1,1}\else
+  \ifx 0#1\cells{0,0,0,0}\else
+  \ifx 1#1\cells{0,0,0,1}\else
+  \ifx 2#1\cells{0,0,1,0}\else
+  \ifx 3#1\cells{0,0,1,1}\else
+  \ifx 4#1\cells{0,1,0,0}\else
+  \ifx 5#1\cells{0,1,0,1}\else
+  \ifx 6#1\cells{0,1,1,0}\else
+  \ifx 7#1\cells{0,1,1,1}\else
+  \ifx 8#1\cells{1,0,0,0}\else
+  \ifx 9#1\cells{1,0,0,1}\else
+       Oops! (#1)\fi
+  \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi}
+
+\def\cellshex#1{\count0=0\expandafter\@cells#1.}
+\def\@cells{\advance\count0 by1\@ifnextchar.\@ignore\@cell}
+\def\@ignore.{\relax}
+\def\@cell#1{\cellhex{#1}\ifnum\count0=6\\\count0=0\fi\@cells}
+
+%\def\cellshex#1{{\expandafter\convertcells#1\end}}
+%\def\convertcells#1{\ifx#1\end\let\next=\relax\else\cellhex#1\let\next=\convertcells\fi\next}
+
+\newcounter{cellctr}
+\long\def\makegrid#1{{\cellshex\pick{abcdef,abcdef}{1}}}
+
+%\def\cellslinetwo{aaaaaa}
+
+\newboolean{displayhints}
+
+\def\showhint#1{\writenum{#1}}
+
+\newlength{\hintsize}
+\setlength{\hintsize}{5mm}
+
+\def\barcode{%
+  \begin{minipage}[t]{3.45cm}
+  \begin{center}
+  \setlength{\tabcolsep}{0mm}
+  \setlength{\arrayrulewidth}{1mm}
+  \renewcommand{\arraystretch}{0}
+  \ifthenelse{\equal{\edachash}{}}{}{
+  \begin{tabular}[t]{|l|}
+  \firsthline%
+  \pscomment{jah: barcode}%
+  \cellshex{\edachash}\\
+  \hline
+  \end{tabular}
+
+  \vspace{2\cellsize}
+
+  \begin{ttfamily}\large\ballothash\end{ttfamily}
+
+  \ifthenelse{\boolean{displayhints}}{\vspace{3cm}\setlength{\parskip}{\baselineskip}
+
+  Fill in the boxes like this:
+
+  \renewcommand{\arraystretch}{1}
+  \setlength{\tabcolsep}{2mm}
+  \begin{tabular}{c}
+%  \hline
+  \showhint{1}\\
+%  \hline
+  \showhint{2}\\
+%  \hline
+  \showhint{3}\\
+%  \hline
+  \showhint{4}\\
+%  \hline
+  \showhint{5}\\
+%  \hline
+  \showhint{6}\\
+%  \hline
+  \showhint{x}\\
+%  \hline
+  \end{tabular}
+
+  Please use the special pen provided!
+  }{}
+  \global\def\edachash{}\global\def\ballothash{}}
+  \end{center}
+  \end{minipage}}
+
+\newenvironment{ballotvoteboxes}{\begin{voteboxes}\firsthline}{\end{voteboxes}
+  \hfill\begin{minipage}[t]{4.5cm-0.5\gutterwidth}\showballottitle\end{minipage}
+  \hfill
+  \raisebox{7.15mm}[0mm][0mm]
+  {\barcode}
+  }
+
+\newcommand{\showballottitle}{\raggedright\textsf{\large\@ballottitle}}
+
+\newenvironment{ballottext}{\begin{minipage}[t]{4.5cm-0.5\gutterwidth}\showballottitle}{\end{minipage}\hspace{0.1cm}}
+
+\newenvironment{ballotremotecandidates}{\begin{ballottext}\end{ballottext}\begin{tabular}[t]{|@{\hspace{1.5mm}}>{\large}r<{}@{\hspace{1.5mm}}|}\firsthline}{\end{tabular}}
+
+\newenvironment{ballotcandidates}{\begin{ballotremotecandidates}}{\end{ballotremotecandidates}
+  \columnbreak\begin{ballotvoteboxes}\blankvotes{\value{maxcandctr}}\end{ballotvoteboxes}}
+
+\def\refcand{No, Yes}
+
+\newenvironment{referendumcandidates}{\setcandlist\refcand\begin{ballotcandidates}}{\end{ballotcandidates}}
+
+\newenvironment{referendumremotecandidates}{\setcandlist\refcand\begin{ballotremotecandidates}}{\end{ballotremotecandidates}}
+
+\newlength{\serialboxlength}
+\setlength{\serialboxlength}{1.7cm}
+
+\newcommand{\makeserialbox}[1]{\framebox{#1}}
+
+\newcommand{\ballotborder}[2]{\makeserialbox{#1}\rule{3mm}{2mm}\makeserialbox{#2}\leaders\hrule height2mm\hfill\makeserialbox{#2}}
+
+\newcommand{\ballothalfborder}[2]{\makeserialbox{#1}\leaders\hrule height2mm\hfill\makeserialbox{#2}}
+
+\newcommand{\ballotseparator}{\makebox[\linewidth-3.9cm]{\leaders\hrule
+depth1mm\hfill}}
+
+\newcommand{\ballotfullseparator}{\makebox[\linewidth]{\leaders\hrule
+depth1mm\hfill}}
+
+\newcommand{\currentcandlist}{~}
+
+\def\setcandlist#1{\let\currentcandlist=#1}
+
+\newcommand{\writecand}[1]{\candidate{\pick{\currentcandlist}{#1}}}
+
+\def\ron{Reopen Nominations (RON)}
+
+\fussy
+
+\setmarginsrb{6mm}{6mm}{6mm}{6mm}{0pt}{0mm}{0cm}{0pt}
+
+\parindent 0pt
+\setlength{\parskip}{0mm}
+
+\def\greylevel{0.8}
+
+\def\votereceipt{\AddToShipoutPicture{%
+    \setlength{\unitlength}{1pt}%
+    \setlength{\@tempdimb}{.869\paperwidth}%
+    \setlength{\@tempdimc}{.415\paperheight}%
+    \put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+      \makebox(0,0){\rotatebox{78}{\textcolor[gray]{\greylevel}{\fontsize{6.3cm}{6.3cm}\selectfont{\textbf{RECEIPT}}}}}
+    }
+  }}
+
+\def\cancelreceipt{\AddToShipoutPicture{%
+    \setlength{\unitlength}{1pt}%
+    \setlength{\@tempdimb}{.86\paperwidth}%
+    \setlength{\@tempdimc}{.42\paperheight}%
+    \put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+      \makebox(0,0){\rotatebox{76}{\textcolor[gray]{\greylevel}{\fontsize{4.75cm}{4.75cm}\selectfont{\textbf{CANCELLED}}}}}
+    }
+  }}
+
+\def\auditreceipt{\AddToShipoutPicture{%
+    \setlength{\@tempdimb}{.38\paperwidth}%
+    \setlength{\@tempdimc}{.422\paperheight}%
+    \setlength{\unitlength}{1pt}%
+    \put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+      \makebox(0,0){\rotatebox{76.5}{\textcolor[gray]{\greylevel}{\fontsize{6cm}{6cm}\selectfont{\textbf{AUDITED}}}}}
+    }
+  }}
+
+\newenvironment{receipt}{%
+\setboolean{displayhints}{true}
+\begin{multicols*}{2}
+{\setlength{\parskip}{\baselineskip}\raggedright
+\begin{LARGE}
+\textbf{Thank you for voting!}
+
+\end{LARGE}
+
+\begin{Large}
+By the time you see this receipt, your vote will already have been
+submitted electronically.
+
+\end{Large}
+
+\bigskip
+
+\begin{LARGE}
+\textbf{How to check your voting receipt}
+
+\end{LARGE}
+
+\begin{Large}
+This receipt contains the information you need in order to check
+that your vote has been correctly counted. It is your protection
+against election fraud or misconduct.
+
+Before leaving the polling station, you need to follow this
+procedure:
+%
+\begin{enumerate}
+
+\item First, check that the vote orderings on your form match with those on this
+receipt, and that the security codes (letters and numbers beneath
+the grid of black and white squares) match too. The black and white
+squares need \textbf{not} match.
+
+\item If your vote information or your security code does
+\textbf{not} match, you need to take this receipt and the right-hand
+side of your ballot paper to the desk so that your form can be
+cancelled and you can be issued with a new one.
+
+\item If it \textbf{does} match, you must shred \textbf{both parts}
+of your ballot form, using the shredder provided. You should retain
+this receipt, however.
+
+\end{enumerate}
+
+If you wish to check that your vote has been counted correctly, then
+when you have left the polling station, you can go to the election
+web site and click on `\textbf{Where's my vote?}'. You will need to
+have this receipt with you.
+
+\end{Large}
+}
+
+\addvspace{2\baselineskip}
+
+\columnbreak}{
+
+\addvspace{2\baselineskip}
+
+\end{multicols*}}
+
+\newenvironment{cancel}[1]{%
+\setboolean{displayhints}{false}
+\begin{multicols*}{2}
+{\setlength{\parskip}{\baselineskip}\raggedright
+\begin{LARGE}
+\textbf{You have not completed the ballot form correctly}
+
+\end{LARGE}
+
+\begin{Large}
+Your ballot paper could not be turned into a valid vote. Either you
+didn't fill in the boxes carefully enough for the scanner to read
+your preferences, or the preferences you indicated did not make a
+valid vote. The information printed below may help you to work out
+what went wrong.
+
+The first thing you should do is to retrieve your ballot form from
+the scanner. Then, when you have finished reading this cancellation
+receipt, you will need to take the receipt, along with the ballot
+form, to the desk. They will exchange the cancellation receipt and
+ballot form for a new ballot form.
+
+\end{Large}
+
+
+\vfill
+
+\begin{LARGE}
+\textbf{Why was my ballot paper cancelled?}
+
+\end{LARGE}
+
+\begin{Large}
+We detected some problems with your ballot paper that meant that
+your vote could not be submitted. You will need to fill in another
+ballot form to correct these errors.
+
+\end{Large}
+
+\begin{large}
+\begin{description}
+ {#1}
+\end{description}
+
+\end{large}
+}
+
+\addvspace{2\baselineskip}
+
+\columnbreak}{
+
+\addvspace{2\baselineskip}
+
+\end{multicols*}}
+
+\newenvironment{remote}{%
+\setboolean{displayhints}{false}
+\begin{multicols*}{2}
+{\setlength{\parskip}{\baselineskip}\raggedright
+\begin{LARGE}
+\textbf{Remote voting ballot form}
+
+\end{LARGE}
+
+\begin{Large}
+This document contains the candidate list that you will need in
+order to vote online. It is a \textbf{personalised} ballot form:
+other voters' ballot forms will have the candidates listed in a
+different order. You \textbf{must use this candidate list} when
+voting, or else you will end up voting for the wrong candidates.
+
+\textbf{Do not} reveal the contents of this document to anyone else!
+If you do, the secrecy of your vote may be at risk.
+
+You will have received an email containing a link that you can use
+to access your remote voting web page. When you vote, you will need
+to have this candidate list with you.
+
+\end{Large}
+
+
+\vfill
+
+\begin{LARGE}
+\textbf{Why is the candidate list sent separately?}
+
+\end{LARGE}
+
+\begin{Large}
+One of the security provisions of the Pr\^et \`a Voter system is
+that the voting booth or web site that you use to cast your vote
+should not be able to work out what your vote is. All that the booth
+or web site will see is your rankings; but since it does not know
+the ordering of the candidates on your ballot form, it cannot match
+the rankings to candidate names.
+
+The security code at the bottom of this form contains the candidate
+list in an encrypted form that requires several machines acting
+together to decrypt. By the time your vote has been decrypted,
+no-one will be able to link it to you.
+
+\end{Large}
+
+\vfill
+
+\begin{LARGE}
+\textbf{How do I use the security code?}
+
+\end{LARGE}
+
+\begin{Large}
+The main election web site allows you to check that your vote has
+been correctly entered into the system. If you wish to make use of
+this, you will need your security code. Full details of the
+procedure are on the election web site.
+
+\end{Large}
+
+\vfill
+
+\begin{ttfamily}\large\ballothash\end{ttfamily}
+}
+
+\addvspace{\baselineskip}
+
+\columnbreak}{\end{multicols*}}
+
+\newenvironment{audit}{%
+\setboolean{displayhints}{false}
+\begin{multicols*}{2}}{
+
+\addvspace{2\baselineskip}
+
+\columnbreak
+
+{\setlength{\parskip}{\baselineskip}\raggedright
+\begin{LARGE}
+\textbf{This ballot form has been audited}
+
+\end{LARGE}
+
+\begin{Large}
+Your ballot form appeared to have been left blank; this has
+triggered an audit of the ballot form to verify that the candidate
+list on the form had not been tampered with.
+
+The candidate list on this audit receipt is what the system has
+reconstructed from the security code on the form you scanned. To
+complete the audit, you should check that the candidate list on the
+audit receipt matches that on the ballot form.
+
+\end{Large}
+
+\vfill
+
+\begin{LARGE}
+\textbf{What do I do now?}
+
+\end{LARGE}
+
+\begin{Large}
+In order to be able to vote, you need to take the original ballot
+form and the audit receipt to the desk. They will exchange the
+ballot form for another one with which you can vote. You may retain
+the audit receipt.
+
+If you wish to perform further cryptographic checks on the audited
+ballot form, you should go to the election web site and download the
+audit information for the ballot form you audited. You will need
+this audit receipt.
+
+\end{Large}
+
+
+\vfill
+
+%\begin{center}
+\hfill\barcode
+
+\addvspace{2\baselineskip}
+}
+\end{multicols*}}
+
+\newenvironment{scanproblem}{%
+{\setlength{\parskip}{\baselineskip}\raggedright
+\begin{LARGE}
+\textbf{Your ballot form could not be scanned!}
+
+\end{LARGE}
+
+\begin{Large}
+We had difficulty in scanning your ballot form and interpreting it.
+This indicates that either your ballot form was too badly damaged to
+be properly processed, or something has gone badly wrong with the
+machine.
+
+\end{Large}
+
+\vspace{2cm}
+
+\begin{LARGE}
+\textbf{Why has this happened?}
+
+\end{LARGE}
+
+\begin{Large}
+The most likely reason is that the bar code in the top right has
+been written on or damaged in some way. \textbf{The information in
+this bar code is needed to process your vote.} If you have drawn on
+it, you will need to fill in another ballot form.
+
+The problem can also occur if you have made other marks on your form
+that give the scanning software difficulty in locating the different
+parts of the form. If you have made marks on the ballot form other
+than in the voting boxes, you will need to fill in another ballot
+form.
+
+\end{Large}
+
+\vspace{2cm}
+
+\begin{LARGE}
+\textbf{What do I do now?}
+
+\end{LARGE}
+
+\begin{Large}
+In order to be able to vote, you need to take the original ballot
+form and this problem report to the desk. They will exchange the
+ballot form and problem report for another one with which you can
+vote.
+
+If the problem recurs, it may indicate a hardware fault. In this
+case, the technical team will need to investigate the problem.
+
+\end{Large}
+}}{\clearpage}
+
+\newenvironment{submitproblem}[1]{%
+{\setlength{\parskip}{\baselineskip}\raggedright
+\begin{LARGE}
+\textbf{Your vote could not be submitted!}
+
+\end{LARGE}
+
+\begin{Large}
+We correctly scanned in your vote. However, we had difficulty in
+submitting your vote to the database.
+
+\end{Large}
+
+\vspace{2cm}
+
+\begin{LARGE}
+\textbf{Why has this happened?}
+
+\end{LARGE}
+
+\begin{Large}
+The most likely reason is that there was a network problem. If this
+is the case, the technical team will need to investigate and fix the
+problem.
+
+\end{Large}
+
+\vspace{2cm}
+
+\begin{LARGE}
+\textbf{What do I do now?}
+
+\end{LARGE}
+
+\begin{Large}
+Please take this report to the desk, along with your ballot form.
+They will try to work out what went wrong and correct it.
+
+Please note that it is \textbf{never permitted} to take a ballot
+form away from the polling station. You may either leave your ballot
+form here, in which case the technical team will submit your vote on
+your behalf as soon as the problem is resolved; alternatively, you
+may destroy the ballot form and then come back and vote later.
+
+Error code: #1
+
+\end{Large}
+}}{\clearpage}
+
+\newenvironment{usedproblem}{%
+{\setlength{\parskip}{\baselineskip}\raggedright
+\begin{LARGE}
+\textbf{This ballot form has already been used!}
+
+\end{LARGE}
+
+\begin{Large}
+We correctly scanned in your vote. However, we could not submit your
+vote to the database, because the ballot form has already been used
+for voting, or used for auditing, or cancelled.
+
+\end{Large}
+
+\vspace{2cm}
+
+\begin{LARGE}
+\textbf{Why has this happened?}
+
+\end{LARGE}
+
+\begin{Large}
+The most likely reason is that you have just submitted this form and
+received an audit report or a cancellation report, and now you have
+entered the same ballot form into the scanner again.
+
+If you have already received a cancellation receipt or an audit
+receipt for this ballot form, you \textbf{cannot now use it for
+voting!}
+
+If you wish to vote, you \textbf{will need to follow the
+instructions below}.
+
+\end{Large}
+
+\vspace{2cm}
+
+\begin{LARGE}
+\textbf{What do I do now?}
+
+\end{LARGE}
+
+\begin{Large}
+You need to take this report, along with the ballot form, and any
+audit or cancellation receipt that you have already received for
+this ballot form, to the desk. They will exchange this form, the
+ballot form, and any cancellation receipt for a new ballot form that
+you can use for voting. (However, you may retain any audit receipt
+you have received.)
+
+\end{Large}
+}}{}
+
+\AtBeginDocument{\sffamily\pagestyle{empty}}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN" "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd">
+<ejb-jar id="ejb-jar_ID">
+	<display-name>KOAESBEntity</display-name>
+	<enterprise-beans>
+		<entity id="ContainerManagedEntity_1">
+			<ejb-name>Esbfingerprints</ejb-name>
+			<home>com.logicacmg.koa.esb.beans.EsbfingerprintsHome</home>
+			<remote>com.logicacmg.koa.esb.beans.Esbfingerprints</remote>
+			<ejb-class>com.logicacmg.koa.esb.beans.EsbfingerprintsBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.esb.beans.EsbfingerprintsKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_1">
+				<field-name>id</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_2">
+				<field-name>fingerprint</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_3">
+				<field-name>timestamp</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_4">
+				<field-name>systemstatus</field-name>
+			</cmp-field>
+		</entity>
+		<entity id="ContainerManagedEntity_2">
+			<ejb-name>Encryptedesb</ejb-name>
+			<home>com.logicacmg.koa.esb.beans.EncryptedesbHome</home>
+			<remote>com.logicacmg.koa.esb.beans.Encryptedesb</remote>
+			<ejb-class>com.logicacmg.koa.esb.beans.EncryptedesbBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.esb.beans.EncryptedesbKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_5">
+				<field-name>stemnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_6">
+				<field-name>stem</field-name>
+			</cmp-field>
+		</entity>
+		<entity id="ContainerManagedEntity_3">
+			<ejb-name>Decryptedesb</ejb-name>
+			<home>com.logicacmg.koa.esb.beans.DecryptedesbHome</home>
+			<remote>com.logicacmg.koa.esb.beans.Decryptedesb</remote>
+			<ejb-class>com.logicacmg.koa.esb.beans.DecryptedesbBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.esb.beans.DecryptedesbKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_7">
+				<field-name>stemnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_8">
+				<field-name>kandidaatcode</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_9">
+				<field-name>kieskringnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_10">
+				<field-name>districtnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_11">
+				<field-name>kieslijstnummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_12">
+				<field-name>positienummer</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_13">
+				<field-name>lijstnaam</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_14">
+				<field-name>achternaam</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_15">
+				<field-name>voorletters</field-name>
+			</cmp-field>
+
+		</entity>
+		<entity id="ESBSequencesEJB">
+			<ejb-name>ESBSequencesEJB</ejb-name>
+			<home>com.logicacmg.koa.esb.beans.ESBSequencesEJBHome</home>
+			<remote>com.logicacmg.koa.esb.beans.ESBSequencesEJB</remote>
+			<ejb-class>com.logicacmg.koa.esb.beans.ESBSequencesEJBBean</ejb-class>
+			<persistence-type>Container</persistence-type>
+			<prim-key-class>com.logicacmg.koa.esb.beans.ESBSequencesEJBKey</prim-key-class>
+			<reentrant>False</reentrant>
+			<cmp-field id="CMPAttribute_16">
+				<field-name>tablename</field-name>
+			</cmp-field>
+			<cmp-field id="CMPAttribute_17">
+				<field-name>nextid</field-name>
+			</cmp-field>
+
+		</entity>
+	</enterprise-beans>
+</ejb-jar>

@@ -1,0 +1,8 @@
+tellername=Teller
+serveraddress=127.0.0.1
+servername=Teller
+dburl=jdbc:mysql://localhost/pavteller
+dbusername=root
+dbpassword=
+wbbserveraddress=127.0.0.1
+wbbservername=Bulletinboard

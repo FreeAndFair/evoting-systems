@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC "-//Sun Microsystems, Inc.//DTD J2EE Application 1.2//EN" "http://java.sun.com/j2ee/dtds/application_1_2.dtd">
+<application id="Application_ID">
+	<display-name>KOA</display-name>
+	<module id="WebModule_1">
+		<web>
+			<web-uri>KOAWeb.war</web-uri>
+			<context-root>KOAWeb</context-root></web>
+	</module>
+	<module id="EjbModule_4">
+		<ejb>ePlatformEJBCore.jar</ejb>
+	</module>
+	<module id="EjbModule_2">
+		<ejb>KOAControllerSessionEJB.jar</ejb>
+	</module>
+	<module id="EjbModule_3">
+		<ejb>KOAControllerEntityEJB.jar</ejb>
+	</module>
+	<module id="WebModule_2">
+		<web>
+			<web-uri>KOAVoorzitterWeb.war</web-uri>
+			<context-root>KOAVoorzitterWeb</context-root></web>
+	</module>
+	<module id="EjbModule_1">
+		<ejb>KOADatabeheerSessionEJB.jar</ejb>
+	</module>
+	<module id="WebModule_3">
+		<web>
+			<web-uri>KOADatabeheerWeb.war</web-uri>
+			<context-root>KOADatabeheerWeb</context-root></web>
+	</module>
+	<module id="EjbModule_5">
+		<ejb>KOAEntityEJB.jar</ejb>
+	</module>
+	<module id="EjbModule_6">
+		<ejb>KOASessionEJB.jar</ejb>
+	</module>
+	<module id="EjbModule_7">
+		<ejb>KOAESBSessionEJB.jar</ejb>
+	</module>
+	<module id="EjbModule_8">
+		<ejb>KOAKREntityEJB.jar</ejb>
+	</module>
+	<module id="EjbModule_9">
+		<ejb>KOASchedulerEJB1.jar</ejb>
+	</module>
+	<module id="EjbModule_10">
+		<ejb>KOAESBEntity.jar</ejb>
+	</module>
+	<module id="EjbModule_11">
+		<ejb>KOAKieslijstBean.jar</ejb>
+	</module>
+	<module id="WebModule_4">
+		<web>
+			<web-uri>TSMWeb.war</web-uri>
+			<context-root>TSMWeb</context-root></web>
+	</module>
+	<module id="EjbModule_13">
+		<ejb>KOAStemprocesSessionBean.jar</ejb>
+	</module>
+	<module id="EjbModule_12">
+		<ejb>KOASAREntityEJB.jar</ejb>
+	</module>
+	<security-role id="SecurityRole_1">
+		<role-name>voorzitter</role-name>
+	</security-role>
+	<security-role id="SecurityRole_2">
+		<role-name>databeheer</role-name>
+	</security-role>
+</application>

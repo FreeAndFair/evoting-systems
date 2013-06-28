@@ -1,0 +1,59 @@
+
+In hplip's hpaio.c, see
+  if( SclInquire( hpaio->deviceid, hpaio->scan_channelid,
+                            SCL_CMD_INQUIRE_DEVICE_PARAMETER,
+                            SCL_INQ_SESSION_ID,
+                            &len,
+                            buffer,
+                            LEN_SCL_BUFFER ) != SANE_STATUS_GOOD )
+            {
+                break;
+            }
+ 
+  Could we poll for ADF empty / loaded?
+
+
+
+
+int hpaioSclSendCommandCheckError( hpaioScanner_t hpaio, int cmd, int param )
+{
+    SANE_Status retcode;
+
+    SclSendCommand( hpaio->deviceid, hpaio->scan_channelid, 
+                    SCL_CMD_CLEAR_ERROR_STACK, 0 );
+
+    retcode = SclSendCommand( hpaio->deviceid, hpaio->scan_channelid, 
+                              cmd, param );
+
+    if( retcode == SANE_STATUS_GOOD &&
+        ( ( cmd != SCL_CMD_CHANGE_DOCUMENT && 
+                   cmd != SCL_CMD_UNLOAD_DOCUMENT ) || hpaio->beforeScan ) )
+    {
+        retcode = hpaioScannerToSaneError( hpaio );
+    }
+
+    return retcode;
+}
+
+
+
+
+
+
+SANE_Status hpaioScannerToSaneStatus( hpaioScanner_t hpaio )
+{
+//BREAKPOINT;
+   
+    SANE_Status retcode;
+
+    //    if( hpaio->scannerType == SCANNER_TYPE_SCL )
+    //    {
+        int sclStatus;
+
+        retcode = SclInquire( hpaio->deviceid, hpaio->scan_channelid,
+                              SCL_CMD_INQUIRE_DEVICE_PARAMETER,
+                              SCL_INQ_ADF_FEED_STATUS,
+                              &sclStatus,
+                              0,
+                              0 );
+    ... etc.

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EML xmlns:ovs="http://www.openvotingsolutions.com"
+ Id="410" SchemaVersion="4.0">
+  <TransactionId>2006-09-12</TransactionId>
+  <Ballots>
+    <EventIdentifier Id="New York State"/>
+    <Ballot>
+      <BallotIdentifier Id="District Election - 2006"/>
+       <Election>
+        <ElectionIdentifier Id="2006"/>
+        <Contest>
+         <ContestIdentifier Id="NY"/>
+         <BallotChoices>
+           <Candidate Independent="No">
+            <CandidateIdentifier Id="P4N" DisplayOrder="1">
+              <CandidateName>John Smith</CandidateName>
+            </CandidateIdentifier>
+            <CandidateFullName>Mr. John Smith, III</CandidateFullName>
+            <Affiliation>
+             <AffiliationIdentifier Id="DEM">
+              <RegisteredName>Democratic Party</RegisteredName>
+             </AffiliationIdentifier>
+           </Affiliation>
+           <Logo/>
+           </Candidate>
+           <Candidate Independent="No">
+            <CandidateIdentifier Id="P1N" DisplayOrder="2">
+              <CandidateName>Mark Spitz</CandidateName>
+            </CandidateIdentifier>
+            <CandidateFullName>Mr. Mark Spitz, BSC</CandidateFullName>
+            <Affiliation>
+             <AffiliationIdentifier Id="UWP">
+              <RegisteredName>Underwater Party</RegisteredName>
+             </AffiliationIdentifier>
+           </Affiliation>
+           <Logo/>
+           </Candidate>
+           <Candidate Independent="No">
+            <CandidateIdentifier Id="A1" DisplayOrder="3">
+              <CandidateName>Mary Wild</CandidateName>
+            </CandidateIdentifier>
+            <CandidateFullName>Mrs. Mary Wild, Jr</CandidateFullName>
+            <Affiliation>
+             <AffiliationIdentifier Id="GOP">
+              <RegisteredName>Republican Party</RegisteredName>
+             </AffiliationIdentifier>
+           </Affiliation>
+           <Logo/>
+           </Candidate>
+         </BallotChoices>
+        </Contest>
+       </Election>
+    </Ballot>
+  </Ballots>
+</EML>

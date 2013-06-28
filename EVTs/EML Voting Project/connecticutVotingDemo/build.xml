@@ -1,0 +1,122 @@
+<project name="connecticutVotingDemo" basedir="." default="all">
+
+    <!-- Local system paths -->
+    <property name="servlet.jar" value="/javasoft/lib/servlet.jar"/>
+    <property name="jdbc20ext.jar" value="/javasoft/lib/jdbc2_0-stdext.jar"/>
+        <!-- NOTE: If "dist" target is used, a local
+             "projects/lib" directory will be utilized or created -->
+    <property name="distpath.project" value="C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps"/>
+
+
+    <!-- Project settings -->
+    <property name="project.title" value="Connecticut Election Application "/>
+    <property name="project.distname" value="connecticutVotingDemo"/>
+    <property name="project.version" value="1.1"/>
+
+
+    <!-- Path settings -->
+    <property name="doc.path" value="./doc/api"/>
+    <property name="doc.src" value="./src/java"/>
+
+
+    <!-- classpath for Struts 1.1 -->
+    <path id="compile.classpath">
+        <pathelement path ="WEB-INF/lib/commons-beanutils.jar"/>
+        <pathelement path ="WEB-INF/lib/commons-digester.jar"/> 
+        <pathelement path ="WEB-INF/lib/struts.jar"/>
+    	<pathelement path ="WEB-INF/lib/servlet.jar"/>
+    	<pathelement path ="WEB-INF/lib/derby.jar"/>
+       	<pathelement path ="WEB-INF/lib/derbyclient.jar"/>
+    	<pathelement path ="WEB-INF/lib/iText.jar"/>
+        <pathelement path ="WEB-INF/classes"/>
+        <pathelement path ="${classpath}"/>
+    </path>
+
+
+    <!-- Check timestamp on files -->
+    <target name="prepare">
+        <tstamp/>
+    </target>
+
+
+    <!-- Copy any resource or configuration files -->
+    <target name="resources">
+        <copy todir="WEB-INF/classes" includeEmptyDirs="no">
+            <fileset dir="src/java">
+            <patternset>
+                <include name="**/*.conf"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+            </patternset>
+            </fileset>
+        </copy>
+    </target>
+
+
+    <!-- Normal build of application -->
+    <target name="compile" depends="prepare,resources">
+        <javac srcdir="src" destdir="WEB-INF/classes">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+
+    <!-- Remove classes directory for clean build -->
+    <target name="clean"
+      description="Prepare for clean build">
+      <delete dir="WEB-INF/classes"/>
+      <mkdir  dir="WEB-INF/classes"/>
+    </target>
+
+
+    <!-- Build Javadoc documentation -->
+    <target name="javadoc"
+     description="Generate JavaDoc API docs">
+        <delete dir="./doc/api"/>
+        <mkdir dir="./doc/api"/>
+        <javadoc sourcepath="./src/java"
+            destdir="./doc/api"
+            classpath="${servlet.jar}:${jdbc20ext.jar}"
+            packagenames="*"
+            author="true"
+            private="true"
+            version="true"
+            windowtitle="${project.title} API Documentation"
+            doctitle="&lt;h1&gt;${project.title} Documentation (Version ${project.version})&lt;/h1&gt;"
+            bottom="Copyright &#169; 2002">
+            <classpath refid="compile.classpath"/>
+        </javadoc>
+    </target>
+
+
+    <!-- Build entire project -->
+    <target name="project" depends="clean,prepare,compile,javadoc"/>
+
+
+    <!-- Create binary distribution -->
+    <target name="dist"
+        description="Create binary distribution">
+
+      <mkdir
+        dir="${distpath.project}"/>
+      <jar
+        jarfile="${distpath.project}/${project.distname}.jar"
+        basedir="WEB-INF/classes"/>
+      <copy
+        file="${distpath.project}/${project.distname}.jar"
+        todir="${distpath.project}"/>
+
+      <war
+        basedir="."
+        warfile="${distpath.project}/${project.distname}.war"
+        webxml="WEB-INF/web.xml">
+        <exclude name="${distpath.project}/${project.distname}.war"/>
+       </war>
+
+    </target>
+
+
+    <!-- Build project and create distribution-->
+    <target name="all" depends="project,dist"/>
+
+</project>

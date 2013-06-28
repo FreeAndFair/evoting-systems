@@ -1,0 +1,195 @@
+ \NeedsTeXFormat{LaTeX2e}
+
+ \ProvidesPackage{pav-vocomp}
+ \RequirePackage{pav}
+
+ \def\ron{Reopen Nominations}
+
+ \def\ballooncand{Bill Gates, Meg Whitman, Sergey Brin, Steve Jobs, Chuck them all out!}
+ \def\crimecand{C++, Java, Hand-coded Z80 assembler, I make my PhD student do all my programming, Perl, Python}
+ \def\refcand{No,Yes}
+
+ \def\balloontitle{Who should be spared from being thrown out of the hot air balloon?}
+ \def\crimetitle{What is your favourite programming language?}
+ \def\reftitle{Have you ever lied on an expenses form?}
+
+ \def\balloontitleshort{Balloon debate}
+ \def\crimetitleshort{Programming language}
+ \def\reftitleshort{Expenses}
+
+ \def\ballottitle{VoComp Demonstration Election 2007}
+
+\newenvironment{cancel2007}[4]{%
+\cancelreceipt
+\begin{cancel}{#4}
+\def\ballotserial{#1}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}
+}%
+{\ballothalfborder{\ballottitle}{\ballotserial}
+
+\end{cancel}
+
+\clearpage}
+
+\newenvironment{receipt2007}[3]{%
+\votereceipt
+\begin{receipt}
+\def\ballotserial{#1}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}}%
+{\ballothalfborder{\ballottitle}{\ballotserial}
+
+\end{receipt}
+
+\clearpage}
+
+\newcommand{\receiptnums}[3]{%
+\begin{ballotreceipt}{\balloontitle}
+
+\begin{ballotvoteboxes}
+  \shownums{#1}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}{\crimetitle}
+
+\begin{ballotvoteboxes}
+  \shownums{#2}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}{\reftitle}
+
+\setcandlist\refcand
+
+\begin{ballotvoteboxes}
+  \shownums{#3}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}}
+
+\newenvironment{ballot2007}[3]{%
+\def\ballotserial{#1}
+\ballotborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}}%
+{\ballotborder{\ballottitle}{\ballotserial}
+
+\clearpage}
+
+\newcommand{\ballotnums}[3]{%
+\begin{ballotform}{\balloontitle}
+
+\setcandlist\ballooncand
+
+\begin{ballotcandidates}
+  \showcands{#1}
+\end{ballotcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}{\crimetitle}
+
+\setcandlist\crimecand
+
+\begin{ballotcandidates}
+  \showcands{#2}
+\end{ballotcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}{\reftitle}
+
+\begin{referendumcandidates}
+  \showcands{#3}
+\end{referendumcandidates}
+
+\end{ballotform}
+}
+
+\newenvironment{remote2007}[3]{%
+\def\ballotserial{#1}
+\setballothash{#3}
+\begin{remote}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}
+}%
+{\ballothalfborder{\ballottitle}{\ballotserial}\end{remote}
+
+\clearpage}
+
+\newcommand{\remotenums}[3]{%
+\begin{ballotremote}{\balloontitle}
+
+\setcandlist\ballooncand
+
+\begin{ballotremotecandidates}
+  \showcands{#1}
+\end{ballotremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\crimetitle}
+
+\setcandlist\crimecand
+
+\begin{ballotremotecandidates}
+  \showcands{#2}
+\end{ballotremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\reftitle}
+
+\begin{referendumremotecandidates}
+  \showcands{#3}
+\end{referendumremotecandidates}
+
+\end{ballotremote}
+}
+
+\newenvironment{audit2007}[3]{%
+\auditreceipt
+\def\ballotserial{#1}
+\setballothash{#3}
+\begin{audit}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}
+}%
+{\ballothalfborder{\ballottitle}{\ballotserial}\end{audit}
+
+\clearpage}
+
+\def\auditnums{\remotenums}
+\def\cancelnums{\receiptnums}

@@ -1,0 +1,44 @@
+<cast_ballot election_date="2004-11-02" country="US" state="CA"
+             county="Santa Clara County" number="1607" precinct="2216"
+             serial="213" source="voting_machine">
+  <contest ordered="No" coupled="Yes" name="Presidency">
+    <selection writein="No" name="President">Helen Keller</selection>
+    <selection writein="No" name="Vice President">Amelia Earhart</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Senator">
+    <selection writein="No">Karl Menninger</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="U.S. Representative">
+    <selection writein="No">No preference indicated</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Treasurer">
+    <selection writein="No">No preference indicated</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Attorney General">
+    <selection writein="No">Thomas P. O'Neill Jr</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Commis. of Education">
+    <selection writein="No">No preference indicated</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="State Senate">
+    <selection writein="No">No preference indicated</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="State Assembly">
+    <selection writein="No">Langston Hughes</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Transportation Initiative">
+    <selection writein="No">Yes</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Health care initiative">
+    <selection writein="No">No</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Term limits">
+    <selection writein="No">No</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Cat Catcher">
+    <selection writein="No">Howard Stern</selection>
+  </contest>
+  <contest ordered="Yes" coupled="No" name="County Commissioner">
+    <selection writein="No">Gordon Moore</selection>
+  </contest>
+</cast_ballot>

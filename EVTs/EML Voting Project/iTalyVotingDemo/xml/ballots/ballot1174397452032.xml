@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="http://openvotingsolutions.info/iTalyVotingDemo/xml/ItalianSenateBallot/ballot.xsl" type="text/xsl"?>
+<ballot version="1.0" ID="1174397452032">
+<row ID="1" >
+<checkbox ID="1">1</checkbox>
+<checkbox ID="2">0</checkbox>
+<checkbox ID="3">0</checkbox>
+<checkbox ID="4">0</checkbox>
+<checkbox ID="5">0</checkbox>
+<checkbox ID="6">0</checkbox>
+<checkbox ID="7">0</checkbox>
+<checkbox ID="8">0</checkbox>
+</row>
+<row ID="2">
+<checkbox ID="1">1</checkbox>
+<checkbox ID="2">0</checkbox>
+<checkbox ID="3">0</checkbox>
+</row>
+<row ID="3">
+<checkbox ID="1">0</checkbox>
+<checkbox ID="2">1</checkbox>
+<checkbox ID="3">0</checkbox>
+<checkbox ID="4">0</checkbox>
+<checkbox ID="5">0</checkbox>
+<checkbox ID="6">0</checkbox>
+<checkbox ID="7">0</checkbox>
+</row>
+</ballot>

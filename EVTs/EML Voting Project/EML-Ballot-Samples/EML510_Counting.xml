@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <EML Id="510" schemaVersion="4.0">
+<EventIdentifier Id="New York State" />
+<Election>
+<ElectionIdentifier Id="District Election " />
+<Contest>
+<ContestIdentifier>2006</ContestIdentifier>
+<TotalVotes>
+<Selection>
+<CandidateIdentifier ID="P1N"/>
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="B1"/>
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="P4N"/>
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A1"/>
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="P4Y"/>
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="A2"/>
+<ValidVotes>1</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+</Election>
+</EML>

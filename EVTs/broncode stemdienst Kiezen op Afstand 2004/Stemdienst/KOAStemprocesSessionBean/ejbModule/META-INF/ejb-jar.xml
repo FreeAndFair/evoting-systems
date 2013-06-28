@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ejb-jar PUBLIC "-//Sun Microsystems, Inc.//DTD Enterprise JavaBeans 1.1//EN" "http://java.sun.com/j2ee/dtds/ejb-jar_1_1.dtd">
+<ejb-jar id="ejb-jar_ID">
+	<display-name>KOAStemprocesSessionBean</display-name>
+	<enterprise-beans>
+		<session id="StemprocesSessionEJB">
+			<ejb-name>StemprocesSessionEJB</ejb-name>
+			<home>com.logicacmg.koa.stemproces.beans.StemprocesSessionEJBHome</home>
+			<remote>com.logicacmg.koa.stemproces.beans.StemprocesSessionEJB</remote>
+			<ejb-class>com.logicacmg.koa.stemproces.beans.StemprocesSessionEJBBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+	</enterprise-beans>
+	<assembly-descriptor>
+		<container-transaction>
+			<method>
+				<ejb-name>StemprocesSessionEJB</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>vote</method-name>
+				<method-params>
+					<method-param>com.logicacmg.koa.dataobjects.Stem</method-param>
+					<method-param>java.lang.String</method-param>
+					<method-param>java.lang.String</method-param></method-params>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+	</assembly-descriptor>
+</ejb-jar>

@@ -1,0 +1,49 @@
+<cast_ballot election_date="2004-11-02" country="US" state="CA"
+             county="Santa Clara County" number="2304" precinct="2216"
+             serial="213" source="voting_machine">
+  <contest ordered="No" coupled="Yes" name="Presidency">
+    <selection writein="No" name="President">George Washington</selection>
+    <selection writein="No" name="Vice President">Abraham Lincoln</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Senator">
+    <selection writein="No">Karl Menninger</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="U.S. Representative">
+    <selection writein="No">Lillian Hellman</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Treasurer">
+    <selection writein="No">No preference indicated</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Attorney General">
+    <selection writein="No">Thomas P. O'Neill Jr</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Commis. of Education">
+    <selection writein="No">No preference indicated</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="State Senate">
+    <selection writein="No">Robert Ingersoll</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="State Assembly">
+    <selection writein="No">Langston Hughes</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Transportation Initiative">
+    <selection writein="No">Yes</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Health care initiative">
+    <selection writein="No">No</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Term limits">
+    <selection writein="No">Yes</selection>
+  </contest>
+  <contest ordered="No" coupled="No" name="Cat Catcher">
+    <selection writein="No">Regis Philbin</selection>
+  </contest>
+  <contest ordered="Yes" coupled="No" name="County Commissioner">
+    <selection writein="No">David Packard</selection>
+    <selection writein="No">William Shockely</selection>
+    <selection writein="Yes">WRITE-IN</selection>
+    <selection writein="No">Steve Jobs</selection>
+    <selection writein="No">Philip Kahn</selection>
+    <selection writein="No">William Hewlett</selection>
+  </contest>
+</cast_ballot>

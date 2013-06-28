@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EML xmlns:ovs="http://www.openvotingsolutions.com" Id="440" schemaVersion="4.0">
+<TransactionId Id="1234568" />
+<CastVote>
+<EventIdentifier Id="New York State" />
+<Election>
+<ElectionIdentifier Id="District Election - 2006" />
+<Contest>
+<ContestIdentifier>Side2</ContestIdentifier>
+<Selection Shortcode="8" Value="1">
+<CandidateIdentifier Id="P4N" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="7" Value="1">
+<CandidateIdentifier Id="P4Y" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier>Side1</ContestIdentifier>
+<Selection Shortcode="1" Value="0">
+<CandidateIdentifier Id="A1" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+<Selection Shortcode="2" Value="1">
+<CandidateIdentifier Id="B1" />
+<WriteinCandidateName></WriteinCandidateName>
+</Selection>
+</Contest>
+</Election>
+</CastVote>
+</EML>

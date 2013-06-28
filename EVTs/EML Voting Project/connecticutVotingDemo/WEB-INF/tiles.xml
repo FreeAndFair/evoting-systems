@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+  <definition name="default" path="/web/layouts/defaultLayout.jsp">
+    <put direct="true" name="HtmlTitle" value="Italy Election System" />
+    <put direct="true" name="ScreenDesc" value="Welcome to Election System!" />
+    <put name="HtmlMenu" value="/web/menu/menu.jsp" />
+    <put name="HtmlNote" value="ELECTRONIC Election System - Click one of the links below" />
+    <put name="AppFooter" value="/web/screens/common/app_footer.jsp" />
+    <put name="HtmlFooter" value="/web/screens/common/footer.jsp" />
+    <put name="HtmlBody" value="Body...!" />
+  </definition>
+   <definition name="defaultpopup" path="/web/layouts/defaultPopupLayout.jsp">
+    <put direct="true" name="HtmlTitle" value="Election - Login" /> />
+    <put name="HtmlFooter" value="/web/screens/common/footer.jsp" />
+    <put name="HtmlBody" />
+  </definition>
+  <definition extends="defaultpopup" name="loginPage">
+     <put name="HtmlBody" value="/web/screens/common/loginPage.jsp" />
+  </definition>
+  <definition extends="default" name="scanBarCodePage">
+    <put direct="true" name="HtmlTitle" value="Election System" />
+    <put direct="true" name="ScreenDesc" value="Bar Code..." />
+    <put direct="true" name="HtmlNote" value="Scan Bar Code Page" />
+    <put name="HtmlBody" value="/web/screens/voter/scanBarCodePage.jsp" />
+  </definition> 
+  <!--  <definition extends="default" name="ballotVotingScreen">
+    <put direct="true" name="HtmlTitle" value="Election System" />
+    <put direct="true" name="ScreenDesc" value="Bar Code Success..." />
+    <put direct="true" name="HtmlNote" value="Ballot Page" />
+    <put name="HtmlBody" value="/web/screens/voter/BarCodeSuccessPage.jsp" />
+  </definition> 
+  -->
+  <definition extends="defaultpopup" name="logoutPage">
+     <put name="HtmlBody" value="/web/screens/common/logoutPage.jsp" />
+  </definition>
+  
+</tiles-definitions>

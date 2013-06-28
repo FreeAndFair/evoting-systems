@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <EML Id="510" schemaVersion="4.0">
+<EventIdentifier Id="State Of Connecticut - USA" />
+<Election>
+<ElectionIdentifier Id="State Election" />
+<Contest>
+<ContestIdentifier Id="1" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="1A"/>
+<WriteinCandidateName />
+<ValidVotes>5</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="1B"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="1C"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="1D"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="1E"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="1F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="1G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="2" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="2A"/>
+<WriteinCandidateName />
+<ValidVotes>4</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="2B"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="2C"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="2D"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="1E"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="2F"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="2G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="3" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="3A"/>
+<WriteinCandidateName />
+<ValidVotes>3</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="3B"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="3C"/>
+<WriteinCandidateName />
+<ValidVotes>4</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="3D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="3E"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="3F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="3G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="4" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="4A"/>
+<WriteinCandidateName />
+<ValidVotes>3</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="4B"/>
+<WriteinCandidateName />
+<ValidVotes>3</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="4C"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="4D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="4E"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="4F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="4G"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="5" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="5A"/>
+<WriteinCandidateName />
+<ValidVotes>6</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="5B"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="5C"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="5D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="5E"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="5F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="5G"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="6" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="6A"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="6B"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="6C"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="6D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="6E"/>
+<WriteinCandidateName />
+<ValidVotes>3</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="6F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="6G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="7" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="7A"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="7B"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="7C"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="7D"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="7E"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="7F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="7G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="8" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="8A"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="8B"/>
+<WriteinCandidateName />
+<ValidVotes>5</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="8C"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="8D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="8E"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="8F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="8G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="9" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="9A"/>
+<WriteinCandidateName />
+<ValidVotes>3</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="9B"/>
+<WriteinCandidateName />
+<ValidVotes>2</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="9C"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="9D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="9E"/>
+<WriteinCandidateName />
+<ValidVotes>3</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="9F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="9G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="10" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="10A"/>
+<WriteinCandidateName />
+<ValidVotes>6</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="10B"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="10C"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="10D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="10E"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="10F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="10G"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+<Contest>
+<ContestIdentifier Id="11" />
+<TotalVotes>
+<Selection ID="1">
+<CandidateIdentifier ID="11A"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+<Selection ID="2">
+<CandidateIdentifier ID="11B"/>
+<WriteinCandidateName />
+<ValidVotes>4</ValidVotes>
+</Selection>
+<Selection ID="3">
+<CandidateIdentifier ID="11C"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="4">
+<CandidateIdentifier ID="11D"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="5">
+<CandidateIdentifier ID="11E"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="6">
+<CandidateIdentifier ID="11F"/>
+<WriteinCandidateName />
+<ValidVotes>0</ValidVotes>
+</Selection>
+<Selection ID="7">
+<CandidateIdentifier ID="11G"/>
+<WriteinCandidateName />
+<ValidVotes>1</ValidVotes>
+</Selection>
+</TotalVotes>
+</Contest>
+</Election>
+</EML>

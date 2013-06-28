@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="http://openvotingsolutions.info/connecticutVotingDemo/xml/eml520result/ovs-EML520-results.xsl"?>
+<EML xmlns:ovs="http://www.openvotingsolutions.com" Id="520" SchemaVersion="4.0">
+<TransactionId>2007-04-18</TransactionId>
+<Result>
+<Election>
+<EventIdentifier Id="State of Connecticut Election -2007, " />
+<Contest>
+<ContestIdentifier Id="Governor and Lieutenant Governor" />
+<Selection>
+<CandidateIdentifier ID="1A" DisplayOrder="1">
+<CandidateName>M. Jodi Reli and Micheal Fedele</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>5</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="1B" DisplayOrder="2">
+<CandidateName>John DeStefano and Mary Messina Glassman</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="1C" DisplayOrder="3">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="1D" DisplayOrder="4">
+<CandidateName>Joseph A. Zdonczyk and Jose E. Garcia</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Concerned Citizens</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="1E" DisplayOrder="5">
+<CandidateName>Clifford W. Thornton, Jr. and Jean de Smet</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="1F" DisplayOrder="6">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="1G" DisplayOrder="7">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="United States Senator" />
+<Selection>
+<CandidateIdentifier ID="2A" DisplayOrder="8">
+<CandidateName>Alan Schlesinger</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>4</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="2B" DisplayOrder="9">
+<CandidateName>Ned Lamont</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="2C" DisplayOrder="10">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="2D" DisplayOrder="11">
+<CandidateName>Timothy A. Knibbs</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Concerned Citizens</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="1E" DisplayOrder="12">
+<CandidateName>Ralph A. Ferrucci</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="2F" DisplayOrder="13">
+<CandidateName>Joe Lieberman</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Connecticut for Lieberman</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="2G" DisplayOrder="14">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="Representative in Congress" />
+<Selection>
+<CandidateIdentifier ID="3A" DisplayOrder="15">
+<CandidateName>Christopher Shays</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="3B" DisplayOrder="16">
+<CandidateName>Diane Farrell</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="3C" DisplayOrder="17">
+<CandidateName>Philip Z. Maymin</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Libertarian</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>4</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="3D" DisplayOrder="18">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="3E" DisplayOrder="19">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="3F" DisplayOrder="20">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="3G" DisplayOrder="21">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="State Senator" />
+<Selection>
+<CandidateIdentifier ID="4A" DisplayOrder="22">
+<CandidateName>Judith G. Freedman</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="4B" DisplayOrder="23">
+<CandidateName>Craig Rebecca Schiavone</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="4C" DisplayOrder="24">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="4D" DisplayOrder="25">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="4E" DisplayOrder="26">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="4F" DisplayOrder="27">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="4G" DisplayOrder="28">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="State Representative" />
+<Selection>
+<CandidateIdentifier ID="5A" DisplayOrder="29">
+<CandidateName>Tony Boucher</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>6</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="5B" DisplayOrder="30">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="5C" DisplayOrder="31">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="5D" DisplayOrder="32">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="5E" DisplayOrder="33">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="5F" DisplayOrder="34">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="5G" DisplayOrder="35">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="Secretary of the State" />
+<Selection>
+<CandidateIdentifier ID="6A" DisplayOrder="36">
+<CandidateName>Richard J. Abbate</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="6B" DisplayOrder="37">
+<CandidateName>Susan Bysiewicz</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="6C" DisplayOrder="38">
+<CandidateName>Ken Mosher</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Libertarian</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="6D" DisplayOrder="39">
+<CandidateName>Jean Marie Burness</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Concerned Citizens</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="6E" DisplayOrder="40">
+<CandidateName>S. Michael Derosa</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="6F" DisplayOrder="41">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="6G" DisplayOrder="42">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="Treasurer" />
+<Selection>
+<CandidateIdentifier ID="7A" DisplayOrder="43">
+<CandidateName>Linda Roberts</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="7B" DisplayOrder="44">
+<CandidateName>Denise L. Nappier</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="7C" DisplayOrder="45">
+<CandidateName>Steven Edelman</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Libertarian</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="7D" DisplayOrder="46">
+<CandidateName>Mimi M. Knibbs</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Concerned Citizens</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="7E" DisplayOrder="47">
+<CandidateName>S. David Bue</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="7F" DisplayOrder="48">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="7G" DisplayOrder="49">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="Comptroller" />
+<Selection>
+<CandidateIdentifier ID="8A" DisplayOrder="50">
+<CandidateName>Cathy Cook</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="8B" DisplayOrder="51">
+<CandidateName>Nancy Wyman</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>5</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="8C" DisplayOrder="52">
+<CandidateName>Richard C. Connelly, Jr.</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Libertarian</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="8D" DisplayOrder="53">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="8E" DisplayOrder="54">
+<CandidateName>Colin Daniel Bennett</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="8F" DisplayOrder="55">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="8G" DisplayOrder="56">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="Attorney General" />
+<Selection>
+<CandidateIdentifier ID="9A" DisplayOrder="57">
+<CandidateName>Robert Farr</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="9B" DisplayOrder="58">
+<CandidateName>Richard Blumenthal</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>2</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="9C" DisplayOrder="59">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="9D" DisplayOrder="60">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="9E" DisplayOrder="61">
+<CandidateName>Nancy Burton</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Green</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>3</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="9F" DisplayOrder="62">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="9G" DisplayOrder="63">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="Judge of Probate" />
+<Selection>
+<CandidateIdentifier ID="10A" DisplayOrder="64">
+<CandidateName>Anthony J. DePanfilis</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>6</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="10B" DisplayOrder="65">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="10C" DisplayOrder="66">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="10D" DisplayOrder="67">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="10E" DisplayOrder="68">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="10F" DisplayOrder="69">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="10G" DisplayOrder="70">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+</Contest>
+<Contest>
+<ContestIdentifier Id="Registrar of Voters" />
+<Selection>
+<CandidateIdentifier ID="11A" DisplayOrder="71">
+<CandidateName>Tina Gardner</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Republican</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="11B" DisplayOrder="72">
+<CandidateName>Margaret 'Peggy' Reeves</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Democratic</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>4</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="11C" DisplayOrder="73">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="11D" DisplayOrder="74">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="11E" DisplayOrder="75">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="11F" DisplayOrder="76">
+<CandidateName>NONE</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName></RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>0</Votes>
+</Selection>
+<Selection>
+<CandidateIdentifier ID="11G" DisplayOrder="77">
+<CandidateName>Write-in Votes</CandidateName>
+</CandidateIdentifier>
+<Affiliation>
+<AffiliationIdentifier ID="DEM">
+<RegisteredName>Write-in</RegisteredName>
+</AffiliationIdentifier>
+</Affiliation>
+<Votes>1</Votes>
+</Selection>
+</Contest>
+</Election>
+</Result>
+</EML>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href="http://openvotingsolutions.info/connecticutVotingDemo/xml/connecticutBallot/voting_ballot.xsl" type="text/xsl"?>
+<ballot version="1.0" ID="1234567" maxRows="8">
+  <title>Connecticut Ballot Demonstration</title>
+  <image>http://openvotingsolutions.info/connecticutVotingDemo/xml/connecticutBallot/connecticut-ballot-img.jpg</image>
+  <column ID="1" offset="239">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="4" top="472">0</checkbox>
+    <checkbox ID="5" top="539">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="2" offset="373">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="4" top="472">0</checkbox>
+    <checkbox ID="5" top="539">0</checkbox>
+    <checkbox ID="6" top="606">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="3" offset="443">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="3" top="406">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="4" offset="508">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="5" offset="576">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="6" offset="642">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="3" top="406">0</checkbox>
+    <checkbox ID="4" top="472">0</checkbox>
+    <checkbox ID="5" top="539">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="7" offset="711">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="3" top="406">0</checkbox>
+    <checkbox ID="4" top="472">0</checkbox>
+    <checkbox ID="5" top="539">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="8" offset="777">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="3" top="406">0</checkbox>
+    <checkbox ID="5" top="539">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="9" offset="845">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="2" top="338">0</checkbox>
+    <checkbox ID="5" top="539">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="10" offset="912">
+    <checkbox ID="1" top="270">0</checkbox>
+    <checkbox ID="7" top="673">0</checkbox>
+  </column>
+  <column ID="11" offset="980">
+    <checkbox ID="1" top="269">0</checkbox>
+    <checkbox ID="2" top="335">0</checkbox>
+    <checkbox ID="7" top="671">0</checkbox>
+  </column>
+</ballot>
+

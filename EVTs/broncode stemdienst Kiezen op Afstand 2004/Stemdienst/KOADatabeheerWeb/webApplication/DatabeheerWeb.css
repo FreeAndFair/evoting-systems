@@ -1,0 +1,50 @@
+BODY {
+	color: black;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 9pt;
+	background-color: white;
+	margin: 2px
+}
+
+UL {
+	list-style-type: disc
+}
+
+OL {
+	list-style-type: decimal
+}
+
+H1 {
+	list-style-type: disc;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 11pt
+}
+
+H2 {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 7pt;
+	font-weight: 100
+}
+
+H3 {
+	font-style: normal;
+	color: red;
+	font-family: Verdana, Arial, sans-serif;
+	font-variant: normal;
+	font-weight: 500;
+	font-size: 9pt
+}
+
+p {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+}
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+}
+
+pagecount {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 7pt
+}

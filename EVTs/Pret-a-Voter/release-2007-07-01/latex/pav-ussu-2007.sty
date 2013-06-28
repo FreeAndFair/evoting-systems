@@ -1,0 +1,358 @@
+ \NeedsTeXFormat{LaTeX2e}
+
+ \ProvidesPackage{pav-ussu-2007}
+ \RequirePackage{pav}
+
+ \def\unioncand{Alex Collins, Michael Anton, \ron}
+ \def\sportscand{Gemma ``Gems'' Leaming, \ron}
+ \def\soccand{Madiha Latif,Mark ``Zeph'' Griffiths,\ron}
+ \def\educand{Mike Blakeney,\ron}
+ \def\welcand{Sophia Hawkins,\ron}
+ \def\refcand{No,Yes}
+
+ \def\prestitle{Union President}
+ \def\sportstitle{VP Sports and Recreation}
+ \def\soctitle{VP Societies and Individual Development}
+ \def\edutitle{VP Education}
+ \def\weltitle{VP Welfare}
+ \def\nustitle{Should the Student Union continue its membership of the National
+Union of Students (NUS)?}
+ \def\ftradetitle{Do you agree with the University's Fairtrade policy as the final step towards Surrey becoming a Fairtrade University?}
+
+ \def\prestitleshort{President}
+ \def\sportstitleshort{VP Sports}
+ \def\soctitleshort{VP Societies}
+ \def\edutitleshort{\edutitle}
+ \def\weltitleshort{\weltitle}
+ \def\nustitleshort{NUS referendum}
+ \def\ftradetitleshort{Fairtrade referendum}
+
+ \def\ballottitle{USSU Sabbatical Elections 2007}
+
+% \def\unioncand{Cliff Thorburn, Michael Knight, \ron}
+% \def\sportscand{Mr Motivator, Debbie McGee, Posh Spice, \ron}
+% \def\soccand{Norman Schwarzkopf, Carole Caplin, \ron}
+% \def\educand{Bruce Willis, \ron}
+% \def\welcand{Armitage Shanks, \ron}
+
+\newenvironment{cancel2007}[4]{%
+\cancelreceipt
+\begin{cancel}{#4}
+\def\ballotserial{#1}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}
+}%
+{\ballothalfborder{\ballottitle}{\ballotserial}
+
+\end{cancel}
+
+\clearpage}
+
+\newenvironment{receipt2007}[3]{%
+\votereceipt
+\begin{receipt}
+\def\ballotserial{#1}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}}%
+{\ballothalfborder{\ballottitle}{\ballotserial}
+
+\end{receipt}
+
+\clearpage}
+
+\newcommand{\receiptnums}[7]{%
+\begin{ballotreceipt}{\prestitle}
+
+\begin{ballotvoteboxes}
+  \shownums{#1}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}{\sportstitle}
+
+\begin{ballotvoteboxes}
+  \shownums{#2}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}{\soctitle}
+
+\begin{ballotvoteboxes}
+  \shownums{#3}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}{\edutitle}
+
+\begin{ballotvoteboxes}
+  \shownums{#4}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}
+{\weltitle}
+
+\begin{ballotvoteboxes}
+  \shownums{#5}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}
+{\nustitle}
+
+\setcandlist\refcand
+
+\begin{ballotvoteboxes}
+  \shownums{#6}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}
+
+\ballotseparator
+
+\begin{ballotreceipt}
+{\ftradetitle}
+
+\setcandlist\refcand
+
+\begin{ballotvoteboxes}
+  \shownums{#7}
+\end{ballotvoteboxes}
+
+\end{ballotreceipt}}
+
+\newenvironment{ballot2007}[3]{%
+\def\ballotserial{#1}
+\ballotborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}}%
+{\ballotborder{\ballottitle}{\ballotserial}
+
+\clearpage}
+
+\newcommand{\ballotnums}[7]{%
+\begin{ballotform}{\prestitle}
+
+\setcandlist\unioncand
+
+\begin{ballotcandidates}
+  \showcands{#1}
+\end{ballotcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}
+{\sportstitle}
+
+\setcandlist\sportscand
+
+\begin{ballotcandidates}
+  \showcands{#2}
+\end{ballotcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}
+{\soctitle}
+
+\setcandlist\soccand
+
+\begin{ballotcandidates}
+  \showcands{#3}
+\end{ballotcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}
+{\edutitle}
+
+\setcandlist\educand
+
+\begin{ballotcandidates}
+  \showcands{#4}
+\end{ballotcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}
+{\weltitle}
+
+\setcandlist\welcand
+
+\begin{ballotcandidates}
+  \showcands{#5}
+\end{ballotcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}
+{\nustitle}
+
+\begin{referendumcandidates}
+  \showcands{#6}
+\end{referendumcandidates}
+
+\end{ballotform}
+
+\ballotseparator
+
+\begin{ballotform}
+{\ftradetitle}
+
+\begin{referendumcandidates}
+  \showcands{#7}
+\end{referendumcandidates}
+
+\end{ballotform}
+}
+
+\newenvironment{remote2007}[3]{%
+\def\ballotserial{#1}
+\setballothash{#3}
+\begin{remote}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}
+}%
+{\ballothalfborder{\ballottitle}{\ballotserial}\end{remote}
+
+\clearpage}
+
+\newcommand{\remotenums}[7]{%
+\begin{ballotremote}{\prestitle}
+
+\setcandlist\unioncand
+
+\begin{ballotremotecandidates}
+  \showcands{#1}
+\end{ballotremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\sportstitle}
+
+\setcandlist\sportscand
+
+\begin{ballotremotecandidates}
+  \showcands{#2}
+\end{ballotremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\soctitle}
+
+\setcandlist\soccand
+
+\begin{ballotremotecandidates}
+  \showcands{#3}
+\end{ballotremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\edutitle}
+
+\setcandlist\educand
+
+\begin{ballotremotecandidates}
+  \showcands{#4}
+\end{ballotremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\weltitle}
+
+\setcandlist\welcand
+
+\begin{ballotremotecandidates}
+  \showcands{#5}
+\end{ballotremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\nustitle}
+
+\begin{referendumremotecandidates}
+  \showcands{#6}
+\end{referendumremotecandidates}
+
+\end{ballotremote}
+
+\ballotfullseparator
+
+\begin{ballotremote}
+{\ftradetitle}
+
+\begin{referendumremotecandidates}
+  \showcands{#7}
+\end{referendumremotecandidates}
+
+\end{ballotremote}
+}
+
+\newenvironment{audit2007}[3]{%
+\auditreceipt
+\def\ballotserial{#1}
+\setballothash{#3}
+\begin{audit}
+\ballothalfborder{\ballottitle}{\ballotserial}
+
+\celllines{#2}
+
+\setballothash{#3}
+}%
+{\ballothalfborder{\ballottitle}{\ballotserial}\end{audit}
+
+\clearpage}
+
+\def\auditnums{\remotenums}
+\def\cancelnums{\receiptnums}

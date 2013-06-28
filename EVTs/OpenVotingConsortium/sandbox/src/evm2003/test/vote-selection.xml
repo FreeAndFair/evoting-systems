@@ -1,0 +1,52 @@
+  <!-- vote-selection.xml -->
+  <cast_ballot election_date="2004-11-04" state="MA" county="Franklin" number="6736" precinct="2216">
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="Yes" name="Presidency">
+      <selection writein="No" party="" name="President">George Washington</selection>
+      <selection writein="No" party="" name="Vice President">Abraham Lincoln</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="Senator">
+      <selection writein="No">Jane Addams</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="U.S. Representative">
+      <selection writein="No">Ignace Paderewski</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="Treasurer">
+      <selection writein="Yes">Donald Duck</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="Attorney General">
+      <selection writein="No">Thomas P. O'Neill Jr</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="Commis. of Education">
+      <selection writein="Yes">Mickey Mouse</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="State Senate">
+      <selection writein="No">No preference indicated</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="State Assembly">
+      <selection writein="No">Langston Hughes</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="Transportation Initiative">
+      <selection writein="No">No preference indicated</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="Health care initiative">
+      <selection writein="No">No</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="1" ordered="No" coupled="No" name="Term limits">
+      <selection writein="No">Yes</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="3" ordered="No" coupled="No" name="Cat Catcher">
+      <selection writein="No">Steven Spielberg</selection>
+      <selection writein="No">Queen Latifah</selection>
+      <selection writein="No">Eddie Murphy</selection>
+    </contest>
+    <contest minVotes="0" maxVotes="8" ordered="Yes" coupled="No" name="County Commissioner">
+      <selection writein="Yes">Goofy</selection>
+      <selection writein="No">William Hewlett</selection>
+      <selection writein="No">David Packard</selection>
+      <selection writein="No">Steve Jobs</selection>
+      <selection writein="No">Steve Wozniak</selection>
+      <selection writein="No">Philip Kahn</selection>
+      <selection writein="No">William Shockely</selection>
+      <selection writein="No">Gordon Moore</selection>
+    </contest>
+  </cast_ballot>

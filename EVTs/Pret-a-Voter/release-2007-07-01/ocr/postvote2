@@ -1,0 +1,4 @@
+#! /bin/sh
+
+# $1 = filename  ; 2nd param=printername
+./postvote $1 hp2

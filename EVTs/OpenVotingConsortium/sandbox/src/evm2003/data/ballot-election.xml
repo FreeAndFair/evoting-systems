@@ -1,0 +1,118 @@
+<ballot election_date="2008-11-04" country="US" state="CA"
+        county="Santa Clara County" precinct="2216">
+  <contest ordered="No" coupled="Yes" allow_writein="Yes" name="Presidency">
+    <selection party="Republican" name="President">George Washington</selection>
+    <selection party="Republican" name="Vice President">Abraham Lincoln</selection>
+    <selection party="Democrat" name="President">Thomas Jefferson</selection>
+    <selection party="Democrat" name="Vice President">Harry S. Truman</selection>
+    <selection party="Green" name="President">Rachel Carson</selection>
+    <selection party="Green" name="Vice President">John Muir</selection>
+    <selection party="Libertarian" name="President">Susan B. Anthony</selection>
+    <selection party="Libertarian" name="Vice President">Betsy Ross</selection>
+    <selection party="Socialist" name="President">V. I. Lenin</selection>
+    <selection party="Socialist" name="Vice President">Karl Marx</selection>
+    <selection party="Reform" name="President">Martin Luther King</selection>
+    <selection party="Reform" name="Vice President">John Anderson</selection>
+    <selection party="Workers" name="President">Helen Keller</selection>
+    <selection party="Workers" name="Vice President">Amelia Earhart</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="Senator">
+    <selection party="Green">Frances E. Willard</selection>
+    <selection party="Libertarian">Lucy Stone</selection>
+    <selection party="Democrat">Karl Menninger</selection>
+    <selection party="Workers">Jane Addams</selection>
+    <selection party="Socialist">Clarence Darrow</selection>
+    <selection party="Labor">William Lloyd Garrison</selection>
+    <selection party="Republican">Sidney Hillman</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="U.S. Representative">
+    <selection party="Democrat">Ignace Paderewski</selection>
+    <selection party="Republican">Lillian Hellman</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="Treasurer">
+    <selection party="Republican">Tom Cosgrove</selection>
+    <selection party="Democrat">John Gallagher</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="Attorney General">
+    <selection party="Green">Dewitt Clinton</selection>
+    <selection party="Republican">Charles Parnell</selection>
+    <selection party="Democrat">Thomas P. O'Neill Jr</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="Commis. of Education">
+    <selection party="Republican">Christian Doppler</selection>
+    <selection party="Democrat">Carl Sagan</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="State Senate">
+    <selection party="Democrat">Robert Ingersoll</selection>
+    <selection party="Republican">Martin Luther</selection>
+    <selection party="Green">Barbara Jordon</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="State Assembly">
+    <selection party="Republican">Don Lee</selection>
+    <selection party="Democrat">Langston Hughes</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="No" name="Transportation Initiative">
+    <summary>
+      <scope>Constitutional Amendment Article X, Section 19</scope>
+      <type>initiative</type>
+      <title>California Transportation Initiative For Statewide Solor
+        Powered Magnetic Levitation System</title>
+    </summary>
+    <description>
+      To reduce traffic and increase travel alternatives, this amendment
+      provides for development of a high speed solor powered magnetic
+      levitation system to run along Interstate 5.  Construction to begin
+      November 1, 2004.
+    </description>
+    <selection>Yes</selection>
+    <selection>No</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="No" name="Health care initiative">
+    <summary>
+      <scope>Constitutional Amendment Article XII, Section 10</scope>
+      <type/>
+      <title>California Universal Health Care</title>
+    </summary>
+    <description>
+      To improve accessibility to quality health care and to reduce overall
+      health care costs, this amendment provides for the establishment of a
+      signle payer Health Care System for all Californians.  Implementation
+      to take effect 1/1/05.
+    </description>
+    <selection>Yes</selection>
+    <selection>No</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="No" name="Term limits">
+    <summary>
+      <scope>Charter Amendment Referendum No. 1</scope>
+      <type>Proposed County Charter Amendement</type>
+      <title>Two Term Limit for County Commissioners</title>
+    </summary>
+    <description>
+      Shall the Santa Clara County Charter be amended to add Article II,
+      Section 2.2: A provisions limiting Commissioners to two terms?
+    </description>
+    <selection>Yes</selection>
+    <selection>No</selection>
+  </contest>
+  <contest ordered="No" coupled="No" allow_writein="Yes" name="Cat Catcher">
+    <selection>Regis Philbin</selection>
+    <selection>Oprah Winfrey</selection>
+    <selection>Howard Stern</selection>
+    <selection>Charlie Rose</selection>
+    <selection>Rosie O'Donnell</selection>
+    <selection>Carrie Fisher</selection>
+    <selection>Steven Spielberg</selection>
+    <selection>Queen Latifah</selection>
+    <selection>Eddie Murphy</selection>
+  </contest>
+  <contest ordered="Yes" coupled="No" allow_writein="Yes" name="County Commissioner">
+    <selection>David Packard</selection>
+    <selection>William Hewlett</selection>
+    <selection>Steve Jobs</selection>
+    <selection>Steve Wozniak</selection>
+    <selection>William Shockely</selection>
+    <selection>Gordon Moore</selection>
+    <selection>Philip Kahn</selection>
+  </contest>
+</ballot>

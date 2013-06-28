@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  package.html for the sos.koa package.
+  $Id: package.html,v 1.5 2004/05/10 17:20:05 hubbers Exp $
+
+  Copyright 2004 SoS Group, University of Nijmegen
+
+  Author: Joe Kiniry (kiniry@cs.kun.nl)
+
+-->
+</head>
+<body bgcolor="white">
+
+This package contains the SoS/KOA vote tally application.
+
+<h2>Package Specification</h2>
+
+<p> The <code>sos.koa</code> package is the top-most package of the
+SoS/KOA vote tally application. </p>
+
+<p> The SoS/KOA vote tally application is a software program used to
+tally the secure election results produced by the <a
+href="http://www.minbzk.nl/contents/pages/00018314/voortgangsrap_koa_03_03.pdf">KoA</a>
+(Kiezen op Afstand) Hertellen Stemmen application, developed by <a
+href="http://www.logicacmg.com/">LogicaCMG</a>, on behalf of the <a
+href="http://www.minbzk.nl/">Ministry of the Interior and Kingdom
+Relations</a> (Ministerie van Binnenlandse Zaken en
+Koninkrijksrelaties). </p>
+
+<h2>Package Authors</h2>
+
+<p> This system was written by the <a
+href="http://www.cs.kun.nl/sos/">SoS Group</a> at the <a
+href="http://www.cs.kun.nl/">Computing Science Institute</a> of the <a
+href="http://www.hosting.kun.nl/">University of Nijmegen</a>. </p>
+
+<p> The SoS Group is led by <a
+href="http://www.niii.kun.nl/~bart/">Prof. Bart Jacobs</a>.  The
+development of the SoS/KOA application was led by <a
+href="http://www.niii.kun.nl/~hubbers/">Dr. Engelbert Hubbers</a>.  <a
+href="http://www.niii.kun.nl/~martijno/">Dr. Martijn Oostdijk</a> and
+<a href="http://www.cs.kun.nl/~kiniry/">Dr. Joseph Kiniry</a> were the
+other two primary developers.  <a
+href="http://www.niii.kun.nl/~ceesb">Mr. Cees-Bart Breunesse</a> and
+<a href="http://www.niii.kun.nl/~flaviog">Mr. Flavio Garcia</a>
+provided some technical support as well. </p>
+
+<h2>System Structure</h2>
+
+<p> The SoS/KOA application has three main sub-components:
+<ol>
+  <li><strong>Data Input/Output</strong> - This subcomponent of the
+      system is responsible for performing all file input and output.
+      The following classes are part of the <em>data
+      input/output</em> subsystem:
+      <ul>
+        <li>{@link sos.koa.AbstractObjectReader}</li>
+        <li>{@link sos.koa.AuditLog}</li>
+        <li>{@link sos.koa.AuditLogXMLReader}</li>
+        <li>{@link sos.koa.CandidateListXMLReader}</li>
+        <li>{@link sos.koa.EasyGenerationContentHandlerProxy}</li>
+      </ul>
+  </li>
+  <li><strong>Data Structures</strong> - The core components of the
+      system responsible for representing all data and tallying all
+      results.  The following classes are part of the <em>data
+      structures</em> subsystem:
+      <ul>
+        <li>{@link sos.koa.Candidate}</li>
+        <li>{@link sos.koa.CandidateList}</li>
+        <li>{@link sos.koa.CandidateListMetadata}</li>
+        <li>{@link sos.koa.District}</li>
+        <li>{@link sos.koa.KiesKring}</li>
+        <li>{@link sos.koa.KiesLijst}</li>
+        <li>{@link sos.koa.VoteSet}</li>
+      </ul>
+  </li>
+  <li><strong>GUI</strong> - This subcomponent of the system is
+      responsible for performing all graphical user input and output.
+      The following classes are part of the <em>GUI</em> subsystem:
+      <ul>
+        <li>{@link sos.koa.ClearAdapter}</li>
+        <li>{@link sos.koa.CountAdapter}</li>
+        <li>{@link sos.koa.DecryptAdapter}</li>
+        <li>{@link sos.koa.ExitAdapter}</li>
+        <li>{@link sos.koa.FileNameFilter}</li>
+        <li>{@link sos.koa.HelpAdapter}</li>
+        <li>{@link sos.koa.ImportCandidatesAdapter}</li>
+        <li>{@link sos.koa.ImportKeyAdapter}</li>
+        <li>{@link sos.koa.ImportVotesAdapter}</li>
+        <li>{@link sos.koa.MenuPanel}</li>
+        <li>{@link sos.koa.ReportAdapter}</li>
+        <li>{@link sos.koa.RestartAdapter}</li>
+        <li>{@link sos.koa.Task}</li>
+        <li>{@link sos.koa.ViewPdf}</li>
+      </ul>
+  </li>
+  <li><strong>Utility Classes</strong> - A small number of classes are
+      utility classes containing code shared by other subsystems.
+      The following classes are part of the <em>utility</em>
+      subsystem:
+      <ul>
+        <li>{@link sos.koa.Hex}</li>
+        <li>{@link sos.koa.KOAConstants}</li>
+        <li>{@link sos.koa.KOAException}</li>
+      </ul>
+  </li>
+</ol>
+
+<p> The classes
+{@link sos.koa.AbstractObjectReader},
+{@link sos.koa.AuditLogXMLReader},
+{@link sos.koa.CandidateListXMLReader} and
+{@link sos.koa.EasyGenerationContentHandlerProxy}
+are modified versions of classes released
+under the Apache Software License, Version 1.1, and were originally
+created by James Tauber (<code>jtauber AT jtauber.com</code>). For more
+information on the Apache Software Foundation, please see <a
+href="http://www.apache.org/">http://www.apache.org/</a>. </p>
+
+<h2>Libraries User</h2>
+
+<ul>
+  <li> The Apache <a href="http://avalon.apache.org/">Avalon Framework</a>
+  </li>
+      
+  <li> The Apache XML Project's <a
+      href="http://xml.apache.org/batik/">Batik SVG toolkit</a>
+  </li>
+      
+  <li> The <a href="http://www.bouncycastle.org/">Bouncy Castle Crypto
+      APIs</a>
+  </li>
+
+  <li> The <a href=""http://www.junit.org/>jUnit</a> Java unit test
+      framework
+  </li>
+
+  <li> The <a href="http://xml.apache.org/fop/">FOP (Formatting
+      Objects Processor)</a> package
+  </li>
+
+  <li> The SAX and DOM XML parsers that are part of the JDK 1.4 API
+  </li>
+</ul>  
+
+<h2>Tools Used</h2>
+
+<p> The following tools were used to develop the SoS/KOA vote tally
+application. </p>
+
+<ul>
+  <li> The <a href="http://www.jmlspecs.org/">JML tool suite</a>,
+      including the JML runtime assertion checking (RAC) compiler
+      <em>jmlrac</em>, the
+      JML unit test generation tool <em>jmlunit</em>, and the JML
+      documentation generation tool <em>jmldoc</em>. <br />
+
+      The Java Modeling Language (JML) is a behavioral interface
+      specification language that can be used to specify the behavior
+      of Java modules. It combines the design by contract approach of
+      Eiffel and the model-based specification approach of the Larch
+      family of interface specification languages, with some elements
+      of the refinement calculus. <br />
+
+      JML has been used to express the semantics of all core
+      classes of the SoS/KOA application.  The core classes are those
+      classes in the <em>data structures</em> subcomponent, discussed
+      above.
+  </li>
+
+  <li> The <a
+      href="http://www.cs.kun.nl/sos/research/escjava/">ESC/Java2</a>
+      verification tool <br />
+
+      ESC/Java2 has been used to verify some methods of all data
+      structure subcomponents of the SoS/KOA system.  <em>Verify</em>,
+      in this context, means that ESC/Java2 was used to automatically
+      prove that the provided implementation fulfills the associated
+      contract specified with JML. </p>
+  </li>
+
+  <li> The <a
+      href="http://www.ej-technologies.com/products/jprofiler/overview.html">jProfiler</a>
+      Java code profiler
+  </li>
+      
+  <li> The <a href="http://www.bluemarsh.com/java/jswat/">jSwat</a>
+      graphical Java code debugger
+  </li>
+
+  <li> The <a href="http://checkstyle.sourceforge.net/">CheckStyle</a>
+      tool
+  </li>
+      
+  <li> The <a href="http://www.eclipse.org/">Eclipse development
+      environment</a>
+  </li>
+      
+  <li> The <a href="http://www.vim.org/">Vim</a> text editor
+  </li>
+      
+  <li> <a href="http://www.gnu.org/software/emacs/emacs.html">GNU Emacs</a>
+  </li>
+      
+  <li> The <a href="http://cedet.sourceforge.net/">Collection of Emacs
+      Development Environment Tools</a>
+  </li>
+      
+  <li> The <a href="http://jdee.sunsite.dk/">Java Development
+      Environment for Emacs</a>
+  </li>
+      
+  <li> The <a href="http://ecb.sourceforge.net/">Emacs Code Browser</a>
+  </li>
+      
+  <li> The <a href="http://www.xref-tech.com/">Xrefactory</a> package
+      for Emacs
+  </li>
+      
+</ul>
+
+<h2>Development Methodology</h2>
+
+<p> The SoS/KOA application was developed using the following methodology:
+
+<ul>
+  <li> The system design was decomposed into three primary units: Data
+      Input & Output, Data Structures, and GUI.</li>
+
+  <li> One developer took responsibility for each component:
+      Dr. Engelbert Hubbers (Data I/O), Dr. Joseph Kiniry (Data
+      Structures), and Dr. Martijn Oostdijk (GUI). </li>
+
+  <li> It was decided that the classes of the system most critical for
+      application correctness were the data structure
+      components. Accordingly, these were the components that were to
+      be most heavily annotated with JML and where most of the
+      testing and verification effort were to be focused. </li>
+
+  <li> Appropriate APIs were chosen for the various subsystems.  The
+      primary choices where those of cryptography (a JCE
+      implementation), XML data I/O (JDK packages under
+      <code>javax.xml</code>), and presentation (Apache FOP and its
+      dependencies). </li>
+
+  <li> It was decided that the APIs of this set most critical to
+      system correctness were the cryptography APIs.  Thus, JML
+      annotations should be written for those APIs as early as
+      possible.  Such annotations would help detect incorrect API use
+      early in the design process and would be used later for system
+      testing and verification. Joe took responsibility for writing
+      basic specifications for the crypto APIs. </li>
+
+  <li> Design and development of the Data I/O subsystem and GUI
+      subsystem proceeded semi-independently. </li>
+
+  <li> Since the application had a fairly well-specified, sequential
+      HCI specification, and because the final results are completely
+      dependent upon the data selected, loaded, decrypted, and
+      interpreted in a serious of input stages, it was decided that
+      a finite-state machine model would be used to specify the GUI
+      and Data I/O subcomponents of the system. <br />
+
+      That state machine is embodied in the invariants of the {@link
+      sos.koa.MenuPanel} class and their dependencies.  The final verification
+      effort depends upon these states to express that the final vote
+      tallies the right information. </li>
+
+  <li> The specifications (types and JML annotations) for the classes
+      of the core data structures subcomponent were written as
+      completely as possible before any code for those classes was
+      written.  The specifications were checked, initially and
+      continually during development, by running the ESC/Java2
+      typechecker and the JML typechecker tools. </li>
+
+  <li> The implementation of the core data structures were written
+      according to the previously written specifications.  These
+      implementations were checked, using the JML RAC compiler and the
+      ESC/Java2 verification tool, continually during development. </li>
+
+  <li> Integration of the three components began when each was nearly
+      complete.  During integration a number of small issues were
+      brought to light and the design and implementations of the
+      related classes were adjusted for integration. </li>
+
+  <li> GUI full system testing began, using the pre-supplied input
+      files, as well as some larger fabricated input files.
+      Initially, system testing took place only on the Linux
+      platform. </li>
+      
+  <li> Unit tests were generated for all core data structure classes
+      of the system using the JML unit test generation tool
+      <em>jmlunit</em>.  These test guarantee that every constructor
+      and every method of every core class is interactively tested
+      against its contract for every interesting data value of the
+      system as well for a large set of random input values. <br />
+
+      <!-- (+ 18 33 20 35 48 101) -->
+      In a standard test execution, a total of 255 tests were run
+      during each test execution cycle.  The test execution cycle has
+      been run hundreds of times.  This means that every core class
+      has been tested for (tens of) thousands of possible data values.
+
+  <li> The full system was profiled, both during GUI testing and during
+      unit testing, to determine if there were any memory or
+      performance issues that needed to be resolved.  A few small
+      issues were identified and adjusted, but no real problems were
+      highlighted during this analysis. </li>
+      
+  <li> Documentation and specification coverage was analyzed for the
+      full system.  It was decided that full coverage was necessary
+      only on the core data structure classes, thus they were reviewed
+      for 100% coverage. </li>
+
+  <li> GUI system testing took place on the Mac OS X and Windows
+      platforms.  The only issue to address on both platforms was how
+      to automatically spawn the appropriate PDF viewer to show the
+      final reports for the application. </li>
+
+  <li> The User's Guide was written. </li>
+
+  <li> The high-level system documentation (like this file) was
+      written. </li>
+
+  <li> The application was delivered to the Ministry. </li>
+      
+</ul>
+
+</p>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

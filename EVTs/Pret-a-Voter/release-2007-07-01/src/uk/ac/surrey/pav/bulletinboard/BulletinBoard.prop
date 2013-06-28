@@ -1,0 +1,3 @@
+dbconnstring=jdbc:mysql://localhost/pretavoter
+dbusername=root
+dbpassword=

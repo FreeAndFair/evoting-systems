@@ -1,0 +1,24 @@
+#! /bin/sh
+
+/sbin/ifconfig eth0 down
+/sbin/ifconfig wlan0 down
+# /sbin/iwconfig wlan0 rate 11M auto
+/sbin/iwconfig wlan0 key 7B6C-6013-233E-D13C-CAF6-3086-13
+/sbin/iwconfig wlan0 mode Managed
+/sbin/iwconfig wlan0 essid clone
+# /sbin/iwconfig wlan0 channel 13
+# /sbin/iwconfig wlan0 ap 00:04:96:0C:0F:D0
+# /sbin/iwconfig wlan0 essid SCSECM01
+# /sbin/iwconfig wlan0 channel 4
+# /sbin/iwconfig wlan0 ap 00:04:96:0C:1C:20
+/sbin/iwconfig wlan0 commit
+/sbin/ifconfig wlan0 up
+sleep 2
+
+/sbin/ifconfig wlan0
+/sbin/iwconfig wlan0
+/sbin/iwlist wlan0 scan | fgrep ESSID
+
+kill -9 `cat /var/run/dhclient.pid`
+/sbin/dhclient wlan0
+netstat -rn

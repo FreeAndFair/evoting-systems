@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="creationtime" type="xs:dateTime"/>
+	<xs:element name="districtcount">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="import">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="metadata"/>
+				<xs:element ref="kieskring" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="action" type="xs:string" fixed="replace"/>
+			<xs:attribute name="contenttype" type="xs:string" fixed="kieslijst"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="kieskring">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="district" maxOccurs="unbounded"/>
+				<xs:element ref="kieslijst" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="nummer">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="99"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="naam">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="district">
+		<xs:complexType>
+			<xs:attribute name="nummer">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="99999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="naam">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="kieskringcount">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="kieslijst">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="positie" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="nummer" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="99"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="groepering" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<!-- 11-07-2003, KvdP, Changed from 0 to 1 to allow empty strings. -->
+						<xs:minLength value="0"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="kieslijstcount">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="metadata">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="requestreference"/>
+				<xs:element ref="creationtime"/>
+				<xs:element ref="kieskringcount"/>
+				<xs:element ref="districtcount"/>
+				<xs:element ref="kieslijstcount"/>
+				<xs:element ref="positiecount"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="positie">
+		<xs:complexType>
+			<xs:attribute name="nummer" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="99"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="achternaam" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="voorletters" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="roepnaam" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<!-- MyR, 10-06-2003 - changed from 1 to 0. It is a required field, but doesn't need to be filled -->
+						<xs:minLength value="0"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="geslacht" use="required">
+				<xs:simpleType>
+					<!-- MyR, 10-06-2003 - changed from NMTOKEN to string. It is a required field, but doesn't need to be filled; NMTOKEN didn't accept empty strings in an enumeration -->
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="M"/>
+						<xs:enumeration value="V"/>
+						<xs:enumeration value=""/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="woonplaats" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="positiecount">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer">
+				<xs:minInclusive value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="requestreference" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,102 @@
+<ballotLookup>
+<column ID="1">
+<checkbox ID="1" grp="1" select="1">1A</checkbox>
+<checkbox ID="2" grp="1" select="1">1B</checkbox>
+<checkbox ID="3" grp="1" select="1">1C</checkbox>
+<checkbox ID="4" grp="1" select="1">1D</checkbox>
+<checkbox ID="5" grp="1" select="1">1E</checkbox>
+<checkbox ID="6" grp="1" select="1">1F</checkbox>
+<checkbox ID="7" grp="1" select="1">1G</checkbox>
+</column>
+<column ID="2">
+<checkbox ID="1" grp="2" select="1">2A</checkbox>
+<checkbox ID="2" grp="2" select="1" >2B</checkbox>
+<checkbox ID="3" grp="2" select="1">2C</checkbox>
+<checkbox ID="4" grp="2" select="1">2D</checkbox>
+<checkbox ID="5" grp="2" select="1">1E</checkbox>
+<checkbox ID="6" grp="2" select="1">2F</checkbox>
+<checkbox ID="7" grp="2" select="1">2G</checkbox>
+</column>
+<column ID="3">
+<checkbox ID="1" grp="3" select="1">3A</checkbox>
+<checkbox ID="2" grp="3" select="1">3B</checkbox>
+<checkbox ID="3" grp="3" select="1">3C</checkbox>
+<checkbox ID="4" grp="3" select="1">3D</checkbox>
+<checkbox ID="5" grp="3" select="1">3E</checkbox>
+<checkbox ID="6" grp="3" select="1">3F</checkbox>
+<checkbox ID="7" grp="3" select="1">3G</checkbox>
+</column>
+<column ID="4">
+<checkbox ID="1" grp="4" select="1">4A</checkbox>
+<checkbox ID="2" grp="4" select="1">4B</checkbox>
+<checkbox ID="3" grp="4" select="1">4C</checkbox>
+<checkbox ID="4" grp="4" select="1">4D</checkbox>
+<checkbox ID="5" grp="4" select="1">4E</checkbox>
+<checkbox ID="6" grp="4" select="1">4F</checkbox>
+<checkbox ID="7" grp="4" select="1">4G</checkbox>
+</column>
+<column ID="5">
+<checkbox ID="1" grp="5" select="1">5A</checkbox>
+<checkbox ID="2" grp="5" select="1">5B</checkbox>
+<checkbox ID="3" grp="5" select="1">5C</checkbox>
+<checkbox ID="4" grp="5" select="1">5D</checkbox>
+<checkbox ID="5" grp="5" select="1">5E</checkbox>
+<checkbox ID="6" grp="5" select="1">5F</checkbox>
+<checkbox ID="7" grp="5" select="1">5G</checkbox>
+</column>
+<column ID="6">
+<checkbox ID="1" grp="6" select="1">6A</checkbox>
+<checkbox ID="2" grp="6" select="1">6B</checkbox>
+<checkbox ID="3" grp="6" select="1">6C</checkbox>
+<checkbox ID="4" grp="6" select="1">6D</checkbox>
+<checkbox ID="5" grp="6" select="1">6E</checkbox>
+<checkbox ID="6" grp="6" select="1">6F</checkbox>
+<checkbox ID="7" grp="6" select="1">6G</checkbox>
+</column>
+<column ID="7">
+<checkbox ID="1" grp="7" select="1">7A</checkbox>
+<checkbox ID="2" grp="7" select="1">7B</checkbox>
+<checkbox ID="3" grp="7" select="1">7C</checkbox>
+<checkbox ID="4" grp="7" select="1">7D</checkbox>
+<checkbox ID="5" grp="7" select="1">7E</checkbox>
+<checkbox ID="6" grp="7" select="1">7F</checkbox>
+<checkbox ID="7" grp="7" select="1">7G</checkbox>
+</column>
+<column ID="8">
+<checkbox ID="1" grp="8" select="1">8A</checkbox>
+<checkbox ID="2" grp="8" select="1">8B</checkbox>
+<checkbox ID="3" grp="8" select="1">8C</checkbox>
+<checkbox ID="4" grp="8" select="1">8D</checkbox>
+<checkbox ID="5" grp="8" select="1">8E</checkbox>
+<checkbox ID="6" grp="8" select="1">8F</checkbox>
+<checkbox ID="7" grp="8" select="1">8G</checkbox>
+</column>
+<column ID="9">
+<checkbox ID="1" grp="9" select="1">9A</checkbox>
+<checkbox ID="2" grp="9" select="1">9B</checkbox>
+<checkbox ID="3" grp="9" select="1">9C</checkbox>
+<checkbox ID="4" grp="9" select="1">9D</checkbox>
+<checkbox ID="5" grp="9" select="1">9E</checkbox>
+<checkbox ID="6" grp="9" select="1">9F</checkbox>
+<checkbox ID="7" grp="9" select="1">9G</checkbox>
+</column>
+<column ID="10">
+<checkbox ID="1" grp="10" select="1">10A</checkbox>
+<checkbox ID="2" grp="10" select="1">10B</checkbox>
+<checkbox ID="3" grp="10" select="1">10C</checkbox>
+<checkbox ID="4" grp="10" select="1">10D</checkbox>
+<checkbox ID="5" grp="10" select="1">10E</checkbox>
+<checkbox ID="6" grp="10" select="1">10F</checkbox>
+<checkbox ID="7" grp="10" select="1">10G</checkbox>
+</column>
+<column ID="11">
+<checkbox ID="1" grp="11" select="1">11A</checkbox>
+<checkbox ID="2" grp="11" select="1">11B</checkbox>
+<checkbox ID="3" grp="11" select="1">11C</checkbox>
+<checkbox ID="4" grp="11" select="1">11D</checkbox>
+<checkbox ID="5" grp="11" select="1">11E</checkbox>
+<checkbox ID="6" grp="11" select="1">11F</checkbox>
+<checkbox ID="7" grp="11" select="1">11G</checkbox>
+</column>
+</ballotLookup>
+
