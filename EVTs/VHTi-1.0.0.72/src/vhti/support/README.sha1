@@ -1,6 +1,0 @@
-The SHA1 implementation (in sha1.c and sha1.h) is used only by the
-deterministic pseudo-random number generator in fipsprng.c.  It is
-indeed redundant, since we're linking with OpenSSL, which itself
-provides a SHA1 implementation.  But we haven't changed fipsprng to
-use the OpenSSL implementation; it's not clear if there's any benefit
-to that (besides removing the redundancy).

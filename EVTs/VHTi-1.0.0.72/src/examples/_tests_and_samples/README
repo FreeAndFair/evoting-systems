@@ -1,4 +1,0 @@
-This is a "utility project" whose sole purpose in life is to ease the
-building of all the tests and samples.  If you make it the "active
-project" in Visual Studio, and hit F7, all the tests and samples will
-get built.

@@ -1,8 +1,0 @@
-To run all these, do `./womb-to-tomb.sh'.
-
-Note that many of these programs output a lot of XML data; often they
-dump out the same data in a few slightly-different forms (i.e.,
-they'll dump out both key generation parameters *and* crypto group
-parameters, even though the latter is entirely contained within the
-former).  This is for the benefit of the XML validation tests, which
-use those files as test data.
