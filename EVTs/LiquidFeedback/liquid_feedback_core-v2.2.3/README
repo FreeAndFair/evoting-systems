@@ -1,0 +1,58 @@
+
+Setup the database:
+$ createdb liquid_feedback
+$ psql -v ON_ERROR_STOP=1 -f core.sql liquid_feedback
+
+Optionally insert demo data:
+$ psql -v ON_ERROR_STOP=1 -f demo.sql liquid_feedback
+
+Compile lf_update binary:
+$ make
+
+Ensure that "lf_update dbname=liquid_feedback" and
+"lf_update_suggestion_order dbname=liquid_feedback" are called
+regularly! It is required to run these commands regularly
+(i.e. every 5 minutes via cron) to update cached supporter counts,
+to change the state of issues when neccessary, to calculate the
+result of votings, etc.  If you wish, copy the created lf_update
+and lf_update_suggestion_order files to /usr/local/bin or a
+similar directory.
+
+It is possible to run these two commands in parallel, if a setup
+requires splitting the load to multiple processor cores. In other
+cases it is recommended to run "lf_update" first, and then
+"lf_update_suggestion_order".
+
+On successful run, these commands will not produce any output
+and exit with code 0. The command "lf_update_suggestion_order" may
+be called with a first argument of "-v" to print log output.
+
+NOTE: When writing to the database, some INSERTs must be executed
+      within the same transaction, e.g. issues can't exist without
+      an initiative and vice versa.
+
+To create an export file, which is containing all but private data,
+you may use the lf_export shell-script:
+$ lf_export liquid_feedback export.sql.gz
+
+Refer to source code of function "delete_private_data"() to see,
+which data gets deleted. If you need a different behaviour, please
+copy the function and modify the lf_export shell script accordingly.
+
+To uninstall the software, delete the lf_update binary
+and drop the database by entering the following command:
+$ dropdb liquid_feedback
+
+Updating is done using the update scripts in the update/ directory.
+Do not forget to make backups, before installing any updates.
+After updating it is recommended to recreate the schema as follows
+(assuming the database superuser is named "postgres"):
+$ pg_dump --disable-triggers --data-only DATABASE_NAME > tmp.sql
+$ dropdb DATABASE_NAME
+$ createdb DATABASE_NAME
+$ psql -v ON_ERROR_STOP=1 -f core.sql DATABASE_NAME
+$ su postgres  # (execute following command as database superuser)
+$ psql -v ON_ERROR_STOP=1 -f tmp.sql DATABASE_NAME
+$ exit         # leave "su" command
+$ rm tmp.sql
+
