@@ -1,0 +1,1186 @@
+﻿<WorkflowService mc:Ignorable="sap" ConfigurationName="CalculatePR" sap:VirtualizedContainerService.HintSize="2594,3484" Name="CalculatePR" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="clr-namespace:Microsoft.VisualBasic;assembly=System" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://tempuri.org/" xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:System;assembly=System" xmlns:s2="clr-namespace:System;assembly=System.Xml" xmlns:s3="clr-namespace:System;assembly=System.Core" xmlns:s4="clr-namespace:System;assembly=System.ServiceModel" xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System.ServiceModel" xmlns:scg2="clr-namespace:System.Collections.Generic;assembly=System.Core" xmlns:scg3="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:ssa="clr-namespace:System.ServiceModel.Activities;assembly=System.ServiceModel.Activities" xmlns:ssx="clr-namespace:System.ServiceModel.XamlIntegration;assembly=System.ServiceModel" xmlns:st="clr-namespace:System.Text;assembly=mscorlib" xmlns:vcb="clr-namespace:Vec.ComputerCount.BL;assembly=Vec.ComputerCount.BL" xmlns:vce="clr-namespace:Vec.Common.Entities;assembly=Vec.Common.Entities" xmlns:vce1="clr-namespace:Vec.ComputerCount.Entities;assembly=Vec.ComputerCount.Entities" xmlns:vfc="clr-namespace:Vec.Framework.Core;assembly=Vec.Framework.Core" xmlns:vscw="clr-namespace:Vec.Services.ComputerCount.WF;assembly=Vec.Services.ComputerCount.WF" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+    </scg3:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <p1:Sequence DisplayName="Sequential Service" sad:XamlDebuggerXmlReader.FileName="C:\Projects\Turing\Trunk\Dev\ComputerCount\Vec.Services.ComputerCount.WF\CalculatePR.xamlx" sap:VirtualizedContainerService.HintSize="2564,3454" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+    <p1:Sequence.Variables>
+      <p1:Variable x:TypeArguments="vce1:MResolveRequest" Default="[New MResolveRequest()]" Name="ResolveTieRequest" />
+      <p1:Variable x:TypeArguments="vscw:ProcessStruct" Default="[New ProcessStruct()]" Name="Process" />
+    </p1:Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg3:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <p1:Sequence sap:VirtualizedContainerService.HintSize="2542,1158">
+      <p1:Sequence.Variables>
+        <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+      </p1:Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg3:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Receive x:Name="__ReferenceID0" CanCreateInstance="True" sap:VirtualizedContainerService.HintSize="418,86" OperationName="Initialise" ServiceContractName="p:ICalculate">
+        <Receive.CorrelationInitializers>
+          <RequestReplyCorrelationInitializer CorrelationHandle="[__handle1]" />
+          <QueryCorrelationInitializer>
+            <XPathMessageQuery x:Key="key1">
+              <XPathMessageQuery.Namespaces>
+                <ssx:XPathMessageContextMarkup>
+                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                </ssx:XPathMessageContextMarkup>
+              </XPathMessageQuery.Namespaces>sm:body()/xgSc:Initialise/xgSc:ProcessId</XPathMessageQuery>
+          </QueryCorrelationInitializer>
+        </Receive.CorrelationInitializers>
+        <ReceiveParametersContent>
+          <p1:OutArgument x:TypeArguments="s:Guid" x:Key="ProcessId">[Process.ProcessId]</p1:OutArgument>
+          <p1:OutArgument x:TypeArguments="vce1:MCalculateRequest" x:Key="Request">[Process.Request]</p1:OutArgument>
+        </ReceiveParametersContent>
+      </Receive>
+      <SendReply Request="{x:Reference __ReferenceID0}" DisplayName="SendReplyToReceive" sap:VirtualizedContainerService.HintSize="418,86" />
+      <p1:TryCatch sap:VirtualizedContainerService.HintSize="418,782">
+        <p1:TryCatch.Try>
+          <p1:Sequence sap:VirtualizedContainerService.HintSize="400,604">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg3:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <vscw:CreateCalculationObject4PR CalcMethod="[Vec.Common.Entities.CalculationMethod.Proportional]" CalculationId="[Process.ProcessId]" ConnectionString="[Process.Request.ConnectionString]" ElectionElectorateVacancyId="[Process.Request.SubElection]" ExcludedPositions="[Process.Request.ExcludedPositions]" sap:VirtualizedContainerService.HintSize="242,22" Result="[Process.CalculateObject]" TieMethod="[Process.Request.TieMethod]" Vacancies="[Process.Request.Vacancies]" />
+            <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+              <p1:Assign.To>
+                <p1:OutArgument x:TypeArguments="x:Boolean">[Process.CalculateObject.IsSavingData]</p1:OutArgument>
+              </p1:Assign.To>
+              <p1:Assign.Value>
+                <p1:InArgument x:TypeArguments="x:Boolean">[Process.Request.SaveData]</p1:InArgument>
+              </p1:Assign.Value>
+            </p1:Assign>
+            <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+              <p1:Assign.To>
+                <p1:OutArgument x:TypeArguments="s:Guid">[Process.CalculateObject.CalculationId]</p1:OutArgument>
+              </p1:Assign.To>
+              <p1:Assign.Value>
+                <p1:InArgument x:TypeArguments="s:Guid">[Process.ProcessId]</p1:InArgument>
+              </p1:Assign.Value>
+            </p1:Assign>
+            <p1:InvokeMethod sap:VirtualizedContainerService.HintSize="242,127" MethodName="LoadPapers">
+              <p1:InvokeMethod.TargetObject>
+                <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+              </p1:InvokeMethod.TargetObject>
+            </p1:InvokeMethod>
+            <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+              <p1:Assign.To>
+                <p1:OutArgument x:TypeArguments="x:Int32">[Process.Response.Quota]</p1:OutArgument>
+              </p1:Assign.To>
+              <p1:Assign.Value>
+                <p1:InArgument x:TypeArguments="x:Int32">[Process.CalculateObject.Quota]</p1:InArgument>
+              </p1:Assign.Value>
+            </p1:Assign>
+          </p1:Sequence>
+        </p1:TryCatch.Try>
+        <p1:TryCatch.Catches>
+          <p1:Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,20">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg3:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <p1:ActivityAction x:TypeArguments="s:Exception">
+              <p1:ActivityAction.Argument>
+                <p1:DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </p1:ActivityAction.Argument>
+              <p1:Sequence sap:VirtualizedContainerService.HintSize="398,278">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg3:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.Error]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+                <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:String">[Process.Response.Error]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:String">[exception.Message]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:Sequence>
+            </p1:ActivityAction>
+          </p1:Catch>
+        </p1:TryCatch.Catches>
+      </p1:TryCatch>
+    </p1:Sequence>
+    <p1:DoWhile sap:VirtualizedContainerService.HintSize="2542,2132" Condition="[Process.State &lt;&gt; CalculateState.Delivered And Process.State &lt;&gt; CalculateState.Cancel]">
+      <p1:Sequence sap:VirtualizedContainerService.HintSize="2516,2017">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg3:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <p1:TryCatch sap:VirtualizedContainerService.HintSize="2494,1804">
+          <p1:TryCatch.Try>
+            <p1:Sequence sap:VirtualizedContainerService.HintSize="2476,1626">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg3:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p1:Pick sap:VirtualizedContainerService.HintSize="2454,1290">
+                <p1:PickBranch DisplayName="Calculate Branch" sap:VirtualizedContainerService.HintSize="307,1244">
+                  <p1:PickBranch.Variables>
+                    <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+                  </p1:PickBranch.Variables>
+                  <p1:PickBranch.Trigger>
+                    <p1:Sequence sap:VirtualizedContainerService.HintSize="277,210">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg3:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <x:Reference>__ReferenceID1</x:Reference>
+                    </p1:Sequence>
+                  </p1:PickBranch.Trigger>
+                  <p1:Sequence sap:VirtualizedContainerService.HintSize="277,307">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg3:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <p1:Assign sap:VirtualizedContainerService.HintSize="255,57">
+                      <p1:Assign.To>
+                        <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                      </p1:Assign.To>
+                      <p1:Assign.Value>
+                        <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.Starting]</p1:InArgument>
+                      </p1:Assign.Value>
+                    </p1:Assign>
+                    <SendReply DisplayName="SendReplyToReceive" sap:VirtualizedContainerService.HintSize="255,86">
+                      <SendReply.Request>
+                        <Receive x:Name="__ReferenceID1" sap:VirtualizedContainerService.HintSize="255,86" OperationName="Calculate" ServiceContractName="p:ICalculate">
+                          <Receive.CorrelatesOn>
+                            <XPathMessageQuery x:Key="key1">
+                              <XPathMessageQuery.Namespaces>
+                                <ssx:XPathMessageContextMarkup>
+                                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                                </ssx:XPathMessageContextMarkup>
+                              </XPathMessageQuery.Namespaces>sm:body()/xgSc:Calculate/xgSc:ProcessId</XPathMessageQuery>
+                          </Receive.CorrelatesOn>
+                          <Receive.CorrelationInitializers>
+                            <RequestReplyCorrelationInitializer CorrelationHandle="[__handle1]" />
+                          </Receive.CorrelationInitializers>
+                          <ReceiveParametersContent>
+                            <p1:OutArgument x:TypeArguments="s:Guid" x:Key="ProcessId" />
+                          </ReceiveParametersContent>
+                        </Receive>
+                      </SendReply.Request>
+                      <SendParametersContent />
+                    </SendReply>
+                  </p1:Sequence>
+                </p1:PickBranch>
+                <p1:PickBranch DisplayName="Get Status Branch" sap:VirtualizedContainerService.HintSize="525,1244">
+                  <p1:PickBranch.Variables>
+                    <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handleGetStatus" />
+                  </p1:PickBranch.Variables>
+                  <p1:PickBranch.Trigger>
+                    <p1:Sequence sap:VirtualizedContainerService.HintSize="495,210">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg3:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <x:Reference>__ReferenceID2</x:Reference>
+                    </p1:Sequence>
+                  </p1:PickBranch.Trigger>
+                  <p1:Sequence sap:VirtualizedContainerService.HintSize="495,498">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg3:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <p1:Assign sap:VirtualizedContainerService.HintSize="473,57">
+                      <p1:Assign.To>
+                        <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.Response.State]</p1:OutArgument>
+                      </p1:Assign.To>
+                      <p1:Assign.Value>
+                        <p1:InArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:InArgument>
+                      </p1:Assign.Value>
+                    </p1:Assign>
+                    <p1:Switch x:TypeArguments="vce1:CalculateState" Expression="[Process.State]" sap:VirtualizedContainerService.HintSize="473,151">
+                      <p1:Assign x:Key="ExclusionTie" DisplayName="Assign Excluded" sap:VirtualizedContainerService.HintSize="453,100">
+                        <p1:Assign.To>
+                          <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.Response.ExcludedCandidates]</p1:OutArgument>
+                        </p1:Assign.To>
+                        <p1:Assign.Value>
+                          <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.TiedCandidate]</p1:InArgument>
+                        </p1:Assign.Value>
+                      </p1:Assign>
+                      <p1:Assign x:Key="ElectionTie" DisplayName="Assign Excluded" sap:VirtualizedContainerService.HintSize="453,100">
+                        <p1:Assign.To>
+                          <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.Response.Candidates]</p1:OutArgument>
+                        </p1:Assign.To>
+                        <p1:Assign.Value>
+                          <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.TiedCandidate]</p1:InArgument>
+                        </p1:Assign.Value>
+                      </p1:Assign>
+                    </p1:Switch>
+                    <SendReply DisplayName="SendReplyToReceive" sap:VirtualizedContainerService.HintSize="473,86">
+                      <SendReply.Request>
+                        <Receive x:Name="__ReferenceID2" sap:VirtualizedContainerService.HintSize="255,86" OperationName="GetStatus" ServiceContractName="p:ICalculate">
+                          <Receive.CorrelatesOn>
+                            <XPathMessageQuery x:Key="key1">
+                              <XPathMessageQuery.Namespaces>
+                                <ssx:XPathMessageContextMarkup>
+                                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                                </ssx:XPathMessageContextMarkup>
+                              </XPathMessageQuery.Namespaces>sm:body()/xgSc:GetStatus/xgSc:ProcessId</XPathMessageQuery>
+                          </Receive.CorrelatesOn>
+                          <Receive.CorrelationInitializers>
+                            <RequestReplyCorrelationInitializer CorrelationHandle="[__handleGetStatus]" />
+                          </Receive.CorrelationInitializers>
+                          <ReceiveParametersContent>
+                            <p1:OutArgument x:TypeArguments="s:Guid" x:Key="ProcessId" />
+                          </ReceiveParametersContent>
+                        </Receive>
+                      </SendReply.Request>
+                      <SendParametersContent>
+                        <p1:InArgument x:TypeArguments="vce1:MCalculateResponse" x:Key="Response">[Process.Response]</p1:InArgument>
+                      </SendParametersContent>
+                    </SendReply>
+                  </p1:Sequence>
+                </p1:PickBranch>
+                <p1:PickBranch DisplayName="Resolve Tie PickBranch" sap:VirtualizedContainerService.HintSize="525,1244">
+                  <p1:PickBranch.Variables>
+                    <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle2" />
+                  </p1:PickBranch.Variables>
+                  <p1:PickBranch.Trigger>
+                    <p1:Sequence sap:VirtualizedContainerService.HintSize="495,210">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg3:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <x:Reference>__ReferenceID3</x:Reference>
+                    </p1:Sequence>
+                  </p1:PickBranch.Trigger>
+                  <p1:Sequence sap:VirtualizedContainerService.HintSize="495,401">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg3:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <SendReply DisplayName="SendReplyToReceive" sap:VirtualizedContainerService.HintSize="473,86">
+                      <SendReply.Request>
+                        <Receive x:Name="__ReferenceID3" sap:VirtualizedContainerService.HintSize="255,86" OperationName="ResolveTie" ServiceContractName="p:ICalculate">
+                          <Receive.CorrelatesOn>
+                            <XPathMessageQuery x:Key="key1">
+                              <XPathMessageQuery.Namespaces>
+                                <ssx:XPathMessageContextMarkup>
+                                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                                </ssx:XPathMessageContextMarkup>
+                              </XPathMessageQuery.Namespaces>sm:body()/xgSc:ResolveTie/xgSc:ProcessId</XPathMessageQuery>
+                          </Receive.CorrelatesOn>
+                          <Receive.CorrelationInitializers>
+                            <RequestReplyCorrelationInitializer CorrelationHandle="[__handle2]" />
+                          </Receive.CorrelationInitializers>
+                          <ReceiveParametersContent>
+                            <p1:OutArgument x:TypeArguments="s:Guid" x:Key="ProcessId" />
+                            <p1:OutArgument x:TypeArguments="vce1:MResolveRequest" x:Key="Request">[ResolveTieRequest]</p1:OutArgument>
+                          </ReceiveParametersContent>
+                        </Receive>
+                      </SendReply.Request>
+                    </SendReply>
+                    <p1:Switch x:TypeArguments="vce1:CalculateState" Expression="[Process.State]" sap:VirtualizedContainerService.HintSize="473,151">
+                      <p1:Sequence x:Key="ExclusionTie" sap:VirtualizedContainerService.HintSize="486,325">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg3:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <p1:If Condition="[Not ResolveTieRequest.SelectedCandidate Is Nothing]" sap:VirtualizedContainerService.HintSize="464,201">
+                          <p1:If.Then>
+                            <p1:Assign sap:VirtualizedContainerService.HintSize="291,100">
+                              <p1:Assign.To>
+                                <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                              </p1:Assign.To>
+                              <p1:Assign.Value>
+                                <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.ExclusionTieResolved]</p1:InArgument>
+                              </p1:Assign.Value>
+                            </p1:Assign>
+                          </p1:If.Then>
+                        </p1:If>
+                      </p1:Sequence>
+                      <p1:Sequence x:Key="ElectionTie" sap:VirtualizedContainerService.HintSize="486,325">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg3:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <p1:If Condition="[Not ResolveTieRequest.PRResolvedCandidates Is Nothing]" sap:VirtualizedContainerService.HintSize="464,201">
+                          <p1:If.Then>
+                            <p1:Assign sap:VirtualizedContainerService.HintSize="291,100">
+                              <p1:Assign.To>
+                                <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                              </p1:Assign.To>
+                              <p1:Assign.Value>
+                                <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.ElectionTieResolved]</p1:InArgument>
+                              </p1:Assign.Value>
+                            </p1:Assign>
+                          </p1:If.Then>
+                        </p1:If>
+                      </p1:Sequence>
+                    </p1:Switch>
+                  </p1:Sequence>
+                </p1:PickBranch>
+                <p1:PickBranch DisplayName="Get Result Branch" sap:VirtualizedContainerService.HintSize="516,1244">
+                  <p1:PickBranch.Variables>
+                    <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+                  </p1:PickBranch.Variables>
+                  <p1:PickBranch.Trigger>
+                    <p1:Sequence sap:VirtualizedContainerService.HintSize="486,210">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg3:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <x:Reference>__ReferenceID4</x:Reference>
+                    </p1:Sequence>
+                  </p1:PickBranch.Trigger>
+                  <p1:Sequence sap:VirtualizedContainerService.HintSize="486,920">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg3:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <p1:If Condition="[Process.State = CalculateState.Finished]" sap:VirtualizedContainerService.HintSize="464,670">
+                      <p1:If.Then>
+                        <p1:Sequence sap:VirtualizedContainerService.HintSize="301,569">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg3:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                            <p1:Assign.To>
+                              <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.Response.State]</p1:OutArgument>
+                            </p1:Assign.To>
+                            <p1:Assign.Value>
+                              <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.Delivered]</p1:InArgument>
+                            </p1:Assign.Value>
+                          </p1:Assign>
+                          <p1:Assign DisplayName="Assign Candidates" sap:VirtualizedContainerService.HintSize="242,57">
+                            <p1:Assign.To>
+                              <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.Response.Candidates]</p1:OutArgument>
+                            </p1:Assign.To>
+                            <p1:Assign.Value>
+                              <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.CalculateObject.Candidates]</p1:InArgument>
+                            </p1:Assign.Value>
+                          </p1:Assign>
+                          <p1:Assign DisplayName="Assign Distributions" sap:VirtualizedContainerService.HintSize="242,57">
+                            <p1:Assign.To>
+                              <p1:OutArgument x:TypeArguments="scg3:List(vce1:MDistribution)">[Process.Response.Distributions]</p1:OutArgument>
+                            </p1:Assign.To>
+                            <p1:Assign.Value>
+                              <p1:InArgument x:TypeArguments="scg3:List(vce1:MDistribution)">[Process.CalculateObject.Distributions]</p1:InArgument>
+                            </p1:Assign.Value>
+                          </p1:Assign>
+                          <p1:Assign DisplayName="Assign Elected candidates" sap:VirtualizedContainerService.HintSize="242,57">
+                            <p1:Assign.To>
+                              <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.Response.ElectedCandidates]</p1:OutArgument>
+                            </p1:Assign.To>
+                            <p1:Assign.Value>
+                              <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.CalculateObject.ElectedCandidates]</p1:InArgument>
+                            </p1:Assign.Value>
+                          </p1:Assign>
+                          <p1:Assign DisplayName="Assign Excluded Candidates" sap:VirtualizedContainerService.HintSize="242,57">
+                            <p1:Assign.To>
+                              <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.Response.ExcludedCandidates]</p1:OutArgument>
+                            </p1:Assign.To>
+                            <p1:Assign.Value>
+                              <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.CalculateObject.ExcludedCandidates]</p1:InArgument>
+                            </p1:Assign.Value>
+                          </p1:Assign>
+                        </p1:Sequence>
+                      </p1:If.Then>
+                    </p1:If>
+                    <SendReply DisplayName="SendReplyToReceive" sap:VirtualizedContainerService.HintSize="464,86">
+                      <SendReply.Request>
+                        <Receive x:Name="__ReferenceID4" sap:VirtualizedContainerService.HintSize="255,86" OperationName="GetResult" ServiceContractName="p:ICalculate">
+                          <Receive.CorrelatesOn>
+                            <XPathMessageQuery x:Key="key1">
+                              <XPathMessageQuery.Namespaces>
+                                <ssx:XPathMessageContextMarkup>
+                                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                                </ssx:XPathMessageContextMarkup>
+                              </XPathMessageQuery.Namespaces>sm:body()/xgSc:GetResult/xgSc:ProcessId</XPathMessageQuery>
+                          </Receive.CorrelatesOn>
+                          <Receive.CorrelationInitializers>
+                            <RequestReplyCorrelationInitializer CorrelationHandle="[__handle1]" />
+                          </Receive.CorrelationInitializers>
+                          <ReceiveParametersContent>
+                            <p1:OutArgument x:TypeArguments="s:Guid" x:Key="ProcessId" />
+                          </ReceiveParametersContent>
+                        </Receive>
+                      </SendReply.Request>
+                      <SendParametersContent>
+                        <p1:InArgument x:TypeArguments="vce1:MCalculateResponse" x:Key="Response">[Process.Response]</p1:InArgument>
+                      </SendParametersContent>
+                    </SendReply>
+                  </p1:Sequence>
+                </p1:PickBranch>
+                <p1:PickBranch DisplayName="PickBranch Cancel" sap:VirtualizedContainerService.HintSize="307,1244">
+                  <p1:PickBranch.Variables>
+                    <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle1" />
+                  </p1:PickBranch.Variables>
+                  <p1:PickBranch.Trigger>
+                    <p1:Sequence sap:VirtualizedContainerService.HintSize="277,210">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg3:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <x:Reference>__ReferenceID5</x:Reference>
+                    </p1:Sequence>
+                  </p1:PickBranch.Trigger>
+                  <p1:Sequence sap:VirtualizedContainerService.HintSize="277,210">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg3:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <SendReply DisplayName="SendReplyToReceive" sap:VirtualizedContainerService.HintSize="255,86">
+                      <SendReply.Request>
+                        <Receive x:Name="__ReferenceID5" sap:VirtualizedContainerService.HintSize="255,86" OperationName="Cancel" ServiceContractName="p:ICalculate">
+                          <Receive.CorrelatesOn>
+                            <XPathMessageQuery x:Key="key1">
+                              <XPathMessageQuery.Namespaces>
+                                <ssx:XPathMessageContextMarkup>
+                                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                                </ssx:XPathMessageContextMarkup>
+                              </XPathMessageQuery.Namespaces>sm:body()/xgSc:Cancel/xgSc:ProcessId</XPathMessageQuery>
+                          </Receive.CorrelatesOn>
+                          <Receive.CorrelationInitializers>
+                            <RequestReplyCorrelationInitializer CorrelationHandle="[__handle1]" />
+                          </Receive.CorrelationInitializers>
+                          <ReceiveParametersContent>
+                            <p1:OutArgument x:TypeArguments="s:Guid" x:Key="ProcessId" />
+                          </ReceiveParametersContent>
+                        </Receive>
+                      </SendReply.Request>
+                    </SendReply>
+                  </p1:Sequence>
+                </p1:PickBranch>
+              </p1:Pick>
+              <p1:Switch x:TypeArguments="vce1:CalculateState" Expression="[Process.State]" sap:VirtualizedContainerService.HintSize="2454,172">
+                <p1:Sequence x:Key="Starting" sap:VirtualizedContainerService.HintSize="453,251">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p1:InvokeMethod DisplayName="Distribute 1st Preferences" sap:VirtualizedContainerService.HintSize="208,127" MethodName="QueueDistributionOf1stPreferences">
+                    <p1:InvokeMethod.TargetObject>
+                      <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                    </p1:InvokeMethod.TargetObject>
+                  </p1:InvokeMethod>
+                </p1:Sequence>
+                <vscw:CandidatesResolvedOrderActivity x:Key="ElectionTieResolved" sap:VirtualizedContainerService.HintSize="453,100" MainList="[Process.CurrentSurplusTiedCandidate]" ResolvedTied="[ResolveTieRequest.PRResolvedCandidates]" Result="[Process.CurrentSurplusTiedCandidate]" />
+                <p1:Sequence x:Key="ExclusionTieResolved" sap:VirtualizedContainerService.HintSize="453,251">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p1:InvokeMethod DisplayName="Exclude Candidate" sap:VirtualizedContainerService.HintSize="208,127" MethodName="ExcludeCandidate">
+                    <p1:InvokeMethod.TargetObject>
+                      <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                    </p1:InvokeMethod.TargetObject>
+                    <p1:InArgument x:TypeArguments="vce1:MCandidate">[ResolveTieRequest.SelectedCandidate]</p1:InArgument>
+                  </p1:InvokeMethod>
+                </p1:Sequence>
+              </p1:Switch>
+            </p1:Sequence>
+          </p1:TryCatch.Try>
+          <p1:TryCatch.Catches>
+            <p1:Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="2480,20">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg3:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <p1:ActivityAction x:TypeArguments="s:Exception">
+                <p1:ActivityAction.Argument>
+                  <p1:DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </p1:ActivityAction.Argument>
+                <p1:Sequence sap:VirtualizedContainerService.HintSize="2621,278">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg3:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                    <p1:Assign.To>
+                      <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                    </p1:Assign.To>
+                    <p1:Assign.Value>
+                      <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.Error]</p1:InArgument>
+                    </p1:Assign.Value>
+                  </p1:Assign>
+                  <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                    <p1:Assign.To>
+                      <p1:OutArgument x:TypeArguments="x:String">[Process.Response.Error]</p1:OutArgument>
+                    </p1:Assign.To>
+                    <p1:Assign.Value>
+                      <p1:InArgument x:TypeArguments="x:String">[exception.Message]</p1:InArgument>
+                    </p1:Assign.Value>
+                  </p1:Assign>
+                </p1:Sequence>
+              </p1:ActivityAction>
+            </p1:Catch>
+          </p1:TryCatch.Catches>
+        </p1:TryCatch>
+        <p1:Flowchart DisplayName="PR Flowchart" sap:VirtualizedContainerService.HintSize="1363,1692">
+          <p1:Flowchart.Variables>
+            <p1:Variable x:TypeArguments="scg3:List(vce1:MCandidate)" Name="Elected" />
+            <p1:Variable x:TypeArguments="scg3:List(vce1:MCandidate)" Name="Excluded" />
+            <p1:Variable x:TypeArguments="scg3:List(vce1:MCandidateEx)" Name="TiedGroupSegment" />
+          </p1:Flowchart.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <av:Point x:Key="ShapeLocation">700,2.5</av:Point>
+              <av:Size x:Key="ShapeSize">60,75</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">730,77.5 730,112.5</av:PointCollection>
+              <x:Double x:Key="Height">1656.5</x:Double>
+              <x:Double x:Key="Width">1349</x:Double>
+            </scg3:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p1:Flowchart.StartNode>
+            <x:Reference>__ReferenceID32</x:Reference>
+          </p1:Flowchart.StartNode>
+          <p1:FlowStep x:Name="__ReferenceID6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">356,216.5</av:Point>
+                <av:Size x:Key="ShapeSize">208,127</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">460,343.5 460,366.5</av:PointCollection>
+              </scg3:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <p1:InvokeMethod DisplayName="RunNextQueuedDistribution" sap:VirtualizedContainerService.HintSize="208,127" MethodName="RunNextQueuedDistribution">
+              <p1:InvokeMethod.TargetObject>
+                <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+              </p1:InvokeMethod.TargetObject>
+            </p1:InvokeMethod>
+            <p1:FlowStep.Next>
+              <p1:FlowStep x:Name="__ReferenceID12">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">356,366.5</av:Point>
+                    <av:Size x:Key="ShapeSize">208,127</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">460,493.5 460,522.5</av:PointCollection>
+                  </scg3:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <p1:InvokeMethod DisplayName="Get passed-quota candidates" sap:VirtualizedContainerService.HintSize="208,127" MethodName="GetPassedQuotaCandidates">
+                  <p1:InvokeMethod.Result>
+                    <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.OverQuotaCandidates]</p1:OutArgument>
+                  </p1:InvokeMethod.Result>
+                  <p1:InvokeMethod.TargetObject>
+                    <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                  </p1:InvokeMethod.TargetObject>
+                </p1:InvokeMethod>
+                <p1:FlowStep.Next>
+                  <p1:FlowDecision x:Name="__ReferenceID13" Condition="[Process.OverQuotaCandidates.Count = 0]" sap:VirtualizedContainerService.HintSize="60,75">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">430,522.5</av:Point>
+                        <av:Size x:Key="ShapeSize">60,75</av:Size>
+                        <x:String x:Key="FalseLabel">Some passed Quota</x:String>
+                        <x:String x:Key="TrueLabel">No-one passed Quota</x:String>
+                        <av:PointCollection x:Key="TrueConnector">430,560 150,560 150,592.5</av:PointCollection>
+                        <av:PointCollection x:Key="FalseConnector">490,560 880,560 880,596.5</av:PointCollection>
+                      </scg3:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <p1:FlowDecision.True>
+                      <p1:FlowDecision x:Name="__ReferenceID28" Condition="[Process.CalculateObject.IsQueuedDistributions()]" sap:VirtualizedContainerService.HintSize="60,75">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">120,592.5</av:Point>
+                            <av:Size x:Key="ShapeSize">60,75</av:Size>
+                            <x:String x:Key="TrueLabel">Queue exists</x:String>
+                            <x:String x:Key="FalseLabel">No Queue</x:String>
+                            <av:PointCollection x:Key="TrueConnector">120,630 115,630 115,62.5 505,62.5 505,92.5</av:PointCollection>
+                            <av:PointCollection x:Key="FalseConnector">180,630 290,630 290,652.5</av:PointCollection>
+                          </scg3:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <p1:FlowDecision.True>
+                          <p1:FlowDecision x:Name="__ReferenceID7" Condition="[Not (Process.CalculateObject.ContinuingCandidates.Count = 1 And Process.CalculateObject.VacanciesToFill() = 1)]" sap:VirtualizedContainerService.HintSize="60,75">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">490,92.5</av:Point>
+                                <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                <x:String x:Key="TrueLabel">Can Continue</x:String>
+                                <x:String x:Key="FalseLabel">No more candidate left</x:String>
+                                <av:PointCollection x:Key="FalseConnector">550,130 580,130 580,236.5 740,236.5 740,266.5</av:PointCollection>
+                                <av:PointCollection x:Key="TrueConnector">490,130 460,130 460,180 344,180</av:PointCollection>
+                              </scg3:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <p1:FlowDecision.True>
+                              <p1:FlowStep x:Name="__ReferenceID37">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">136,116.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">240,243.5 240,280 356,280</av:PointCollection>
+                                  </scg3:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p1:InvokeMethod sap:VirtualizedContainerService.HintSize="208,127" MethodName="SaveData">
+                                  <p1:InvokeMethod.TargetObject>
+                                    <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                  </p1:InvokeMethod.TargetObject>
+                                </p1:InvokeMethod>
+                                <p1:FlowStep.Next>
+                                  <x:Reference>__ReferenceID6</x:Reference>
+                                </p1:FlowStep.Next>
+                              </p1:FlowStep>
+                            </p1:FlowDecision.True>
+                            <p1:FlowDecision.False>
+                              <p1:FlowStep x:Name="__ReferenceID33">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">636,266.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">740,393.5 740,753.5 560,753.5 560,1370 629,1370</av:PointCollection>
+                                  </scg3:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p1:InvokeMethod DisplayName="Elect candidate" sap:VirtualizedContainerService.HintSize="208,127" MethodName="ElectCandidate">
+                                  <p1:InvokeMethod.TargetObject>
+                                    <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                  </p1:InvokeMethod.TargetObject>
+                                  <p1:InArgument x:TypeArguments="vce1:MCandidate">[Process.CalculateObject.ContinuingCandidates(0)]</p1:InArgument>
+                                </p1:InvokeMethod>
+                                <p1:FlowStep.Next>
+                                  <p1:FlowStep x:Name="__ReferenceID10">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">629,1341.5</av:Point>
+                                        <av:Size x:Key="ShapeSize">242,57</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">750,1398.5 750,1421.5</av:PointCollection>
+                                      </scg3:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                                      <p1:Assign.To>
+                                        <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                                      </p1:Assign.To>
+                                      <p1:Assign.Value>
+                                        <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.Finished]</p1:InArgument>
+                                      </p1:Assign.Value>
+                                    </p1:Assign>
+                                    <p1:FlowStep.Next>
+                                      <p1:FlowStep x:Name="__ReferenceID39">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">629,1421.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">242,57</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">750,1478.5 750,1496.5</av:PointCollection>
+                                          </scg3:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                                          <p1:Assign.To>
+                                            <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.CalculateObject.CalculationState]</p1:OutArgument>
+                                          </p1:Assign.To>
+                                          <p1:Assign.Value>
+                                            <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.Finished]</p1:InArgument>
+                                          </p1:Assign.Value>
+                                        </p1:Assign>
+                                        <p1:FlowStep.Next>
+                                          <p1:FlowStep x:Name="__ReferenceID38">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">646,1496.5</av:Point>
+                                                <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">854,1490 884,1490 889,1490</av:PointCollection>
+                                              </scg3:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <p1:InvokeMethod sap:VirtualizedContainerService.HintSize="208,127" MethodName="SaveData">
+                                              <p1:InvokeMethod.TargetObject>
+                                                <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                              </p1:InvokeMethod.TargetObject>
+                                            </p1:InvokeMethod>
+                                          </p1:FlowStep>
+                                        </p1:FlowStep.Next>
+                                      </p1:FlowStep>
+                                    </p1:FlowStep.Next>
+                                  </p1:FlowStep>
+                                </p1:FlowStep.Next>
+                              </p1:FlowStep>
+                            </p1:FlowDecision.False>
+                          </p1:FlowDecision>
+                        </p1:FlowDecision.True>
+                        <p1:FlowDecision.False>
+                          <p1:FlowDecision x:Name="__ReferenceID35" Condition="[Process.CalculateObject.VacanciesToFill &lt;&gt; Process.CalculateObject.ContinuingCandidates.Count]" sap:VirtualizedContainerService.HintSize="60,75">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">260,652.5</av:Point>
+                                <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                <x:String x:Key="FalseLabel">V == C</x:String>
+                                <x:String x:Key="TrueLabel">Vac &gt; Cand</x:String>
+                                <av:PointCollection x:Key="FalseConnector">320,690 350,690 350,660 776,660</av:PointCollection>
+                                <av:PointCollection x:Key="TrueConnector">260,690 200,690 200,756.5</av:PointCollection>
+                              </scg3:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <p1:FlowDecision.True>
+                              <p1:FlowStep x:Name="__ReferenceID14">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">96,756.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">200,883.5 200,913.5 200,962.5</av:PointCollection>
+                                  </scg3:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p1:InvokeMethod DisplayName="Get candidates with the lowest votes" sap:VirtualizedContainerService.HintSize="208,127" MethodName="GetCandidatesWithLowestVotes">
+                                  <p1:InvokeMethod.Result>
+                                    <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Excluded]</p1:OutArgument>
+                                  </p1:InvokeMethod.Result>
+                                  <p1:InvokeMethod.TargetObject>
+                                    <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                  </p1:InvokeMethod.TargetObject>
+                                </p1:InvokeMethod>
+                                <p1:FlowStep.Next>
+                                  <p1:FlowDecision x:Name="__ReferenceID19" Condition="[Excluded.Count = 1]" sap:VirtualizedContainerService.HintSize="60,75">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">170,962.5</av:Point>
+                                        <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                        <x:String x:Key="TrueLabel">One excluded</x:String>
+                                        <x:String x:Key="FalseLabel">More than 1 excluded</x:String>
+                                        <av:PointCollection x:Key="TrueConnector">170,1000 120,1000 120,1326.5</av:PointCollection>
+                                        <av:PointCollection x:Key="FalseConnector">230,1000 360,1000 360,1042.5</av:PointCollection>
+                                      </scg3:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <p1:FlowDecision.True>
+                                      <p1:FlowStep x:Name="__ReferenceID8">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">16,1326.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">16,1390 0,1390 0,62.5 505,62.5 505,92.5</av:PointCollection>
+                                          </scg3:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <p1:InvokeMethod DisplayName="Exclude Candidate" sap:VirtualizedContainerService.HintSize="208,127" MethodName="ExcludeCandidate">
+                                          <p1:InvokeMethod.TargetObject>
+                                            <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                          </p1:InvokeMethod.TargetObject>
+                                          <p1:InArgument x:TypeArguments="vce1:MCandidate">[Excluded(0)]</p1:InArgument>
+                                        </p1:InvokeMethod>
+                                        <p1:FlowStep.Next>
+                                          <x:Reference>__ReferenceID7</x:Reference>
+                                        </p1:FlowStep.Next>
+                                      </p1:FlowStep>
+                                    </p1:FlowDecision.True>
+                                    <p1:FlowDecision.False>
+                                      <p1:FlowDecision x:Name="__ReferenceID16" Condition="[Process.CalculateObject.TieMethodType = TieMethodType.Automatic]" sap:VirtualizedContainerService.HintSize="60,75">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">330,1042.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                            <x:String x:Key="FalseLabel">Manual</x:String>
+                                            <x:String x:Key="TrueLabel">Automatic</x:String>
+                                            <av:PointCollection x:Key="FalseConnector">390,1080 410,1080 410,1301.5</av:PointCollection>
+                                            <av:PointCollection x:Key="TrueConnector">330,1080 270,1080 270,1146.5</av:PointCollection>
+                                          </scg3:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <p1:FlowDecision.True>
+                                          <p1:FlowStep x:Name="__ReferenceID34">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">166,1146.5</av:Point>
+                                                <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">270,1273.5 270,1390 224,1390</av:PointCollection>
+                                              </scg3:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <p1:InvokeMethod DisplayName="Resolve Tied exclusion" sap:VirtualizedContainerService.HintSize="208,127" MethodName="ResolvePRExclusionTie">
+                                              <p1:InvokeMethod.Result>
+                                                <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Excluded]</p1:OutArgument>
+                                              </p1:InvokeMethod.Result>
+                                              <p1:InvokeMethod.TargetObject>
+                                                <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                              </p1:InvokeMethod.TargetObject>
+                                              <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Excluded]</p1:InArgument>
+                                            </p1:InvokeMethod>
+                                            <p1:FlowStep.Next>
+                                              <x:Reference>__ReferenceID8</x:Reference>
+                                            </p1:FlowStep.Next>
+                                          </p1:FlowStep>
+                                        </p1:FlowDecision.True>
+                                        <p1:FlowDecision.False>
+                                          <p1:FlowStep x:Name="__ReferenceID18">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">289,1301.5</av:Point>
+                                                <av:Size x:Key="ShapeSize">242,57</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">410,1358.5 410,1388.5 410,1391.5</av:PointCollection>
+                                              </scg3:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                                              <p1:Assign.To>
+                                                <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.TiedCandidate]</p1:OutArgument>
+                                              </p1:Assign.To>
+                                              <p1:Assign.Value>
+                                                <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Excluded]</p1:InArgument>
+                                              </p1:Assign.Value>
+                                            </p1:Assign>
+                                            <p1:FlowStep.Next>
+                                              <p1:FlowStep x:Name="__ReferenceID17">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">289,1391.5</av:Point>
+                                                    <av:Size x:Key="ShapeSize">242,57</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">410,1448.5 410,1469</av:PointCollection>
+                                                  </scg3:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                                                  <p1:Assign.To>
+                                                    <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                                                  </p1:Assign.To>
+                                                  <p1:Assign.Value>
+                                                    <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.ExclusionTie]</p1:InArgument>
+                                                  </p1:Assign.Value>
+                                                </p1:Assign>
+                                                <p1:FlowStep.Next>
+                                                  <p1:FlowStep x:Name="__ReferenceID36">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <av:Point x:Key="ShapeLocation">310,1469</av:Point>
+                                                        <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                      </scg3:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <p1:Persist sap:VirtualizedContainerService.HintSize="200,22" />
+                                                  </p1:FlowStep>
+                                                </p1:FlowStep.Next>
+                                              </p1:FlowStep>
+                                            </p1:FlowStep.Next>
+                                          </p1:FlowStep>
+                                        </p1:FlowDecision.False>
+                                      </p1:FlowDecision>
+                                    </p1:FlowDecision.False>
+                                  </p1:FlowDecision>
+                                </p1:FlowStep.Next>
+                              </p1:FlowStep>
+                            </p1:FlowDecision.True>
+                            <p1:FlowDecision.False>
+                              <p1:FlowStep x:Name="__ReferenceID11">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">776,596.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">880,723.5 880,753.5 880,759</av:PointCollection>
+                                  </scg3:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <p1:InvokeMethod DisplayName="Get surplus tied candidates" sap:VirtualizedContainerService.HintSize="208,127" MethodName="GetSurplusTiedCandidates">
+                                  <p1:InvokeMethod.Result>
+                                    <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidateEx)">[Process.CurrentSurplusTiedCandidate]</p1:OutArgument>
+                                  </p1:InvokeMethod.Result>
+                                  <p1:InvokeMethod.TargetObject>
+                                    <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                  </p1:InvokeMethod.TargetObject>
+                                  <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.OverQuotaCandidates]</p1:InArgument>
+                                </p1:InvokeMethod>
+                                <p1:FlowStep.Next>
+                                  <p1:FlowStep x:Name="__ReferenceID9">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <av:Point x:Key="ShapeLocation">780,759</av:Point>
+                                        <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                        <av:PointCollection x:Key="ConnectorLocation">880,781 880,802.5</av:PointCollection>
+                                      </scg3:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <vscw:Get1stTiedSurplusGroup sap:VirtualizedContainerService.HintSize="200,22" OverQuotaTiedCandidates="[Process.CurrentSurplusTiedCandidate]" Result="[TiedGroupSegment]" />
+                                    <p1:FlowStep.Next>
+                                      <p1:FlowDecision x:Name="__ReferenceID23" Condition="[TiedGroupSegment.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="60,75">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">850,802.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                            <x:String x:Key="FalseLabel">No tie</x:String>
+                                            <x:String x:Key="TrueLabel">Tied</x:String>
+                                            <av:PointCollection x:Key="TrueConnector">850,840 780,840 780,872.5</av:PointCollection>
+                                            <av:PointCollection x:Key="FalseConnector">910,840 1120,840 1120,889</av:PointCollection>
+                                          </scg3:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <p1:FlowDecision.True>
+                                          <p1:FlowDecision x:Name="__ReferenceID20" Condition="[Process.CalculateObject.TieMethodType = TieMethodType.Automatic]" sap:VirtualizedContainerService.HintSize="60,75">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">750,872.5</av:Point>
+                                                <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                                <x:String x:Key="FalseLabel">Manual</x:String>
+                                                <x:String x:Key="TrueLabel">Automatic</x:String>
+                                                <av:PointCollection x:Key="FalseConnector">810,910 880,910 880,1149</av:PointCollection>
+                                                <av:PointCollection x:Key="TrueConnector">750,910 680,910 680,966.5</av:PointCollection>
+                                              </scg3:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <p1:FlowDecision.True>
+                                              <p1:FlowStep x:Name="__ReferenceID24">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">576,966.5</av:Point>
+                                                    <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">680,1093.5 680,1119</av:PointCollection>
+                                                  </scg3:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <p1:InvokeMethod DisplayName="Resolve the Tie" sap:VirtualizedContainerService.HintSize="208,127" MethodName="ResolvePRSurplusTie">
+                                                  <p1:InvokeMethod.Result>
+                                                    <p1:OutArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[ResolveTieRequest.PRResolvedCandidates]</p1:OutArgument>
+                                                  </p1:InvokeMethod.Result>
+                                                  <p1:InvokeMethod.TargetObject>
+                                                    <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                                  </p1:InvokeMethod.TargetObject>
+                                                  <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidateEx)">[TiedGroupSegment]</p1:InArgument>
+                                                </p1:InvokeMethod>
+                                                <p1:FlowStep.Next>
+                                                  <p1:FlowStep x:Name="__ReferenceID29">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <av:Point x:Key="ShapeLocation">580,1119</av:Point>
+                                                        <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                        <av:PointCollection x:Key="ConnectorLocation">680,1141 680,1160 570,1160 570,770 780,770</av:PointCollection>
+                                                      </scg3:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <vscw:CandidatesResolvedOrderActivity sap:VirtualizedContainerService.HintSize="200,22" MainList="[Process.CurrentSurplusTiedCandidate]" ResolvedTied="[ResolveTieRequest.PRResolvedCandidates]" Result="[Process.CurrentSurplusTiedCandidate]" />
+                                                    <p1:FlowStep.Next>
+                                                      <x:Reference>__ReferenceID9</x:Reference>
+                                                    </p1:FlowStep.Next>
+                                                  </p1:FlowStep>
+                                                </p1:FlowStep.Next>
+                                              </p1:FlowStep>
+                                            </p1:FlowDecision.True>
+                                            <p1:FlowDecision.False>
+                                              <p1:FlowStep x:Name="__ReferenceID21">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">780,1149</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">880,1171 880,1201 830,1201 830,1241.5</av:PointCollection>
+                                                  </scg3:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <vscw:CandidateEx2Candidate sap:VirtualizedContainerService.HintSize="200,22" Result="[Process.TiedCandidate]" input="[TiedGroupSegment]" />
+                                                <p1:FlowStep.Next>
+                                                  <p1:FlowStep x:Name="__ReferenceID22">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <av:Point x:Key="ShapeLocation">709,1241.5</av:Point>
+                                                        <av:Size x:Key="ShapeSize">242,57</av:Size>
+                                                        <av:PointCollection x:Key="ConnectorLocation">940,1281.5 940,1278.5 1090,1278.5 1090,1368.5 940,1368.5 940,1338.5</av:PointCollection>
+                                                      </scg3:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                                                      <p1:Assign.To>
+                                                        <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                                                      </p1:Assign.To>
+                                                      <p1:Assign.Value>
+                                                        <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.ElectionTie]</p1:InArgument>
+                                                      </p1:Assign.Value>
+                                                    </p1:Assign>
+                                                  </p1:FlowStep>
+                                                </p1:FlowStep.Next>
+                                              </p1:FlowStep>
+                                            </p1:FlowDecision.False>
+                                          </p1:FlowDecision>
+                                        </p1:FlowDecision.True>
+                                        <p1:FlowDecision.False>
+                                          <p1:FlowStep x:Name="__ReferenceID31">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">1020,889</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                <av:PointCollection x:Key="ConnectorLocation">1120,911 1120,939</av:PointCollection>
+                                              </scg3:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <vscw:RefreshOverQuotaCandidates sap:VirtualizedContainerService.HintSize="200,22" MainList="[Process.OverQuotaCandidates]" ResolvedTied="[Process.CurrentSurplusTiedCandidate]" Result="[Process.OverQuotaCandidates]" />
+                                            <p1:FlowStep.Next>
+                                              <p1:FlowStep x:Name="__ReferenceID30">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">1020,939</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                    <av:PointCollection x:Key="ConnectorLocation">1120,961 1120,986.5</av:PointCollection>
+                                                  </scg3:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <p1:ClearCollection x:TypeArguments="vce1:MCandidateEx" Collection="[Process.CurrentSurplusTiedCandidate]" DisplayName="Clear Tied-Candidates' list" sap:VirtualizedContainerService.HintSize="200,22" />
+                                                <p1:FlowStep.Next>
+                                                  <p1:FlowStep x:Name="__ReferenceID25">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <av:Point x:Key="ShapeLocation">1016,986.5</av:Point>
+                                                        <av:Size x:Key="ShapeSize">208,127</av:Size>
+                                                        <av:PointCollection x:Key="ConnectorLocation">1120,1113.5 1120,1143.5 1120,1145.5</av:PointCollection>
+                                                      </scg3:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <p1:InvokeMethod DisplayName="Queue surplus distribution" sap:VirtualizedContainerService.HintSize="208,127" MethodName="QueueSurplusDistributions">
+                                                      <p1:InvokeMethod.TargetObject>
+                                                        <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                                      </p1:InvokeMethod.TargetObject>
+                                                      <p1:InArgument x:TypeArguments="scg3:List(vce1:MCandidate)">[Process.OverQuotaCandidates]</p1:InArgument>
+                                                    </p1:InvokeMethod>
+                                                    <p1:FlowStep.Next>
+                                                      <p1:FlowStep x:Name="__ReferenceID26">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <av:Point x:Key="ShapeLocation">1020,1145.5</av:Point>
+                                                            <av:Size x:Key="ShapeSize">200,49</av:Size>
+                                                            <av:PointCollection x:Key="ConnectorLocation">1120,1194.5 1120,1222.5</av:PointCollection>
+                                                          </scg3:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <p1:DoWhile DisplayName="Elect while vacancy/candidate exists" sap:VirtualizedContainerService.HintSize="200,49">
+                                                          <p1:DoWhile.Variables>
+                                                            <p1:Variable x:TypeArguments="x:Int32" Default="0" Name="counter" />
+                                                          </p1:DoWhile.Variables>
+                                                          <p1:DoWhile.Condition>[Not Process.CalculateObject.IsVacanciesFilled() And counter &lt; Process.OverQuotaCandidates.Count]</p1:DoWhile.Condition>
+                                                          <p1:Sequence sap:VirtualizedContainerService.HintSize="438,348">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg3:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <p1:InvokeMethod DisplayName="Elect candidate" sap:VirtualizedContainerService.HintSize="242,127" MethodName="ElectCandidate">
+                                                              <p1:InvokeMethod.TargetObject>
+                                                                <p1:InArgument x:TypeArguments="vscw:CalcWrapper">[Process.CalculateObject]</p1:InArgument>
+                                                              </p1:InvokeMethod.TargetObject>
+                                                              <p1:InArgument x:TypeArguments="vce1:MCandidate">[Process.OverQuotaCandidates(counter)]</p1:InArgument>
+                                                            </p1:InvokeMethod>
+                                                            <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                                                              <p1:Assign.To>
+                                                                <p1:OutArgument x:TypeArguments="x:Int32">[counter]</p1:OutArgument>
+                                                              </p1:Assign.To>
+                                                              <p1:Assign.Value>
+                                                                <p1:InArgument x:TypeArguments="x:Int32">[counter + 1]</p1:InArgument>
+                                                              </p1:Assign.Value>
+                                                            </p1:Assign>
+                                                          </p1:Sequence>
+                                                        </p1:DoWhile>
+                                                        <p1:FlowStep.Next>
+                                                          <p1:FlowDecision x:Name="__ReferenceID27" Condition="[Process.CalculateObject.IsVacanciesFilled()]" sap:VirtualizedContainerService.HintSize="60,75" True="{x:Reference __ReferenceID10}">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <av:Point x:Key="ShapeLocation">1090,1222.5</av:Point>
+                                                                <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                                                <x:String x:Key="TrueLabel">Vacancies filled</x:String>
+                                                                <x:String x:Key="FalseLabel">Vacancy exsists</x:String>
+                                                                <av:PointCollection x:Key="FalseConnector">1150,1260 1180,1260 1180,1321.5</av:PointCollection>
+                                                                <av:PointCollection x:Key="TrueConnector">1090,1260 1060,1260 1060,1311.5 750,1311.5 750,1341.5</av:PointCollection>
+                                                              </scg3:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <p1:FlowDecision.False>
+                                                              <p1:FlowStep x:Name="__ReferenceID15">
+                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                  <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                    <av:Point x:Key="ShapeLocation">1059,1321.5</av:Point>
+                                                                    <av:Size x:Key="ShapeSize">242,57</av:Size>
+                                                                    <av:PointCollection x:Key="ConnectorLocation">1180,1378.5 1180,1408.5 1330,1408.5 1330,88.5 745,88.5 745,112.5</av:PointCollection>
+                                                                  </scg3:Dictionary>
+                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                <p1:Assign sap:VirtualizedContainerService.HintSize="242,57">
+                                                                  <p1:Assign.To>
+                                                                    <p1:OutArgument x:TypeArguments="vce1:CalculateState">[Process.State]</p1:OutArgument>
+                                                                  </p1:Assign.To>
+                                                                  <p1:Assign.Value>
+                                                                    <p1:InArgument x:TypeArguments="vce1:CalculateState">[CalculateState.Working]</p1:InArgument>
+                                                                  </p1:Assign.Value>
+                                                                </p1:Assign>
+                                                                <p1:FlowStep.Next>
+                                                                  <p1:FlowSwitch x:TypeArguments="vce1:CalculateState" x:Name="__ReferenceID32" Expression="[Process.State]" sap:VirtualizedContainerService.HintSize="60,75">
+                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                      <scg3:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                        <av:Point x:Key="ShapeLocation">700,112.5</av:Point>
+                                                                        <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                                                        <av:PointCollection x:Key="StartingConnector">700,168.75 652,168.75 652,71.7233333333333 535,71.7233333333333 535,92.5</av:PointCollection>
+                                                                        <av:PointCollection x:Key="ElectionTieResolvedConnector">760,150 1010,150 1010,770 980,770</av:PointCollection>
+                                                                        <av:PointCollection x:Key="ExclusionTieResolvedConnector">700,131.25 671,131.25 671,24.7233333333333 520,24.7233333333333 520,92.5</av:PointCollection>
+                                                                        <av:PointCollection x:Key="WorkingConnector">700,150 663.5,150 663.5,47.7233333333333 535,47.7233333333333 535,92.5</av:PointCollection>
+                                                                      </scg3:Dictionary>
+                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                    <x:Reference>__ReferenceID9<x:Key>ElectionTieResolved</x:Key></x:Reference>
+                                                                    <x:Reference>__ReferenceID7<x:Key>Starting</x:Key></x:Reference>
+                                                                    <x:Reference>__ReferenceID7<x:Key>ExclusionTieResolved</x:Key></x:Reference>
+                                                                    <x:Reference>__ReferenceID7<x:Key>Working</x:Key></x:Reference>
+                                                                  </p1:FlowSwitch>
+                                                                </p1:FlowStep.Next>
+                                                              </p1:FlowStep>
+                                                            </p1:FlowDecision.False>
+                                                          </p1:FlowDecision>
+                                                        </p1:FlowStep.Next>
+                                                      </p1:FlowStep>
+                                                    </p1:FlowStep.Next>
+                                                  </p1:FlowStep>
+                                                </p1:FlowStep.Next>
+                                              </p1:FlowStep>
+                                            </p1:FlowStep.Next>
+                                          </p1:FlowStep>
+                                        </p1:FlowDecision.False>
+                                      </p1:FlowDecision>
+                                    </p1:FlowStep.Next>
+                                  </p1:FlowStep>
+                                </p1:FlowStep.Next>
+                              </p1:FlowStep>
+                            </p1:FlowDecision.False>
+                          </p1:FlowDecision>
+                        </p1:FlowDecision.False>
+                      </p1:FlowDecision>
+                    </p1:FlowDecision.True>
+                    <p1:FlowDecision.False>
+                      <x:Reference>__ReferenceID11</x:Reference>
+                    </p1:FlowDecision.False>
+                  </p1:FlowDecision>
+                </p1:FlowStep.Next>
+              </p1:FlowStep>
+            </p1:FlowStep.Next>
+          </p1:FlowStep>
+          <x:Reference>__ReferenceID12</x:Reference>
+          <x:Reference>__ReferenceID13</x:Reference>
+          <x:Reference>__ReferenceID14</x:Reference>
+          <x:Reference>__ReferenceID15</x:Reference>
+          <x:Reference>__ReferenceID16</x:Reference>
+          <x:Reference>__ReferenceID17</x:Reference>
+          <x:Reference>__ReferenceID18</x:Reference>
+          <x:Reference>__ReferenceID19</x:Reference>
+          <x:Reference>__ReferenceID8</x:Reference>
+          <x:Reference>__ReferenceID11</x:Reference>
+          <x:Reference>__ReferenceID20</x:Reference>
+          <x:Reference>__ReferenceID9</x:Reference>
+          <x:Reference>__ReferenceID21</x:Reference>
+          <x:Reference>__ReferenceID22</x:Reference>
+          <x:Reference>__ReferenceID23</x:Reference>
+          <x:Reference>__ReferenceID24</x:Reference>
+          <x:Reference>__ReferenceID25</x:Reference>
+          <x:Reference>__ReferenceID26</x:Reference>
+          <x:Reference>__ReferenceID27</x:Reference>
+          <x:Reference>__ReferenceID10</x:Reference>
+          <x:Reference>__ReferenceID28</x:Reference>
+          <x:Reference>__ReferenceID29</x:Reference>
+          <x:Reference>__ReferenceID30</x:Reference>
+          <x:Reference>__ReferenceID31</x:Reference>
+          <x:Reference>__ReferenceID32</x:Reference>
+          <x:Reference>__ReferenceID7</x:Reference>
+          <x:Reference>__ReferenceID33</x:Reference>
+          <x:Reference>__ReferenceID34</x:Reference>
+          <x:Reference>__ReferenceID35</x:Reference>
+          <x:Reference>__ReferenceID36</x:Reference>
+          <x:Reference>__ReferenceID37</x:Reference>
+          <x:Reference>__ReferenceID38</x:Reference>
+          <x:Reference>__ReferenceID39</x:Reference>
+        </p1:Flowchart>
+      </p1:Sequence>
+    </p1:DoWhile>
+  </p1:Sequence>
+</WorkflowService>
