@@ -1,0 +1,423 @@
+Electronic Hare Clark Algorithm
+
+Assumptions:
+
+1) Duplicated and missing preference numbers and any preference
+   numbers following them, have been removed from ballots (hence only
+   informal or correctly numbered ballots remain).
+
+Background:
+1) Every candidate is marked one of four ways:
+	CONTINUING, ELECTED, EXCLUDED, PENDING or BEING EXCLUDED
+2) There is a "Count".
+3) Every candidate has an associated "Pile" of ballots for every
+   Count, which start empty.
+4) There is an "Exhausted Pile" of ballots for every Count.
+5) There is a "Votes Lost or Gained by Fraction" for every Count.
+6) Every candidate has a "Total" for every Count.
+7) Every PENDING or ELECTED candidate has a "Count When Quota Reached".
+8) Every ballot has a "Vote Value" attached.
+
+Algorithm:
+
+SETUP
+1) Discard any ballots with no preferences.
+	NOTE: These are informal votes, and have no effect.
+
+2) Calculate the Quota:
+	(The total number of ballots / (Number of Vacancies + 1)) + 1
+   The Quota is truncated to an integer (ie. 700.9999 becomes 700).
+
+3) For every candidate:
+	If the candidate is deceased:
+		Mark the candidate as EXCLUDED.
+	Otherwise:
+		Mark the candidate as CONTINUING.
+
+4) For every ballot:
+	Set the Vote Value for the ballot to 1.
+
+5) Set the Count to 1.
+
+DISTRIBUTE FIRST PREFERENCES
+
+6) For every ballot:
+	For every preference in the ballot, in order:
+	NOTE: ie. start at preference 1.
+		If the candidate with that preference is CONTINUING:
+			Place the ballot in his/her Pile for this Count.
+			Add one to his/her Total for this Count.
+			Go on to next ballot.
+			NOTE: We found a continuing candidate.
+
+	Place it in the Exhausted Pile for this Count.
+
+	NOTE: If we reach here, there are only deceased candidates on
+	the ballot.
+
+   NOTE: After this step, every formal ballot is in a Pile for this Count.
+
+7) For every candidate:
+
+	If the candidate has a Total for this Count greater than or
+	equal to the Quota:
+
+		Mark the candidate as PENDING
+
+		Set the candidate's Count When Quota Reached to this
+		Count.
+
+   NOTE: Mark all over-quota candidates PENDING so they do not get
+   surplus distribution.
+
+   NOTE: Count is 1 here, so this sets up Count When Quota Reached to
+   1 for candidates who are over quota on first preferences.
+
+DEAL WITH ONE CANDIDATE
+
+8) Count the number of candidates who are ELECTED or PENDING.  If this is equal
+   to the Number of Vacancies:
+	Stop.
+	NOTE: Election is complete.
+
+9) If no candidates are PENDING:
+	NOTE: No candidates over quota (or exactly on quota but not
+		yet ELECTED).
+
+	Count the number of candidates who are ELECTED or CONTINUING.
+	If this is equal to the Number of Vacancies:
+
+		Mark all those CONTINUING candidates ELECTED.
+		Stop.
+		NOTE: Election is complete.
+
+10) If any PENDING candidate has a Total for this Count equal to the Quota:
+
+	NOTE: No surplus, so no ballots or vote values transferred,
+	and no count increment.
+
+	For every candidate:
+		If his/her Total for this Count is equal to the Quota:
+			Mark him or her ELECTED.
+
+	Go to 8.
+
+11) If any candidate has a Total for this Count greater than the Quota:
+	NOTE: ie. any candidates are PENDING.
+
+	Select all PENDING candidates with the lowest Count When
+	Quota Reached.
+
+	If there is only one such candidate:
+
+		Take this candidate to DISTRIBUTE SURPLUS.
+
+	Otherwise:
+
+		Select the candidates among them who have the highest
+		Total for the Count When Quota Reached.
+
+		If there is only one candidate selected:
+
+			Take this candidate to DISTRIBUTE SURPLUS.
+
+		Otherwise:
+
+			Take these candidates to SURPLUS TIEBREAK
+
+	NOTE: Neither DISTRIBUTE SURPLUS nor SURPLUS TIEBREAK (which
+	leads to DISTRIBUTE SURPLUS) return: they go back to 8 when
+	finished.
+
+12) NOTE: If we reach here, all CONTINUING candidates are under quota.
+
+    Select all CONTINUING candidates with the lowest Total at this
+    Count.
+
+    If there is only one such candidate:
+
+	Take this candidate to EXCLUDE CANDIDATE.
+
+    Otherwise:
+
+	Take these candidates to EXCLUDE TIEBREAK.
+
+    NOTE: Neither EXCLUDE CANDIDATE nor EXCLUDE TIEBREAK (which leads
+    to EXCLUDE CANDIDATE) return: they go back to 8 when finished.
+
+
+SURPLUS TIEBREAK:
+(Gets passed two or more candidates)
+
+13) For every Count from the previous one back to 1:
+
+	If one of these candidates had a Total at that Count
+	greater than all other of these candidates:
+
+		Take that candidate to DISTRIBUTE SURPLUS.
+		NOTE: One candidate greater at previous count, ie. we
+		have a tiebreak "winner".
+
+	Otherwise, for every one of these candidates which has
+	a Total at that Count less than another of these
+	candidates:
+
+		Remove that candidate from these candidates.
+
+		NOTE: There's no tiebreak "winner" yet, but one (or
+		more) candidate is a clear "loser", so eliminate that
+		candidate from tiebreak consideration.
+
+14) Print out these candidates, and ask the Electoral Commission to
+    select one.
+    NOTE: More than one candidate equal for all counts.
+
+15) Take this candidate to DISTRIBUTE SURPLUS.
+    NOTE: DISTRIBUTE SURPLUS doesn't return: it goes back to 8 when
+    finished.
+
+
+EXCLUDE TIEBREAK:
+(Gets passed two or more candidates)
+
+16) For every Count from the previous one back to 1:
+
+	If one of these candidates had a Total at that Count
+	less than all other of these candidates:
+
+		Take that candidate to EXCLUDE CANDIDATE.
+
+		NOTE: One candidate less at previous count, ie. we
+		have a tiebreak "winner".
+
+	Otherwise, for every one of these candidates which has
+	a Total at that Count greater than another of these
+	candidates:
+
+		Remove that candidate from these candidates.
+
+		NOTE: There's no tiebreak "winner" yet, but one (or
+		more) candidate is a clear "loser", so eliminate that
+		candidate from tiebreak consideration.
+
+17) Print out these candidates, and ask the Electoral Commission to
+    select one.
+
+    NOTE: More than one candidate equal for all counts.
+
+18) Take this selected candidate to EXCLUDE CANDIDATE.
+
+    NOTE: EXCLUDE CANDIDATE doesn't return: it goes back to 8 when
+    finished.
+
+
+DISTRIBUTE SURPLUS:
+(Gets passed one "successful" candidate)
+
+19) Mark the successful candidate as ELECTED.
+
+20) Subtract the Quota from the successful candidate's Total at this
+    Count, to give VVS.
+
+	NOTE: VVS = Vote Value of Surplus.
+
+21) Add one to the Count.
+
+22) Count the number of ballots which are not now exhausted in the
+    successful candidate's Pile for the sucessful candidate's Count
+    When Quota Reached, to give BWNP.
+
+	NOTE: BWNP = Number of ballot papers with a next avail. preference.
+
+23) If BWNP is 0:
+	Set NVV to 1.
+	NOTE: New Vote Value.
+	NOTE: NVV of 1 has no effect: see step DS-7.
+
+    Otherwise:
+	Set NVV to VVS divided by BWNP.
+
+    NOTE: This avoids a possible divide by zero error.
+
+24) For every non-exhausted ballot in the successful candidate's Pile
+    for the successful candidate's Count When Quota Reached:
+
+	If the ballot's Vote Value is greater then NVV:
+
+		Set the ballot's Vote Value to NVV.
+
+	NOTE: This ensures that a ballot's Vote Value can never
+	increase.
+
+24b) For every non-exhausted ballot in the successful candidate's Pile
+    for the successful candidate's Count When Quota Reached:
+
+	Find the preference number next to the successful candidate.
+
+	NOTE: We know all preferences (if any) before the successful
+	candidate have been ELECTED or EXCLUDED, so we start from the
+	preference number for the successful candidate when looking
+	for the next available preference.
+
+	For every preference number greater than that, in increasing
+	order:
+
+		If the candidate with that preference number is
+		CONTINUING:
+
+			Place the ballot in that candidate's Pile for
+			this Count.
+
+			Go on to next ballot.
+			NOTE: We found a continuing candidate.
+
+	Place the ballot in the Exhausted Pile for this Count.
+	NOTE: If we reach here, the ballot is exhausted.
+
+25) For every candidate other than the successful one:
+    NOTE: Pile for this Count will be empty for non-CONTINUING candidates.
+
+	Calculate the sum of the Vote Values of all ballots in the
+	candidate's Pile for this Count, and truncate it to an integer
+	(ie. 700.9999 becomes 700).
+
+	Set the candidate's Total for this Count to the candidate's
+	Total for the last Count plus this truncated sum.
+
+25a) For every CONTINUING candidate:
+
+	If the candidate's Total for this Count is greater than or
+	equal to the Quota:
+		Mark the candidate PENDING.
+
+		Set the candidate's Count When Quota Reached to this
+		Count.
+
+	NOTE: Mark all over-quota candidates PENDING so they do not
+	get surplus distribution.
+
+26) Set the successful candidate's Total for this Count to the Quota.
+    NOTE: This reduces the successful candidate's Total by Vote Value
+    of Surplus, meaning the successful candidate is the only one whose
+    Total is reduced at this Count.
+
+27) Sum the differences for every candidate between that candidate's
+    Total for this Count and Total for previous Count, to give the
+    Votes Lost or Gained by Fraction for this Count.
+
+    NOTE: These differences are all whole numbers.
+
+28) Set the Vote Values of the ballots in the Exhausted Pile for this
+    Count to zero.
+
+30) Go to 8.
+    NOTE: Deal with the next candidate.
+
+
+EXCLUDE CANDIDATE
+(Gets passed one "excluding" candidate)
+
+30b) Mark the candidate as BEING EXCLUDED.
+
+31) For every ballot in every Pile for every Count for the excluding
+    candidate:
+	Place the ballot in a Group according to its Vote Value.
+
+      NOTE: We end up with a Group for each distinct Vote Value.
+
+32) For each Group, from greatest Vote Value to least:
+
+	Pass the excluding candidate and the Group of ballots to
+	PARTIAL EXCLUSION.
+
+	NOTE: PARTIAL EXCLUSION returns here, and we do the next
+	Group.
+
+33) Mark the candidate as EXCLUDED.
+
+34) Go to 8.
+    NOTE: Deal with the next candidate.
+
+
+PARTIAL EXCLUSION
+(Gets passed one "excluding" candidate, and a Group of piles of ballots with
+equal Vote Value. The number of counts required to FULLY exclude a candidate 
+is the number of distinct vote values in all of their piles. i.e the candidate
+will be excluded after this number of calls to PARTIAL EXCLUSION )
+
+35) Add one to the Count.
+
+36) Set Group Sum to 0
+    For each pile forming the Group:
+	Multiply the number of Ballots in this pile by their vote value
+	and truncate to an integer (ie. 700.9999 becomes 700).
+	Add this value to the Group Sum.
+
+36b) Subtract this Group Sum from the excluding candidate's Total
+    for previous Count to give the excluding candidate's Total for
+    this Count.
+    NOTE: The candidate being excluded is the only one whose Total
+    will drop.
+
+37) For each ballot in the Group:
+
+	Find the preference number next to the excluding candidate.
+
+	NOTE: We know all preferences (if any) before the successful
+	candidate have been ELECTED or EXCLUDED, so we start from the
+	preference number for the successful candidate when looking
+	for the next available preference.
+
+	For every preference number greater than that, in increasing
+	order:
+
+		If the candidate with that preference number is
+		CONTINUING:
+
+			Place the ballot in that candidate's Pile for
+			this Count.
+
+			Go on to next ballot.
+			NOTE: We found a continuing candidate.
+
+	Place the ballot in the Exhausted Pile for this Count.
+	NOTE: If we reach here, the ballot is exhausted.
+
+38) For every candidate other than the excluding one:
+    NOTE: Pile for this Count will be empty for non-CONTINUING candidates.
+
+	Calculate the sum of the Vote Values of the ballots in the
+	candidate's Pile for this Count, and truncate it to an integer
+	(ie. 700.9999 becomes 700).
+
+	Set the candidate's Total for this Count to the candidate's
+	Total for the last Count plus this truncated sum.
+
+39) Sum the differences for every candidate between that candidate's
+    Total for this Count and Total for previous Count.
+
+    NOTE: These differences are all whole numbers, and the excluded
+    candidate's difference will be negative.
+
+40) Sum the Vote Value of the ballots in the Exhausted Pile for this
+    Count, and truncate it to an integer (ie. 700.9999 becomes 700).
+
+41) Add the Sums from Step 39 and Step 40, to give the Votes Lost or
+    Gained by Fraction for this Count.
+
+42) For every candidate:
+
+	If the candidate's Total for this Count is greater than or
+	equal to quota, and the candidate is CONTINUING:
+
+		Mark the candidate as PENDING.
+
+		Set the candidate's Count When Quota Reached to this
+		Count.
+
+		Count the number of candidates who are ELECTED or
+		PENDING.  If this is equal to the number of vacancies,
+		mark the PENDING candidates ELECTED, and stop.
+
+43) Return to 32.
+    NOTE: To do the next Group of ballots, if any.

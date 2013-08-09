@@ -1,0 +1,36 @@
+Size & Complexity
+=================
+
+SLOC	Directory	SLOC-by-Language (Sorted)
+4374    counting        ansic=3780,perl=573,sh=21
+3573    common          ansic=3449,sh=124
+3241    data_correction ansic=3241
+3100    voting_client   ansic=3100
+1619    voting_server   ansic=1619
+1351    voting_client_stripped ansic=1351
+1248    tools           ansic=1248
+1072    load_scanned_votes ansic=880,sh=192
+984     load_votes      ansic=820,sh=164
+968     data_entry      ansic=968
+143     backup          sh=143
+92      election_night  ansic=92
+0       top_dir         (none)
+
+
+Totals grouped by language (dominant language first):
+ansic:        20548 (94.41%)
+sh:             644 (2.96%)
+perl:           573 (2.63%)
+
+
+
+
+Total Physical Source Lines of Code (SLOC)                = 21,765
+Development Effort Estimate, Person-Years (Person-Months) = 5.08 (60.93)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 0.99 (11.92)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 5.11
+Total Estimated Cost to Develop                           = $ 685,943
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler

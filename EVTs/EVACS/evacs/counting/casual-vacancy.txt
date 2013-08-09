@@ -1,0 +1,114 @@
+Electronic Casual Vacancy Algorithm
+
+Assumptions & Background: 
+
+	One previously successful candidate has been chosen as the
+	"Vacating" candidate.
+
+	(See also Hare-Clarke description).
+
+	The candidates 'standing' in the Casual Vacancy Count Back have been determined.
+
+Algorithm:
+
+SETUP
+
+1) Conduct a Hare-Clark scrutiny up until the stage when the vacating
+   candidate is elected.
+
+2) Eliminate from all future consideration, any candidates who are not
+   standing, other than the vacating candidate.
+
+3) Calculate the starting total as follows.  
+
+If the vacating member was elected by achieving or passing quota
+
+		Set the starting total to Quota
+
+If the vacating member was elected with less than Quota
+
+		Set the starting total to the votes attained at count when elected
+
+4) If  the vacating member passed quota when elected, separate the ballots received by the candidate on the final count,
+   and separate them into two piles:
+
+	Ballots which have a standing candidate with a higher
+	preference than the preference given to the vacating
+	candidate.
+	NOTE: non-exhausted ballots.
+
+	Other ballots.
+	NOTE: exhausted ballots.
+
+5) Calculate NCP x TV, where NCP is the number of ballots in the
+   exhausted pile, and TV is the transfer value of one of the votes.
+   NOTE: All votes in both piles currently have the same transfer value.
+
+6) Calculate N, the vote total of the vacating candidate prior to the
+   count on which they reached quota.
+
+7) If NCP x TV is greater or equal to the quota of the hare-clarke
+   scrutiny minus N:
+
+ 	Set the vote value of the exhausted ballots to (quota - n)/ncp.
+	Set the vote value of the non-exhausted ballots to zero.
+
+8) Otherwise:
+
+	Set the vote value of the non-exhausted ballots to:
+		(quota - N - (NCP x TV)) / CP
+	Where CP is the number of non-exhausted ballots.
+	NOTE: Do not alter the vote value of the exhausted ballots.
+
+Note: Steps 4 to 8 ensure that the votes received by the vacating member at the count when elected are given a transfer value to ensure that the total number of votes to be distributed from the vacating member equals the Quota 
+
+9) Sort the vacating candidate's piles from every count but the final
+   one, and the pile of non-exhausted ballots, into decreasing
+   vote-value order.
+
+10) Restart the Hare-Clark count at STEP 1.
+
+11) Set the totals for every candidate for every count to zero.
+
+12) Set the vacating candidate's total for count zero to the starting
+    total.
+
+13) Set the vacating candidate's status to BEING EXCLUDED.
+
+14) For every Group of piles of same vote value, in decreasing vote value order:
+    NOTE: We now have ONE pile per distinct vote value
+
+	Take this Group and the vacating candidate to Hare-Clark
+	PARTIAL EXCLUSION STEP 36b through 42 inclusive, with quota
+	set to infinity.
+
+	If this is not the last Group, increment the count by one.
+
+	NOTE: PARTIAL EXCLUSION without incrementing the count, and
+	without marking any candidate PENDING (since quota is
+	infinite).
+
+15) While no one has an absolute majority:
+
+	Set the quota to the absolute majority, and the number of
+	vacancies to one, and go to STEP 12 of Hare-Clark.  Return
+	here instead of returning to Hare-Clark STEP 8.
+
+	NOTE: This means selection of the "worst" candidate proceeds
+	in exactly the same way, including any tiebreaks required.
+
+16) Declare the candidate with absolute majority successful.
+
+NOTE: The absolute majority is calculated as follows:
+	a) Sum the totals for every  continuing candidate.
+
+	   NOTE: The totals for excluded and the vacating candidate
+	   are zero, so it is irrelevent whether they are counted or
+	   not.
+
+	b) Divide this number by two (round down) and add one.
+
+
+
+
+Modified by Carol 8 October 2001
