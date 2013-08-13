@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  attributeFormDefault="unqualified"
+  elementFormDefault="unqualified">
+
+  <xs:element name="Ballot">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="ListProperty" type="listPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="Card" type="cardType" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="cardType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="Property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ListProperty" type="listPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="CardElement" type="cardelementType" minOccurs="0"  maxOccurs="unbounded"/>
+      <xs:element name="SelectableCardElement" type="cardelementType" minOccurs="0"  maxOccurs="unbounded"/>
+    </xs:choice>
+    <xs:attribute name="uid"  type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="cardelementType">
+    <xs:sequence>
+      <xs:element name="Property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ListProperty" type="listPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="uid"  type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="propertyType">
+    <xs:attribute name="name"  type="xs:string" use="required"/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="listPropertyType">
+    <xs:sequence>
+      <xs:element name="ListElement" type="listElementType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name"  type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+  
+  <xs:complexType name="listElementType">
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
+
+</xs:schema>

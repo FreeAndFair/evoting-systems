@@ -1,0 +1,104 @@
+Using VoteBox:
+java -jar votebox.jar [serial number]
+
+Using Supervisor:
+java -jar supervisor.jar [serial number]
+
+Using Tap:
+java -jar tap.jar [serial number] [report address] [port]
+
+Using ChallengeWebServer:
+java -jar challenge.jar [ballot file] [port] [http port]
+
+[port] should be the same between Tap and ChallengeWebServer
+[serial number]s should all be distinct (and must have corresponding keys)
+
+---------------------
+Configuration Options
+---------------------
+Must be placed in vb.conf, supervisor.conf, tap.conf, and webserver.conf.
+
+
+DISCOVER_TIMEOUT 
+Integer, milliseconds 
+Default: 4000 
+
+DISCOVER_PORT 
+Integer, port number 
+9782 
+
+DISCOVER_REPLY_TIMEOUT
+Integer, milliseconds 
+Default: 1000 
+
+DISCOVER_REPLY_PORT
+Integer, port number 
+Default: 9783 
+
+LISTEN_PORT 
+Integer, port number 
+Default: 9700 
+
+JOIN_TIMEOUT 
+Integer, millisecond 
+Default: 1000 
+
+BROADCAST_ADDRESS 
+String, network address 
+Default: 255.255.255.255 
+
+LOG_LOCATION 
+String, file path 
+Default: log.out 
+
+KEYS_DIRECTORY 
+String, directory/classloader path 
+Default: "/keys/" 
+
+VIEW_IMPLEMENTATION 
+String, one of SDL, AWT 
+Default: SDL 
+
+RULE_FILE 
+String, directoy path 
+Default: rules 
+
+CAST_BALLOT_ENCRYPTION_ENABLED 
+Boolean 
+Default: false 
+
+USE_COMMIT_CHALLENGE_MODEL 
+Boolean 
+Default: false 
+
+USE_ELO_TOUCH_SCREEN 
+Boolean 
+Default: false 
+
+ELO_TOUCH_SCREEN_DEVICE 
+String, path to device 
+Default: null 
+
+VIEW_RESTART_TIMEOUT 
+Integer, milliseconds 
+Default: 5000 
+
+DEFAULT_SERIAL_NUMBER 
+Integer 
+Default: -1 (ignored) 
+
+DEFAULT_REPORT_ADDRESS 
+String, IP, Computer Name, Domain Name, etc. 
+Default: "" (ignored, used exclusively by Tap) 
+
+DEFAULT_CHALLENGE_PORT 
+Integer, port number 
+Default: -1 (ignored, used by Tap and ChallengeWebServer) 
+
+DEFAULT_HTTP_PORT 
+Integer, port number 
+Default: 80 (used exclusively by ChallengeWebServer) 
+
+DEFAULT_BALLOT_FILE 
+String, path to file 
+Default: "" (ignored, used by ChallengeWebServer)

@@ -1,0 +1,60 @@
+/**
+  * This file is part of VoteBox.
+  * 
+  * VoteBox is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License version 3 as published by
+  * the Free Software Foundation.
+  * 
+  * You should have received a copy of the GNU General Public License
+  * along with VoteBox, found in the root of any distribution or
+  * repository containing all or part of VoteBox.
+  * 
+  * THIS SOFTWARE IS PROVIDED BY WILLIAM MARSH RICE UNIVERSITY, HOUSTON,
+  * TX AND IS PROVIDED 'AS IS' AND WITHOUT ANY EXPRESS, IMPLIED OR
+  * STATUTORY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF
+  * ACCURACY, COMPLETENESS, AND NONINFRINGEMENT.  THE SOFTWARE USER SHALL
+  * INDEMNIFY, DEFEND AND HOLD HARMLESS RICE UNIVERSITY AND ITS FACULTY,
+  * STAFF AND STUDENTS FROM ANY AND ALL CLAIMS, ACTIONS, DAMAGES, LOSSES,
+  * LIABILITIES, COSTS AND EXPENSES, INCLUDING ATTORNEYS' FEES AND COURT
+  * COSTS, DIRECTLY OR INDIRECTLY ARISING OUR OF OR IN CONNECTION WITH
+  * ACCESS OR USE OF THE SOFTWARE.
+ */
+
+package votebox.middle.ballot;
+
+/**
+ * 
+ * The Card class is the model's representation for a piece of the ballot.
+ * Because, in the
+ * 
+ * Card delegates to an implementation of this interface for its behavior
+ * regarding what to do when a SelectableCardElement decides that it would like
+ * to be selected. A SelectableCardElement delegates to a Card on what to do
+ * when its Toggle method is called, and the Card then delegates to these
+ * methods.
+ * 
+ * Class converted from .NET code
+ */
+
+public abstract class ACardStrategy {
+
+	/**
+	 * 
+	 * When a SelectableCardElement has decided that it would like to be
+	 * selected, it delegates to this method.
+	 * 
+	 * @param element
+	 *            This element has chosen to be selected.
+	 */
+	public abstract boolean select(SelectableCardElement element) throws CardStrategyException;
+
+	/**
+	 * 
+	 * When a SelectableCardElement decides that it would like to be deselected,
+	 * it delegates to this method.
+	 * 
+	 * @param element
+	 *            This element has chosen to be deselected.< param>
+	 */
+	public abstract boolean deselect(SelectableCardElement element) throws CardStrategyException;
+}

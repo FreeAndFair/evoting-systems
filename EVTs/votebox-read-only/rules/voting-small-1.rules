@@ -1,0 +1,97 @@
+; vim: ft=querifier ts=2 sts=2 sw=2 et:
+
+(let
+  ((message-ptr-fmt (quote (ptr %host:#string %id:#string %hash:#string)))
+
+   (auditorium-message-fmt (quote 
+        (announce (host %id:#string %addr:#string %port:#string)
+                  %seqno:#string
+                  %message:#any)))
+
+   (cert-fmt (quote
+          (cert (signature %cert-signer:#string
+                           %cert-sig-data:#string
+                           %key:(key #string #string #string #string)))))
+
+   (signed-message-fmt (quote
+        (signed-message 
+          %cert:#any
+          (signature %signer:#string %sigdata:#string %payload:#any))))
+
+   (signature-fmt (quote 
+        (signature %signer:#string %sigdata:#string %payload:#any)))
+
+   (key-fmt (quote (key %keyid:#string %keynote:#string
+                             %keymod:#string %keyexp:#string)))
+
+   (signed-message-cert-fmt (quote
+        (signed-message 
+          (cert (signature %cert-signer:#string
+                           %cert-sig-data:#string
+                           %key:(key #string #string #string #string)))
+          (signature %signer:#string %sigdata:#string %payload:#any))))
+
+   (signed-auditorium-message-fmt (quote ; the whole shebang all at once
+        (announce (host %id:#string %addr:#string %port:#string)
+                  %seqno:#string
+                  (signed-message 
+                    (cert (signature %cert-signer:#string
+                                     %cert-sig-data:#string
+                                     %key:(key #string #string #string #string)))
+                    (signature %signer:#string %sigdata:#string 
+                      (succeeds %preds:#list:(ptr #string #string #string)
+                                %payload:#any))))))
+
+    ;; message payload formats
+    ; see https://sys.cs.rice.edu/votebox/trac/wiki/VotingMessages
+  
+    ;; core election messages
+    (polls-open-fmt (quote (polls-open %timestamp:#string %keyword:#string)))
+    (polls-closed-fmt (quote (polls-closed %timestamp:#string)))
+
+    (ballot-auth-fmt (quote (authorized-to-cast %nodeid:#string %nonce:#string %ballot-data:#string)))
+    (ballot-received-fmt (quote (ballot-received %nodeid:#string %nonce:#string)))
+    (cast-ballot-fmt (quote (cast-ballot %nonce:#string %cast-ballot-data:#string)))
+
+    ;; election maintenance messages
+    ;(assign-label-fmt (quote (assign-label %nodeid:#string %label:#string)))
+    ;(super-status-fmt (quote (supervisor %timestamp:#string %status:#string)))
+    ;(booth-status-fmt (quote (booth %timestamp:#string %status:#string)))
+    ;(super-activated-fmt (quote (activated %statuses:#list:#any)))
+
+    ; supervisor recovery messages
+    ;(polls-open-query-fmt (quote (polls-open? %keyword:#string)))
+    ;(last-polls-open-fmt (quote (last-polls-open (polls-open %polls-open-msg:#any))))
+    
+    ;; messages for vote overrides (initiated by supervisor)
+    (override-cancel-fmt (quote (override-cancel %nodeid:#string %nonce:#string)))
+    (override-cancel-confirm-fmt (quote (override-cancel-confirm %nonce:#string)))
+    (override-cancel-deny-fmt (quote (override-cancel-deny %nonce:#string)))
+    (override-cast-fmt (quote (override-cast %nodeid:#string %nonce:#string)))
+    (override-cast-confirm-fmt (quote (override-cast-confirm %nonce:#string)))
+    (override-cast-deny-fmt (quote (override-cast-deny %nonce:#string)))
+  )
+
+
+  ;; rules
+  (and (
+
+    ; RULE: all messages must be valid and signed
+;    (forall x all-set (let-match auditorium-message-fmt x true false))
+    (forall x all-set (let-match signed-auditorium-message-fmt x true false))
+
+    ; RULE: there must be a polls-open message
+    (exists x all-set
+          (let-match signed-auditorium-message-fmt x
+                     (let-match polls-open-fmt payload true false)
+                     false))
+;
+;    ; RULE: there must be a polls-closed message
+    (exists x all-set
+          (let-match signed-auditorium-message-fmt x
+                     (let-match polls-closed-fmt payload true false)
+                     false))
+;
+
+  )) ; end of (and ...) rules
+) ; end

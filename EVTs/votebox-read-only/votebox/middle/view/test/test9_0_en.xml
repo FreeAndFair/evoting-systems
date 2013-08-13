@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Layout>
+<Property name="StartImageSize" type="Integer" value="3"/>
+<Property name="MaxImageSize" type="Integer" value="3"/>
+<Page>
+<Label uid="B39" x="369" y="6"/>
+<Button uid="L40" x="667" y="525">
+<Property name="ButtonStrategy" type="String" value="NextPage"/>
+<Property name="Up" type="String" value="B41"/>
+<Property name="Left" type="String" value="B41"/>
+<Property name="Previous" type="String" value="B41"/>
+</Button>
+<ToggleButtonGroup>
+<Property name="ToggleButtonGroupStrategy" type="String" value="Race"/>
+<ToggleButton uid="B42" x="167" y="48">
+<Property name="Down" type="String" value="L40"/>
+<Property name="Right" type="String" value="B41"/>
+<Property name="Next" type="String" value="B41"/>
+</ToggleButton>
+<ToggleButton uid="B41" x="397" y="48">
+<Property name="Down" type="String" value="L40"/>
+<Property name="Left" type="String" value="B42"/>
+<Property name="Right" type="String" value="L40"/>
+<Property name="Previous" type="String" value="B42"/>
+<Property name="Next" type="String" value="L40"/>
+</ToggleButton>
+</ToggleButtonGroup>
+</Page>
+<Page>
+<Label uid="B57" x="203" y="6"/>
+<Button uid="L58" x="0" y="525">
+<Property name="ButtonStrategy" type="String" value="PreviousPage"/>
+<Property name="Up" type="String" value="B60"/>
+<Property name="Right" type="String" value="L59"/>
+<Property name="Previous" type="String" value="B61"/>
+<Property name="Next" type="String" value="L59"/>
+</Button>
+<Button uid="L59" x="666" y="525">
+<Property name="ButtonStrategy" type="String" value="NextPage"/>
+<Property name="Up" type="String" value="B61"/>
+<Property name="Left" type="String" value="L58"/>
+<Property name="Previous" type="String" value="L58"/>
+</Button>
+<ToggleButtonGroup>
+<Property name="ToggleButtonGroupStrategy" type="String" value="Race"/>
+<ToggleButton uid="B60" x="248" y="48">
+<Property name="Down" type="String" value="L58"/>
+<Property name="Left" type="String" value="L58"/>
+<Property name="Right" type="String" value="B61"/>
+<Property name="Next" type="String" value="B61"/>
+</ToggleButton>
+<ToggleButton uid="B61" x="397" y="48">
+<Property name="Down" type="String" value="L59"/>
+<Property name="Left" type="String" value="B60"/>
+<Property name="Right" type="String" value="L59"/>
+<Property name="Previous" type="String" value="B60"/>
+<Property name="Next" type="String" value="L58"/>
+</ToggleButton>
+</ToggleButtonGroup>
+</Page>
+</Layout>

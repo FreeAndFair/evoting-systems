@@ -1,0 +1,17 @@
+(announce
+  (host "0" "128.42.6.41" "9700")
+  "2"
+  (signed-message
+    (cert
+      (signature
+        ca
+        |FL12iO8ZRKqxBrwh4yxXyBWjgHuuBwHUG2906WjvqWVFQytc2z4Jj5rjK+82wJq02vBWPIYPxPVNI4bJmBNrdVTtd/ONxvmM0i2qu5X5dVj+GHcTZCIVR6zvmzLY6kUTozOdIUcAKbgjQuxywki3YoXSZI3bi8DsQfajPY8A/xQ=|
+        (key
+          "0"
+          booth
+          |AKYIoxlHqKoKOc3rMobvkCQhYDzDNv2KvRl5SC3Q/8Rez+dmerkHpghJnUXTJ/jWMKWEYtUTvupkF5QYqEdK/N3R7S6ezlcIuGi73K+xIdLu4m2i11rtDwMWbFw9kV+SGNvaZUonjuEF4po6UPEjdQFUuy7/Ia4MITEAxn2vN3sz|
+          |AQAB|)))
+    (signature
+      "0"
+      |d03zLijbjFvLW3leGT3MmDW/NAaa/43O9r+9P1xc7LC2a0GPgktJcauVxjJwhQHJVdZ2JSepQZuJxZ/6FofMiz9/NGxtlsP6IxD4wpbm+cjC7YzZiNRUJHEPX5wHhcZ5zhbRlbOw6occkr5/JCg7+ZszOjLYPDlrnz/ncTNn7jc=|
+      (succeeds () (supervisor "1189548608001" inactive)))))

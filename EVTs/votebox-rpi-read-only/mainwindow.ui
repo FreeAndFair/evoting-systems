@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>429</width>
+    <height>533</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>481</width>
+      <height>491</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="1">
+      <widget class="QLabel" name="raceLabel">
+       <property name="text">
+        <string>Standard Ballot</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QRadioButton" name="raceCand1">
+       <property name="text">
+        <string>Candidate</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>candGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QCheckBox" name="propBox1">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>CheckBox</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_1</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QRadioButton" name="raceCand2">
+       <property name="text">
+        <string>Candidate</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>candGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="7" column="2">
+      <widget class="QCheckBox" name="propBox2">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>CheckBox</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_2</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QRadioButton" name="raceCand3">
+       <property name="text">
+        <string>Candidate</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>candGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="11" column="2">
+      <widget class="QCheckBox" name="propBox3">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>CheckBox</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_3</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="14" column="0">
+      <widget class="QRadioButton" name="raceCand4">
+       <property name="text">
+        <string>Candidate</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>candGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="17" column="0">
+      <widget class="QRadioButton" name="raceCand5">
+       <property name="text">
+        <string>Candidate</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>candGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="17" column="2">
+      <widget class="QCheckBox" name="propBox5">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>CheckBox</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_5</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="19" column="0">
+      <widget class="QPushButton" name="cancelButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="19" column="2">
+      <widget class="QPushButton" name="saveButton">
+       <property name="text">
+        <string>Save and Submit</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="partyLabel_2">
+       <property name="text">
+        <string>party</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="partyLabel_1">
+       <property name="text">
+        <string>party</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="4" column="2" rowspan="2">
+      <widget class="QLabel" name="initLabel_1">
+       <property name="text">
+        <string>initiative</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="2" rowspan="2">
+      <widget class="QLabel" name="initLabel_2">
+       <property name="text">
+        <string>initiative</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="partyLabel_3">
+       <property name="text">
+        <string>party</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="2" rowspan="2">
+      <widget class="QLabel" name="initLabel_3">
+       <property name="text">
+        <string>initiative</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="1">
+      <spacer name="verticalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="15" column="0">
+      <widget class="QLabel" name="partyLabel_4">
+       <property name="text">
+        <string>party</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="1">
+      <spacer name="verticalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="18" column="0">
+      <widget class="QLabel" name="partyLabel_5">
+       <property name="text">
+        <string>party</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="2" rowspan="2">
+      <widget class="QLabel" name="initLabel_4">
+       <property name="text">
+        <string>initiative</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="2">
+      <widget class="QLabel" name="initLabel_5">
+       <property name="text">
+        <string>initiative</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <spacer name="verticalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="18" column="1">
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="14" column="2">
+      <widget class="QCheckBox" name="propBox4">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>CheckBox</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_4</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QCheckBox" name="voteNoBox_1">
+       <property name="text">
+        <string/>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_1</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="7" column="3">
+      <widget class="QCheckBox" name="voteNoBox_2">
+       <property name="text">
+        <string/>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_2</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="11" column="3">
+      <widget class="QCheckBox" name="voteNoBox_3">
+       <property name="text">
+        <string/>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_3</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="14" column="3">
+      <widget class="QCheckBox" name="voteNoBox_4">
+       <property name="text">
+        <string/>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_4</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="17" column="3">
+      <widget class="QCheckBox" name="voteNoBox_5">
+       <property name="text">
+        <string/>
+       </property>
+       <attribute name="buttonGroup">
+        <string>checkRow_5</string>
+       </attribute>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="yesLabel">
+       <property name="text">
+        <string>Yes</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLabel" name="noLabel">
+       <property name="text">
+        <string>No</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>429</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuVotebox">
+    <property name="title">
+     <string>Votebox</string>
+    </property>
+    <widget class="QMenu" name="menuNew_Ballot">
+     <property name="title">
+      <string>New Ballot</string>
+     </property>
+    </widget>
+    <addaction name="menuNew_Ballot"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuVotebox"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionBallot_Type">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ballot Type</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="candGroup"/>
+  <buttongroup name="checkRow_1"/>
+  <buttongroup name="checkRow_2"/>
+  <buttongroup name="checkRow_3"/>
+  <buttongroup name="checkRow_4"/>
+  <buttongroup name="checkRow_5"/>
+ </buttongroups>
+</ui>

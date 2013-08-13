@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Ballot>
+	<Property name="prop1" type="String" value="property" />
+	<Card uid="card1">
+		<Property name="prop2" type="String" value="property" />
+	</Card>
+</Ballot>

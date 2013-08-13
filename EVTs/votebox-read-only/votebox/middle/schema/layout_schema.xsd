@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  attributeFormDefault="unqualified"
+  elementFormDefault="unqualified">
+
+  <xs:element name="Layout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Property" type="propertyType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="ListProperty" type="listPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="Page" type="pageType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="pageType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="Property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ListProperty" type="listPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Label" type="drawableType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Button" type="drawableType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ToggleButtonGroup" type="groupType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="drawableType">
+    <xs:sequence>
+      <xs:element name="Property" type="propertyType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ListProperty" type="listPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="uid"  type="xs:string" use="required"/>
+    <xs:attribute name="x"    type="xs:int" use="required"/>
+    <xs:attribute name="y"  type="xs:int" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="propertyType">
+    <xs:attribute name="name"  type="xs:string" use="required"/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="groupType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="Property" type="propertyType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ListProperty" type="listPropertyType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ToggleButton" type="drawableType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+  </xs:complexType>
+  
+  <xs:complexType name="listPropertyType">
+    <xs:sequence>
+      <xs:element name="ListElement" type="listElementType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name"  type="xs:string" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="listElementType">
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
+  
+</xs:schema>

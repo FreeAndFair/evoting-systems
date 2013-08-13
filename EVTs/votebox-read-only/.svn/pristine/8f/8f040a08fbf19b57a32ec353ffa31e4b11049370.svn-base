@@ -1,0 +1,55 @@
+; vim: ft=querifier ts=2 sts=2 sw=2 et:
+
+(let
+  (
+    (cast-ballot-message-fmt (quote ; the whole shebang all at once
+        (announce (host %id:#string %addr:#string %port:#string)
+                  %seqno:#string
+                  (signed-message 
+                    (cert (signature %cert-signer:#string
+                                     %cert-sig-data:#string
+                                     %key:(key #string #string #string #string)))
+                    (signature %signer:#string %sigdata:#string 
+                      (succeeds %preds:#list:(ptr #string #string #string)
+                                %payload:(cast-ballot %nonce:#string
+                                          %cast-ballot-data:#string)))))))
+    (auth-ballot-message-fmt (quote ; the whole shebang all at once
+        (announce (host %id:#string %addr:#string %port:#string)
+                  %seqno:#string
+                  (signed-message 
+                    (cert (signature %cert-signer:#string
+                                     %cert-sig-data:#string
+                                     %key:(key #string #string #string #string)))
+                    (signature %signer:#string %sigdata:#string 
+                      (succeeds %preds:#list:(ptr #string #string #string)
+                                %payload:(authorized-to-cast %nodeid:#string
+                                          %nonce:#string
+                                          %ballot-data:#string)))))))
+    (ack-ballot-message-fmt (quote ; the whole shebang all at once
+        (announce (host %id:#string %addr:#string %port:#string)
+                  %seqno:#string
+                  (signed-message 
+                    (cert (signature %cert-signer:#string
+                                     %cert-sig-data:#string
+                                     %key:(key #string #string #string #string)))
+                    (signature %signer:#string %sigdata:#string 
+                      (succeeds %preds:#list:(ptr #string #string #string)
+                                %payload:(ballot-received %nodeid:#string
+                                          %nonce:#string)))))))
+  )
+
+
+  ;; rules
+  (and (
+    (print ((quote NUM_MSGS=) (len all-set)))
+    (print ((quote NUM_AUTH=)
+      (len 
+        (filter all-set auth-ballot-message-fmt))))
+    (print ((quote NUM_CAST=)
+      (len 
+        (filter all-set cast-ballot-message-fmt))))
+    (print ((quote NUM_ACKS=)
+      (len 
+        (filter all-set ack-ballot-message-fmt))))
+  ))
+) ; end

@@ -1,0 +1,16 @@
+
+#Ballot Schema
+<!ELEMENT ballot (races*,initiatives?)>
+	<!ELEMENT races (race*)>
+		<!ELEMENT race (racetitle,candidates*)>
+			<!ELEMENT racetitle (#PCDATA)>
+			<!ELEMENT candidates (candidate*)>
+				<!ELEMENT candidate (candname,candparty)>
+					<!ELEMENT candname (#PCDATA)>
+					<!ELEMENT candparty (#PCDATA)>
+	<!ELEMENT initiatives (initiative*)>
+		<!ELEMENT initiative (inittitle,initdesc)>
+			<!ELEMENT inittitle (#PCDATA)>
+			<!ELEMENT initdesc (#PCDATA)>
+			
+			

@@ -1,0 +1,9 @@
+Quick instructions for building SDL_wrap.dll, Linux instructions to follow
+
+--cmd--
+SWIG -java -package votebox.sdl -outdir "<path to votebox.sdl>" SDL.i
+
+--cygwin--
+gcc -c vbWrapper.c -I"<path to votebox.sdl.wrap.headers>"
+gcc -c SDL_wrap.c -I"<path to JDK/include>" -I"<Path to JDK/include/win32>" -I"<path to votebox.sdl.wrap.headers>"
+gcc -shared SDL.dll vbWrapper.o SDL_wrap.o -mno-cygwin -Wl,--add-stdcall-alias -o SDL_wrap.dll

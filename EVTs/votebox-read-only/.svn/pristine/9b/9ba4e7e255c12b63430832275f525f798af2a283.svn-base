@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ballot>
+<Property name="StartImageSize" type="Integer" value="1"/>
+<ListProperty name="Languages" type="String">
+<ListElement value="en"/>
+</ListProperty>
+<Property name="MaxImageSize" type="Integer" value="1"/>
+<Card uid="B19">
+<Property name="CardStrategy" type="String" value="RadioButton"/>
+<SelectableCardElement uid="B20"/>
+<SelectableCardElement uid="B21"/>
+</Card>
+<Card uid="B22">
+<Property name="CardStrategy" type="String" value="RadioButton"/>
+<SelectableCardElement uid="B23"/>
+<SelectableCardElement uid="B24"/>
+</Card>
+<Card uid="B25">
+<Property name="CardStrategy" type="String" value="RadioButton"/>
+<SelectableCardElement uid="B26"/>
+<SelectableCardElement uid="B27"/>
+<SelectableCardElement uid="B28"/>
+<SelectableCardElement uid="B29"/>
+<SelectableCardElement uid="B30"/>
+<SelectableCardElement uid="B31"/>
+<SelectableCardElement uid="B32"/>
+<SelectableCardElement uid="B33"/>
+<SelectableCardElement uid="B34"/>
+<SelectableCardElement uid="B35"/>
+<SelectableCardElement uid="B36"/>
+<SelectableCardElement uid="B37"/>
+<SelectableCardElement uid="B38"/>
+<SelectableCardElement uid="B39"/>
+<SelectableCardElement uid="B40"/>
+<SelectableCardElement uid="B41"/>
+<SelectableCardElement uid="B42"/>
+<SelectableCardElement uid="B43"/>
+<SelectableCardElement uid="B44"/>
+<SelectableCardElement uid="B45"/>
+<SelectableCardElement uid="B46"/>
+<SelectableCardElement uid="B47"/>
+<SelectableCardElement uid="B48"/>
+<SelectableCardElement uid="B49"/>
+<SelectableCardElement uid="B50"/>
+<SelectableCardElement uid="B51"/>
+
+</Card>
+</Ballot>

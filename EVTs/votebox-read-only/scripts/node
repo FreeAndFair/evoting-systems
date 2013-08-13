@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+COUNTER=$1
+while [ $COUNTER -lt 3000 ]; do
+	echo $COUNTER
+	/usr/java/jdk1.5.0_06/bin/java -cp /local/derrley/votebox \
+		 verifier.Verifier \
+			rule=rules/node.rules \
+			log=testdata/$COUNTER \
+			config=config 
+	let COUNTER=COUNTER+50
+done
+	

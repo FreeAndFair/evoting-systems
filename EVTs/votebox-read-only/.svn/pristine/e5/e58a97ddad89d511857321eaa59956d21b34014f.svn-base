@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Layout>
+	<Property name="LayoutProp1" value="1" type="String" />
+	<Property name="LayoutProp2" value="2" type="String" />	
+</Layout>

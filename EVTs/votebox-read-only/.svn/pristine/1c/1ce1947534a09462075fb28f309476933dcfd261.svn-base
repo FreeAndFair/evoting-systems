@@ -1,0 +1,21 @@
+# This .conf file passes parameters to the Supervisor.
+# The format of this file is:
+# KEY
+# value
+# the value MUST be on the line after the key.
+# All keys are contained (along with their defaults) in
+# votebox/AuditoriumParams.java
+
+#location of the log file to write to
+LOG_LOCATION
+superlog.out
+
+#when the ballot is cast, encrypt the ballot
+CAST_BALLOT_ENCRYPTION_ENABLED
+true
+
+#must have CAST_BALLOT_ENCRYPTION_ENABLED set to true
+#separates the ballot into a COMMIT, and then either a
+#CAST or a CHALLENGE
+USE_COMMIT_CHALLENGE_MODEL
+true

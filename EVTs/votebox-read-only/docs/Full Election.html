@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+ <title>Full Election - VoteBox - Trac</title><link rel="start" href="https://sys.cs.rice.edu/votebox/trac/wiki"><link rel="search" href="https://sys.cs.rice.edu/votebox/trac/search"><link rel="help" href="https://sys.cs.rice.edu/votebox/trac/wiki/TracGuide"><link rel="stylesheet" href="files/trac.css" type="text/css"><link rel="stylesheet" href="files/wiki.css" type="text/css"><link rel="icon" href="https://sys.cs.rice.edu/votebox/trac/chrome/common/trac.ico" type="image/x-icon"><link rel="shortcut icon" href="https://sys.cs.rice.edu/votebox/trac/chrome/common/trac.ico" type="image/x-icon"><link rel="alternate" href="https://sys.cs.rice.edu/votebox/trac/wiki/Full Election?format=txt" title="Plain Text" type="text/x-trac-wiki"><style type="text/css">
+
+@import url(http://votebox.cs.rice.edu/style/votebox.css);
+</style>
+ <script type="text/javascript" src="files/trac.js"></script>
+ <script type="text/javascript" src="files/ctxtnavadd.js"></script>
+</head><body>
+
+
+<div id="banner">
+
+<div id="header"><a id="logo" href="https://sys.cs.rice.edu/votebox"><img src="files/votebox-logo-1.png" alt=""></a><hr></div>
+
+<div><br/><br/></div>
+
+<div id="main">
+
+<div id="content" class="wiki">
+
+ 
+  
+  
+   
+   <div class="wikipage">
+    <div id="searchable"><h2 id="FullElection">Full Election<a title="Link to this section" class="anchor" href="Full Election#FullElection"> ¶</a></h2>
+<p>
+A "full election" is one where all the features of VoteBox are
+employed. More precisely, a full election involves a Supervisor, a Tap,
+a ChallengeWebServer, and at least one VoteBox. Additionally, the
+Commit-Challenge model and encryption must be enabled in both the
+supervisor and votebox configuration files. <a class="wiki" href="https://sys.cs.rice.edu/votebox/trac/wiki/Configuration">The Sample</a> configuration files meet these requirments.  The precompiled ballot used in this walkthrough can be found <a class="attachment" href="files/presidential-only.zip" title="Attachment Full Election: presidential-only.zip">here</a> (the origianl .bal can be found <a class="attachment" href="files/presidential-only.bal" title="Attachment Full Election: presidential-only.bal">here</a>).  Note that these images are from a few seperate execution of the VoteBox system, observed jumps in time are not in error.
+</p>
+<p>
+<a style="border: medium none ; padding: 0pt;" href="files/Full Election Diagram %28scratch%29.png"><img src="files/Full Election Diagram scratch.png"></a>
+</p>
+<h2 id="Walkthrough">Walkthrough<a title="Link to this section" class="anchor" href="Full Election#Walkthrough"> ¶</a></h2>
+<ul><li>Place supervisor.jar, votebox.jar, tap.jar, and challenge.jar on four different, networked machines.
+<ul><li>Note that the simpler the network, the better.  Ideally, the network will be homogenous with respect to IP version as well.
+</li></ul></li><li>Start the Supervisor, VoteBox, Tap, and ChallengeWebServer programs.
+<ul><li>Instructions for launching each can be found <a class="wiki" href="VoteBoxSupervisor.html">here</a>, <a class="wiki" href="VoteBoxRunTime.html">here</a>, <a class="wiki" href="VoteBoxTap.html">here</a>, and <a class="wiki" href="VoteBoxWebServer.html">here</a> respectively.
+</li></ul></li><li>While the machines are discovering each other, you will see these screens on the Supervisor Console and any VoteBoxes.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - waiting.png"><img src="files/Supervisor - waiting.png" width="400"></a>
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/Votebox - waiting.png"><img src="files/Votebox - waiting.png" width="400"></a>
+</li></ul></li><li>Once the Supervisor Console has found a VoteBox (though not necissarily a Tap), the option to active becomes available.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - activate.png"><img src="files/Supervisor - activate.png" width="400"></a>
+</li></ul></li><li>Once activated, every VoteBox will be assigned a label and the Supervisor Console will advance to a new screen.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Votebox - numbered.png"><img src="files/Votebox - numbered.png" width="400"></a>
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - authorized.png"><img src="files/Supervisor - authorized.png" width="400"></a>
+</li></ul></li><li>Clicking "Select Ballot" will bring up a dialog that will allow you to find a ballot to use.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - Select Ballot.png"><img src="files/Supervisor - Select Ballot.png" width="400"></a>
+</li></ul></li><li>Once a ballot is selected, the polls may be opened by clicking "Open Polls".
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - Open Polls.png"><img src="files/Supervisor - Open Polls.png" width="400"></a>
+</li></ul></li><li>A voter may then be authorized to use any of the connected VoteBoxes, by clicking the corresponding "Authorize" button.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - Voting.png"><img src="files/Supervisor - Voting.png" width="400"></a>
+</li></ul></li><li>Once authorized, a VoteBox is sent a copy of the ballot and a voting session begins.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Votebox - Voting.png"><img src="files/Votebox - Voting.png" width="400"></a>
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/VoteBox - Challenge or Record.png"><img src="files/VoteBox - Challenge or Record.png" width="400"></a>
+<ul><li>A voter is given the option to "challenge" the system in a full election.
+</li></ul></li><li><a style="border: medium none ; padding: 0pt;" href="files/VoteBox - Done Voting.png"><img src="files/VoteBox - Done Voting.png" width="400"></a>
+</li></ul></li><li>This authorize/vote cycle continues until an
+election ends, at which point the "Close Polls" button will be pressed
+on the Supervisor Console. This will bring up the results screen.
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - Results.png"><img src="files/Supervisor - Results.png" width="400"></a>
+</li><li>At any time during the election a challenged ballot may be viewed via the challenge web server.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Challenge - Challenged Ballot.png"><img src="files/Challenge - Challenged Ballot.png" width="400"></a>
+<ul><li>These ballots are not included in the final tally.
+</li></ul></li></ul></li></ul></div>
+   </div>
+
+</div>
+
+</div>
+
+</body></html>

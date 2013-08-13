@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+ <title>VoteBoxSupervisor - VoteBox - Trac</title><link rel="start" href="https://sys.cs.rice.edu/votebox/trac/wiki"><link rel="search" href="https://sys.cs.rice.edu/votebox/trac/search"><link rel="help" href="https://sys.cs.rice.edu/votebox/trac/wiki/TracGuide"><link rel="stylesheet" href="files/trac.css" type="text/css"><link rel="stylesheet" href="files/wiki.css" type="text/css"><link rel="icon" href="https://sys.cs.rice.edu/votebox/trac/chrome/common/trac.ico" type="image/x-icon"><link rel="shortcut icon" href="https://sys.cs.rice.edu/votebox/trac/chrome/common/trac.ico" type="image/x-icon"><link rel="alternate" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor?format=txt" title="Plain Text" type="text/x-trac-wiki"><style type="text/css">
+
+@import url(http://votebox.cs.rice.edu/style/votebox.css);
+</style>
+ <script type="text/javascript" src="files/trac.js"></script>
+ <script type="text/javascript" src="files/ctxtnavadd.js"></script>
+</head><body>
+
+
+<div id="banner">
+
+<div id="header"><a id="logo" href="https://sys.cs.rice.edu/votebox"><img src="files/votebox-logo-1.png" alt=""></a><hr></div>
+
+<div><br><br></div>
+<div id="main">
+
+
+<div id="content" class="wiki">
+
+ 
+  
+  
+   
+   <div class="wikipage">
+    <div id="searchable"><h1 id="VoteBoxSoftwareSpecification:Supervisor">VoteBox Software Specification: Supervisor<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor#VoteBoxSoftwareSpecification:Supervisor"> ¶</a></h1>
+<p>
+<strong>Daniel Sandler, Corey Shaw</strong>
+</p>
+<p>
+<i>Written by: Corey Shaw</i>
+</p>
+<h2 id="Usage">Usage<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor#Usage"> ¶</a></h2>
+<p>
+Compiling and running the supervisor is easily accomplished using the provided ant script.  In the directory <tt>hfvotebox</tt>, type
+</p>
+<pre class="wiki"> $ ant build
+</pre><p>
+to compile, and type
+</p>
+<pre class="wiki"> $ ant supervisor -Did &lt;serial&gt;
+</pre><p>
+to run the supervisor with serial number <tt>&lt;serial&gt;</tt>.  There is also a '<tt>clean</tt>' target that will clean the build directory.
+</p>
+<p>
+With the jar built by ant, you can simply
+</p>
+<pre class="wiki"> $ java -jar supervisor.jar &lt;serial&gt;
+</pre><h2 id="Introduction">Introduction<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor#Introduction"> ¶</a></h2>
+<p>
+The supervisor is designed to be the poll worker's access to the rest of the VoteBox
+network. It shows a list of all known machines on the network and their
+statuses, along with controls to open or close the polls, and authorize
+voters.
+</p>
+<p>When the supervisor initially starts up, it attempts to connect to
+an Auditorium network if one exists. This is done using the discovery
+protocol, and requires all machines to be on the same subnet. If it
+finds any machines, it then broadcasts its own status so that other
+machines on the network can figure out what this new machine is. Once
+connected, a supervisor can then be <a href="#Activation">activated</a>,
+and then all of the above controls become available. If the supervisor
+does not find any machines on the network, it simply waits until
+another machine attempts to connect to it.
+</p>
+<p>The supervisor is designed in the classic MVC pattern, where the
+controller serves as the entry point into the program and simply
+instantiates the model and view. See the respective subsections for
+more details.
+</p>
+<h2 id="SupervisorConcepts">Supervisor Concepts<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor#SupervisorConcepts"> ¶</a></h2>
+<h3 id="Activation">Activation<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor#Activation"> ¶</a></h3>
+<p>
+The <strong>active</strong> supervisor is the supervisor that is
+currently in use by the poll worker, and can be used to perform actions
+in the election. There can only ever be one active supervisor, and a
+supervisor must be activated before it can perform any actions. This is
+for two reasons:
+</p>
+<ul><li>Activation ensures that the supervisor has a clear view of the
+entire network, by requiring all machines to respond with their status
+if it is not found and up-to-date
+</li><li>Allowing more than one supervisor means that those
+supervisors might try to perform the same action at the same time (such
+as both authorize for a booth), causing unexpected behavior
+</li></ul><p>If at any time a supervisor is activated, all other
+supervisors must deactivate at that time. In addition, we maintain that
+a supervisor must be on the network to remain active, if it loses
+connections to all other machines, it assumes it is offline and
+automatically deactivates. This prevents two machines from being active
+and off the network, then coming on separately. It also requires that
+supervisor to reactivate once back on the network, receiving status
+updates as necessary from the messages it missed.
+</p>
+<p>When being activated, a supervisor may also query the other machines
+on the network to see if the polls are open, and/or label one or more
+of the booths.
+</p>
+<h3 id="Labeling">Labeling<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor#Labeling"> ¶</a></h3>
+<p>In order to keep the system as simple as possible, we decided it
+would be best for the supervisor to label the booths automatically.
+They are labeled as integers starting from 1, in the order that they
+are seen. However, note that only the active supervisor can label the
+machines; this prevents labeling conflicts from more than one
+supervisor. If a supervisor is activated and sees any unlabeled
+machines, it will label them in an indeterminate order, starting with
+the first available number. As such, the standard setup procedure
+should be the following:
+</p>
+<ul><li>Turn on the main and backup supervisors, and once they see each other activate the main supervisor.
+</li><li>Turn on and connect the booths one at a time, in the order that they should be labeled.
+</li><li>This ensures that the booths are labeled in a sensible order,
+that allows for machines to be easily located by their numbers. If the
+labels are out of order, it may be difficult for the poll worker and
+the voter.
+</li></ul><p>
+A couple of other notes with the labeling procedure:
+</p>
+<ul><li>Supervisors remember the labels of all booths, so if a booth is
+rebooted, it will be reassigned the label that it had previously.
+</li><li>Booths remember their own labels, so if a fresh supervisor
+connects, it will receive the labels of all of the booths (in their
+status messages).
+</li><li>If a new booth is connected during the election, it will be
+assigned the next available number (so if there are booths 1-8, the new
+one will be labeled 9).
+</li><li>If for some reason all machines lose power simultaneously,
+the booths may be labeled differently the next time they are turned on.
+</li></ul>
+</div>
+   </div>
+   
+  
+   
+ 
+</div>
+
+</div>
+
+<div id="footer">
+</div>
+
+
+
+ </body></html>

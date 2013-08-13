@@ -1,0 +1,7 @@
+-- Revision 4 --
+Changed the name of test.xml to ballot.xml and moved it (as well as 
+ballot.dtd) to /src/xml/, refer to previous note for purpose of this. 
+
+-- Revision 3 --
+An included XML file, /src/test.xml, must be placed in the directory of the 
+binary. This is the temporary XML file used to test Qt's XML handling. 

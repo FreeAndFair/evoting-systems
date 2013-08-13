@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Layout>	
+	<Page>
+		<Label x="100" y="101" uid="one">
+		</Label>		
+		<Button uid="two" x="200" y="201">		
+		</Button>
+		<ToggleButtonGroup>			
+			<ToggleButton uid="three" x="300" y="301">
+			</ToggleButton>
+			<ToggleButton uid="four" x="400" y="401">			
+			</ToggleButton>		
+		</ToggleButtonGroup>
+	</Page>
+	<Page>
+		<Label uid="five" x="500" y="501"></Label>
+		<Button uid="six" x="600" y="601"></Button>
+		<ToggleButtonGroup>
+			<ToggleButton uid="seven" x="700" y="701"></ToggleButton>
+			<ToggleButton uid="eight" x="800" y="801"></ToggleButton></ToggleButtonGroup>
+	</Page>
+</Layout>

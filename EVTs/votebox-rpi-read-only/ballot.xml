@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE ballot SYSTEM "ballot.dtd">
+<ballot>
+  <races>
+	<race>
+		<racetitle>Presidential Race</racetitle>
+		<candidates>
+			<candidate>
+				<candname>Barack Obama</candname>
+				<candparty>Democrat</candparty>
+			</candidate>
+			<candidate>
+				<candname>John McCain</candname>
+				<candparty>Republican</candparty>
+			</candidate>
+			<candidate>
+				<candname>Ron Paul</candname>
+				<candparty>Green</candparty>
+			</candidate>
+			<candidate>
+				<candname>Bill Clinton</candname>
+				<candparty>Democrat</candparty>
+			</candidate>	
+		</candidates>
+		
+	</race>
+  </races>
+  <initiatives>
+	<initiative>
+		<inittitle>Proposition 187</inittitle>
+		<initdesc>Immigrant Screening and Prohibition from Social Services</initdesc>
+	</initiative>
+	<initiative>
+		<inittitle>Proposition 8</inittitle>
+		<initdesc>Legalization of Gay Marriage</initdesc>
+	</initiative>
+	<initiative>
+		<inittitle>Proposition 215</inittitle>
+		<initdesc>Legalization of Marijuana</initdesc>
+	</initiative>
+  </initiatives>
+</ballot>

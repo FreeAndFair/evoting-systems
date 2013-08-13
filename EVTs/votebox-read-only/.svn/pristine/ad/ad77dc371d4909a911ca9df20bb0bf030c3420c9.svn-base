@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+COUNTER=$1
+while [ $COUNTER -lt 3000 ]; do
+	echo $COUNTER
+	/usr/bin/time -o fine-$COUNTER -f %E \
+		/usr/java/jdk1.5.0_06/bin/java -cp /local/derrley/votebox \
+			 verifier.Verifier \
+				rule=rules/voting2-q-fine.rules \
+				log=testdata/$COUNTER \
+				config=config 
+	let COUNTER=COUNTER+50
+	sleep 10
+done
+	

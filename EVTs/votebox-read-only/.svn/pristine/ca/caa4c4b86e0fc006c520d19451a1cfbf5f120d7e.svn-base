@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+ <title>Simple Election - VoteBox - Trac</title><link rel="start" href="https://sys.cs.rice.edu/votebox/trac/wiki"><link rel="search" href="https://sys.cs.rice.edu/votebox/trac/search"><link rel="help" href="https://sys.cs.rice.edu/votebox/trac/wiki/TracGuide"><link rel="stylesheet" href="files/trac.css" type="text/css"><link rel="stylesheet" href="files/wiki.css" type="text/css"><link rel="icon" href="https://sys.cs.rice.edu/votebox/trac/chrome/common/trac.ico" type="image/x-icon"><link rel="shortcut icon" href="https://sys.cs.rice.edu/votebox/trac/chrome/common/trac.ico" type="image/x-icon"><link rel="alternate" href="https://sys.cs.rice.edu/votebox/trac/wiki/Simple Election?format=txt" title="Plain Text" type="text/x-trac-wiki"><style type="text/css">
+
+@import url(http://votebox.cs.rice.edu/style/votebox.css);
+</style>
+ <script type="text/javascript" src="files/trac.js"></script>
+ <script type="text/javascript" src="files/ctxtnavadd.js"></script>
+</head><body>
+
+
+<div id="banner">
+
+<div id="header"><a id="logo" href="https://sys.cs.rice.edu/votebox"><img src="files/votebox-logo-1.png" alt=""></a><hr></div>
+
+<div><br><br></div>
+<div id="main">
+
+<div id="content" class="wiki">
+
+ 
+  
+  
+   
+   <div class="wikipage">
+    <div id="searchable"><h2 id="SimpleElection">Simple Election<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/Simple Election#SimpleElection"> ¶</a></h2>
+<p>
+A simple election is one featuring only Supervisor and VoteBox machines
+(encryption is optional as well). Any configuration files WITHOUT
+USE_COMMIT_CHALLENGE_MODEL set to true can be used in a Simple Election
+(they must, however, be consistent between Supervisor and VoteBoxes).
+The precompile ballot used in this example can be found <a class="attachment" href="files/presidential-only-simple.bal.zip" title="Attachment Simple Election: presidential-only-simple.bal.zip">here</a>, the .bal used to generate it is <a class="attachment" href="files/presidential-only.bal" title="Attachment Simple Election: presidential-only.bal">here</a>.
+</p>
+<h2 id="Walkthrough">Walkthrough<a title="Link to this section" class="anchor" href="https://sys.cs.rice.edu/votebox/trac/wiki/Simple Election#Walkthrough"> ¶</a></h2>
+<ul><li>Place supervisor.jar &amp; votebox.jar on seperate machines.
+Any number of each may be in use, provided there is no more than one
+per machine and at least one of each on the network.
+</li><li>Start the supervisor and votebox jars
+<ul><li>Instructions may be found <a class="wiki" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxSupervisor">here</a> and <a class="wiki" href="https://sys.cs.rice.edu/votebox/trac/wiki/VoteBoxRunTime">here</a>, respectively.
+</li></ul></li><li>While the auditorium network is being established
+and discovery is ongoing, you will see the following screens on
+supervisors and voteboxes respectively.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - waiting.png"><img src="files/Supervisor - waiting.png" width="400"></a>
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/VoteBox - waiting.png"><img src="files/VoteBox - waiting.png" width="400"></a>
+</li></ul></li><li>When a Supervisor discovers its first VoteBox the screen changes to one similar to this.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - discovered.png"><img src="files/Supervisor - discovered.png" width="400"></a>
+</li></ul></li><li>You then activate a console (which will number all VoteBoxes), select a ballot, and open the polls.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - activate.png"><img src="files/Supervisor - activate.png" width="400"></a>
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/VoteBox - numbered.png"><img src="files/VoteBox - numbered.png" width="400"></a>
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - select ballot.png"><img src="files/Supervisor - select ballot.png" width="400"></a>
+</li><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - polls open.png"><img src="files/Supervisor - polls open.png" width="400"></a>
+</li></ul></li><li>Until closing the polls, authorize VoteBoxes to allow a vote to be cast from it.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/VoteBox - voting.png"><img src="files/VoteBox - voting.png" width="400"></a>
+</li></ul></li><li>Once polls are closed, a tally will be displayed.
+<ul><li><a style="border: medium none ; padding: 0pt;" href="files/Supervisor - tally.png"><img src="files/Supervisor - tally.png" width="400"></a>
+</li></ul></li></ul></div>
+   </div>
+   
+</div>
+
+</div>
+
+</div>
+
+<div id="footer">
+</div>
+
+
+
+ </body></html>

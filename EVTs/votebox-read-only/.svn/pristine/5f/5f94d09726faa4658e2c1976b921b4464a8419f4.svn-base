@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Layout>	
+	<Page>
+		<Label x="100" y="101" uid="one"></Label>
+		<Label uid="two" x="200" y="201"></Label>	</Page>
+	<Page>
+		<Label uid="three" x="300" y="301"></Label>	</Page></Layout>

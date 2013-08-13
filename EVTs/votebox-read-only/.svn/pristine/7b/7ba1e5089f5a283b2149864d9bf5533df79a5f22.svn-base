@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+COUNTER=$1
+while [ $COUNTER -lt 3000 ]; do
+	/usr/bin/time -o local-course-$COUNTER -f %E \
+		/usr/java/jdk1.5.0_06/bin/java -cp /local/derrley/votebox \
+			 verifier.Verifier \
+				rule=rules/voting2-qlocal-course.rules \
+				log=testdata/$COUNTER \
+				config=config 
+	let COUNTER=COUNTER+50
+done
+	

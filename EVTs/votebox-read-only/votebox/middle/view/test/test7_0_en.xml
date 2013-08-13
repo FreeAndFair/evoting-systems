@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Layout>	
+	<Page>
+		<Label x="100" y="101" uid="one">
+			<Property name="OnePropOne" type="String" value="property"></Property>
+			<Property name="OnePropTwo" type="String" value="property"></Property>
+		</Label>		
+		<Button uid="two" x="200" y="201">
+			<Property name="TwoPropOne" type="String" value="property"></Property>		
+		</Button>
+		<ToggleButtonGroup>
+			<Property name="GroupOneProperty" type="String" value="property"></Property>			
+			<ToggleButton uid="three" x="300" y="301">
+				<Property name="ThreePropOne" type="String" value="property"></Property>
+			</ToggleButton>
+			<ToggleButton uid="four" x="400" y="401">
+				<Property name="FourPropOne" type="String" value="property"></Property>			
+			</ToggleButton>		
+		</ToggleButtonGroup>
+		<ToggleButtonGroup>
+			<Property name="GroupTwoProperty" type="String" value="property"></Property>
+			<ToggleButton uid="five" x="500" y="501">
+			</ToggleButton>
+			<ToggleButton uid="six" x="600" y="601"></ToggleButton>
+		</ToggleButtonGroup>
+	</Page>
+</Layout>
