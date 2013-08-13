@@ -1,0 +1,49 @@
+------------------
+TOTAL
+------------------
+Mayor
+	Farmer: 1
+	Botelho: 1
+	writein: 2
+	Over Votes: 1
+	Under Votes: 1
+	Total Ballots: 6
+School Board
+	Peters: 1
+	Choate: 1
+	Carlson: 1
+	Marks: 1
+	Story: 0
+	writein: 0
+	writein: 0
+	writein: 0
+	Over Votes: 1
+	Under Votes: 1
+	Total Ballots: 6
+Prop1
+	Yes: 3
+	No: 2
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 6
+Assembly 2
+	Madsen: 1
+	Danner: 2
+	writein: 1
+	Over Votes: 1
+	Under Votes: 1
+	Total Ballots: 6
+Assembly 1
+	Lawfer: 2
+	Stone: 1
+	writein: 1
+	Over Votes: 0
+	Under Votes: 2
+	Total Ballots: 6
+Prop2
+	Yes: 3
+	No: 1
+	Over Votes: 1
+	Under Votes: 1
+	Total Ballots: 6
+

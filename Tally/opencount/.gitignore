@@ -1,0 +1,12 @@
+.idea
+*.pyc
+*.so
+*.log
+*.swo
+*.swp
+nosetests.xml
+.coverage
+opencount/projects
+opencount/projects_new
+opencount/pixel_reg/build
+opencount/pixel_reg/*.c

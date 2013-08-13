@@ -1,0 +1,21 @@
+------------------
+TOTAL
+------------------
+School Director
+	Alpen: 6
+	Paustian: 4
+	Reasner: 1
+	Stoltenberg: 1
+	writein: 0
+	writein: 0
+	writein: 0
+	Over Votes: 1
+	Under Votes: 0
+	Total Ballots: 12
+College Director
+	Garvin: 6
+	writein: 1
+	Over Votes: 0
+	Under Votes: 5
+	Total Ballots: 12
+

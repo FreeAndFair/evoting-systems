@@ -1,0 +1,10 @@
+This is the OpenCount software, which processes scanned images of
+ballots, identifies and tabulates the votes, and produces vote tallies.
+
+To install the software, follow the instructions here:
+
+  https://code.google.com/p/opencount/wiki/InstallNotes
+
+To run the software, go into the opencount/ directory and run
+
+  python maingui.py

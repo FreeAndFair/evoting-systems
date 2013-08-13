@@ -1,0 +1,346 @@
+------------------
+TOTAL
+------------------
+Measure A
+	Yes: 4
+	No: 2
+	Over Votes: 1
+	Under Votes: 2
+	Total Ballots: 9
+US Representative (46th Dist)
+	Loretta Sanchez: 3
+	John J. Cullum: 0
+	Pat Garcia: 0
+	Writein: 0
+	Jerry Hayden: 0
+	Jorge Rocha: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+County Supervisor (3rd Dist)
+	Writein: 0
+	Deborah Pauly: 3
+	Todd Spitzer: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+Judge of the Superior Court (No. 1)
+	Writein: 0
+	Deborah J. Chuang: 4
+	Eugene Jizhak: 1
+	Over Votes: 0
+	Under Votes: 4
+	Total Ballots: 9
+Member, County Central Committee (69 Dist)
+	Robert Morris Hammond: 0
+	Bryan Carter: 0
+	Charles Hart: 1
+	Cuong Sinh Cao: 1
+	Brett Elliott Franklin: 2
+	Gwen A. Dryud: 1
+	Writein4: 0
+	Lupe Moreno: 0
+	Timothy "Tim" Ryan Whitacre: 0
+	Writein5: 0
+	Writein6: 0
+	Thomas Anthony Gordon: 2
+	Glen Stroud: 0
+	Writein1: 1
+	Writein2: 0
+	Writein3: 0
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+US Senator
+	Writein: 0
+	Rogelio T. Gloria: 0
+	Al Ramirez: 0
+	Greg Conlon: 0
+	Oscar Alejandro Braun: 0
+	Gail K. Lightfoot: 0
+	Nak Shah: 0
+	Mike Strimling: 0
+	John Boruff: 0
+	Dan Hughes: 0
+	Orly Taitz: 0
+	Robert Lauten: 0
+	Dirk Allen Konopik: 0
+	Elizabeth Emken: 1
+	Dennis Jackson: 0
+	Nachum Shifren: 0
+	Dianne Feinstein: 3
+	Don J. Grundmann: 0
+	Rick Williams: 1
+	Kabiruddin Karim Ali: 1
+	Diane Stewart: 0
+	Donald Krampe: 0
+	David Alex Levitt: 0
+	Marsha Feinland: 1
+	Colleen Shea Fernald: 0
+	Over Votes: 0
+	Under Votes: 2
+	Total Ballots: 9
+President of the US (Rep)
+	Rick Santorum: 0
+	Mitt Romney: 1
+	Ron Paul: 0
+	Writein: 0
+	Charles E. "Buddy" Roemer, III: 2
+	Newt Gingrich: 0
+	Fred Karger: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+Member of the State Ass. (73)
+	James Corbett: 1
+	Writein: 1
+	Diane L. Harkey: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+Member, County Board of Education (Area 3)
+	Mary Galuska: 2
+	Writein: 2
+	Ken L. Williams, Jr.: 0
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+Member of the State Assembly (69th Dist)
+	Francisco "Paco" Barragan: 0
+	Michele Martinez: 0
+	Julio Perez: 0
+	Writein: 0
+	Tom Daly: 1
+	Jose "Joe" Moreno: 1
+	Over Votes: 0
+	Under Votes: 3
+	Total Ballots: 5
+Proposition 28
+	Yes: 5
+	No: 2
+	Over Votes: 0
+	Under Votes: 2
+	Total Ballots: 9
+Proposition 29
+	Yes: 5
+	No: 2
+	Over Votes: 0
+	Under Votes: 2
+	Total Ballots: 9
+US Rep (48th Dist)
+	Ron Varasteh: 0
+	Writein: 4
+	Dana Rohrabacher: 0
+	Alan Schlar: 0
+	Over Votes: 0
+	Under Votes: 0
+	Total Ballots: 4
+Measure B
+	Yes: 2
+	No: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+
+------------------
+Precinct: 0063032
+------------------
+Measure A
+	Yes: 3
+	No: 0
+	Over Votes: 1
+	Under Votes: 1
+	Total Ballots: 5
+US Representative (46th Dist)
+	Loretta Sanchez: 3
+	John J. Cullum: 0
+	Pat Garcia: 0
+	Writein: 0
+	Jerry Hayden: 0
+	Jorge Rocha: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+County Supervisor (3rd Dist)
+	Writein: 0
+	Deborah Pauly: 3
+	Todd Spitzer: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+Judge of the Superior Court (No. 1)
+	Writein: 0
+	Deborah J. Chuang: 2
+	Eugene Jizhak: 0
+	Over Votes: 0
+	Under Votes: 3
+	Total Ballots: 5
+Member, County Central Committee (69 Dist)
+	Robert Morris Hammond: 0
+	Bryan Carter: 0
+	Charles Hart: 1
+	Cuong Sinh Cao: 1
+	Brett Elliott Franklin: 2
+	Gwen A. Dryud: 1
+	Writein4: 0
+	Lupe Moreno: 0
+	Timothy "Tim" Ryan Whitacre: 0
+	Writein5: 0
+	Writein6: 0
+	Thomas Anthony Gordon: 2
+	Glen Stroud: 0
+	Writein1: 1
+	Writein2: 0
+	Writein3: 0
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+US Senator
+	Writein: 0
+	Rogelio T. Gloria: 0
+	Al Ramirez: 0
+	Greg Conlon: 0
+	Oscar Alejandro Braun: 0
+	Gail K. Lightfoot: 0
+	Nak Shah: 0
+	Mike Strimling: 0
+	John Boruff: 0
+	Dan Hughes: 0
+	Orly Taitz: 0
+	Robert Lauten: 0
+	Dirk Allen Konopik: 0
+	Elizabeth Emken: 0
+	Dennis Jackson: 0
+	Nachum Shifren: 0
+	Dianne Feinstein: 2
+	Don J. Grundmann: 0
+	Rick Williams: 0
+	Kabiruddin Karim Ali: 1
+	Diane Stewart: 0
+	Donald Krampe: 0
+	David Alex Levitt: 0
+	Marsha Feinland: 1
+	Colleen Shea Fernald: 0
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+President of the US (Rep)
+	Rick Santorum: 0
+	Mitt Romney: 1
+	Ron Paul: 0
+	Writein: 0
+	Charles E. "Buddy" Roemer, III: 2
+	Newt Gingrich: 0
+	Fred Karger: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+Member, County Board of Education (Area 3)
+	Mary Galuska: 2
+	Writein: 2
+	Ken L. Williams, Jr.: 0
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+Member of the State Assembly (69th Dist)
+	Francisco "Paco" Barragan: 0
+	Michele Martinez: 0
+	Julio Perez: 0
+	Writein: 0
+	Tom Daly: 1
+	Jose "Joe" Moreno: 1
+	Over Votes: 0
+	Under Votes: 3
+	Total Ballots: 5
+Proposition 28
+	Yes: 3
+	No: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+Proposition 29
+	Yes: 3
+	No: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 5
+
+------------------
+Precinct: 0045102
+------------------
+Measure A
+	Yes: 1
+	No: 2
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+Judge of the Superior Court (No. 1)
+	Writein: 0
+	Deborah J. Chuang: 2
+	Eugene Jizhak: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+US Senator
+	Writein: 0
+	Rogelio T. Gloria: 0
+	Al Ramirez: 0
+	Greg Conlon: 0
+	Oscar Alejandro Braun: 0
+	Gail K. Lightfoot: 0
+	Nak Shah: 0
+	Mike Strimling: 0
+	John Boruff: 0
+	Dan Hughes: 0
+	Orly Taitz: 0
+	Robert Lauten: 0
+	Dirk Allen Konopik: 0
+	Elizabeth Emken: 1
+	Dennis Jackson: 0
+	Nachum Shifren: 0
+	Dianne Feinstein: 1
+	Don J. Grundmann: 0
+	Rick Williams: 1
+	Kabiruddin Karim Ali: 0
+	Diane Stewart: 0
+	Donald Krampe: 0
+	David Alex Levitt: 0
+	Marsha Feinland: 0
+	Colleen Shea Fernald: 0
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+Member of the State Ass. (73)
+	James Corbett: 1
+	Writein: 1
+	Diane L. Harkey: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+Proposition 28
+	Yes: 2
+	No: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+Proposition 29
+	Yes: 2
+	No: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+US Rep (48th Dist)
+	Ron Varasteh: 0
+	Writein: 4
+	Dana Rohrabacher: 0
+	Alan Schlar: 0
+	Over Votes: 0
+	Under Votes: 0
+	Total Ballots: 4
+Measure B
+	Yes: 2
+	No: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 4
+

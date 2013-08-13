@@ -1,0 +1,40 @@
+------------------
+TOTAL
+------------------
+B
+	Yes: 4
+	No: 3
+	Over Votes: 1
+	Under Votes: 1
+	Total Ballots: 9
+
+------------------
+Precinct: tipton1
+------------------
+B
+	Yes: 1
+	No: 1
+	Over Votes: 0
+	Under Votes: 1
+	Total Ballots: 3
+
+------------------
+Precinct: tipton3
+------------------
+B
+	Yes: 3
+	No: 0
+	Over Votes: 0
+	Under Votes: 0
+	Total Ballots: 3
+
+------------------
+Precinct: tipton2
+------------------
+B
+	Yes: 0
+	No: 2
+	Over Votes: 1
+	Under Votes: 0
+	Total Ballots: 3
+

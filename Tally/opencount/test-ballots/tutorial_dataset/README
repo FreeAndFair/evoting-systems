@@ -1,0 +1,32 @@
+This is a set of nine (9) artificially-marked ballots, to be used as a 
+simple test dataset for OpenCount.
+
+There are two different ballot styles (groupA, groupB). These ballots
+are double-sided, and the filenames alternate. The vendor is: Hart.
+
+The test images were created by manually adding voter marks in a simple
+image-editor program (Kolourpaint) to blank sample ballot images. 
+
+No voter data is present in this dataset.
+
+Expected OpenCount results can be found in:
+    results/election_results.txt
+    results/election_results_batches.txt
+    results/cvr.csv
+    results/cvr/*
+
+====================================
+======== OpenCount Tutorial ========
+====================================
+
+A step-by-step illustrated tutorial can be found at the OpenCount
+GoogleCode page, at:
+
+    https://code.google.com/p/opencount/wiki/Tutorial
+
+Please follow the tutorials listed above to learn how to use the
+OpenCount software.
+
+If any issues arise, please don't hesitate to contact the OpenCount
+team.
+
