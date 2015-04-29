@@ -1,0 +1,9 @@
+This is TEVS, the Trachtenberg Election Verification System.
+
+All files in these directories are copyright 2008-2010 Mitch Trachtenberg.
+
+These files are licensed under the GNU General Public License Version 3.
+
+Under this license you are free to redistribute these files to anyone, 
+as long as you keep this notice with the files.  You may not restrict
+the equivalent right of anyone else to redistribute these files.

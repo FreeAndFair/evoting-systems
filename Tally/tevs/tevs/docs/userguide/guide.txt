@@ -1,0 +1,782 @@
+.TITLE "Using TEVS for Vote Counting"
+.SUBTITLE "Trachtenberg Election Verification System"
+.AUTHOR "Mitch Trachtenberg"
+.DOCTYPE DEFAULT
+.COPYSTYLE FINAL
+.PRINTSTYLE TYPESET
+.PARA_SPACE
+.INDENT_FIRST_PARAS
+.PARA_INDENT 1m
+.START
+.NUMBER_HEADS
+.NUMBER_SUBHEADS
+.NUMBER_PARAHEADS
+.HEAD "Intended Audience"
+.PP
+.PP
+This document is aimed at users who are comfortable 
+working on a command line or entering DOS commands; users should
+be comfortable using text editors to modify configuration
+files and should understand what a "directory tree" means.
+Ideally, the user is comfortable with UNIX and/or Linux.
+.PP
+If that's not you, you should probably find someone to help
+you run this software. 
+.PP
+The software enables anyone to conduct their own 
+independent scan and vote count in a jurisdiction 
+that allows this.  
+If there are substantial differences between
+your vote count and the reported count, you can then 
+investigate further.
+.PP
+It is a tool that will work well for a user who understands
+its operation and limitation, 
+but it will just lead to confusion if used by someone who
+doesn't understand these things.  This is not "pick it up
+as you go along" software.
+.PP
+This is not security-oriented software.  It is intended to be
+received from a trusted source and installed on a machine that 
+is not networked, is physically secure, and used by trusted
+personnel.  You have access to the complete "source code,"
+so you must decide for yourself whether it is doing what it
+is intended to do.
+.PP
+If you have downloaded this software as an ISO file to be burned to disk,
+you MUST do the following check to ensure that the file has arrived unaltered.
+From a Linux machine (or another machine capable of running the openssl
+command), type the following into a command window:
+.PP
+	  openssl dgst -ripemd160 tevs.iso
+.PP
+Then, contact your trusted provider and read them the output of this command.
+It should match their known output.  
+.PP
+This is the ONLY way to ensure that you are receiving what your trusted
+provider has made available.
+.PP
+DO NOT RUN THE OPENSSL COMMAND ON A DISK YOU HAVE GENERATED FROM THE ISO AS 
+THIS WILL DEMONSTRATE NOTHING ABOUT THE AUTHENTICITY OF THE DISK.  DO NOT
+RELY ON THE WEB SITE OF THE TRUSTED PROVIDER -- TELEPHONE A PERSON KNOWN TO YOU.
+.PP
+SECURITY IS ONLY AS STRONG AS THE WEAKEST LINK.  IF YOU USE AN UNVERIFIED
+COPY OF THIS SOFTWARE, ALL RESULTS MAY BE FRAUDULENT.  DO THE CORRECT CHECK
+AT THE BEGINNING OF YOUR PROCESS, OR THE REST IS NOT WORTH BOTHERING WITH.
+.PP 
+The security benefit of this software resides in its offering
+an independent second-opinion.  It is my belief that it
+is much harder to defraud a count, or submit a suspicion-free
+but erroneous count, when a count is performed by two or
+more systems, at least one of which is "open source."
+.PP
+This software does not know, and therefore cannot tell you,
+that it has been given all the ballots that voters cast, as
+they cast them.  All it can do is scan the ballots it is given
+and count votes from the resulting images.    
+.HEAD "Overview"
+.PP
+OK.  Not scared away yet?
+.SUBHEAD "TEVS counts votes from ballots"
+.PP
+TEVS (Trachtenberg Election Verification System) is a tool for those who
+want to count votes from ballots.  Instead of trying to handle every
+vote on every ballot, it just wants to get most votes from most ballots,
+and lets its owner know what work remains to be done.
+.PP
+Simply running TEVS will get you an independent count, and allow you
+to either accept the official count or, if the percentages are substantially
+different, allow you to investigate further.
+.SUBHEAD "TEVS is Transparent"
+.PP
+TEVS makes it possible for an audience to watch the ballot scans as they
+are created, seeing the scans overlaid with TEVS interpretation of what
+candidates have been voted for.  It generates intermediate data that can
+be imported into spreadsheets or databases, so that final counting can
+be done by other systems.  It can generate extensive logs showing what
+it is doing.  It is designed to be the opposite of a "black box."
+.SUBHEAD "TEVS is Free and Open Source"
+.PP
+TEVS is distributed installed on Ubuntu Linux.  Both TEVS and Linux are
+free software meaning anyone may copy and distribute it 
+to anyone else.  Free means "free as in freedom."  Anyone may charge
+for TEVS, but they cannot prevent you from getting the system from
+someone else.  No one can legally improve the system and then "lock up"
+the improved system by selling it as non-free software.  For more
+information, see the GNU General Public License version 3.  
+Besides a bit of ballot-specific image processing, TEVS is mostly just
+"glue" that calls upon other free software to do what needs to be done.
+.PP
+Both TEVS and Linux are "open source," meaning you can examine, line by
+line, the program that is being run by your computer.  It also means 
+you (or anyone) can generate modified versions.  This ability for anyone
+to modify the software allows for rapid evolution.  It means that a 
+worldwide community of interested programmers can potentially respond
+to bugs and insert improvements.  It also means you
+must either trust that you have an unaltered version or must determine
+for yourself that the version you have is not doing anything out of the
+ordinary.  If you understand digital signatures, you can confirm for
+yourself that the version you use comes from a source you trust.
+.PP
+The TEVS installation, complete with Ubuntu Linux, can be used to replace
+your regular hard disk, so you don't need to worry about interaction
+between TEVS and your computer's regular environment.
+.PP
+TEVS is written in the computer languages Python and C.  
+.SUBHEAD "TEVS is supported"
+I provide fee-based support for this software, and will fix and extend
+problems for paying customers.  Others are welcome to do the same; because
+the software is free and open source, programmers should be able to 
+modify TEVS without any need to contact me, if they so choose.  I can 
+be contacted at mjtrac@gmail.com or via http://www.mitchtrachtenberg.com.
+.SUBHEAD "What TEVS does"
+.PP
+Given a ballot of a general design TEVS knows about 
+(for example, a Hart, Premier/Diebold,
+or ES&S ballot meeting common criteria), 
+TEVS analyzes the ballot to
+locate the contests, candidates, and "vote opportunities" -- the boxes
+or ovals or lines that a voter can mark to indicate a vote.  When it 
+encounters a new ballot layout (a new precinct, for example, or a new
+party ballot), it analyzes the layout, reads the text, and saves the 
+layout and text to use with subsequent ballots of the same
+precinct and party.  Ballots do not need to be batched by precinct 
+or party; TEVS re-reads the correct layout every time it encounters
+an instance of a layout it has already encountered.
+.PP
+(Note: TEVS can be modified to handle ballot types it doesn't yet
+understand, but this will require additional programming.)
+.PP
+To enable high-quality optical character recognition, TEVS needs to
+start by scanning a blank ballot of each party/precinct combination 
+at a high resolution.  Scanning of remaining ballots can then take place at
+a lower resolution.  Typically, the blanks need to be scanned at 300 dots
+per inch or better, and the remaining ballots can be scanned at 150 dots
+per inch, which is much faster.
+.PP
+If you have no access to blank ballots or to ballot print files, you
+can still use TEVS but will need to check TEVS' generated XML layout files -- 
+it may
+be necessary add some information.
+.PP
+TEVS includes three main subsystems which may be run sequentially, 
+simultaneously, or independently.  Because the subsystems' only connection
+is the files they write and read, any subsystem may be replaced by
+any process that works from the same input and 
+generates the same type of output files.
+.PP
+.PARAHEAD "Scan"
+The first subsystem controls a scanner which is compatible with the 
+SANE protocol.  All it does is scan ballots into numbered files organized
+in the directory structure expected by the other subsystems.  If you
+already have access to appropriate image files, you can simply place
+them into the unproc directory tree. 
+.PP
+.PARAHEAD "Count"
+The second subsystem examines the images, determines the particular
+layout and candidate text, and counts votes for candidates off the
+images.  For each votable area, it writes what will be referred to as a 
+cast vote record, or CVR.  Each CVR is a line containing comma-separated
+values indicating the ballot image, the area examined, which contest and
+candidate the area represents, whether the software
+thinks the area contains a vote, and various statistics that indicate 
+why the software thinks what it thinks.  
+.PP
+These lines can easily be imported into almost any spreadsheet or 
+database program for further processing; when the config file specifies
+use of a database, the information is also written to Postgresql tables.
+.PP
+For the current version, TEVS relies on two tests to decide which
+vote opportunity regions contain votes: one test checks for 
+the average lightness or darkness of each vote opportunity region
+and compares it with a threshold value entered in the configuration
+file, another test counts the number of individual darkened pixels 
+in a vote region darker than a threshold.to decide which opportunities contain
+votes.  Because TEVS is open-source, it is easy for an experienced
+programmer to add more sophisticated analysis for borderline cases.
+.PP
+TEVS can generate extensive log files showing how it has generated
+the CVRs.
+
+.PARAHEAD "Show"
+.PP
+The third subsystem is a display program that shows each ballot together
+with an overlay showing the cast vote records as boxes around votable
+areas and text indicating the candidate or option represented by the
+boxed votable area.  The text is colored to indicate whether the votable
+area was believed to contain a vote.  In future versions, the display
+program should allow display of subsets of ballots based on particular
+requirement -- a precinct, overvoted status, etc...
+.PP
+In addition, TEVS performs other associated tasks.
+.PP
+.PARAHEAD "Summarize"
+In addition to these three major components, the system is able to 
+take all the CVRs and generate totals for candidates and options... the
+stuff you expect will get reported on election night.  But you can also
+take the CVRs, import them into a spreadsheet or database, and do your
+own summaries, statistics, etc...
+.PP
+.PARAHEAD "Archive"
+You can and should ensure that the scanned images are saved in a secure
+manner.  The best way to accomplish this is to use an encryption program
+to "digitally sign" the collection of images.  Then, as long as your
+digital signature can be trusted, those who check can confirm that their
+copy of your image collection matches the original images.  Ubuntu Linux
+contains the needed encryption program, gpg, as well as an easy-to-use
+front-end named "Seahorse."
+.PP
+To confirm that the images match the original paper ballots, you should
+write your image collection to write-only storage like a DVD, and then
+compare a random sample of the written images from the DVD 
+against the original paper ballots.
+(Even if you are using what you feel is a fresh copy of the correct
+software on a store-bought machine, scanning images on a store-bought
+scanner, having an outside observer perform this sampling before ballots
+are locked away will allow others to have greater confidence in the 
+accuracy of the images.)
+.NEWPAGE
+.PP
+.PS
+A:box "ballots"
+arrow 
+B:circle "scan"
+arrow
+C:box "images"
+arrow
+D:circle "count"
+arrow
+E:box "CVRs"
+arrow
+F: circle "show"
+down
+G: circle "collect/sign" at D .s - (0.0,0.5)
+arrow from C .s to last circle .nw 
+arrow from E .s to G.ne
+H: box "DVD" at G .s - (0.0,0.5)
+arrow from G .s to last box .n
+arc -> from H .e to F .s 
+.PE
+.SHIM
+.PP "Flag"
+TEVS can generate collections of special-case ballot areas.
+It can write images of each marked write-in, to simplify counting
+of write-in candidates.  It can write images of borderline votes, to 
+simplify the task of obtaining final, exact numbers.  And it will
+flag situations in which too many votes seem to have been entered
+in a contest, so that humans can decide which choice, if any, has
+really been voted for. 
+.HEAD "Where things go"
+.PP
+.PS
+A: box wid 2 ht 1 "(TOP DIR)" "tevs.cfg" "nexttoscan.txt" "nexttoprocess.txt" at (3.0,0.0)
+T: box "templates" at A.s - (3.0, 1.0)
+move 0.1
+B: box "unproc" 
+move 0.1
+C: box "proc" 
+move 0.1
+D:  box "results" 
+move 0.1
+E:  box "writeins" 
+move 0.1
+F:  box "masks" 
+move 0.1
+Z: box "summary"
+G: box "xxx_000" at B.s - (0.5,1.0)
+move 0.1
+H: box "xxx_001"
+move 0.1
+I: box "..."
+line from A.s to B.n
+line from A.s to C.n
+line from A.s to D.n
+line from A.s to E.n
+line from A.s to F.n
+line from A.s to T.n
+line from A.s to Z.n
+line from B.s to G.n
+line from B.s to H.n
+line from B.s to I.n
+line from C.s to C.s - (0.2,0.2)
+line from C.s to C.s - (0.0,0.2)
+line from C.s to C.s - (-0.2,0.2)
+line from D.s to D.s - (0.2,0.2)
+line from D.s to D.s - (0.0,0.2)
+line from D.s to D.s - (-0.2,0.2)
+.PE
+.SHIM
+.PP
+Image files are scanned (or placed) into subdirectories of unproc.
+.PP
+Once the files have been used to generate CVRs, they are moved to proc and
+CVRs are placed in results.  
+.PP
+Each of proc, unproc, and results
+contain subdirectories containing, in general, 1,000 files.  
+Image files are named with a three letter prefix, an underscore, 
+a zero-padded six digit serial number (starting with 1), and an extension, 
+typically ".jpg". The first
+999 images are written to ~/data/unproc/xxx_000, the next 1,000 are written to
+~/data/unproc/xxx_001, and so on. ("xxx" is a prefix which may be changed
+from machine to machine, so that it is easy to merge the various directories
+generated by different machines operating in parallel. The default is "tmp".)
+.PP
+Image serial numbers begin with 1; ballots printed on two sides should generate
+an odd serial number for the front image 
+and an even serial number for the back image.
+.PP
+Marked write-in vote opportunities are saved in ~/data/writeins.  Each writein
+file image is named with a combination of the name of the contest and the
+name of the image file from which it was cropped. 
+.PP
+Templates for a particular party/precinct combination are stored in 
+~/data/templates.
+Template names are based upon the bar code, dash pattern, or box pattern
+that was used to determine the template represented a new layout, precinct,
+or party.  Template names have no extension, and contain XML.
+.PP
+Future versions of the system will
+generate special versions of the template images that can be 
+used to locate ballots with marks falling outside 
+the vote opportunities (for example, a user writing "YES" next to a vote
+opportunity).  These will be stored in ~/data/masks.
+.PP
+Summary results will generally be extracted from the database, though
+the individual CSV files may also be summarized.
+.PP
+The configuration file, allowing some modification of these various
+locations and other main characteristics of the system, is tevs.cfg.
+The number of the next image file that will be generated by the scanning
+is on a single line in nexttoscan.txt.
+The number of the next image file to process is on a single line in 
+~/data/nexttoprocess.txt.  These numbers are automatically advanced by the 
+appropriate programs, and a GUI to adjust them when necessary will probably
+be added to the system; for now, any text editor can be used. 
+.PP
+The main Python program code is located in . -- this will probably change.
+The Python code relies on a modified version of the Python Image Library,
+which is located in ~/Imaging-1.1.7.  This dependency will be removed.
+.HEAD "Running subsystems from the command line"
+.PP
+Although a central GUI will be provided to enable push button operation,
+TEVS subsystems are just scripts that can be run from the command line.
+Scanning is controlled from tevs/tevs/scanloop.py; 
+counting (or data extraction) from tevs/tevs/main.py; 
+display from tevs/tevs/show_ballots.py.  
+
+The extraction program can be started
+as soon as the scanning program has placed some files in data/unproc; 
+by default,
+the extraction program will exit as soon as the next sequential file 
+is not found.  The display program can be run at any time, but it can only
+display files that have been processed and moved to the data/proc tree, and for
+which a results file has been written to the data/results directory.
+.PP
+The display program cannot alter the data in the data/results directory, and
+so nothing you do with the display program will affect the data that has been
+extracted from the images.  
+.SUBHEAD "Scanning"
+.PP
+"python scancontrol.py" runs a GUI which invokes the non-GUI python script
+scanloop.py.  
+scanloop does the actual scanning using the SANE libraries.  
+Each time scanloop ends,
+scancontrol can restart it, so that if you have a scanner which does not need
+to raise and lower an elevator, you can simply drop a new ballot into the 
+scanner and it will scan it immediately.  
+.PP
+scanloop can scan templates or ballots.  The only difference is that 
+templates are scanned at 300 dpi (or greater), while ballots are scanned 
+at the lower resolution of 150dpi.
+
+Templates should be blank ballots -- voted ballots may not generate 
+proper templates, as vote opportunities may be missed.  The best source
+of template images is not your scanner, but the print files which were
+used to print ballots.  If you can obtain these, they can be used directly
+by splitting the pdfs into individual pages, converting the pages to 300 dpi
+jpgs, and numbering these jpegs as though they had been scanned.
+.SUBHEAD "Counting"
+.PP
+There is no GUI associated with extracting the votes from the 
+images: you simply run the command "python main.py" from the tevs/tevs 
+directory.
+As extraction proceeds, however, you can simultaneously run the 
+command "python show_ballots.py" to display the ballots which have been
+scanned and the votes which have been read.
+.SUBHEAD "Showing"
+"python show_ballots.py" runs the ballot browsing subsystem.  The system
+will display the ballots sequentially when the "auto-advance" 
+toggle button is set.  You can unset the "auto-advance" toggle
+and jump directly to any image number by entering it in the
+number entry field and pressing the Enter key or clicking the
+Go button.  You can manually advance and back up by pressing
+the left and right arrow buttons.  You can zoom in on the images
+by using the zoom slider.  You can switch between images without
+name overlays and images with name overlays by selecting the
+Edit --> whatever option, or pressing Ctrl-whatever.
+Not Yet Implemented:
+Hovering the mouse over a particular vote opportunity will
+display all statistics about that vote op.
+Not Yet Implemented:
+Click in the annotate area to store ballot specific information
+without altering any results; the annotations will reappear
+when the ballot is viewed, and an annotation file can be output
+that will show all notes entered.  By selecting "Only annotated ballots",
+the next and previous ballot buttons will go only to annotated ballots.
+Not Yet Implemented:
+By selecting "only ballots with code:" and entering a code,
+the next and previous ballot buttons will go only to ballots using
+the entered code.  Same for "only ballots of party", "only ballots with
+light votes", "only ballots with overvotes", and "only ballots with writeins"
+.HEAD "Configuring TEVS"
+.SUBHEAD "A sample configuration file"
+.CODE
+[Mode]
+on_new_layout: accept
+save_vops:True
+images_per_ballot: 2
+
+[Layout]
+# select from Hart, ESS, Diebold (only Hart implemented, Diebold partly imp)
+brand:hart
+
+[Scanner]
+template_dpi:151
+ballot_dpi:151
+duplex:True
+
+[Sizes]
+ballot_width_inches:8.5
+ballot_height_inches:17.0
+oval_width_inches:0.34
+oval_height_inches:0.2
+candidate_text_height_inches:0.43
+candidate_text_horiz_offset_inches: 0.43
+vote_target_horiz_offset_inches: 0.07
+candidate_text_width_inches: 0.43
+minimum_contest_height_inches: 1.00
+allowed_corner_black_inches:0.185
+allowed_tangent:0.05
+
+[Votes]
+vote_intensity_threshold: 135
+problem_intensity_threshold: 165
+# dark_pixel_threshold will change with resolution!
+dark_pixel_threshold: 1000
+
+[Database]
+use_db = True
+name=jimmy
+password=jimmy
+
+[Paths]
+root:~/data
+
+.CODE
+.SUBHEAD "Settings"
+.HEAD "Understanding TEVS' Logged Output"
+.HEAD "Handling Ambiguous Values"
+.SUBHEAD "Overvotes"
+.PP
+.PARAHEAD "Overvotes"
+"Overvotes" occur when it appears a ballot has too many votes in a given 
+contest.  Voters do sometimes make this mistake, but quite often what the
+system sees as an overvote can be resolved for one of the options by
+manually inspecting the ballot in question.
+.PP
+To display the ballot in question, run the display program and type the
+image number (which is part of the image name, the first part of the CVR)
+followed by the enter key.  Note the correct resolution.  Depending on 
+the procedure you wish to follow, you can directly change the overvote
+in the cast vote record, or simply maintain a list of resolutions.
+.PP
+.PARAHEAD "Borderline Cases"
+In an ideal world, vote opportunities with an average lightness below
+a particular value would always represent votes, and those with an 
+average lightness at or above that value would always represent nonvotes.
+.PP
+In practice, this applies to the vast majority of vote opportunities.
+.PP
+Unfortunately, it does not apply to all.  Some vote opportunities have
+what are called "hesitation marks," where a voter may have rested their
+pencil or pen.  Others may contain surprisingly light checks, instead
+of being filled in.
+.PP
+As it counts, TEVS logs each ambiguous vote opportunity.
+TEVS can, if you wish, generate mapped mosaics
+showing all vote opportunities with ambiguous values. If all you need
+is to confirm the percentages of a contest, you do not need to generate
+or analyze these mosaics, but if you want to get a final count, each
+such vote opportunity must be classified as a vote or non-vote.
+.PP
+This process will gradually become more and more automated as TEVS
+evolves.
+
+.HEAD "Running TEVS via the Graphical Interface"
+.HEAD "Generating Graphical and Tabular Reports"
+.HEAD "Modifying TEVS"
+.SUBHEAD "TEVS Files and Processing Flow"
+.PP
+Files are currently located in /home/tevs/bin,
+which will be referred to as TEVS.
+.PP
+Documentation for
+any extensions should be added to ~/docs; samples exercising any extensions
+should be added to ~/testdata.
+.PP
+TEVS basic processing loop is as follows:
+.LIST DIGIT
+.ITEM 
+Read one or two images
+.ITEM
+create an instance of the appropriate subclass of Ballot
+.ITEM
+using the rules of the appropriate subclass, locate two or more landmarks 
+on the images so that the images can be oriented 
+.ITEM
+using the rules of the appropriate subclass, determine the "layout code" 
+found on the images\(emtypically a barcode; this will enable you to look up the appropriate
+layout(s) if they are already cached, or build and cache new layouts 
+if necessary
+.ITEM
+capture statistics necessary to determine votes, based on the images
+and the appropriate layouts
+.ITEM
+use the layouts to record each vote, capturing the current jurisdiction,
+contest, candidate or option, and statistics 
+.LIST OFF
+.PP
+The Ballot class provides a framework for these operations. It handles the
+majority of the processing, leaving only a few that need to be implemented for a
+specific kind of ballot. Additionally there are a number of tasks that are not
+dependent on the kind of the ballot, such as the template caching mechanism,
+that may be overridden when creating an instance of the Extensions class. The
+default extensions should suffice for most situations.
+Therefore, reading a new kind of ballot consists of creating a subclass of
+Ballot that implements a few methods to analyze the scanned image.
+.PP
+To create a subclass of Ballot, create a file in the same directory as
+Ballot.py named brand_ballot.py where brand is the name of this kind of ballot,
+in all lowercase. In the file, define a class named BrandBallot that subclasses
+the Ballot class, and is written in CamelCase as shown. Afterwards this class
+may be loaded with the helper, in Ballot.py, LoadBallotType by
+LoadBallotType("brand"). The string describing the brand may have any case. If
+you wish to use your new kind of ballot with main.py, all you need to do is
+change the brand setting in tevs.cfg to the name of your brand. This
+configuration parameter is passed to LoadBallotType by main.py.
+.SUBHEAD  
+"Ballot Class Methods"
+The Ballot class does as much work as possible and requires that
+only a few methods for gathering information about the layout be overridden.
+CamelCase methods are the public interface of Ballot and are not meant to be
+overridden. Each method in CamelCase that needs to be extended by a subclass
+has a method in lower_and_underscore that it calls. For example, FindLandmarks
+calls find_landmarks.
+.PP
+__init__ creates a Ballot. It takes two parameters, images and extensions.
+Extensions is an instance of a the Extension class. images is either the name
+of a file or a list of filenames. __init__ opens and calls flip on each image.
+N.B.: If your subclass requires any initilization in order to execute its flip
+method, it should do so before initialzing its superclass.
+.PP
+flip takes an image, determines if it is upside down and if so rotates it right
+side up and returns the corrected image. 
+This is a nonessential method and is not required to be overridden in
+subclasses; however, if it is not it always return the image exactly as it is
+given regardless of whether it is upside down.
+.PP
+ProcessPages analyzes each page and tabulates the results. It returns a list of 
+VoteData.
+ProcessPages is a helper that, for each page in turn calls: FindLandmarks,
+GetLayout, and CapturePageInfo.
+.PP
+FindLandmarks finds known features of a Page's image and uses this information
+to compute, save, and return: a rotation (the amount an image has been tilted by a
+scanner) and the x and y offsets specifying where the upper left corner of the
+ballot inside the image starts. It may raise a BallotException error if no such
+landmarks have been found. FindLandmarks calls find_landmarks, which must be
+defined in each subclass of Ballot.  A straightforward approach to calculating
+a rotation argument which must be returned is to take landmarks from the
+left and right of the ballot and return the following: (right_y - left_y) 
+divided by (left_x - right_x).  This will be a close enough approximation for
+rotations of up to a few degrees, which should exceed any rotation returned
+from a scanner.
+.PP
+find_landmarks is the per ballot version of FindLandmarks. It is given a Page
+and returns a rotation and x and y offsets. No template information will be
+avaliable at calltime. 
+.PP
+GetLayout calls GetLayoutCode and looks up the returned code
+in the cache specified by
+the template_cache attribute of the Ballot's instance of Extensions. If the
+code is not cached, GetLayout calls build_layout, which must be defined in each
+subclass of Ballot, to generate a template. It then saves this template in the
+cache, attaches it to the page, and returns it.
+.PP
+build_layout is given a page and returns a list of Contest's to be used as a
+template by other images with the same layout code. See also the ocr routine in
+ocr.py.
+.PP
+GetLayoutCode finds and returns a string to identify the template of a ballot,
+such as a barcode's value. It calls get_layout_code, which must be defined in
+each subclass of Ballot. It may raise a BallotException if no such information
+can be found in a particular image.
+.PP
+get_layout_code is called with a Page and finds and returns a string to identify a ballot.
+No template information will be avaliable at compile time. It is up to
+get_layout_code to return a valid code that can identify ballot images with
+similiar layouts.
+.PP
+CapturePageInfo takes a page and returns a list of VoteData. It walks the tree
+of information in the layout and extracts images of all the vote
+opportunitites. There is no capture_page_info as there is no need to override
+it. All of the information is in the layout. The functions that decide whether
+an opportunity has been voted or whether it is a write in can be changed with
+the Extensions class.
+.SUBHEAD "Other classes"
+.PP
+IStats is a bag of statistics calculated from vote opportunities.
+.PP
+VoteData is essentially a named tuple whose fields contain all of the
+information extracted for a single vote oppurtunity. A list of VoteData may be
+written to CSV with the results_to_CSV which returns a generator. To create a
+mosaic use results_to_mosaic, which returns an image.
+.PP
+Choice is a node in a template representing an individual vote oppurtunity.
+.PP
+Contest is a node in a template representing the contest that its children
+Choice's belong to.
+.PP
+Page is a single page in a ballot. It holds the image data of the ballot, the
+filename the image came from, and the template data.
+.PP
+Template contains the tree of Contest's and Choice's that comprise the layout
+information of a ballot.
+.PP
+TemplateCache keeps track of Template instances by their layout codes. When
+created it loads all previous templates from disk. To write all the templates
+in the cache to disk call the save method.
+.PP
+Template_to_XML and Template_from_XML serialize and deserialize an instance of
+a Template to XML files. These are called internally by TemplateCache.
+.PP
+IsVoted takes an image, an IStat, and a Choice and returns two booleans. The
+first is whether the image in question contains a vote and the second is
+whether the vote is ambiguous. IsVoted tests the mean intensity and mean
+darkness against a pair of thresholds. It registers a vote if either test
+passes and a vote as ambiguous if the
+two tests give differeng results.
+.PP
+IsWriteIn takes an image, an IStat and a Choice and determines if an
+oppurtunity is a write in. Currently this is done based on the content of the
+Choice's description field.
+.PP
+Extensions is a bag for the various extension objects and functions that a
+Ballot needs to do its processing but need not be tied to a particular kind of
+ballot subtype. The current extension points are:
+.LIST
+.ITEM
+ocr_engine \(em the function to call when an area of image needs to be turned
+into regular text. The default is ocr.tesseract, which fork-execs an instance
+of the Tesseract OCR engine.
+.ITEM
+ocr_cleaner \(em a function to be called on the text returned by ocr_engine to
+remove common textual artifacts of OCR'd text.
+.ITEM
+template_cache \(em the template cache to use. The default is NullCache.
+.ITEM
+IsWriteIn \(em see above
+.ITEM
+IsVoted \(em see above
+.ITEM
+transformer \(em a function to create a transformer object, for translating
+between template and page coordinates.
+.LIST OFF
+.PP
+An Extensions object uses these defaults if none are overridden by specifying
+keyword arguments whose keys are the extension points during construction.
+.HEAD "This Can't Work Because..."
+.SUBHEAD "...it will lead to vote buying and extortion."
+.PP
+Probably the most serious concern people express over making ballot images
+available online is that it enables people to place identifying marks or
+patterns on their ballot and have others view those marks or patterns.
+.PP
+This is true.  As a simple example, fill out the upper left corner of
+two votes in an unimportant race to signal that this was their ballot. 
+Most likely, no regular ballots will show that vote marking pattern.
+.PP
+This is an example of a more general problem that occurs any time 
+even just the results of individual ballots are made public: if you are willing
+to fill a particular vote pattern into races that you don't care about,
+you can use that pattern as a signal that you cast a particular ballot.
+.PP
+The problem grows when images are made available, but it really exists
+whenever single-ballot vote records are made available.  
+.PP
+By opening this signalling mechanism, you are opening the theoretical 
+possibility that a crooked voter could sell their vote or that a crooked
+person could force someone to vote in a particular way.
+.PP
+However, if you are in a vote-by-mail jurisdiction, it is far
+easier to participate in extortion/vote-buying by utilizing mail-in ballots.
+.PP
+Let's take the example of an abusive husband who wants to control the
+way his spouse votes.  With ballot images on-line, he could write a program
+to scan through all the images, instruct his wife to put a particular mark
+on her ballot, and take action if the software doesn't find that mark.
+But with vote-by-mail, he can simply demand that he be present when his
+wife fills out the ballot.  Which do you think is more likely?
+.SUBHEAD
+"...we aren't allowed to number ballots."
+.PP
+Well, the lawyers probably meant that you shouldn't number ballots until
+they've been cast and randomized.  But if you are worried about the law,
+just don't number the ballots.  Instead, set things up so that every tenth
+or twenty-fifth scan is a sheet with a number, and keep ballots in order.
+The files will be assigned numbers, and to track a file to a ballot you'll
+need to go to the closest numbered sheet, and then count forward or backward
+until you've reached the original scanned paper document.
+.SUBHEAD
+"...we can't afford it."
+The cost of a scanner that can count 3,000 double sided ballots per hour
+is now under $8,000.  The software is free.  The system can run on a netbook
+which costs $300 and can be borrowed.  You can assemble a bank of scanners
+able to scan at slower rates for about $500 per scanner.  Please check with 
+your elections office to ask how much it costs to print ballots for an 
+election; you may be surprised.
+.SUBHEAD
+"...the second count may be wrong, not the original count."
+.PP
+Yes, when you work with a redundant system, it is always possible that the
+backup system will be the one that fails.  For truly mission-critical systems,
+engineers use three seperate systems and, when one disagrees with the other
+two, "majority wins" and the disagreeing system is taken off-line.
+.PP
+In vote counting, if the original system and the verification system disagree,
+you can go through all the intermediate results of the verification system. 
+You'll either find where it went wrong, or you'll be able to satisfy yourself
+that its results are correct.  With an official system that does not offer
+you intermediate results, you just have to take its word that its results
+are correct.
+.PP
+If a verification system is flat-out wrong more than once, you can bet it 
+will stop being used, so the problem will solve itself.  However, there will
+be borderline cases where "reasonable systems can disagree."  It is useful
+for people to be educated about this, and being able to show typical instances
+of marginal votes -- something that you can do with TEVS -- can help with
+that voter education.
+.SUBHEAD
+"...people will put false versions of the images on the net."
+.PP
+Digital signature technology is described by the American Bar Association
+as more secure than regular signatures.  By digitally signing a document,
+or a ballot collection, any person or group can provide any other person
+or group with a way of confirming that the document or ballot collection
+is still exactly the way it was when it was posted online.  
+.PP
+If the concern is that online viewers will not be sophisticated enough
+to require validation of the digital signatures, one potential alternative
+would be making the ballot collections available only on DVDs mailed 
+directly from the group or elections office.

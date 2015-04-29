@@ -1,0 +1,689 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ballot module documentation &mdash; &lt;project&gt;</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2beta',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="&lt;project&gt;" href="index.html" />
+    <link rel="up" title="Extending TEVS" href="extending.html" />
+    <link rel="next" title="next module documentation" href="next.html" />
+    <link rel="prev" title="Extending TEVS" href="extending.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="next.html" title="next module documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="extending.html" title="Extending TEVS"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="extending.html" accesskey="U">Extending TEVS</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-Ballot">
+<h1>Ballot module documentation<a class="headerlink" href="#module-Ballot" title="Permalink to this headline">¶</a></h1>
+<p>The Ballot module provides all the necessary tools for analyzing a set of
+Ballot images. It is designed to be easy to use and easy to extend.</p>
+<dl class="exception">
+<dt id="Ballot.BallotException">
+<em class="property">exception </em><tt class="descname">BallotException</tt><a class="headerlink" href="#Ballot.BallotException" title="Permalink to this definition">¶</a></dt>
+<dd>Raised if analysis of a ballot image cannot continue</dd></dl>
+
+<dl class="function">
+<dt id="Ballot.LoadBallotType">
+<tt class="descname">LoadBallotType</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#Ballot.LoadBallotType" title="Permalink to this definition">¶</a></dt>
+<dd><p>LoadBallotType takes a string describing the name of a kind of ballot
+layout and returns the appropriate subclass of Ballot for processing ballot
+images of that kind. The returned value must be called with the same
+arguments as the Ballot class&#8217;s __init__ as documented below.</p>
+<p>If no such kind is supported, raises ValueError</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.Ballot">
+<em class="property">class </em><tt class="descname">Ballot</tt><big>(</big><em>images</em>, <em>extensions</em><big>)</big><a class="headerlink" href="#Ballot.Ballot" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Ballot takes a set of images and an Extension object. The set of
+images can be described as either a string representing the filename of a
+single ballot image or an iterable of filenames representing the filenames
+of an ordered set of ballot images.</p>
+<p>When the ballot is created, it attempts to open all of the files given to
+it via PIL. It also attempts to flip the images (see the flip method below)
+It builds a list of Page encapsulating the images.</p>
+<p>The Ballot class cannot be used directly. It must be used via a subclass
+that implements the required abstract methods (documented below). However,
+Ballot provides the interface for interacting with a subclass. To get the
+appropriate subclass use LoadBallotType and create Ballots from its
+returned factory.</p>
+<p>To use a Ballot, only call the methods that are AllCaps. To create a ballot
+subclass, override only the methods that are no_caps.</p>
+<dl class="docutils">
+<dt>Important data members are:</dt>
+<dd><ul class="first last simple">
+<li>self.pages - a list of Page objects</li>
+<li>self.extensions - the Extension object this object was
+instantiated with</li>
+<li>self.results - a list of VoteData (empty until CapturePageInfo is
+called)</li>
+<li>self.log - a useful reference to the default logger, see the Python
+logging module.</li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Ballot.Ballot.BuildLayout">
+<tt class="descname">BuildLayout</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.BuildLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Template from a Page. The Template contains all of the
+layout information and textual descriptions of any page with the same
+layout code. If there is already a template associated with the page&#8217;s
+layout code in the template cache of this instance&#8217;s Extension object,
+that template will be used, avoiding the expensive operation of
+building a layout.</p>
+<p>The associated abstract method is build_layout.</p>
+<p>BuildLayout is called with the page number or a particular Page
+object (that MUST be in self.pages). It returns the Template created
+from the specified Page.</p>
+<p>If it cannot build a sensible layout, it will raise a BallotException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.CapturePageInfo">
+<tt class="descname">CapturePageInfo</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.CapturePageInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>CapturePageInfo walks the layout and creates a VoteData object for each
+VOP.</p>
+<p>CapturePageInfo is called with the page number or a particular Page
+object (that MUST be in self.pages). It returns a list of VoteData for
+the specific page and adds that to self.results (note that calling this
+on multiple self.pages out of order will mean that the votes in
+self.results will not be in the same order as that of self.pages)</p>
+<p>CapturePageInfo never raises BallotException on its own, but it does
+call the IsVoted and IsWriteIn methods of the Extensions object it was
+instantiated with, and they are allowed to raise. However, the default
+methods included by this module do not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.FindLandmarks">
+<tt class="descname">FindLandmarks</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.FindLandmarks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find and record the landmarks for this page so that we can compute
+the locations of VOPs from the layout. A landmark is any identifying
+characteristic of a ballot image that can be used to account for any
+slight rotation and shifting to the left and right of the image so that
+we may account for these minor distortions.</p>
+<p>The associated abstract method is find_landmarks.</p>
+<p>FindLandmarks is called with the page number or a particular Page
+object (that MUST be in self.pages). It returns the rotation, the x
+offset, and the y offset of the ballot image. This information is
+unimportant to most users and can in general be safely ignored.</p>
+<p>If no landmarks can be found, raises BallotException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.GetLayoutCode">
+<tt class="descname">GetLayoutCode</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.GetLayoutCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find a code that we can use to identify all ballots with this
+layout.</p>
+<p>This layout code is used as the key in the template cache
+defined in the Extension object. It is typically the barcode on the
+side of a ballot image but it may be any code that uniquely describes a
+ballot.</p>
+<p>The associated abstract method is get_layout_code.</p>
+<p>GetLayoutCode is called with the page number or a particular Page
+object (that MUST be in self.pages). It returns the layout code, which
+is typically a string.</p>
+<p>If no layout code can be found, a BallotException is raised.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.MakeTemplates">
+<tt class="descname">MakeTemplates</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.Ballot.MakeTemplates" title="Permalink to this definition">¶</a></dt>
+<dd>This is a helper method for when you ONLY want to make 
+templates from a set of pages, such as when you have a set of higher
+resolution images.</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.OCRDescriptions">
+<tt class="descname">OCRDescriptions</tt><big>(</big><em>page</em>, <em>tree</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.OCRDescriptions" title="Permalink to this definition">¶</a></dt>
+<dd>This is called automatically by BuildLayout</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.ProcessPages">
+<tt class="descname">ProcessPages</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.Ballot.ProcessPages" title="Permalink to this definition">¶</a></dt>
+<dd>Helper to process and anaylze all the pages of this Ballot. There is
+no need to do anything else when using this method</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.build_layout">
+<tt class="descname">build_layout</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.build_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>build_layout takes a Page and computes a Template.</p>
+<p>It should only be called indirectly via BuildLayout.</p>
+<p>If a layout cannot be built, for example because a scanned image is
+incomplete, it must raise BallotException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.extract_VOP">
+<tt class="descname">extract_VOP</tt><big>(</big><em>page</em>, <em>choice</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.extract_VOP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.find_landmarks">
+<tt class="descname">find_landmarks</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.find_landmarks" title="Permalink to this definition">¶</a></dt>
+<dd><p>find_landmarks takes a Page and returns the rotation, x offset, and
+y offset resulting from scanning a ballot image. Rotation is a float.
+The x and y offsets are ints.</p>
+<p>landmarks are one or more known points on a ballot image that can be
+used in isolation or conjunction to infer the displacement naturally
+caused during scanning.</p>
+<p>It should only be called indirectly via FindLandmarks.</p>
+<p>If no landmarks can be found, it must raise a BallotException. If the
+landmarks are offset too far or rotated too much for any further
+analysis to continue, find_landmarks MUST raise a BallotException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.flip">
+<tt class="descname">flip</tt><big>(</big><em>im</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.flip" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method applies any 90 or 180 degree transformation required to 
+make im read top to bottom, left to right.</p>
+<p>If it is not overriden in a subclass it simply returns the image as is
+and assumes that no scanned images can be flipped. There is no
+associated Flip method as this is called in Ballot.__init__</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Ballot.get_layout_code">
+<tt class="descname">get_layout_code</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#Ballot.Ballot.get_layout_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_layout_code takes a Page and returns a string representing a
+layout code. It MUST locate and interpret some data on a ballot
+image that can uniquely determine all images that have the same layout.</p>
+<p>It should only be called indirectly via GetLayoutCode.</p>
+<p>If no layout code can be found, it must raise a BallotException.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.DuplexBallot">
+<em class="property">class </em><tt class="descname">DuplexBallot</tt><big>(</big><em>images</em>, <em>extensions</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Ballot that handles the troubles that arise from ballots whose
+backside do not have a unique layoutcode on the back page.</p>
+<p>It is in many ways identical to Ballot, however every no_caps method is
+overriden and calls no_caps_front and no_caps_back. All no_caps_back
+methods by default simply call their associated no_caps_front, so
+operations that do not require special consideration for back pages need
+only be overriden once. For example, overriding build_layout_front but
+not build_layout_back will call build_layout_front on both of a pair of
+ballot images. But overriding build_layout_front and build_layout_back will
+cause build_layout_front to be called on the first of each pair of images
+and build_layout_back to be called on the last of each pair of images.</p>
+<p>Note that the above implies that a subclasser should not override the
+no_caps methods but the no_caps_front and, where appropriate, the
+no_caps_back methods instead. The exception is get_layout_code which is
+unchanged and only called on the front page of each ballot pair.</p>
+<p>The AllCaps interface is the same except that each method returns a pair of
+data for each pair of pages-unless otherwise specified. If given an index 
+to the page number, the index refers to the pair-that is the first and 
+second image is index 0, the third and fourth image is index 1, and so on.</p>
+<p>DuplexBallot must be given an iterable of image names that must be of even
+length.</p>
+<dl class="method">
+<dt id="Ballot.DuplexBallot.BuildLayout">
+<tt class="descname">BuildLayout</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.BuildLayout" title="Permalink to this definition">¶</a></dt>
+<dd>returns (front_layout, back_layout)</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.CapturePageInfo">
+<tt class="descname">CapturePageInfo</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.CapturePageInfo" title="Permalink to this definition">¶</a></dt>
+<dd>returns list of results of both pages processed</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.FindLandmarks">
+<tt class="descname">FindLandmarks</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.FindLandmarks" title="Permalink to this definition">¶</a></dt>
+<dd>returns ((rf, rx, ry), (rb, rx, ry))</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.GetLayoutCode">
+<tt class="descname">GetLayoutCode</tt><big>(</big><em>page=0</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.GetLayoutCode" title="Permalink to this definition">¶</a></dt>
+<dd>Only returns layout code for first page in pair-next page is that
+layout code + &#8220;back&#8221;</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.build_back_layout">
+<tt class="descname">build_back_layout</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.build_back_layout" title="Permalink to this definition">¶</a></dt>
+<dd>if unimplemented, calls build_front_layout</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.build_front_layout">
+<tt class="descname">build_front_layout</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.build_front_layout" title="Permalink to this definition">¶</a></dt>
+<dd>see documentation for build_layout in Ballot</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.find_back_landmarks">
+<tt class="descname">find_back_landmarks</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.find_back_landmarks" title="Permalink to this definition">¶</a></dt>
+<dd>if unimplemented, calls find_front_landmarks</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.find_front_landmarks">
+<tt class="descname">find_front_landmarks</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.find_front_landmarks" title="Permalink to this definition">¶</a></dt>
+<dd>see documentation for find_landmarks in Ballot</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.flip_back">
+<tt class="descname">flip_back</tt><big>(</big><em>im</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.flip_back" title="Permalink to this definition">¶</a></dt>
+<dd>if unimplemented, calls flip_front</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.DuplexBallot.flip_front">
+<tt class="descname">flip_front</tt><big>(</big><em>im</em><big>)</big><a class="headerlink" href="#Ballot.DuplexBallot.flip_front" title="Permalink to this definition">¶</a></dt>
+<dd>if unimplemented, returns im unmodified</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.IStats">
+<em class="property">class </em><tt class="descname">IStats</tt><big>(</big><em>stats</em><big>)</big><a class="headerlink" href="#Ballot.IStats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="Ballot.IStats.CSV">
+<tt class="descname">CSV</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.IStats.CSV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Ballot.IStats.mean_darkness">
+<tt class="descname">mean_darkness</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.IStats.mean_darkness" title="Permalink to this definition">¶</a></dt>
+<dd>compute mean darkness over each channel using first
+two quartiles.</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.IStats.mean_intensity">
+<tt class="descname">mean_intensity</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.IStats.mean_intensity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Ballot.IStats.mean_lightness">
+<tt class="descname">mean_lightness</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.IStats.mean_lightness" title="Permalink to this definition">¶</a></dt>
+<dd>compute mean lightness over each channel using last
+two quartiles.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.VoteData">
+<em class="property">class </em><tt class="descname">VoteData</tt><big>(</big><em>filename=None</em>, <em>barcode=None</em>, <em>jurisdiction=None</em>, <em>contest=None</em>, <em>choice=None</em>, <em>coords=(-1</em>, <em>-1)</em>, <em>maxv=1</em>, <em>stats={'blue': {'lightest_fourth': -1</em>, <em>'darkest_fourth': -1</em>, <em>'intensity': -1</em>, <em>'second_fourth': -1</em>, <em>'third_fourth': -1}</em>, <em>'adjusted': {'y': -1</em>, <em>'x': -1}</em>, <em>'_mean_intensity': None</em>, <em>'suspicious': -1</em>, <em>'_mean_lightness': None</em>, <em>'green': {'lightest_fourth': -1</em>, <em>'darkest_fourth': -1</em>, <em>'intensity': -1</em>, <em>'second_fourth': -1</em>, <em>'third_fourth': -1}</em>, <em>'_mean_darkness': None</em>, <em>'red': {'lightest_fourth': -1</em>, <em>'darkest_fourth': -1</em>, <em>'intensity': -1</em>, <em>'second_fourth': -1</em>, <em>'third_fourth': -1}}</em>, <em>image=None</em>, <em>is_writein=None</em>, <em>was_voted=None</em>, <em>ambiguous=None</em>, <em>number=-1</em><big>)</big><a class="headerlink" href="#Ballot.VoteData" title="Permalink to this definition">¶</a></dt>
+<dd><p>All of the data associated with a single vote.</p>
+<dl class="docutils">
+<dt>The below information is relative to the Page this VOP came from.</dt>
+<dd><ul class="first last">
+<li><p class="first">self.filename - the filename of the ballot image</p>
+</li>
+<li><p class="first">self.barcode - the layout code of the ballot</p>
+</li>
+<li><p class="first">self.jurisdiction - the text of the jurisdiction header of this VOP</p>
+</li>
+<li><p class="first">self.contest - the text of the contest header of this VOP</p>
+</li>
+<li><p class="first">self.choice - the text of this VOP</p>
+</li>
+<li><dl class="first docutils">
+<dt>self.coords - the pair of (x, y) coordinates of the upperleft corner</dt>
+<dd><p class="first last">of the VOP</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">self.maxv - the max votes allowed in the contest of this VOP</p>
+</li>
+<li><p class="first">self.stats - an IStats object for self.image</p>
+</li>
+<li><dl class="first docutils">
+<dt>self.image - a crop from the image in self.filename containig the VOP</dt>
+<dd><p class="first last">(including write in if applicable)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">self.is_writein - Boolean</p>
+</li>
+<li><p class="first">self.was_voted - Boolean</p>
+</li>
+<li><p class="first">self.ambiguous - True if we&#8217;re not 100% sure a VOP was indeed voted.</p>
+</li>
+<li><p class="first">self.number - the page number this VOP came from</p>
+</li>
+</ul>
+</dd>
+</dl>
+<p>Called with no keyword arguments it creates the special VoteData object
+represinting an improperly processed vote.</p>
+<dl class="method">
+<dt id="Ballot.VoteData.CSV">
+<tt class="descname">CSV</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.VoteData.CSV" title="Permalink to this definition">¶</a></dt>
+<dd>return this vote as a line in CSV format</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Ballot.results_to_CSV">
+<tt class="descname">results_to_CSV</tt><big>(</big><em>results</em>, <em>heading=False</em><big>)</big><a class="headerlink" href="#Ballot.results_to_CSV" title="Permalink to this definition">¶</a></dt>
+<dd>Take a list of VoteData and return a generator of CSV 
+encoded information. If heading, insert a descriptive
+header line.</dd></dl>
+
+<dl class="function">
+<dt id="Ballot.results_to_mosaic">
+<tt class="descname">results_to_mosaic</tt><big>(</big><em>results</em><big>)</big><a class="headerlink" href="#Ballot.results_to_mosaic" title="Permalink to this definition">¶</a></dt>
+<dd>Return an image that is a mosaic of all ovals
+from a list of Votedata</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.Choice">
+<em class="property">class </em><tt class="descname">Choice</tt><big>(</big><em>x</em>, <em>y</em>, <em>description</em><big>)</big><a class="headerlink" href="#Ballot.Choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>An item in a layout hierarchy representing an individual vote
+opportunities text, as a bounding box, and, if it has been OCRed, by a
+string, self.description.</p>
+<p>After creation, self.VOP should be set to an instance of VOP. If it is
+WriteIn, self.description should remain None.</p>
+<dl class="method">
+<dt id="Ballot.Choice.children">
+<tt class="descname">children</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.Choice.children" title="Permalink to this definition">¶</a></dt>
+<dd>returns self.VOP or []</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.VOP">
+<em class="property">class </em><tt class="descname">VOP</tt><big>(</big><em>x</em>, <em>y</em>, <em>x2</em>, <em>y2</em><big>)</big><a class="headerlink" href="#Ballot.VOP" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bounding box of a VOP. If this is the VOP of a write in, set
+self.WriteIn to a WriteIn object for the write in&#8217;s bounding box.</p>
+<dl class="method">
+<dt id="Ballot.VOP.children">
+<tt class="descname">children</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.VOP.children" title="Permalink to this definition">¶</a></dt>
+<dd>return self.WriteIn or []</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.WriteIn">
+<em class="property">class </em><tt class="descname">WriteIn</tt><big>(</big><em>x</em>, <em>y</em>, <em>x2</em>, <em>y2</em><big>)</big><a class="headerlink" href="#Ballot.WriteIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bounding box for a WriteIn, not including the VOP of the WriteIn. It
+is the child of its VOP, so in:</p>
+<blockquote>
+<p>Contest:</p>
+<blockquote>
+<p>[ ] Choice a</p>
+<p>[ ] Choice b</p>
+<p>[ ] Write in</p>
+<p><cite>____________</cite></p>
+</blockquote>
+</blockquote>
+<p>WriteIn will be the child of the VOP to the left of the Choice &#8220;Write in&#8221;</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.Jurisdiction">
+<em class="property">class </em><tt class="descname">Jurisdiction</tt><big>(</big><em>x</em>, <em>y</em>, <em>x2</em>, <em>y2</em><big>)</big><a class="headerlink" href="#Ballot.Jurisdiction" title="Permalink to this definition">¶</a></dt>
+<dd><p>The top level item in a layout hierarchy. Its children are a list of
+Contest&#8217;s. A ballot may have zero or more Jurisdictions. If there are no
+Jurisdictions, all of the top level elements in the template must be
+Contest&#8217;s, and the children of a Jurisdiction must be Contest&#8217;s. An example
+of a Jurisdiction is a ballot containing contests for both a state and
+county election: In this case, the template should have a state
+Jurisdiction, containing all of the Contest&#8217;s for the state election; and a
+county Jurisdiction, containing all of the Contest&#8217;s for the county
+election. The bounding box of a Jurisdiction should only enclose the text
+of the description, such as the word &#8216;State&#8217;.</p>
+<dl class="method">
+<dt id="Ballot.Jurisdiction.append">
+<tt class="descname">append</tt><big>(</big><em>contest</em><big>)</big><a class="headerlink" href="#Ballot.Jurisdiction.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Jurisdiction.children">
+<tt class="descname">children</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.Jurisdiction.children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.Contest">
+<em class="property">class </em><tt class="descname">Contest</tt><big>(</big><em>x</em>, <em>y</em>, <em>x2</em>, <em>y2</em>, <em>prop</em>, <em>description</em><big>)</big><a class="headerlink" href="#Ballot.Contest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Either the top level item in a layout hierarchy or the child of a
+Jurisdiction. A Contest is the bounding box of the text describing a single
+vote. It&#8217;s children are the Choice&#8217;s available in that contest. For
+example:</p>
+<blockquote>
+<p>Vote for one:</p>
+<blockquote>
+<p>[ ] Billy</p>
+<p>[ ] Jane</p>
+</blockquote>
+</blockquote>
+<p>The contest would be the bounding box around the text &#8220;Vote for one:&#8221; and
+its children would be the Choice&#8217;s for Billy and Jane.</p>
+<dl class="method">
+<dt id="Ballot.Contest.append">
+<tt class="descname">append</tt><big>(</big><em>choice</em><big>)</big><a class="headerlink" href="#Ballot.Contest.append" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Contest.children">
+<tt class="descname">children</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.Contest.children" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.Page">
+<em class="property">class </em><tt class="descname">Page</tt><big>(</big><em>dpi=0</em>, <em>xoff=0</em>, <em>yoff=0</em>, <em>rot=0.0</em>, <em>filename=None</em>, <em>image=None</em>, <em>template=None</em>, <em>number=0</em><big>)</big><a class="headerlink" href="#Ballot.Page" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ballot page represented by an image and a Template. It is created by
+Ballot.__init__ for each ballot image. Important properties:</p>
+<blockquote>
+<ul>
+<li><p class="first">self.filename - the name of the file of the ballot image</p>
+</li>
+<li><p class="first">self.image - the PIL image created from self.filename</p>
+</li>
+<li><p class="first">self.dpi - an integer specifying the DPI of the image</p>
+</li>
+<li><p class="first">self.template - The Template created by Ballot.BuildLayout or None</p>
+</li>
+<li><p class="first">self.barcode - The barcode associated with self.template</p>
+</li>
+<li><dl class="first docutils">
+<dt>self.blank - a special sentinel indicator for pages intentionally left</dt>
+<dd><p class="first last">blank</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">self.number - the page number</p>
+</li>
+<li><p class="first">self.xoff - the x offset of the ballot within the ballot image</p>
+</li>
+<li><p class="first">self.yoff - the y offset of the ballot within the ballot image</p>
+</li>
+<li><p class="first">self.rot - the rotation of the ballot within the ballot image</p>
+</li>
+</ul>
+</blockquote>
+<dl class="method">
+<dt id="Ballot.Page.as_template">
+<tt class="descname">as_template</tt><big>(</big><em>barcode</em>, <em>contests</em><big>)</big><a class="headerlink" href="#Ballot.Page.as_template" title="Permalink to this definition">¶</a></dt>
+<dd>Given the barcode and contests, convert this page into a Template
+and store that objects as its own template. This is handled by
+Ballot.BuildLayout</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.Page.fixup">
+<tt class="descname">fixup</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.Page.fixup" title="Permalink to this definition">¶</a></dt>
+<dd>Undo the xoff, yoff, and rot of self.image. This is not necessary
+but useful for saving &#8220;pretty versions&#8221; of ballot images, as template
+cache does for the images that templates are created from.</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.Template">
+<em class="property">class </em><tt class="descname">Template</tt><big>(</big><em>dpi</em>, <em>xoff</em>, <em>yoff</em>, <em>rot</em>, <em>barcode</em>, <em>contests</em>, <em>image=None</em><big>)</big><a class="headerlink" href="#Ballot.Template" title="Permalink to this definition">¶</a></dt>
+<dd><p>A ballot page that has been fully mapped and is used as a
+template for similiar pages. A template MAY have an associated
+image but it is not guranteed.</p>
+<p>A Template is very similiar to a Page but it contains the layout
+information of every Page with the same barcode. As an iterator, it yields
+all the top level elements stored in the template in the order they were
+discovered.</p>
+<dl class="method">
+<dt id="Ballot.Template.append">
+<tt class="descname">append</tt><big>(</big><em>contest</em><big>)</big><a class="headerlink" href="#Ballot.Template.append" title="Permalink to this definition">¶</a></dt>
+<dd>add a new contest to the template</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Ballot.Template_to_XML">
+<tt class="descname">Template_to_XML</tt><big>(</big><em>template</em><big>)</big><a class="headerlink" href="#Ballot.Template_to_XML" title="Permalink to this definition">¶</a></dt>
+<dd>Takes a template object and returns a serialization in XML format</dd></dl>
+
+<dl class="function">
+<dt id="Ballot.Template_from_XML">
+<tt class="descname">Template_from_XML</tt><big>(</big><em>xml</em><big>)</big><a class="headerlink" href="#Ballot.Template_from_XML" title="Permalink to this definition">¶</a></dt>
+<dd>Takes an XML string generated from Template_to_XML and returns a
+Template</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.TemplateCache">
+<em class="property">class </em><tt class="descname">TemplateCache</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#Ballot.TemplateCache" title="Permalink to this definition">¶</a></dt>
+<dd><p>A TemplateCache stores Templates by their barcode and loads and saves
+them in a directory location. When instantiated, it loads all templates
+into ram for quick access. It does not automatically save templates, but
+provides methods for saving them. It uses Template_to_XML/Template_from_XML
+for the serialization and deserialization of the template. For storing and
+retrieving templates from the cache it behaves as a standard dictionary.</p>
+<dl class="method">
+<dt id="Ballot.TemplateCache.save">
+<tt class="descname">save</tt><big>(</big><em>id</em><big>)</big><a class="headerlink" href="#Ballot.TemplateCache.save" title="Permalink to this definition">¶</a></dt>
+<dd>write the template id to disk at self.location</dd></dl>
+
+<dl class="method">
+<dt id="Ballot.TemplateCache.save_all">
+<tt class="descname">save_all</tt><big>(</big><big>)</big><a class="headerlink" href="#Ballot.TemplateCache.save_all" title="Permalink to this definition">¶</a></dt>
+<dd>save all templates that are not already saved</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="Ballot.IsVoted">
+<tt class="descname">IsVoted</tt><big>(</big><em>im</em>, <em>stats</em>, <em>choice</em><big>)</big><a class="headerlink" href="#Ballot.IsVoted" title="Permalink to this definition">¶</a></dt>
+<dd>determine if a box is checked
+and if so whether it is ambiguous</dd></dl>
+
+<dl class="function">
+<dt id="Ballot.IsWriteIn">
+<tt class="descname">IsWriteIn</tt><big>(</big><em>im</em>, <em>stats</em>, <em>choice</em><big>)</big><a class="headerlink" href="#Ballot.IsWriteIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>determine if box is actually a write in</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="s">&quot;ok&quot;</span> <span class="k">if</span> <span class="n">IsWriteIn</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">Choice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">t</span><span class="p">))</span> <span class="k">else</span> <span class="bp">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="p">(</span><span class="s">&quot;Garth Marenghi&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="p">(</span><span class="s">&quot;is a write in&quot;</span><span class="p">)</span>
+<span class="go">&#39;ok&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="p">(</span><span class="s">&quot;John Riter for emperor&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="p">(</span><span class="s">&quot;vvritten&quot;</span><span class="p">)</span>
+<span class="go">&#39;ok&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="Ballot.Extensions">
+<em class="property">class </em><tt class="descname">Extensions</tt><big>(</big><em>**kw</em><big>)</big><a class="headerlink" href="#Ballot.Extensions" title="Permalink to this definition">¶</a></dt>
+<dd>A bag for all the various extension objects and functions
+to be passed around to anyone who needs one of these tools
+All extensions must be in the _xpts dict below and must be
+callable</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="extending.html"
+                                  title="previous chapter">Extending TEVS</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="next.html"
+                                  title="next chapter">next module documentation</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/Ballot.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="next.html" title="next module documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="extending.html" title="Extending TEVS"
+             >previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="extending.html" >Extending TEVS</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008-2011, Mitch Trachtenberg.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+    </div>
+  </body>
+</html>

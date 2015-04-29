@@ -1,0 +1,7 @@
+#!/bin/sh
+ss=XXX
+if test x$1 != x
+then
+    ss=$1
+fi
+find ~/tevs | grep 'py$' | xargs grep -n -F '#'$ss 

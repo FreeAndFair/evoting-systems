@@ -1,0 +1,66 @@
+[Mode]
+on_new_layout = accept
+save_vops = True
+images_per_ballot = 2
+filename_extension = .jpg
+debug = True
+save_template_images = False
+save_composite_images = False
+
+[Layout]
+# select from Hart, ESS, Diebold (only Hart implemented, Diebold partly imp)
+brand = diebold
+
+[Scanner]
+template_dpi = 300
+ballot_dpi = 300
+duplex = False
+
+[Intensities]
+# trigger line start when pixel at or darker than line_darkness_threshold
+line_darkness_threshold = 200
+# trigger exit from line when pixel at or lighter than line_exit_threshold	
+line_exit_threshold = 216
+
+[Sizes]
+ballot_width_inches = 8.5
+ballot_height_inches = 11.0
+target_width_inches = 0.23
+target_height_inches = 0.12
+margin_width_inches = 0.03
+margin_height_inches = 0.03
+vote_target_horiz_offset_inches = 0.27
+candidate_text_height_inches = 0.43
+candidate_text_width_inches = 0.43
+candidate_text_horiz_offset_inches = 0.49
+writein_zone_horiz_offset_inches = 0
+writein_zone_vert_offset_inches = 0
+writein_zone_width_inches = 2.5
+writein_zone_height_inches = .25
+minimum_contest_height_inches = 0.10
+allowed_corner_black_inches = 0.25
+allowed_tangent = 0.05
+writein_zone_horiz_offset_inches = 0.0
+writein_zone_vert_offset_inches = 0.0
+writein_zone_width_inches = 2.0
+writein_zone_height_inches = 0.5
+
+# hotspot_x_offset_inches is for ballot designs like broken arrow,
+# where the area to be checked for a mark is offset from the start
+# of the printed vote target <===   ===<
+hotspot_x_offset_inches = 0.00
+
+[Votes]
+vote_intensity_threshold = 240
+problem_intensity_threshold = 250
+# dark_pixel_threshold will change roughly as square of dpi resolution!
+dark_pixel_threshold = 300
+
+[Database]
+use_db = False
+name = mitch
+user = mitch
+
+[Paths]
+root = ~/data/diebold
+

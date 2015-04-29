@@ -1,0 +1,18 @@
+Metadata-Version: 1.0
+Name: PILB
+Version: 1.1.7
+Summary: Python Imaging Library w Ballot Extensions
+Home-page: http://www.pythonware.com/products/pil
+Author: B
+Author-email: a
+License: Python (MIT style)
+Download-URL: http://effbot.org/downloads/PILB-1.1.7.tar.gz
+Description: Python Imaging Library w Ballot Extensions
+Platform: Python 1.5.2 and later.
+Classifier: Development Status :: 6 - Mature
+Classifier: Topic :: Multimedia :: Graphics
+Classifier: Topic :: Multimedia :: Graphics :: Capture :: Digital Camera
+Classifier: Topic :: Multimedia :: Graphics :: Capture :: Scanners
+Classifier: Topic :: Multimedia :: Graphics :: Capture :: Screen Capture
+Classifier: Topic :: Multimedia :: Graphics :: Graphics Conversion
+Classifier: Topic :: Multimedia :: Graphics :: Viewers

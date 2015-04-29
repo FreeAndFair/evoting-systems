@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>saguache_ballot module documentation &mdash; &lt;project&gt;</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2beta',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="&lt;project&gt;" href="index.html" />
+    <link rel="up" title="Supported Ballots" href="ballots.html" />
+    <link rel="next" title="sequoia_ballot module documentation" href="sequoia_ballot.html" />
+    <link rel="prev" title="hart_ballot module documentation" href="hart_ballot.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="sequoia_ballot.html" title="sequoia_ballot module documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hart_ballot.html" title="hart_ballot module documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="ballots.html" accesskey="U">Supported Ballots</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-saguache_ballot">
+<h1>saguache_ballot module documentation<a class="headerlink" href="#module-saguache_ballot" title="Permalink to this headline">¶</a></h1>
+<p>Code for determining votes from 
+ES&amp;S ballots from Saguache County, Colorado</p>
+<dl class="class">
+<dt id="saguache_ballot.SaguacheBallot">
+<em class="property">class </em><tt class="descname">SaguacheBallot</tt><big>(</big><em>images</em>, <em>extensions</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing ballots from Saguache CO (ESS).</p>
+<p>Each Saguache ballot has oval voting areas,
+and voting areas are grouped in boxed contests.
+Precinct coding is in a column just inboard from timing marks.</p>
+<p>The file name sagauche_ballot.py and the class name SaguacheBallot
+correspond to the brand entry in tevs.cfg, the configuration file.</p>
+<dl class="method">
+<dt id="saguache_ballot.SaguacheBallot.build_layout">
+<tt class="descname">build_layout</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot.build_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>get layout and ocr information from Saguache ballot</p>
+<p>Building the layout will be the largest task for registering
+a new ballot brand which uses a different layout style.</p>
+<p>For ESS/Saguache, we are making the assumption that we are
+provided with PDF print files used for printing the ballots;
+this allows us to assume all template images will remain
+unmarked by voters, further allowing us to search for ovals
+by testing for a pattern.</p>
+<p>In ESS/Saguache, there is a boxed region at the top and bottom
+which contains black rectangles representing the vertical channels
+in which vote ovals will be found.  We get those markers,
+then search down those channels for ovals and text in build_regions,
+assuming that ovals will be dark areas meeting pattern conditions,
+and marks in the vote channels not matching ovals must be text 
+unrelated to a particular vote opportunity, which we then treat
+as contest headings.</p>
+<p>As we walk through each column in build_regions, 
+we add new Contests to the contest
+list, and add Choices to the previously added Contest.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="saguache_ballot.SaguacheBallot.build_regions">
+<tt class="descname">build_regions</tt><big>(</big><em>page</em>, <em>tm_list</em>, <em>dpi</em>, <em>stop=True</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot.build_regions" title="Permalink to this definition">¶</a></dt>
+<dd>Build regions returns a list of Contests found on the page</dd></dl>
+
+<dl class="method">
+<dt id="saguache_ballot.SaguacheBallot.column_oval_search">
+<tt class="descname">column_oval_search</tt><big>(</big><em>page</em>, <em>top_x</em>, <em>dpi=300</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot.column_oval_search" title="Permalink to this definition">¶</a></dt>
+<dd>return list of probable oval y offsets</dd></dl>
+
+<dl class="method">
+<dt id="saguache_ballot.SaguacheBallot.column_textzone_search">
+<tt class="descname">column_textzone_search</tt><big>(</big><em>page</em>, <em>top_x</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot.column_textzone_search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="saguache_ballot.SaguacheBallot.extract_VOP">
+<tt class="descname">extract_VOP</tt><big>(</big><em>page</em>, <em>rotate</em>, <em>scale</em>, <em>choice</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot.extract_VOP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract a single oval, or writein box, from the specified ballot.</p>
+<p>Note that cropstats is C code in Imaging-1.1.7, most of which 
+fine-tunes the location of a Hart ballot vote box. The fine-tuning
+is left OFF in this call to cropstats.</p>
+<p>The &#8220;suspicious&#8221; value returned from cropstats is toggled if
+there is any dark pixel in the central region of the oval; this
+may be more appropriate to rectangular vote ops as in Hart.</p>
+<p>The IStats class in Ballot provides more convenient access
+to the list of information returned from cropstats.</p>
+<p>The determination of whether a vote target was actually voted,
+or whether a vote target represents a write-in, is currently
+performed by the default functions set into the Ballot Extensions
+object.  These functions may be overriden. XXX Example!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="saguache_ballot.SaguacheBallot.find_landmarks">
+<tt class="descname">find_landmarks</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot.find_landmarks" title="Permalink to this definition">¶</a></dt>
+<dd><p>retrieve landmarks for Saguache images, set tang, xref, yref</p>
+<p>Landmarks for the Saguache Ballot will be the 
+(x, y) pairs at the center of the two upper plus in a circle
+registration marks.</p>
+<p>They are searched for in the upper left and upper right
+square inches of the image.</p>
+<p>The coordinates of the pair at upper left are returned, along
+with a rotation value calculated from the two pairs.</p>
+<p>Ballots would be rejected at this stage if there is excessive
+black in any corner, potentially indicating a scanning problem.</p>
+<p>Current error handling will generally log and terminate 
+on first BallotException.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="saguache_ballot.SaguacheBallot.get_layout_code">
+<tt class="descname">get_layout_code</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#saguache_ballot.SaguacheBallot.get_layout_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the code from the column by the timing marks</p>
+<p>ESS/Saguache ballots have coding information only on the front
+of the sheet.  The approach used here is to try looking for 
+coding information with timing marks on the left and, if that
+returns no timing_marks, to search for timing marks on the right.</p>
+<p>If no code is picked up (as will occur if it is a back),
+the code is taken from the front, with &#8220;BACK&#8221; prepended.</p>
+<p>To accomodate back-first ballots, we would need to add additional
+handling.  Will be implemented as extended flip in class DuplexBallot
+in Ballot.py</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="saguache_ballot.adjust_ulc">
+<tt class="descname">adjust_ulc</tt><big>(</big><em>image</em>, <em>left_x</em>, <em>top_y</em><big>)</big><a class="headerlink" href="#saguache_ballot.adjust_ulc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="saguache_ballot.block_type">
+<tt class="descname">block_type</tt><big>(</big><em>image</em>, <em>pixtocheck</em>, <em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#saguache_ballot.block_type" title="Permalink to this definition">¶</a></dt>
+<dd>check line for quarter inch and return pct below 128 intensity</dd></dl>
+
+<dl class="function">
+<dt id="saguache_ballot.column_markers">
+<tt class="descname">column_markers</tt><big>(</big><em>image</em>, <em>tm_marker</em>, <em>dpi</em>, <em>min_runlength_inches=0.20000000000000001</em>, <em>zonelength_inches=0.25</em><big>)</big><a class="headerlink" href="#saguache_ballot.column_markers" title="Permalink to this definition">¶</a></dt>
+<dd>given timing marks, find column x offsets</dd></dl>
+
+<dl class="function">
+<dt id="saguache_ballot.find_plus_target">
+<tt class="descname">find_plus_target</tt><big>(</big><em>image</em>, <em>dpi=300</em>, <em>full_span_inches=0.17999999999999999</em>, <em>line_width_inches=0.01</em>, <em>circle_radius_inches=0.029999999999999999</em><big>)</big><a class="headerlink" href="#saguache_ballot.find_plus_target" title="Permalink to this definition">¶</a></dt>
+<dd>return ulc of the center of first &#8220;+&#8221; target in the image, or -1, -1</dd></dl>
+
+<dl class="function">
+<dt id="saguache_ballot.timing_marks">
+<tt class="descname">timing_marks</tt><big>(</big><em>image</em>, <em>x</em>, <em>y</em>, <em>backup</em>, <em>dpi</em><big>)</big><a class="headerlink" href="#saguache_ballot.timing_marks" title="Permalink to this definition">¶</a></dt>
+<dd>locate timing marks and code, starting from ulc + symbol</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="hart_ballot.html"
+                                  title="previous chapter">hart_ballot module documentation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="sequoia_ballot.html"
+                                  title="next chapter">sequoia_ballot module documentation</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/saguache_ballot.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="sequoia_ballot.html" title="sequoia_ballot module documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hart_ballot.html" title="hart_ballot module documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="ballots.html" >Supported Ballots</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008-2011, Mitch Trachtenberg.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+    </div>
+  </body>
+</html>

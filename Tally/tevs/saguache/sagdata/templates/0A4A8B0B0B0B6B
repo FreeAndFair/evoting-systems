@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<BallotSide precinct='0A4A8B0B0B0B6B' rot='0.0' lx='149' dpi='300' ly='90'>
+	<Contest text='II I IJIldquotsquotI Jl/BALOTA OFICIAL E/NOMcdquotsquot P _/ / rf   squot________/Melinda Myers/Clerk and Recorder/Saguache Countycomma Colorado/INSTRUCTION TO VOTERS/To vote for the candidate of your choicecomma mark th/INSTRUCCIONES PARA ELECTORES/Para cotar por los candidatescomma marque el ovalo a/TO COMPLY WITH FEDERAL VOTING RIGHTS/SIDO PREPARADA EN ESPANOL Y INGLES E/FEDERAL OFFICES/OFICINA FEDERAL/UNITED STATES SENATOR/SENADOR FEDERAL/Vote For One  Vote Por Uno' prop='0' x2='690' y='0' x='375' y2='300'>
+		<oval y='1361' x='375' text='Ken Buck REP/Signed declaration to Iimit service/to no more than two terms' />
+		<oval y='1461' x='375' text='Michael F Bennet DEM' />
+		<oval y='1561' x='375' text='Bob Kinsey GRN/Chose not to sign declaration to limit/service to no more than two terms' />
+		<oval y='1661' x='375' text='IVIacIyn dquotIVIacdquot Stringer LIB' />
+		<oval y='1761' x='375' text='Charley iMiller UNA/Signed declaration to Iimit service/to no more than two terms' />
+		<oval y='1861' x='375' text='J IVI0r0misat0 UNA' />
+		<oval y='1961' x='375' text='Jason Napolitano INR' />
+		<oval y='2061' x='375' text='Writein' />
+	</Contest>
+	<Contest text='REPRESENTATIVE TO THE 112TH/UNITED STATES CONGRESS/DISTRICT 3/REPRESENTANTE AL 112TH/DISTRICTO 3 DEL CONGRESO/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='375' y2='300'>
+		<oval y='2560' x='375' text='John Salazar DEM' />
+		<oval y='2660' x='375' text='Scott Ft Tipton REP' />
+		<oval y='2760' x='375' text='Gregory Gilman LIB' />
+		<oval y='2860' x='375' text='Jake Segrest UNA' />
+		<oval y='2960' x='375' text='Writein' />
+	</Contest>
+	<Contest text='lIdquotII II JIJII I ZIIITlldquotI III/ECION DE NOVEMBER DEL CON/MBER 2comma 2010 2 DE NOVIEMBRI/Precinct 11/vaI tothe left ofthe name of the candidate Please/IZQUIERDA del nombre del candidate VOTE ASI/CTcomma THIS BALLOT HAS BEEN PREPARED IN BO/ZOMPLIMIENTO DEL ACTO FEDERAL SOBRE E/STATE OFFICES/OFICINA DEL ESTADO/GOVERNOR / LIEUTENANT GOVERNOR/GOBERNADOR / TENIENTE GOBERNADC/Vote For One Pair  V0t0 Una Par' prop='0' x2='690' y='0' x='1065' y2='300'>
+		<oval y='1361' x='1065' text='John Hickenlooper DEM/Joseph Garcia' />
+		<oval y='1461' x='1065' text='Dan Nlaes REP/Tambcr Williams' />
+		<oval y='1561' x='1065' text='Jaimes Brown LIB/Ken Wyble' />
+		<oval y='1661' x='1065' text='Tom Tancredc ACN/Pat Miller' />
+		<oval y='1761' x='1065' text='Jason R Clark UNA/Victoria A Adams' />
+		<oval y='1861' x='1065' text='Paul N0eI Fi0rin0 UNA/Heather A lVIcKibbin' />
+		<oval y='1961' x='1065' text='Writein' />
+	</Contest>
+	<Contest text='SECRETARY OF STATE/SECRETARIO DEL ESTADO/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='1065' y2='300'>
+		<oval y='2360' x='1065' text='Scott Gessler REP' />
+		<oval y='2460' x='1065' text='Bernie Buescher DEM' />
+		<oval y='2560' x='1065' text='Amanda Campbell ACN' />
+	</Contest>
+	<Contest text='STATE TREASURER/TESORERO DEL ESTADO/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='1065' y2='300'>
+		<oval y='2860' x='1065' text='Walker Stapleton REP' />
+		<oval y='2960' x='1065' text='Cary Kennedy DEM' />
+	</Contest>
+	<Contest text='AsquotIsquotORNEY GENERAL/PROCURADOR GENERAL DE LA/REPUBLICA/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='1065' y2='300'>
+		<oval y='3259' x='1065' text='Stan Garnett DEM' />
+		<oval y='3359' x='1065' text='John Suthers REP' />
+	</Contest>
+	<Contest text='I III IJldquotsquotII I/ADO DE SAGUACHE/2010/e a black pen and VOTE LIKE THIS /D/ENGLISH AND SPANISHcomma CESTA BALOTA HA/IERECH A VOTAR/STATE OFFICES/OFICINA DEL ESTADO/REGENT OF THE UNIVERSITY OF/COLORADO/AT LARGE/REGENTE DE LA UNIVERSIDAD DE/COLORADO/EN GRANDE/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='1756' y2='300'>
+		<oval y='1461' x='1756' text='Melissa Hart DEM' />
+		<oval y='1561' x='1756' text='Steve B0sIey REP' />
+		<oval y='1661' x='1756' text='Jesse B Wallace LIB' />
+	</Contest>
+	<Contest text='STATE SENATE DISTRICT 5/DISTRICTO 5 DELO SENTATE DEL/ESTADO/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='1756' y2='300'>
+		<oval y='1961' x='1756' text='Bob Rankin REP' />
+		<oval y='2061' x='1756' text='Gail Schwartz DEM' />
+	</Contest>
+	<Contest text='STATE REPRESENTATIVE DISTRICT 60/DISTRICTO 60 DELO REPRESENTATE DE/ESTADO/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='1756' y2='300'>
+		<oval y='2360' x='1756' text='Tom Massey REP' />
+		<oval y='2460' x='1756' text='Sandra A Hcrrccks DEM' />
+		<oval y='2560' x='1756' text='Christine Smith LIB' />
+		<oval y='2660' x='1756' text='Writein' />
+	</Contest>
+	<Contest text='COUNTY OFFICES/OFICINA DE CONDADO/COUNTY COMMISSIONER DISTRICT 3/COMISIONADO DE CONDADO DISTRITO/Vote For One  VOI0 Por Uno' prop='0' x2='690' y='0' x='1756' y2='300'>
+		<oval y='3160' x='1756' text='Steven M Carlson REP' />
+		<oval y='3259' x='1756' text='Linda Joseph DEM' />
+	</Contest>
+	<Contest text='COUNTY CLERK  RECORDER/VENDEDOR Y REGISTRADOR DE/CONDADO/Vote For One  V0t0 Por Uno' prop='0' x2='690' y='0' x='1756' y2='300'>
+		<oval y='3559' x='1756' text='Melinda Myers DEM' />
+		<oval y='3659' x='1756' text='Carla V Gomez REP' />
+	</Contest>
+</BallotSide>

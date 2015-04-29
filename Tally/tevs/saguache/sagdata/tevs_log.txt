@@ -1,0 +1,63 @@
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:Ballot width in inches 8.500000
+INFO:extraction:Ballot height in inches 17.000000
+INFO:extraction:Voteop width in inches 0.250000
+INFO:extraction:Voteop height in inches 0.100000
+INFO:extraction:Processing: 1: tmp_000001.jpg & tmp_000002.jpg
+INFO:extraction:processed 0A4A8B0B0B0B6B$BACK0A4A8B0B0B0B6B
+INFO:extraction:Processing: 3: tmp_000003.jpg & tmp_000004.jpg
+INFO:extraction:processed 0A4A8B0B0B0B6B$BACK0A4A8B0B0B0B6B
+INFO:extraction:Processing: 5: tmp_000005.jpg & tmp_000006.jpg
+INFO:extraction:processed 0A4A8B0B0B0B6B$BACK0A4A8B0B0B0B6B
+INFO:extraction:Processing: 7: tmp_000007.jpg & tmp_000008.jpg
+INFO:extraction:processed 0A4A8B0B0B0B6B$BACK0A4A8B0B0B0B6B
+INFO:extraction:tmp_000009.jpg does not exist. No more records to process

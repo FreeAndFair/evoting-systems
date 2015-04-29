@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<BallotSide barcode='6442516518' y2y='3006' dpi='300' party='None' precinct='None' rot='0.0' lx='66' ly='142'>
+	<Contest text='MEASURE A11/Shall Section 1105 Retirement of the San Luis/Obispo Chartercomma which authorizes the City/Council to enter into a contract with the Board of/Administration ofthe Public Employeessquot/Retirement System PERScomma be amended to/provide that the City Council may terminate or/amend its contract or negotiate another contract/to provide improved or reduced employee/benefits only in accordance with state law and/as permitted by the Board of Administration of/PERS' prop='0' x2='900' y='789' x='75' y2='1464'>
+		<oval y='1409' x='157' x2='-1' y2='-1' text='YES' />
+		<oval y='1409' x='532' x2='-1' y2='-1' text='NO' />
+	</Contest>
+	<Contest text='CAPTAIN OF INDUSTRY' prop='0' x2='900' y='1464' x='75' y2='1755'>
+		<oval y='1634' x='157' x2='-1' y2='-1' text='AM ES T KIRK' />
+		<oval y='1700' x='157' x2='-1' y2='-1' text='SCOTTY MCCOY' />
+	</Contest>
+	<Contest text=' Mr/  W/r' prop='0' x2='900' y='1755' x='75' y2='2136'>
+		<oval y='2015' x='157' x2='-1' y2='-1' text='IAM ES T KI RK' />
+		<oval y='2081' x='157' x2='-1' y2='-1' text='SCOTTY MCCOY' />
+	</Contest>
+	<Contest text='MEASURE B11/Shall San Luis Obispo Charter Section 1107/dquotImpartial and Binding Arbitration for San Luis/Obispo Police Officers Association and San Luis/Obispo Firefighters Associationcomma IAFF Local/3523comma Employee Disputesdquot be repealed in its/entiretycomma leaving resolution of disputes over/wagescomma hourscomma or working conditionscomma which/remain unresolved after good faith negotiations/between the City and the two covered/organizationscomma subject to the same State law/procedures for impasse resolution that govern/other public emblovee ordanizations' prop='0' x2='1725' y='789' x='900' y2='1539'>
+		<oval y='1484' x='982' x2='-1' y2='-1' text='YES' />
+		<oval y='1484' x='1357' x2='-1' y2='-1' text='NO' />
+	</Contest>
+</BallotSide>

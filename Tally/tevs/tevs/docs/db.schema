@@ -1,0 +1,36 @@
+create table ballots (
+                ballot_id serial PRIMARY KEY,
+                processed_at timestamp,
+                code_string char(14),
+                layout_code bigint,
+                file1 varchar(80),
+                file2 varchar(80)
+               );
+create table voteops (
+       voteop_id serial PRIMARY KEY,
+       ballot_id int REFERENCES ballots (ballot_id),
+       contest_text varchar(80),
+       choice_text varchar(80),
+       original_x smallint,
+       original_y smallint,
+       adjusted_x smallint,
+       adjusted_y smallint,
+       red_mean_intensity smallint,
+       red_darkest_pixels smallint,
+       red_darkish_pixels smallint,
+       red_lightish_pixels smallint,
+       red_lightest_pixels smallint,
+       green_mean_intensity smallint,
+       green_darkest_pixels smallint,
+       green_darkish_pixels smallint,
+       green_lightish_pixels smallint,
+       green_lightest_pixels smallint,
+       blue_mean_intensity smallint,
+       blue_darkest_pixels smallint,
+       blue_darkish_pixels smallint,
+       blue_lightish_pixels smallint,
+       blue_lightest_pixels smallint,
+       was_voted boolean,
+       suspicious boolean
+);
+

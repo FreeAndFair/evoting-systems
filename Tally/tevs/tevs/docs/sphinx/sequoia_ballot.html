@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>sequoia_ballot module documentation &mdash; &lt;project&gt;</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2beta',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="&lt;project&gt;" href="index.html" />
+    <link rel="up" title="Supported Ballots" href="ballots.html" />
+    <link rel="prev" title="saguache_ballot module documentation" href="saguache_ballot.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="saguache_ballot.html" title="saguache_ballot module documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="ballots.html" accesskey="U">Supported Ballots</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-sequoia_ballot">
+<h1>sequoia_ballot module documentation<a class="headerlink" href="#module-sequoia_ballot" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sequoia_ballot.IsWriteIn">
+<tt class="descname">IsWriteIn</tt><big>(</big><em>im</em>, <em>stats</em>, <em>choice</em><big>)</big><a class="headerlink" href="#sequoia_ballot.IsWriteIn" title="Permalink to this definition">¶</a></dt>
+<dd>All we have to go on is a text-free box.</dd></dl>
+
+<dl class="class">
+<dt id="sequoia_ballot.SequoiaBallot">
+<em class="property">class </em><tt class="descname">SequoiaBallot</tt><big>(</big><em>images</em>, <em>extensions</em><big>)</big><a class="headerlink" href="#sequoia_ballot.SequoiaBallot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing a subset of Sequoia ballots.</p>
+<p>The file name sequoia_ballot.py and the class name SequoiaBallot
+correspond to the brand entry in tevs.cfg, 
+the configuration file.</p>
+<dl class="method">
+<dt id="sequoia_ballot.SequoiaBallot.build_layout">
+<tt class="descname">build_layout</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#sequoia_ballot.SequoiaBallot.build_layout" title="Permalink to this definition">¶</a></dt>
+<dd>get layout and ocr information by calling build_template</dd></dl>
+
+<dl class="method">
+<dt id="sequoia_ballot.SequoiaBallot.extract_VOP">
+<tt class="descname">extract_VOP</tt><big>(</big><em>page</em>, <em>rotate</em>, <em>scale</em>, <em>choice</em><big>)</big><a class="headerlink" href="#sequoia_ballot.SequoiaBallot.extract_VOP" title="Permalink to this definition">¶</a></dt>
+<dd>Extract statistics for a single oval or writein from the ballot.</dd></dl>
+
+<dl class="method">
+<dt id="sequoia_ballot.SequoiaBallot.find_landmarks">
+<tt class="descname">find_landmarks</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#sequoia_ballot.SequoiaBallot.find_landmarks" title="Permalink to this definition">¶</a></dt>
+<dd><p>retrieve landmarks for a sequoia ballot, set tang, xref, yref</p>
+<p>Landmarks for the sequoia ballot are the &#8220;dash blocks&#8221; at the
+upper left and upper right. These are retrieved by calling
+get_offsets_and_tangent_from_blocks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sequoia_ballot.SequoiaBallot.get_layout_code">
+<tt class="descname">get_layout_code</tt><big>(</big><em>page</em><big>)</big><a class="headerlink" href="#sequoia_ballot.SequoiaBallot.get_layout_code" title="Permalink to this definition">¶</a></dt>
+<dd>Determine the layout code by calling get_code_from_blocks.</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="sequoia_ballot.build_template">
+<tt class="descname">build_template</tt><big>(</big><em>im</em>, <em>dpi</em>, <em>code</em>, <em>xoff</em>, <em>yoff</em>, <em>tilt</em>, <em>front=True</em><big>)</big><a class="headerlink" href="#sequoia_ballot.build_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>build template of arrow locations</p>
+<p>When a ballot image is used for template construction, 
+it is assumed that code will have derotated it first!</p>
+<p>This code is not yet general; it assumes two arrow columns
+at set locations.  It locates arrows within those locations
+by searching for at least 0.05&#8221; of vertical contiguous black
+in locations which would correspond to the arrow head and
+the arrow tail, skipping at least the first vertical 1.5&#8221; on the front
+and the bottom 1.2&#8221; on both sides.</p>
+<p>The search for arrows begins only beneath a 0.6&#8221; long solid
+black bar (first channel &lt;= 128 in range 0..255) at least 0.05&#8221; tall.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sequoia_ballot.find_y_of_landmark_pattern">
+<tt class="descname">find_y_of_landmark_pattern</tt><big>(</big><em>crop</em>, <em>dpi</em>, <em>offset1</em>, <em>offset2</em><big>)</big><a class="headerlink" href="#sequoia_ballot.find_y_of_landmark_pattern" title="Permalink to this definition">¶</a></dt>
+<dd>return first y offset at which pattern condition is met, or -1</dd></dl>
+
+<dl class="function">
+<dt id="sequoia_ballot.get_code_from_blocks">
+<tt class="descname">get_code_from_blocks</tt><big>(</big><em>im</em>, <em>dpi</em>, <em>leftstartx</em>, <em>leftstarty</em>, <em>rightstartx</em>, <em>rightstarty</em><big>)</big><a class="headerlink" href="#sequoia_ballot.get_code_from_blocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>read dash pattern encoding layout and return encoded int</p>
+<p>There are dash blocks at upper left and right.  The right represents
+the eight least significant digits and the left the 8 more significant
+digits.  Each bit is represented by the presence (1)
+or absence (0) of a center dash between the two surround dashes, with
+less significant digits lower in the pattern.</p>
+<p>The encoding is also printed to the left of the right dash block.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sequoia_ballot.get_offsets_and_tangent_from_blocks">
+<tt class="descname">get_offsets_and_tangent_from_blocks</tt><big>(</big><em>im</em>, <em>dpi</em>, <em>dash_sep_in_pixels</em><big>)</big><a class="headerlink" href="#sequoia_ballot.get_offsets_and_tangent_from_blocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>locate marks at top left, right of image</p>
+<p>return the x,y coordinates of the large timing marks
+at upper left and upper right, 
+as well as the tangent of the tilt angle between them.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sequoia_ballot.get_text_for_arrow_at">
+<tt class="descname">get_text_for_arrow_at</tt><big>(</big><em>im</em>, <em>x</em>, <em>y</em>, <em>global_dpi</em><big>)</big><a class="headerlink" href="#sequoia_ballot.get_text_for_arrow_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>use tesseract to retrieve text corresponding to left of arrow</p>
+<p>Text associated with different arrows is separated by horizontal
+lines.  Find the y offsets of those lines and pass text between
+those offsets to tesseract, sending it a rectangle 2.25&#8221; wide from
+to the left of the arrow.</p>
+<p>The contest text is above a batch of arrows, and is separated from
+choice text by a thicker line.</p>
+<p>Text is run through ocr.clean_ocr_text and commas are deleted.</p>
+<p>Returns choice text, contest text, and crop rectangle for contest text.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="saguache_ballot.html"
+                                  title="previous chapter">saguache_ballot module documentation</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/sequoia_ballot.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="saguache_ballot.html" title="saguache_ballot module documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="ballots.html" >Supported Ballots</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008-2011, Mitch Trachtenberg.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+    </div>
+  </body>
+</html>

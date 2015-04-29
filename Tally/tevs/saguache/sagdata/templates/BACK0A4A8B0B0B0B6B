@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<BallotSide precinct='BACK0A4A8B0B0B0B6B' rot='0.0' lx='149' dpi='300' ly='90'>
+	<Contest text='COUNTY OFFICES/OFICINA DE CONDADO/COUNTY TREASURER/TESORERO DEL CONDADO/Vote For One  V0t0 Por Uno' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='662' x='166' text='Connie A Trujillo REP' />
+	</Contest>
+	<Contest text='COUNTY ASSESSOR/ASESOR DEL CONDADO/Vote For One  V0t0 Por Uno' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='962' x='166' text='Jacqueline C Stephens DEM' />
+	</Contest>
+	<Contest text='COUNTY SHERIFF/SHERIFF DEL CONDADO/Vote For One  V0t0 Por Uno' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='1261' x='166' text='Mike Norris DEM' />
+		<oval y='1361' x='166' text='Richard Pascoe REP' />
+		<oval y='1461' x='166' text='Writein' />
+	</Contest>
+	<Contest text='COUNTY CORONER/CORONER DEL CONDADO/Vote For One  V0t0 Por Uno' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='1861' x='166' text='Tom Perrin DEM' />
+	</Contest>
+	<Contest text='Shall Justice Michael L Bender cf the/C0I0rad0 Supreme Court be retained in/cfficesquot/gcommaSe ccnservara en la Oficina de Justicia/Michael L Bender de la Corte Suprema' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='2260' x='166' text='YES SI' />
+		<oval y='2360' x='166' text='NO NO' />
+	</Contest>
+	<Contest text='Shall Justice Alex J Martinez ofthe/C0I0rad0 Supreme Court be retained in/officesquot/gcommaSe conservara en la Oficina de Justicia/Alex J Martinez de la Corte Suprema de' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='2760' x='166' text='YES SI' />
+		<oval y='2860' x='166' text='NO NO' />
+	</Contest>
+	<Contest text='Shall Justice Nancy E Rice cf the/Cclcradc Supreme Court be retained in/cfficesquot/gcommaSe ccnservara en la Oficina de Justicia/Nancy E Rice de la Corte Suprema de' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='3259' x='166' text='YES SI' />
+		<oval y='3359' x='166' text='NO NO' />
+	</Contest>
+	<Contest text='Shall Judge John Daniel Dailey of the/Colorado Court of Appeals be retained in/officesquot/gcommaEI juez John Daniel Dailey del tribunal de/apelacion de Colorado ser conservado en' prop='0' x2='691' y='0' x='166' y2='300'>
+		<oval y='3759' x='166' text='YES SI' />
+		<oval y='3859' x='166' text='NO NO' />
+	</Contest>
+	<Contest text='Shall Judge Richard L Gabriel ofthe/C0I0rad0 Court 0f Appeals be retained in/cfficesquot/gcommaEI juez Richard L Gabriel del tribunal de/apelacicn de C0I0rad0 ser ccnservadc en' prop='0' x2='691' y='0' x='857' y2='300'>
+		<oval y='663' x='857' text='YES SI' />
+		<oval y='763' x='857' text='NO NO' />
+	</Contest>
+	<Contest text='Shall Judge Nancy J Lichtenstein 0f the/C0I0rad0 Court 0f Appeals be retained in/officesquot/gcommaEI juez Nancy J Lichtenstein del tribunal/de apelacin de C0I0rad0 ser c0nservad0' prop='0' x2='691' y='0' x='857' y2='300'>
+		<oval y='1162' x='857' text='YES SI' />
+		<oval y='1261' x='857' text='NO NO' />
+	</Contest>
+	<Contest text='Shall Judge David J Richman ofthe/C0I0rad0 Court 0f Appeals be retained in/officesquot/gcommaEI juez David J Richman del tribunal de/apelacin de C0I0rad0 ser ccnservadc en' prop='0' x2='691' y='0' x='857' y2='300'>
+		<oval y='1662' x='857' text='YES SI' />
+		<oval y='1762' x='857' text='NO NO' />
+	</Contest>
+	<Contest text='Shall Judge Martin A Gonzales of the/12th Judicial District be retained in officesquot/gcommaLa empanada Martin A Gonzales rapida/del 12mo districto judicial ser oonservado' prop='0' x2='691' y='0' x='857' y2='300'>
+		<oval y='2062' x='857' text='YES SI' />
+		<oval y='2162' x='857' text='NO NO' />
+	</Contest>
+	<Contest text='Amendment P CONSTITUTIONAL/Shall there be an amendment to Section 2/of Article XVIII of the constitution of the/state of Coloradocomma concerning the/regulation of games by chance by an/authority specified by the general/assembly/Enmienda P CONSTITUCIONAL/gcommaDebe haber una enmienda de la seccion/2 del articulo XVIII de la constitucion del/estado de Coloradocomma relacionada con la/regulacion de los juegos de azar por una/autoridad especiticada por la asamblea' prop='0' x2='691' y='0' x='857' y2='300'>
+		<oval y='2761' x='857' text='YES SI' />
+		<oval y='2861' x='857' text='NO NO' />
+	</Contest>
+	<Contest text='Amendment Q CONSTITUTIONAL/Shall there be an amendment to Section 3/of Article VIII ot the constitution of the/state of Coloradocomma concerning a process/for temporarily moving the seat of/government in a disaster emergency that/substantially atfects the ability of the state/government to operate in the city and/county of Denvercomma andcomma in connection/therewithcomma requiring the general assembly/to convene in a temporary meeting/location designated by the governor and/authorizing the general assembly to/determine by law a temporary location for/the seat of government of the statesquot/Enmienda Q CONSTITUCIONAL/gcommaDebe haber una enmienda de la/seeccion 3 del articulo VII de la/constitucion del estado de Coloradocomma/relacionada con un proceso para mudar/temporalmente la sede del gobierno en/caso de una emergencia catastrofica que/afecta esencialmente la capacidad del/gobierno estatal de operar en la ciudad y/el condado de Denver ycomma en relacion con/la mismacomma exigir que la asamblea general/se reuna en un lugar de reunion temporal/designado por el gobernador y autorizar a/la asamblea general a determinar por ley/un lugar temporal para la sede del/gobierno del estadosquot' prop='0' x2='691' y='0' x='1548' y2='300'>
+		<oval y='1461' x='1548' text='YES SI' />
+		<oval y='1561' x='1548' text='NO NO' />
+	</Contest>
+	<Contest text='Amendment R CONSTITUTIONAL/Shall there be an amendment to Section 3/1 b of Article X of the constitution ot the/state of Coloradocomma concerning an/exemption from property taxation for/possessory interest in real property if the/actual value ot the interest is less than or/equal to six thousand dollars or such/amount adjusted for inflationsquot/Enmienda R CONSTITUCIONAL/gcommaDebe haver una enmienda ala seccion 3/1 b del articulo X de la constitucion del/estado de Coloradocomma relacionada con una/exencion de los impuestos inmobiliarios/para un interes posesorio en bienes/inmuebles si el valor real del interes es/menos de o equivalente a seis mil dolares/o a dicha suma ajustada para la inflacion' prop='0' x2='691' y='0' x='1548' y2='300'>
+		<oval y='2360' x='1548' text='YES SI' />
+		<oval y='2461' x='1548' text=' NO NO' />
+	</Contest>
+</BallotSide>

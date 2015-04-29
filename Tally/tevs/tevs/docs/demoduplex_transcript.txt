@@ -1,0 +1,276 @@
+mitch@mitch-laptop:~/clone/tevs/tevs$ python main.py
+Processing 201:
+ 	000201.jpg
+	000202.jpg
+
+Enter the x coordinate of an upper left landmark;
+if your template is not offset or tilted, you could use 150.  If there's no
+such landmark, enter -1:
+ [default: -1]: 150
+Now enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 75
+Enter the x coordinate of an upper RIGHT landmark;
+if your template is not offset or tilted, you could use 2050.  If there's no
+such landmark, enter -1:
+ [default: -1]: 2050
+Enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 80
+What's the intensity at the upper left (0-255): 255
+What's the intensity at the upper right (0-255): 255
+What's the intensity at the lower right (0-255): 255
+What's the intensity at the lower left (0-255): 255
+Enter the x coordinate of an upper left landmark;
+if your template is not offset or tilted, you could use 150.  If there's no
+such landmark, enter -1:
+ [default: -1]: 160
+Now enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 75
+Enter the x coordinate of an upper RIGHT landmark;
+if your template is not offset or tilted, you could use 2050.  If there's no
+such landmark, enter -1:
+ [default: -1]: 2060
+Enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 72
+What's the intensity at the upper left (0-255): 255
+What's the intensity at the upper right (0-255): 255
+What's the intensity at the lower right (0-255): 255
+What's the intensity at the lower left (0-255): 255
+Enter a number as the simulated barcode,
+        or -1 if your ballot is missing a barcode (0-100) [default: -1]: 3
+No template found for 3
+
+No template found for 3back
+
+Entering build front layout.
+Entering build_layout.
+
+You will need to provide a comma separated list of column offsets,
+then you will need to provide, for each column, information about
+each contest in that column: its contest text, its starting y offset,
+and the same for each choice in the contest.
+
+Enter the column offsets of the vote columns, separated by commas: 500,1000
+Contests for Column 0 at x offset 500
+Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: Pres
+Enter a comma separated list of choices: Obama,McCain
+Enter the x offset of the upper left hand corner 
+of the printed vote target for Obama: 510
+Enter the y offset of the upper left hand corner 
+of the printed vote target for Obama: 500
+Enter the x offset of the upper left hand corner 
+of the printed vote target for McCain: 510
+Enter the y offset of the upper left hand corner 
+of the printed vote target for McCain: 600
+Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: VP
+Enter a comma separated list of choices: Biden,Palin
+Enter the x offset of the upper left hand corner 
+of the printed vote target for Biden: 510
+Enter the y offset of the upper left hand corner 
+of the printed vote target for Biden: 800
+Enter the x offset of the upper left hand corner 
+of the printed vote target for Palin: 510
+Enter the y offset of the upper left hand corner 
+of the printed vote target for Palin: 900
+Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: x
+Contests for Column 1 at x offset 1000
+Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: Rep
+Enter a comma separated list of choices: Thompson,Other
+Enter the x offset of the upper left hand corner 
+of the printed vote target for Thompson: 1010
+Enter the y offset of the upper left hand corner 
+of the printed vote target for Thompson: 500
+Enter the x offset of the upper left hand corner 
+of the printed vote target for Other: 1010
+Enter the y offset of the upper left hand corner 
+of the printed vote target for Other: 550
+Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: x
+Template 3 created
+
+Entering build back layout.
+Entering build_layout.
+
+You will need to provide a comma separated list of column offsets,
+then you will need to provide, for each column, information about
+each contest in that column: its contest text, its starting y offset,
+and the same for each choice in the contest.
+
+Enter the column offsets of the vote columns, separated by commas: 700
+Contests for Column 0 at x offset 700
+Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: Back
+Enter a comma separated list of choices: Back1,Back2
+Enter the x offset of the upper left hand corner 
+of the printed vote target for Back1: 710
+Enter the y offset of the upper left hand corner 
+of the printed vote target for Back1: 800
+Enter the x offset of the upper left hand corner 
+of the printed vote target for Back2: 710
+Enter the y offset of the upper left hand corner 
+of the printed vote target for Back2: 900
+Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: 
+No input, try again:  Enter a contest name.  When done entering contests, 
+type 'x' and the <enter> key to continue.: x
+Template 3back created
+
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (509, 501) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 255
+Lowest count (0-1000): 255
+Low count (0-1000): 255
+High count (0-1000): 255
+Highest count (0-1000): 255
+Value of suspicious: 0
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (509, 601) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 100
+Lowest count (0-1000): 100
+Low count (0-1000): 100
+High count (0-1000): 100
+Highest count (0-1000): 100
+Value of suspicious: 0
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (508, 801) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 101
+Lowest count (0-1000): 101
+Low count (0-1000): 102
+High count (0-1000): 103
+Highest count (0-1000): 104
+Value of suspicious: 0
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (508, 901) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 201
+Lowest count (0-1000): 202
+Low count (0-1000): 203
+High count (0-1000): 204
+Highest count (0-1000): 205
+Value of suspicious: 0
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (1009, 502) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 301
+Invalid input, try again:  Intensity (0-255): 51
+Lowest count (0-1000): 52
+Low count (0-1000): 53
+High count (0-1000): 54
+Highest count (0-1000): 544
+Value of suspicious: 0
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (1009, 552) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 40
+Lowest count (0-1000): 41
+Low count (0-1000): 42
+High count (0-1000): 43
+Highest count (0-1000): 44
+Value of suspicious: 0
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (711, 799) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 30
+Lowest count (0-1000): 31
+Low count (0-1000): 32
+High count (0-1000): 33
+Highest count (0-1000): 34
+Value of suspicious: 0
+At 300 dpi, on a scale of 0 to 255, 
+tell us the average intensity from (711, 899) for width 42 height 60, 
+given an offset from the specified x of 87
+
+Intensity (0-255): 20
+Lowest count (0-1000): 21
+Low count (0-1000): 22
+High count (0-1000): 23
+Highest count (0-1000): 24
+Value of suspicious: 0
+2 ballot pages processed succesfully
+
+Processing 203:
+ 	000203.jpg
+	000204.jpg
+
+Enter the x coordinate of an upper left landmark;
+if your template is not offset or tilted, you could use 150.  If there's no
+such landmark, enter -1:
+ [default: -1]: -1
+Now enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 900
+Enter the x coordinate of an upper RIGHT landmark;
+if your template is not offset or tilted, you could use 2050.  If there's no
+such landmark, enter -1:
+ [default: -1]: -1
+Enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 905
+Could not find landmarks
+
+Could not process ballot 000203.jpg
+
+Could not process ballot 000204.jpg
+
+Could not process ballot
+Traceback (most recent call last):
+  File "main.py", line 143, in main
+    results = ballot.ProcessPages()
+  File "/home/mitch/clone/tevs/tevs/Ballot.py", line 130, in ProcessPages
+    self.FindLandmarks(page)
+  File "/home/mitch/clone/tevs/tevs/Ballot.py", line 437, in FindLandmarks
+    r, x, y = self.find_front_landmarks(front)
+  File "/home/mitch/clone/tevs/tevs/demoduplex_ballot.py", line 62, in find_front_landmarks
+    return self.find_landmarks(page)
+  File "/home/mitch/clone/tevs/tevs/demoduplex_ballot.py", line 92, in find_landmarks
+    raise Ballot.BallotException("Could not find landmarks")
+BallotException: Could not find landmarks
+Processing 205:
+ 	000205.jpg
+	000206.jpg
+
+Enter the x coordinate of an upper left landmark;
+if your template is not offset or tilted, you could use 150.  If there's no
+such landmark, enter -1:
+ [default: -1]: 
+Now enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 
+Enter the x coordinate of an upper RIGHT landmark;
+if your template is not offset or tilted, you could use 2050.  If there's no
+such landmark, enter -1:
+ [default: -1]: 
+Enter the corresponding y coordinate;
+if your template is not offset or tilted, you could use 75.  If there's no
+such landmark, enter -1:
+ [default: -1]: 
+Could not find landmarks
+
+Could not process ballot 000205.jpg
+
+Could not process ballot 000206.jpg
+

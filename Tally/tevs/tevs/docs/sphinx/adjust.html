@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>adjust module documentation &mdash; &lt;project&gt;</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2beta',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="&lt;project&gt;" href="index.html" />
+    <link rel="up" title="Extending TEVS" href="extending.html" />
+    <link rel="next" title="ocr module documentation" href="ocr.html" />
+    <link rel="prev" title="cropstats module documentation" href="cropstats.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="ocr.html" title="ocr module documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cropstats.html" title="cropstats module documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="extending.html" accesskey="U">Extending TEVS</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-adjust">
+<h1>adjust module documentation<a class="headerlink" href="#module-adjust" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="adjust.rotate_pt_by">
+<tt class="descname">rotate_pt_by</tt><big>(</big><em>x</em>, <em>y</em>, <em>deltatang</em>, <em>lx</em>, <em>ly</em><big>)</big><a class="headerlink" href="#adjust.rotate_pt_by" title="Permalink to this definition">¶</a></dt>
+<dd>rotate x,y about lx,ly adjusting for tilt given by deltatang</dd></dl>
+
+<dl class="function">
+<dt id="adjust.rotator">
+<tt class="descname">rotator</tt><big>(</big><em>tang</em>, <em>xl</em>, <em>yl</em><big>)</big><a class="headerlink" href="#adjust.rotator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the difference in rotation between a ballot template
+and a particular ballot and the position of the landmark
+in the ballot template, return a function that given a
+coordinate pair in a template returns the corresponding
+coordinates in that particular ballot.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">rotator</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">122</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">(</span><span class="mi">98</span><span class="p">,</span> <span class="mi">1030</span><span class="p">)</span>
+<span class="go">(98, 1030)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">(</span><span class="mi">464</span><span class="p">,</span> <span class="mi">280</span><span class="p">)</span>
+<span class="go">(464, 280)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">(</span><span class="mi">832</span><span class="p">,</span> <span class="mi">1746</span><span class="p">)</span>
+<span class="go">(832, 1746)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">rotator</span><span class="p">(</span><span class="o">.</span><span class="mo">0687</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">122</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">(</span><span class="mi">98</span><span class="p">,</span> <span class="mi">1030</span><span class="p">)</span>
+<span class="go">(160, 1027)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">(</span><span class="mi">464</span><span class="p">,</span> <span class="mi">280</span><span class="p">)</span>
+<span class="go">(474, 254)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">(</span><span class="mi">832</span><span class="p">,</span> <span class="mi">1746</span><span class="p">)</span>
+<span class="go">(942, 1691)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="cropstats.html"
+                                  title="previous chapter">cropstats module documentation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="ocr.html"
+                                  title="next chapter">ocr module documentation</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/adjust.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ocr.html" title="ocr module documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cropstats.html" title="cropstats module documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">&lt;project&gt;</a> &raquo;</li>
+          <li><a href="extending.html" >Extending TEVS</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2008-2011, Mitch Trachtenberg.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+    </div>
+  </body>
+</html>
