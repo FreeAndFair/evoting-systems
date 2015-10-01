@@ -1,0 +1,80 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html>
+<head>
+<title>Prime III</title>
+<script language="JavaScript" src="Settings.js"> </script>
+<script language="JavaScript" src="Ballot.js"> </script>
+</head>
+
+<body>
+<pre>
+<script language="JavaScript">
+document.write("Settings\n");
+document.write("BallotName=" + BallotName + "\n");
+var NumberOfContestsAndPropositionOrAmendments = 0;
+
+for (i=0;i<NumberOfContests;i++)
+{
+	if ((Contests[i].ContestType == ContestTypes[0]) || (Contests[i].ContestType == ContestTypes[1])) 
+		NumberOfContestsAndPropositionOrAmendments++;
+}
+
+document.write("NumberOfContests=" + NumberOfContestsAndPropositionOrAmendments + "\n");
+document.write("ImagesDirectory=/home/gilbert/\n\n");
+
+for (i=0;i<NumberOfContests;i++)
+{
+	var FoundFirst = false;
+	
+	if ((Contests[i].ContestType == ContestTypes[0]) || (Contests[i].ContestType == ContestTypes[1]))
+	{		
+		for (j=0;j<NumberOfCandidates;j++)
+		{
+			if (Contests[i].ContestID == Candidates[j].Contest.ContestID)
+			{
+				if (!FoundFirst)
+				{
+					FoundFirst = true;
+					document.write("Contest\n");
+					document.write("NumberToSelect=" +  Contests[i].NumberOfCandidatesToSelect + "\n");
+					document.write("OfficeName=" + Contests[i].ContestName + "\n");
+				}
+				
+				if (Candidates[j].CandidateName != WriteIn)
+				{
+					document.write("CandidateName=" + Candidates[j].CandidateName + "\n");
+					document.write("CandidateID=" + Candidates[j].CandidateID + "\n");
+					document.write("Party=" + Candidates[j].Party.PartyName + "\n");
+					document.write("PartyLabel=" + Candidates[j].Party.PartyLabel + "\n");
+				}
+			}
+		}
+		document.write("\n");
+	}
+}
+
+
+</script>
+</pre>
+</body>
+</HTML>

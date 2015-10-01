@@ -1,0 +1,196 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+function buttonPressed(selection)
+{
+	var AccessCode = self.document.forms[0].AccessCodeText.value;
+	
+	if (selection == "Backspace")
+	{
+		if (AccessCode.length > 0)
+			AccessCode = AccessCode.substr(0,AccessCode.length-1);
+	}
+	else if (selection == "Enter")
+	{
+		processAccessCode();
+	}
+	else
+		AccessCode += selection;
+
+	self.document.forms[0].AccessCodeText.value = AccessCode;
+	self.document.forms[0].AccessCodeText.focus();
+}
+
+function processAccessCode()
+{
+	if (window.top.AllowVotersToSelectAudio)
+	{
+		window.top.MicIsOn = eval(self.document.forms[0].MicIsOn.value);
+		window.top.UseAudio = eval(self.document.forms[0].UseAudio.value);
+	}
+	
+	if (self.document.forms[0].AccessCodeText.value.length > 0)
+	{
+		window.top.processAccessCode(self.document.forms[0].AccessCodeText.value);
+	}
+	else
+	{
+		alert("You must enter an access code or scan a barcode to begin.");
+		clearAccessCode();
+	}
+}
+
+function setFocus()
+{
+	self.document.bgColor = window.top.SelectionColor;
+	self.document.forms[0].AccessCodeText.focus();
+
+	if (!window.top.AllowVotersToSelectAudio)
+		document.getElementById("MicHeading").style.visibility = "hidden";	
+	document.getElementById("AudioHeading").style.visibility = "hidden";
+}
+
+function clearAccessCode()
+{
+	self.document.forms[0].AccessCodeText.value = "";
+	setFocus();	
+}
+
+function MicChanged()
+{
+	if (self.document.forms[0].MicIsOn.value == "true")
+		document.getElementById("AudioHeading").style.visibility = "hidden";
+	else
+		document.getElementById("AudioHeading").style.visibility = "visible";
+}
+</script>
+</head>
+
+<body onLoad="setFocus()" style="width: 100%; height: 100%; margin:0px auto; overflow-y:hidden">
+<form id="myForm" onSubmit="processAccessCode();return false;">
+<center>
+<script language="JavaScript">
+document.write("<p id='headingParagraph'><font id='myHeading' size=\"14\">Enter access code or scan ballot to begin.</font></p>");
+document.write("<table border=\"0\" cellspacing=\"3\" cellpadding=\"0\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\">\n");
+
+if (window.top.AllowVotersToSelectAudio)
+{
+	document.write("<font id=\"MicHeading\" size=\"6\">\n");
+	document.write("Does the voter want to respond with the microphone?\n");
+	document.write("<input style=\"height:30px ; width:30px\" type=\"radio\" name=\"MicIsOn\" value=\"true\" onchange=\"MicChanged()\" checked> Yes\n");
+	document.write("<input style=\"height:30px ; width:30px\" type=\"radio\" name=\"MicIsOn\" value=\"false\" onchange=\"MicChanged()\"> No\n");
+
+	document.write("<p id=\"AudioHeading\">\n");
+	document.write("Does the voter want the ballot read to them through the headphones?\n");
+	document.write("<input style=\"height:30px ; width:30px\" type=\"radio\" name=\"UseAudio\" value=\"true\" checked> Yes\n"); 
+	document.write("<input style=\"height:30px ; width:30px\" type=\"radio\" name=\"UseAudio\" value=\"false\"> No\n");
+	document.write("</p></font>\n");
+}
+document.write("<tr><td>\n");
+
+document.write("<table>");
+var buttonFont = "bold 36px Arial;width:500;height:200";
+i=1;
+while (i<10)
+{
+	document.write("<tr>");
+		
+	for (j=0;j<3;j++)
+	{
+		document.write("<td valign=\"top\" align=\"center\" bgcolor=\"");
+		document.write(window.top.SelectionColor);
+		document.write("\">\n");
+		document.write("<button style=\"font: ");
+		document.write(buttonFont);
+		document.write("\" type=\"button\" id=\"accessButton");
+		document.write(i);
+		document.write("\" onClick=\"buttonPressed('");
+		document.write(i);
+		document.write("')\">");
+		document.write(i);
+		document.write("</button></td>");
+		i++;
+	}
+	
+	document.write("</tr>");
+}
+
+
+document.write("<tr>");
+
+x="Backspace";
+document.write("<td valign=\"top\" align=\"center\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\">\n");
+document.write("<button style=\"font: ");
+document.write(buttonFont);
+document.write("\" type=\"button\" id=\"accessButton");
+document.write(x);
+document.write("\" onClick=\"buttonPressed('");
+document.write(x);
+document.write("')\">");
+document.write(x);
+document.write("</button></td>");
+
+x="0";
+document.write("<td valign=\"top\" align=\"center\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\">\n");
+document.write("<button style=\"font: ");
+document.write(buttonFont);
+document.write("\" type=\"button\" id=\"accessButton");
+document.write(x);
+document.write("\" onClick=\"buttonPressed('");
+document.write(x);
+document.write("')\">");
+document.write(x);
+document.write("</button></td>");
+
+x="Enter";
+document.write("<td valign=\"top\" align=\"center\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\">\n");
+document.write("<button style=\"font: ");
+document.write(buttonFont);
+document.write("\" type=\"button\" id=\"accessButton");
+document.write(x);
+document.write("\" onClick=\"buttonPressed('");
+document.write(x);
+document.write("')\">");
+document.write(x);
+document.write("</button></td>");
+
+document.write("</tr></table>");
+</script>
+</td></tr>
+
+<tr><td>
+<input style="font: bold 18px Arial;width:1506;height:50" type="password" maxlength="9000" size="100" name="AccessCodeText" />
+</table>
+</center>
+</form>
+</body>
+</html>

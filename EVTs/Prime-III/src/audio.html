@@ -1,0 +1,1501 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+
+<script type="text/javascript" src="mespeak.js"></script>
+
+<script language="JavaScript" type="text/javascript"> 
+/* Include SitePal here if you have an account:
+<script language="JavaScript" type="text/javascript" src="https://vhss-d.oddcast.com/vhost_embed_functions_v2.php?acc=#####&js=1">
+*/
+</script>
+
+<script>
+	// These will be initialized later
+    var recognizer, recorder, callbackManager, audioContext;
+    // Only when both recorder and recognizer do we have a ready application
+    var recorderReady = recognizerReady = false;
+      
+	var PayingAttention = false;
+	var lastHyp = "";
+      
+	function getLastWord(words) 
+	{
+		var wordsArray = words.split(" ");
+		if (isListening)
+		{ 
+			if (lastHyp == words) return " ";
+
+			lastHyp = words;
+			return wordsArray[(wordsArray.length - 1)];
+		}
+		else 
+		{
+			lastHyp = words;
+			return " ";
+		}
+	}
+
+	// A convenience function to post a message to the recognizer and associate a callback to its response
+    function postRecognizerJob(message, callback) 
+    {
+		var msg = message || {};
+		if (callbackManager) msg.callbackId = callbackManager.add(callback);
+		if (recognizer) recognizer.postMessage(msg);
+    };
+
+	// This function initializes an instance of the recorder it posts a message right away and calls onReady when it
+	// is ready so that onmessage can be properly set
+	function spawnWorker(workerURL, onReady) 
+	{
+	  recognizer = new Worker(workerURL);
+	  recognizer.onmessage = function(event) {
+		onReady(recognizer);
+	  };
+	  recognizer.postMessage('');
+	};
+
+	// Callback function once the user authorises access to the microphone in it, we instanciate the recorder
+	function startUserMedia(stream) 
+	{
+		var input = audioContext.createMediaStreamSource(stream);
+		// Firefox hack https://support.mozilla.org/en-US/questions/984179
+		window.firefox_audio_hack = input; 
+		var audioRecorderConfig = {errorCallback: function(x) {updateStatus("Error from recorder: " + x);}, outputSampleRate: 9500};
+		
+		recorder = new AudioRecorder(input, audioRecorderConfig);
+		// If a recognizer is ready, we pass it to the recorder
+		if (recognizer) recorder.consumers = [recognizer];
+		recorderReady = true;
+		
+		setTimeout("startListening()", 1500);
+	};
+      
+	// Called once the recognizer is ready. We then add the grammars to the input select tag and update the UI
+	var recognizerReady = function() {
+	   recognizerReady = true;
+	};
+
+    // This adds a grammar from the grammars array. We add them one by one and call it again as a callback.
+    // Once we are done adding all grammars, we can call recognizerReady()
+    var feedGrammar = function(g, index, id) {
+    	if (id && (grammarIds.length > 0)) grammarIds[0].id = id.id;
+        if (index < g.length) {
+          grammarIds.unshift({title: g[index].title}) 
+          postRecognizerJob({command: 'addGrammar', data: g[index].g},
+                             function(id) {feedGrammar(grammars, index + 1, {id:id});});
+        } else {
+          recognizerReady();
+        }
+      };
+
+      // This adds words to the recognizer. When it calls back, we add grammars
+      var feedWords = function(words) {
+           postRecognizerJob({command: 'addWords', data: words},
+                        function() {feedGrammar(grammars, 0);});
+      };
+
+      // This initializes the recognizer. When it calls back, we add words
+      var initRecognizer = function() {
+          postRecognizerJob({command: 'initialize'},
+                            function() {
+                                        if (recorder) recorder.consumers = [recognizer];
+                                        feedWords(wordList);});
+      };
+
+	// This is the list of words that need to be added to the recognizer
+    // This follows the CMU dictionary format
+    var wordList = [["VOTE", "V OW T"],["NEXT", "N EH K S"], ["CONTINUE", "K UH N T IH N UW"]];
+    
+    // This grammar recognizes Prime III Words
+    var grammarPrimeIII = {numStates: 1, start: 0, end: 0, transitions: [{from: 0, to: 0, word: "VOTE"}, {from: 0, to: 0, word: "NEXT"}, {from: 0, to: 0, word: "CONTINUE"}]};
+    
+    var grammars = [{title: "PrimeIII", g: grammarPrimeIII}];
+    var grammarIds = [];
+</script>
+
+<!-- These are the two JavaScript files you must load in the HTML,
+The recognizer is loaded through a Web Worker -->
+<script src="js/audioRecorder.js"></script>
+<script src="js/callbackManager.js"></script>
+
+
+<script language="JavaScript">
+var speechIndex = 0;
+var reco;
+var itemsToSpeak = new Array('Contests', 'Candidates', 'Vote By Party', 'PropositionOrAmendment', 'Settings', 'Ballot Review', window.top.WriteIn);
+var whatToSpeak = itemsToSpeak[speechIndex];
+var whatToSay = "";
+var NumberOfCandidatesInThisContest = 0;
+var FirstCandidateInThisContest = 0;
+var LastCandidateInThisContest = 0;
+var selected = "";
+var ClearAll = false;
+var interruption = false;
+var printingBallot = false;
+var sceneLoaded = false;
+var isListening = false;
+var lastTimeSoundWasDetected = new Date();
+var WriteInIndex = -1;
+var WriteInLevel = 0;
+var WriteInSelected = "";
+var WriteInLettersIndex = 0;
+var SelectionWasMade = false;
+
+if (window.top.TextToSpeechEngine == "Speakjs")
+{
+    meSpeak.loadConfig("mespeak_config.json");
+    meSpeak.loadVoice(window.top.meSpeakVoice);
+}
+
+function printBallot()
+{
+	stopSpeaking();
+
+	if (window.top.PrintThe == "Nothing")
+		whatToSay = "Thank you. Your ballot has been cast.";
+	else if (window.top.PrintThe == "QRCode")
+		whatToSay = "Thank you. Here's the que are code of your ballot. You should print or save this code.";
+	else
+		whatToSay = "Thank you. Your ballot is being printed.";
+	
+	if (!printingBallot)
+	{ 
+		if (window.top.TextToSpeechEngine == "SitePal")
+			sayText(whatToSay, window.top.SitePalVoice, window.top.SitePalLanguage, window.top.SitePalEngine, 'S', window.top.SpeakingRate);
+		else if (window.top.TextToSpeechEngine == "Speakjs")
+			speakjs(whatToSay, window.top.SpeakingRate);
+	}
+	printingBallot = true;
+}
+
+function stopSpeakingjs()
+{
+	window.top.SpeakjsCurrentTime = 9999;
+	meSpeak.stop();
+}
+
+function stopSpeaking()
+{
+	interruption = true;
+	if (window.top.TextToSpeechEngine == "SitePal")
+		stopSpeech();
+	else if (window.top.TextToSpeechEngine == "Speakjs")
+	{
+		stopSpeakingjs();
+		talkEnded();
+	}
+}
+
+function unLoadAudio()
+{
+	stopSpeaking();
+	stopListening();
+    
+    if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java"))
+        self.document.soundDetector.killJava();
+}
+
+function stopListening()
+{
+	if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java"))
+		self.document.soundDetector.stopListening();
+}
+
+function startSpeakingContestDetails()
+{
+	if (whatToSpeak != itemsToSpeak[0]) selected = " ";
+
+	if (window.top.Contests[window.top.CurrentContest].ContestType == window.top.VoteByParty)
+	{
+		selected += "You are voting by party. There are ";
+		selected += (window.top.NumberOfParties - 2);
+		selected += " parties. ";
+		
+		if (window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates > 0)
+		{
+			selected += "You have selected the ";
+			
+			for (i=0;i<window.top.NumberOfParties;i++)
+			{
+				if (window.top.Parties[i].PartySelected)
+				{
+					break;
+				}
+			}
+						
+			selected += window.top.Parties[i].PartyName;
+			selected += " party. ";
+		}
+	}
+	else if (window.top.Contests[window.top.CurrentContest].ContestType == window.top.BallotReview)
+	{				
+		selected += "This is your ballot summary. ";
+		
+		NumberOfContestsVoted = 0;
+		NumberOfVotableContests = 0;
+		
+		for (i=0;i<window.top.NumberOfContests;i++)
+		{
+			if ((window.top.Contests[i].ContestType == "Contest") || (window.top.Contests[i].ContestType == window.top.PropositionOrAmendment))
+			{
+				if (window.top.Contests[i].NumberOfSelectedCandidates > 0) NumberOfContestsVoted++;
+				NumberOfVotableContests++;
+			}
+		}
+		
+		if (NumberOfContestsVoted == NumberOfVotableContests)
+		{
+			selected += "You have voted in all ";
+			selected += NumberOfVotableContests;
+			selected += " contests. ";
+		}
+		else
+		{
+			selected += "You have voted in ";
+			selected += NumberOfContestsVoted;
+			selected += ", of the ";
+			selected += NumberOfVotableContests;
+			selected += ", contests. ";
+		}
+	}
+	else
+	{
+		selected += "You are voting for ";
+		selected += window.top.Contests[window.top.CurrentContest].SoundsLike;
+		selected += ". ";
+		
+		selected += "This is contest number ";
+		selected += (eval(window.top.CurrentContest) + 1);
+		selected += " out of ";
+		selected += eval(window.top.NumberOfContests - 1);
+		selected += " contests. ";
+		
+		if (window.top.Contests[window.top.CurrentContest].NumberOfCandidatesToSelect > 1)
+		{
+			if (window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates > 0)
+			{
+				selected += "You have selected ";
+				selectionFound = 0;
+	
+				for (x=0;x<window.top.NumberOfCandidates;x++)
+				{
+					if ((window.top.Contests[window.top.CurrentContest].ContestID == window.top.Candidates[x].Contest.ContestID) && (window.top.Candidates[x].CandidateSelected))
+					{
+						if (selectionFound == (window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates-1)) 
+							selected += " and ";
+						else if (selectionFound > 0) 
+							selected += ", ";
+						
+						selected += window.top.Candidates[x].SoundsLike;
+			
+						selectionFound++;
+					}
+				}
+				selected += ". ";
+										
+				if (window.top.Contests[window.top.CurrentContest].NumberOfCandidatesToSelect > window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates)
+				{
+					x = (window.top.Contests[window.top.CurrentContest].NumberOfCandidatesToSelect - window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates);
+					if (!window.top.AllowOverVotes)
+					{
+						selected += "You can select ";
+					
+						if (x == 1) selected += " one more candidate. ";
+						else 
+						{
+							selected += x;
+							selected += ", more candidates. ";
+						}
+					}
+				}
+			}
+			selected += ". There are ";
+		}
+		else if (window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates > 0)
+		{
+			selected += "You have selected ";
+			
+			for (x=0;x<window.top.NumberOfCandidates;x++)
+			{
+				if ((window.top.Contests[window.top.CurrentContest].ContestID == window.top.Candidates[x].Contest.ContestID) && (window.top.Candidates[x].CandidateSelected))
+				{
+					selected += window.top.Candidates[x].SoundsLike;
+					break;
+				}
+			}
+			selected += ". There are ";
+		}
+		else
+		{
+			selected += "There are ";
+		}
+		
+		selected += window.top.NumberOfCandidatesInTheCurrentContest;
+		
+		if (window.top.Contests[window.top.CurrentContest].ContestType == window.top.PropositionOrAmendment)
+		{
+			selected += ", options available. ";
+			selected += "It reads as follows. "; 
+			selected += window.top.Contests[window.top.CurrentContest].PropositionOrAmendmentText;
+			selected += " ";
+		}
+		else selected += ", candidates available. ";
+
+		if (!window.top.AllowOverVotes)
+		{
+			selected += "You can select no more than";
+			selected += window.top.Contests[window.top.CurrentContest].NumberOfCandidatesToSelect;
+		
+			if (window.top.Contests[window.top.CurrentContest].ContestType == window.top.PropositionOrAmendment)
+				selected += ", options. ";
+			else 
+				selected += ", candidates. ";
+		}
+	}
+	
+	if (whatToSpeak != itemsToSpeak[0]) whatToSay = selected;			
+}
+
+function generateSelectedForWriteIn()
+{
+	if (window.top.contentFrame.WriteInCandidateName.indexOf(' ') > 0)
+	{
+		var partsOfName = window.top.explode(' ', window.top.contentFrame.WriteInCandidateName);
+		for (i=0;i<(partsOfName.length - 1);i++)
+		{
+			selected += partsOfName[i];
+		}
+		
+		var theLastName = partsOfName[i];
+		selected += " ";
+		
+		for (i=0;i<theLastName.length;i++)
+		{
+			selected += theLastName.substr(i,1);
+			selected += " ";
+		}
+	}
+	else
+	{
+		var theLastName = window.top.contentFrame.WriteInCandidateName;
+		
+		for (i=0;i<theLastName.length;i++)
+		{
+			theCharacter = theLastName.substr(i,1);
+			
+			if (theCharacter == ',')
+				selected += "comma";
+			else if (theCharacter == '-')
+				selected += "hyphen";
+			else if (theCharacter == '.')
+				selected += "period";
+			else if (theCharacter == '\'')
+				selected += "apostrophe";
+			else
+				selected += theCharacter;
+			selected += " ";
+		}
+	}
+}
+
+function saySelected()
+{
+	if (ClearAll)
+	{
+		ClearAll = false;
+		speechIndex = FirstCandidateInThisContest;
+		selected = "Your selections for ";
+		selected += window.top.Contests[window.top.CurrentContest].SoundsLike;
+		selected += " have been cleared. ";
+	}
+	else
+	{		
+		selected = "Selected, ";
+		
+		if (whatToSpeak == itemsToSpeak[6])
+		{//WriteIn Candidate
+		
+			if (WriteInLevel == 1)
+			{//selected
+				generateSelectedForWriteIn();
+				
+				speechIndex = 0;
+				WriteInLevel++;
+				WriteInIndex = -1;
+				WriteInLettersIndex = -1;
+			}
+			else
+			{
+				selected = WriteInSelected;
+				WriteInLevel++;
+			}			
+		}
+		else if (whatToSpeak == itemsToSpeak[0])
+		{//Contest was selected
+			if (interruption) speechIndex = window.top.CurrentContest;
+			
+			selected += window.top.Contests[speechIndex].SoundsLike;
+			selected += ". ";
+			
+		 	startSpeakingContestDetails();
+		}
+		else if (whatToSpeak == itemsToSpeak[2])
+		{//Party was selected
+			if (speechIndex == (LastCandidateInThisContest+1)) 
+			{
+				selected += "go back, ";
+			}
+			else if (speechIndex == (LastCandidateInThisContest+2)) 
+			{
+				selected += "clear your selections, ";
+			}
+			else if (speechIndex == (LastCandidateInThisContest+3)) 
+			{
+				selected += "go to the next contest, ";
+			}
+			else if (speechIndex == (LastCandidateInThisContest+4)) 
+			{
+				selected += "review your ballot, ";
+			}
+			else
+			{
+				if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+	
+				selected += "the ";
+				selected += window.top.Parties[speechIndex].PartyName;
+				selected += " party ";
+				
+				speechIndex = LastCandidateInThisContest+2;
+			}
+		}
+		else if (whatToSpeak == itemsToSpeak[1]) 
+		{//Candidate was selected
+
+			if (speechIndex == (LastCandidateInThisContest+1)) 
+			{
+				selected += "go back, ";
+			}
+			else if (speechIndex == (LastCandidateInThisContest+2)) 
+			{
+				selected += "clear your selections, ";
+			}
+			else if (speechIndex == (LastCandidateInThisContest+3)) 
+			{
+				selected += "go to the next contest, ";
+			}
+			else if (speechIndex == (LastCandidateInThisContest+4)) 
+			{
+				selected += "review your ballot, ";
+			}
+			else
+			{
+				if (!window.top.Candidates[speechIndex].CandidateSelected)
+				{
+					selected = "Changed your vote for, ";
+				}
+				
+				if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+	
+				selected += window.top.Candidates[speechIndex].SoundsLike;
+				
+				if (!window.top.AllowOverVotes)
+				{
+					if ((window.top.Contests[window.top.CurrentContest].NumberOfCandidatesToSelect > 1) && (window.top.Contests[window.top.CurrentContest].NumberOfCandidatesToSelect > window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates))
+					{
+						selected += ", You can select ";
+						selected += (window.top.Contests[window.top.CurrentContest].NumberOfCandidatesToSelect - window.top.Contests[window.top.CurrentContest].NumberOfSelectedCandidates);
+						selected += ", more candidates. ";
+					}
+				}
+				
+				speechIndex = LastCandidateInThisContest+2;
+			}	
+		}
+		else if (whatToSpeak == itemsToSpeak[4])
+		{//Setting was selected	
+			if (speechIndex == (LastCandidateInThisContest+1)) 
+			{
+				selected += "go to the next contest, ";
+			}
+			else
+			{
+				if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+				
+				selected += window.top.Candidates[speechIndex].SoundsLike;
+				
+				speechIndex = LastCandidateInThisContest;
+			}	
+		}
+		else if (whatToSpeak == itemsToSpeak[3])
+		{//Proposition or Amendment was selected
+			selected += window.top.Candidates[speechIndex].SoundsLike;
+		}
+		
+		selected += ". ";
+	}
+}
+
+function setItemsToSpeak(itemToSpeak)
+{
+	for (i=0;i<itemsToSpeak.length;i++)
+	{
+		if (itemToSpeak == itemsToSpeak[i]) 
+		{
+			whatToSpeak = itemsToSpeak[i];
+			break;
+		}
+	}
+}
+
+function resetSpeechIndexForCandidates()
+{
+	NumberOfCandidatesInThisContest = 0;
+	FirstCandidateInThisContest = 0;
+	LastCandidateInThisContest = -1;
+	
+	if ((whatToSpeak == itemsToSpeak[1]) || (whatToSpeak == itemsToSpeak[3]) || (whatToSpeak == itemsToSpeak[4]))
+	{//Settings, Candidates and Propositions and Amendments
+		for (i=(window.top.NumberOfCandidates-1);i>=0;i--)
+		{
+			if (window.top.Contests[window.top.CurrentContest].ContestID == window.top.Candidates[i].Contest.ContestID)
+			{
+				speechIndex = i;
+				NumberOfCandidatesInThisContest++;
+				if (LastCandidateInThisContest < 0) LastCandidateInThisContest = i;
+			}
+		}
+		
+		if (FirstCandidateInThisContest < 0) 
+			FirstCandidateInThisContest = 0;
+		else
+			FirstCandidateInThisContest = speechIndex;
+	}
+	else if (whatToSpeak == itemsToSpeak[2])
+	{//Vote by Party
+		for (i=(window.top.NumberOfParties-3);i>=0;i--)
+		{
+			speechIndex = i;
+			NumberOfCandidatesInThisContest++;
+			if (LastCandidateInThisContest < 0) LastCandidateInThisContest = i;
+		}
+		
+		if (FirstCandidateInThisContest < 0) 
+			FirstCandidateInThisContest = 0;
+		else
+			FirstCandidateInThisContest = speechIndex;
+	}
+	else
+	{//this will be for ballot review
+		speechIndex = 0;
+		window.top.CurrentContest = 0;
+	}
+}
+
+function speakText()
+{
+	whatToSay = " ";
+	
+	window.top.setFocusForTabAndEnter();
+	if (interruption) interruption = false;
+	
+	if (selected.length > 0) whatToSay = selected;
+	else whatToSay = "To vote for ";
+
+	if (whatToSpeak == itemsToSpeak[6])
+	{//WriteIn Candidate
+
+		if (WriteInLevel >= 2)
+		{
+			whatToSay = selected;
+			WriteInLevel = 0;
+		}
+		else if (speechIndex == 0)
+		{
+			if ((window.top.Candidates[window.top.CurrentCandidateIndex].CandidateName != window.top.WriteIn) && (window.top.Candidates[window.top.CurrentCandidateIndex].CandidateName != window.top.Candidates[window.top.CurrentCandidateIndex].WriteInDefaultName))
+			{//This is a WriteIn candidate with a name already
+				whatToSay = "You have selected ";
+				whatToSay += window.top.Candidates[window.top.CurrentCandidateIndex].CandidateName;
+				whatToSay += " as the ";
+				whatToSay += window.top.Candidates[window.top.CurrentCandidateIndex].WriteInDefaultName;
+				whatToSay += ". To go back, " + window.top.SayVote;
+			}
+			else
+			{//WriteIn is blank
+				whatToSay = "You have selected to write in a candidate name by spelling the candidate's name. To go back, " + window.top.SayVote;
+			}
+			WriteInIndex = -1;
+		}
+		else if (WriteInLevel == 0)
+		{
+			if (WriteInIndex >= (window.top.WriteInGroups.length-1)) 
+				speechIndex = -1;
+			
+			if (SelectionWasMade)
+			{
+				var LastKeyWasLetter = false;
+				
+				for (var p in window.top.WriteInLetters)
+				{
+				    if (window.top.WriteInLetters[p] == window.top.contentFrame.LastSelectedKey)
+				    {
+				    	LastKeyWasLetter = true;
+				    	break;
+				    }
+				}
+				
+				if (LastKeyWasLetter)
+				{//change the WriteInIndex based on the LastKeyWasLetter
+					WriteInIndex = window.top.NextGroup[window.top.contentFrame.LastSelectedKey];
+				}
+				SelectionWasMade = false;
+			}
+
+			whatToSay = "To select ";
+			whatToSay += window.top.WriteInPrompts[window.top.WriteInGroups[WriteInIndex]];
+			whatToSay += window.top.SayVote;
+		}
+		else if (WriteInLevel == 1)
+		{
+			var individualLetters = window.top.explode(",", window.top.WriteInPrompts[window.top.WriteInGroups[WriteInIndex]]);
+			var i = (individualLetters.length - 1);
+						
+			if (individualLetters[i].indexOf("tee") > 0) 
+				individualLetters[i] = "tee";
+			else if (individualLetters[i].indexOf("zee") > 0) 
+				individualLetters[i] = "zee";
+			else if (individualLetters[i].indexOf("ee") > 0) 
+				individualLetters[i] = "ee";
+			else if (individualLetters[i].indexOf("jay") > 0) 
+				individualLetters[i] = "jay";
+			else if (individualLetters[i].indexOf("oh") > 0) 
+				individualLetters[i] = "oh";
+				
+			if (WriteInLettersIndex >= individualLetters.length) 
+				WriteInLettersIndex = 0;
+			
+			whatToSay = "To select ";
+			whatToSay += individualLetters[WriteInLettersIndex];			
+			whatToSay += window.top.SayVote;
+		}
+	}
+	else if (whatToSpeak == itemsToSpeak[0])
+	{//speak contests
+		if (speechIndex >= window.top.NumberOfContests) speechIndex = 0;
+
+		if (window.top.Contests[speechIndex].ContestType == window.top.Settings)
+		{
+			if (selected.length > 0) 
+				whatToSay += "To change your ";
+			else
+				whatToSay = "To change your ";
+		}
+		else if ((window.top.Contests[speechIndex].ContestType == window.top.BallotReview) || (window.top.Contests[speechIndex].ContestType == window.top.VoteByParty))
+		{
+			if (selected.length > 0)
+				whatToSay += "To ";
+			else
+				whatToSay = "To ";
+		}
+
+		whatToSay += window.top.Contests[speechIndex].SoundsLike;
+		whatToSay += window.top.SayVote;
+	}
+	else if (whatToSpeak == itemsToSpeak[1])
+	{//speak candidates or options
+		if (speechIndex == (LastCandidateInThisContest+1)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To go back, ";
+			else
+				whatToSay = "To go back, ";
+		}
+		else if (speechIndex == (LastCandidateInThisContest+2)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To clear your selections, ";
+			else
+				whatToSay = "To clear your selections, ";
+		}
+		else if (speechIndex == (LastCandidateInThisContest+3)) 
+		{
+			if (selected.length > 0)
+			{
+				if (window.top.CurrentContest == (parseInt(window.top.NumberOfContests) - 2))
+				{
+					speechIndex++;
+					whatToSay += "To review your ballot, ";
+				}
+				else
+					whatToSay += "To go to the next contest, ";
+			}
+			else 
+			{
+				if (window.top.CurrentContest == (parseInt(window.top.NumberOfContests) - 2))
+				{
+					speechIndex++;
+					whatToSay = "To review your ballot, ";
+				}
+				else
+					whatToSay = "To go to the next contest, ";
+			}
+		}
+		else if (speechIndex == (LastCandidateInThisContest+4)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To review your ballot, ";
+			else
+				whatToSay = "To review your ballot, ";
+		}
+		else
+		{
+			if (speechIndex > LastCandidateInThisContest) 
+			{
+				speechIndex = FirstCandidateInThisContest;
+				startSpeakingContestDetails();
+			}
+			
+			if (window.top.Candidates[speechIndex].CandidateSelected)
+			{
+				if (selected.length > 0) 
+					whatToSay += "To change your vote for ";
+				else
+					whatToSay = "To change your vote for ";
+			}
+			else if (selected.length > 0) 
+				whatToSay += "To vote for ";
+			else
+				whatToSay = "To vote for ";
+			
+			whatToSay += window.top.Candidates[speechIndex].SoundsLike;
+		}
+				
+		whatToSay += window.top.SayVote;
+	}
+	else if (whatToSpeak == itemsToSpeak[2])
+	{//Vote By Party
+		if (speechIndex == (LastCandidateInThisContest+1)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To go back, ";
+			else
+				whatToSay = "To go back, ";
+		}
+		else if (speechIndex == (LastCandidateInThisContest+2)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To clear your selections, ";
+			else
+				whatToSay = "To clear your selections, ";
+		}
+		else if (speechIndex == (LastCandidateInThisContest+3)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To go to the next contest, ";
+			else
+				whatToSay = "To go to the next contest, ";
+		}
+		else if (speechIndex == (LastCandidateInThisContest+4)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To review your ballot, ";
+			else
+				whatToSay = "To review your ballot, ";
+		}
+		else
+		{
+			if (speechIndex > LastCandidateInThisContest) 
+			{
+				speechIndex = FirstCandidateInThisContest;
+				startSpeakingContestDetails();
+			}
+			
+			if (window.top.Parties[speechIndex].PartySelected)
+			{
+				if (selected.length > 0) whatToSay += "To undo your ";
+			}
+			else if (selected.length > 0) whatToSay += "To ";
+			
+			if (selected.length > 0) whatToSay += " vote for ";
+			
+			whatToSay += " the ";
+			
+			whatToSay += window.top.Parties[speechIndex].PartyName;
+			whatToSay += " party";
+		}
+				
+		whatToSay += window.top.SayVote;
+	}
+	else if (whatToSpeak == itemsToSpeak[4])
+	{//speak settings
+		if (speechIndex == (LastCandidateInThisContest+1)) 
+		{
+			if (selected.length > 0)
+				whatToSay += "To go to the next contest, ";
+			else
+				whatToSay = "To go to the next contest, ";
+		}
+		else
+		{
+			if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+			
+			if (selected.length > 0) whatToSay = selected + " To change the speed of the voice to ";
+			else whatToSay = "To change the speed of the voice to ";
+			
+			whatToSay += window.top.Candidates[speechIndex].SoundsLike;
+		}
+				
+		whatToSay += window.top.SayVote;
+	}
+	else if (whatToSpeak == itemsToSpeak[5])
+	{//speak ballot summary/BallotReview
+		
+		if (speechIndex < 0) speechIndex = 0;
+		
+		for (i=speechIndex;i<window.top.NumberOfContests;i++)
+		{//Find the next contest
+			if ((window.top.Contests[i].ContestType == "Contest") || (window.top.Contests[i].ContestType == window.top.PropositionOrAmendment))
+				break;
+		}
+				 
+		if (i < window.top.NumberOfContests) 
+		{//found the next contest
+			speechIndex = i;
+			window.top.CurrentContest = speechIndex;
+		
+			selectedCandidates = "";
+			for (i=0;i<window.top.NumberOfCandidates;i++)
+			{
+				if ((window.top.Contests[speechIndex].ContestID == window.top.Candidates[i].Contest.ContestID) && (window.top.Candidates[i].CandidateSelected))
+				{
+					if (selectedCandidates.length == 0) selectedCandidates = window.top.Candidates[i].SoundsLike;
+					else 
+					{
+						if (i < (window.top.Contests[speechIndex].NumberOfSelectedCandidates - 1))
+							selectedCandidates += ", " + window.top.Candidates[i].SoundsLike;
+						else
+							selectedCandidates += " and " + window.top.Candidates[i].SoundsLike;
+					}
+				}
+			}
+	
+			if (selectedCandidates.length == 0) 
+				whatToSay = "You did not make a selection ";
+			else if (selected.length > 0) 
+				whatToSay = selected + " You selected " + selectedCandidates;
+			else 
+				whatToSay = " You selected " + selectedCandidates;
+				
+			whatToSay += " for " + window.top.Contests[speechIndex].SoundsLike;
+
+			if (window.top.Contests[speechIndex].NumberOfSelectedCandidates > 0)
+				whatToSay += ". To change your vote for ";
+			else if (selectedCandidates.length == 0)
+				whatToSay += ". To vote for ";
+		
+			whatToSay += window.top.Contests[speechIndex].SoundsLike;
+		}
+		else
+		{//The next selection is to submit
+			speechIndex = window.top.SubmitButtonInReviewValue;
+			window.top.CurrentContest = speechIndex;
+			
+			if (selected.length > 0) 
+				whatToSay = selected + " To submit your ballot, ";
+			else 
+				whatToSay = " To submit your ballot, ";
+		}
+			
+		whatToSay += window.top.SayVote;
+	}
+	
+	selected = "";
+
+	whatToSay = whatToSay.replace(/^\s+/,""); //Ltrim
+
+	if (window.top.TextToSpeechEngine == "SitePal")
+		sayText(whatToSay, window.top.SitePalVoice, window.top.SitePalLanguage, window.top.SitePalEngine, 'S', window.top.SpeakingRate);
+	else if (window.top.TextToSpeechEngine == "Speakjs")
+		speakjs(whatToSay, window.top.SpeakingRate);
+}
+
+function setupAudio()
+{
+	if (!window.top.MicIsOn)
+	{
+		window.top.SoundDetectorSensitivity = 1000; //It will never hear anything
+		window.top.SayVote = " press enter or touch the screen. ";
+	}
+			
+	self.document.bgColor = window.top.SelectionColor;
+	
+	if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java")) setTimeout("startListening()", 900);
+	else if ((window.top.MicIsOn) && (window.top.SoundDetector == "PocketSphinx"))
+	{
+		callbackManager = new CallbackManager();
+		spawnWorker("js/recognizer.js", function(worker) {
+			// This is the onmessage function, once the worker is fully loaded
+			worker.onmessage = function(e) {
+					// This is the case when we have a callback id to be called
+					if (e.data.hasOwnProperty('id')) {
+					  var clb = callbackManager.get(e.data['id']);
+					  var data = {};
+					  if ( e.data.hasOwnProperty('data')) data = e.data.data;
+					  if(clb) clb(data);
+					}
+				
+					// This is a case when the recognizer has a new hypothesis
+					if (e.data.hasOwnProperty('hyp')) 
+					{
+						if ((e.data.hyp.length > 100) && (lastHyp == e.data.hyp))
+							e.data.hyp = lastHyp = " ";
+
+						soundDetected(e.data.hyp);
+					}
+
+					// This is the case when we have an error
+					if (e.data.hasOwnProperty('status') && (e.data.status == "error")) {
+					  alert("Error in " + e.data.command + " with code " + e.data.code);
+					}
+				};
+				// Once the worker is fully loaded, we can call the initialize function
+				initRecognizer();
+			});
+
+			// The following is to initialize Web Audio
+			try {
+			  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+			  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+			  window.URL = window.URL || window.webkitURL;
+			  audioContext = new AudioContext();
+			} catch (e) {
+			  alert("Error initializing Web Audio browser");
+			}
+		
+			if (navigator.getUserMedia) navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
+											alert("No live audio input in this browser");
+										});
+			else alert("No web audio support in this browser");
+	}
+}
+
+function adjustSoundDetectorSensitivity()
+{
+	if (window.top.SoundDetectorSensitivity < window.top.SoundDetectorSensitivityMax)
+	{
+	 	window.top.SoundDetectorSensitivity += window.top.SoundDetectorSensitivityIncrement;
+		if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java")) setSoundDetectorSensitivity();
+	}
+}
+
+function setSoundDetectorSensitivity()
+{
+	if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java"))
+		self.document.soundDetector.setSoundDetectorSensitivity(window.top.SoundDetectorSensitivity);
+}
+
+function startListening()
+{
+	if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java"))
+	{
+		setIsListeningTo(false);
+		setSoundDetectorSensitivity();
+		self.document.soundDetector.startListening();		
+	}
+	else if ((window.top.MicIsOn) && (window.top.SoundDetector == "PocketSphinx"))
+	{
+		setIsListeningTo(true); 
+	
+		PayingAttention = true;
+		var id = 'PrimeIII';
+		recorder && recorder.start(id);
+	}
+}
+
+function setSpeechIndex(si)
+{
+	speechIndex = si;
+}
+
+function decrementSpeechIndex()
+{
+	speechIndex--;
+	if (whatToSpeak == itemsToSpeak[6]) 
+	{
+		if (WriteInLevel > 0) WriteInIndex--;
+		else WriteInLettersIndex = 0;
+	}
+}
+
+function incrementSpeechIndex()
+{
+	speechIndex++;
+	if (whatToSpeak == itemsToSpeak[6]) 
+	{
+		if (WriteInLevel <= 0) WriteInIndex++;
+		else WriteInLettersIndex++;
+	}
+}
+
+function soundDetected(words)
+{
+	if (interruption) //Listening
+	{
+		if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java"))
+		{
+			interruption = false;
+		
+			if (window.top.TextToSpeechEngine == "Speakjs") 
+				talkEnded();
+		}
+		else if ((window.top.MicIsOn) && (window.top.SoundDetector == "PocketSphinx"))
+		{
+			if (lastHyp == words) return;
+			lastHyp = words;
+			interruption = false;
+		
+			if (window.top.TextToSpeechEngine == "Speakjs") 
+				talkEnded();
+		}
+	}
+	else
+	{
+		if ((window.top.MicIsOn) && (window.top.SoundDetector == "PocketSphinx"))
+		{
+			if (lastHyp == words) return;
+			else lastHyp = words;
+		}
+		
+		lastTimeSoundWasDetected = new Date();
+		adjustSoundDetectorSensitivity();
+	}
+}
+
+function speakjs(whatToSpeak, voiceSpeed)
+{
+	window.top.SpeakjsCurrentTime = 999;
+	setIsListeningTo(false);
+	meSpeak.speak(whatToSpeak, voiceSpeed, function(s){
+        meSpeakEnded(s);
+    });
+}
+
+function meSpeakEnded(speechEndedOk)
+{
+	if (speechEndedOk) vh_talkEnded();
+} 
+
+function vh_talkStarted()
+{ 		
+	setIsListeningTo(false);
+} 
+
+function talkEnded()
+{
+	clearTimeouts();
+	vh_talkEnded();
+}
+
+function clearTimeouts()
+{
+	//this will clear all of the timeouts that may be pending
+	var highestTimeoutId = setTimeout(";");
+	for (var i = 0 ; i < highestTimeoutId ; i++) 
+    	clearTimeout(i); 
+
+}
+
+function vh_talkEnded()
+{ 
+	if ((!interruption) && (!printingBallot))
+	{//speech came to an end uninterrupted
+			
+		var rightNow = new Date();
+		var howLongAgoWasTheLastSoundDetected = (rightNow.getTime() - lastTimeSoundWasDetected.getTime());
+		
+		if (howLongAgoWasTheLastSoundDetected < window.top.SoundDetectionPeriod)
+		{
+			if (!window.top.VotingStarted)
+			{
+				window.top.VotingStarted = true;
+				setItemsToSpeak("Contests"); //speak the Contests
+				selected = "Selected, start voting. There are ";
+				selected += window.top.getTheNumberOfVotingContests();
+				selected += " contests for voting. ";
+				speakText();
+			}
+			else
+				processSelection();
+		}
+		else 
+		{//continue listening and say the next prompt
+
+			if ((!isListening) && ((window.top.TextToSpeechEngine == "SitePal") || (window.top.TextToSpeechEngine == "Speakjs")))
+			{
+				clearTimeouts();
+				setIsListeningTo(true);
+				setTimeout("vh_talkEnded()", window.top.SoundListeningPeriod);
+			}
+			else
+			{
+				if (!window.top.VotingStarted) 
+				{
+					setTimeout("vh_sceneLoaded()", window.top.SoundListeningPeriod);
+				}
+				else
+				{//no sound was detected
+					setIsListeningTo(false);
+					clearTimeouts();
+					incrementSpeechIndex();
+					speakText();
+				}
+			}
+		}
+	}
+	else if (printingBallot)
+	{
+		printingBallot = false;
+		if (window.top.PrintThe == "QRCode")
+			window.top.ballotFrame.location = "empty.html";
+		else if (window.top.PrintThe == "Ballot" || window.top.PrintThe == "PDFText" || window.top.PrintThe == "PDFImage")
+			window.top.contentFrame.location = "ballot.html";
+		else
+			window.top.contentFrame.location = "ballotNothing.html";
+	}
+}
+
+function setIsListeningTo(isl)
+{
+	isListening = isl;
+}
+
+function vh_sceneLoaded()
+{
+	if (!window.top.VotingStarted)
+	{
+		var ToStartVoting = "To start voting, ";
+		
+		if (window.top.MicIsOn) ToStartVoting += window.top.SayVote;
+		else ToStartVoting += " press enter. ";
+		
+    	if (window.top.TextToSpeechEngine == "SitePal")
+    		sayText(ToStartVoting, window.top.SitePalVoice, window.top.SitePalLanguage, window.top.SitePalEngine, 'S', window.top.SpeakingRate);
+    	else if (window.top.TextToSpeechEngine == "Speakjs")
+    	{
+    		speakjs(ToStartVoting, window.top.SpeakingRate);
+    	}
+	}	
+	
+	if (!sceneLoaded) 
+	{
+		sceneLoaded = true;
+		window.top.focus();
+		window.top.contentFrame.location = "prime.html";
+	}
+}
+
+function soundDetectedForEnter()
+{
+	if (!window.top.VotingStarted)
+	{
+		window.top.VotingStarted = true;
+		setItemsToSpeak("Contests"); //speak the Contests
+		selected = "Selected, start voting. There are ";
+		selected += window.top.getTheNumberOfVotingContests();
+		selected += " contests for voting. ";
+		speakText();
+	}
+	else 
+		processSelection();
+}
+
+function processWriteInSelection(selectedKey)
+{
+	stopSpeaking();
+		
+	WriteInIndex = -1;
+	WriteInLevel = 0;
+	WriteInSelected = "";
+	WriteInLettersIndex = 0;
+	speechIndex = 0;
+
+	if (selectedKey == "space")
+	{
+		selected = "Selected, space. Selected, ";
+		generateSelectedForWriteIn();
+		
+	}
+	else if (selectedKey == "back space")
+	{
+		selected = "Selected, back space. Selected, ";
+		generateSelectedForWriteIn();		
+	}
+	else if (selectedKey == "clear")
+	{
+		selected = "Selected, clear. Your write in candidate has been cleared.";		
+	}
+	else 
+	{
+		selected = "Selected, ";
+		generateSelectedForWriteIn();
+	}
+	
+	if (window.top.TextToSpeechEngine == "SitePal")
+		sayText(selected, window.top.SitePalVoice, window.top.SitePalLanguage, window.top.SitePalEngine, 'S', window.top.SpeakingRate);
+	else if (window.top.TextToSpeechEngine == "Speakjs")
+		speakjs(selected, window.top.SpeakingRate);
+		
+	selected = "";
+	SelectionWasMade = true;
+	if (window.top.TextToSpeechEngine == "Speakjs") 
+		setTimeout("speakText()", window.top.SitePalTalkEndedDelay);
+	else 
+		speakText();
+}
+
+function processSelection()
+{
+	if (printingBallot)
+	{
+		whatToSay = "Thank you. Your ballot is being printed.";
+		if (window.top.TextToSpeechEngine == "SitePal")
+			sayText(whatToSay, window.top.SitePalVoice, window.top.SitePalLanguage, window.top.SitePalEngine, 'S', window.top.SpeakingRate);
+		else if (window.top.TextToSpeechEngine == "Speakjs")
+			speakjs(whatToSay, window.top.SpeakingRate);
+	}
+	else if (whatToSpeak == itemsToSpeak[6])
+	{//WriteIn Candidate 
+		if (speechIndex == 0)
+		{
+			window.top.contentFrame.goBack();
+		}
+		else if (WriteInLevel == 0)
+		{
+			if (window.top.WriteInGroups[WriteInIndex] == "space")
+			{
+				window.top.contentFrame.keySelected(' ');
+			}
+			else if (window.top.WriteInGroups[WriteInIndex] == "back space")
+			{
+				window.top.contentFrame.keySelected('backspace');
+			}
+			else if (window.top.WriteInGroups[WriteInIndex] == "clear")
+			{
+				window.top.contentFrame.keySelected('clear');
+			}
+			else if (window.top.WriteInGroups[WriteInIndex] == "submit")
+			{
+				window.top.contentFrame.keySelected('submit');
+			}
+			else 
+			{
+				WriteInSelected = "Selected, ";
+				WriteInSelected += window.top.WriteInPrompts[window.top.WriteInGroups[WriteInIndex]];
+				saySelected();
+				if (window.top.TextToSpeechEngine == "Speakjs") 
+					setTimeout("speakText()", window.top.SitePalTalkEndedDelay);
+				else 
+					speakText();
+			}
+		}
+		else if (WriteInLevel == 1)
+		{			
+			var individualLetters = window.top.explode(",", window.top.WriteInPrompts[window.top.WriteInGroups[WriteInIndex]]);
+			var i = (individualLetters.length - 1);
+			
+			if (individualLetters[i].indexOf("tee") > 0) 
+				individualLetters[i] = "tee";
+			else if (individualLetters[i].indexOf("zee") > 0) 
+				individualLetters[i] = "zee";
+			else if (individualLetters[i].indexOf("ee") > 0) 
+				individualLetters[i] = "ee";
+			else if (individualLetters[i].indexOf("jay") > 0) 
+				individualLetters[i] = "jay";
+			else if (individualLetters[i].indexOf("oh") > 0) 
+				individualLetters[i] = "oh";
+				
+			window.top.contentFrame.keySelected(window.top.WriteInLetters[window.top.trim(individualLetters[WriteInLettersIndex])]);
+		}
+	}
+	else if (whatToSpeak == itemsToSpeak[0])
+	{//Contest was selected
+		window.top.contestSelected(speechIndex);
+	}
+	else if (whatToSpeak == itemsToSpeak[1]) 
+	{//Candidate was selected
+		if (speechIndex == (LastCandidateInThisContest+1)) 
+		{
+			window.top.navigate('previous');
+		}
+		else if (speechIndex == (LastCandidateInThisContest+2)) 
+		{
+			ClearAll = true;
+			window.top.clearAll();
+		}
+		else if (speechIndex == (LastCandidateInThisContest+3)) 
+		{			
+			if ((parseInt(window.top.CurrentContest) + 1) >= window.top.NumberOfContests)
+				window.top.navigate('next');
+			else
+			{
+				speechIndex = parseInt(window.top.CurrentContest) + 1;
+				setItemsToSpeak("Contests"); //speak the Contests
+				speakText();
+			}
+		}
+		else if (speechIndex == (LastCandidateInThisContest+4)) 
+		{
+			window.top.navigate('review');
+		}
+		else
+		{
+			if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+
+			if (window.top.Candidates[speechIndex].ButtonIndex < 0) window.top.CurrentCandidateIndex = speechIndex;
+			
+			window.top.candidateSelected(window.top.Candidates[speechIndex].ButtonIndex);
+		}	
+	}
+	else if (whatToSpeak == itemsToSpeak[3]) 
+	{//Proposition or Amendment was selected
+		if (speechIndex == (LastCandidateInThisContest+1)) 
+		{
+			window.top.navigate('previous');
+		}
+		else if (speechIndex == (LastCandidateInThisContest+2)) 
+		{
+			ClearAll = true;
+			window.top.clearAll();
+		}
+		else if (speechIndex == (LastCandidateInThisContest+3)) 
+		{
+			if ((parseInt(window.top.CurrentContest) + 1) >= window.top.NumberOfContests)
+				window.top.navigate('next');
+			else
+			{
+				speechIndex = parseInt(window.top.CurrentContest) + 1;
+				setItemsToSpeak("Contests"); //speak the Contests
+				speakText();
+			}
+		}
+		else if (speechIndex == (LastCandidateInThisContest+4)) 
+		{
+			window.top.navigate('review');
+		}
+		else
+		{
+			if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+
+			window.top.candidateSelected(window.top.Candidates[speechIndex].ButtonIndex);
+		}	
+	}
+	else if (whatToSpeak == itemsToSpeak[4])
+	{//Setting was selected
+		if (speechIndex == (LastCandidateInThisContest+1)) 
+		{
+			window.top.navigate('next');
+		}
+		else
+		{
+			if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+			
+			window.top.candidateSelected(window.top.Candidates[speechIndex].ButtonIndex);
+		}	
+	}
+	else if (whatToSpeak == itemsToSpeak[2])
+	{//Party was selected
+		if (speechIndex == (LastCandidateInThisContest+1)) 
+		{
+			window.top.navigate('previous');
+		}
+		else if (speechIndex == (LastCandidateInThisContest+2)) 
+		{
+			ClearAll = true;
+			window.top.clearAll();
+		}
+		else if (speechIndex == (LastCandidateInThisContest+3)) 
+		{
+			if ((parseInt(window.top.CurrentContest) + 1) >= window.top.NumberOfContests)
+				window.top.navigate('next');
+			else
+			{
+				speechIndex = parseInt(window.top.CurrentContest) + 1;
+				setItemsToSpeak("Contests"); //speak the Contests
+				speakText();
+			}
+		}
+		else if (speechIndex == (LastCandidateInThisContest+4)) 
+		{
+			window.top.navigate('review');
+		}
+		else
+		{
+			if (speechIndex > LastCandidateInThisContest) speechIndex = FirstCandidateInThisContest;
+			window.top.candidateSelected(window.top.Parties[speechIndex].ButtonIndex);
+		}
+	}
+	else if (whatToSpeak == itemsToSpeak[5])
+	{//Contest was selected during review
+		if (speechIndex == window.top.SubmitButtonInReviewValue)
+			window.top.contentFrame.contestSelected(window.top.SubmitButtonInReviewValue);
+		else
+			window.top.contentFrame.contestSelected(-1);
+	}
+}
+
+function PlayBeep(soundobj) 
+{
+	var beepObject = self.document.getElementById(soundobj);
+	beepObject.Play();
+}
+</script>
+</head>
+
+<body onLoad="JavaScript:setupAudio();" onUnLoad="unLoadAudio();" style="width: 100%; height: 100%; margin:0px auto; overflow-y:hidden">
+
+<script language="JavaScript">
+
+if (window.top.TextToSpeechEngine == "Speakjs")
+{
+	document.write("<div id=\"audio\"></div>\n\n");
+	setTimeout("vh_sceneLoaded()", 2000);
+}
+
+if ((window.top.MicIsOn) && (window.top.SoundDetector == "Java"))
+{
+	document.write("<applet name=\"soundDetector\" code=\"SoundDetectorApplet.class\" archive=\"SoundDetectorApplet.jar\" width=\"0\" height=\"0\"></APPLET>");
+}
+
+if (window.top.TextToSpeechEngine == "SitePal")
+{
+	document.write("\n\n");
+	document.write("<script language=\"JavaScript\" type=\"text/javascript\"> ");
+	document.write("AC_VHost_Embed(18193,1,1,'',1,1, 282036, 0,1,0,'ebede52c85c1c18f12794938730dd2f6',9);");
+	document.write("<\/script>");
+}
+</script>
+
+<form id="myForm">
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+	"author": "chick307 <chick307@gmail.com>",
+	"name": "adler32cs",
+	"description": "Adler32 checksum library for JavaScript.",
+	"version": "0.0.1",
+	"main": "adler32cs.js",
+	"scripts": {
+		"test": "node_modules/.bin/mocha"
+	},
+	"homepage": "https://github.com/chick307/adler32cs.js",
+	"bugs": "https://github.com/chick307/adler32cs.js/issues",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/chick307/adler32cs.js.git"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"mocha": "~1.6.0"
+	},
+	"optionalDependencies": {},
+	"engines": {
+		"node": "*"
+	},
+	"jam": {
+		"dependencies": {}
+	}
+}

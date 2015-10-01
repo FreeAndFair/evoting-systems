@@ -1,0 +1,250 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+var FirstContest = 0;
+
+function contestSelected(selection)
+{
+	if (selection >= 0)
+	{//voter touched the selection
+		theButton = "contestButton" + selection;
+		
+		if (document.getElementById(theButton).innerHTML == window.top.SubmitBallot)
+		{
+			window.top.printBallot();
+		}
+		else if ((document.getElementById(theButton).innerHTML == window.top.MoreContests) || (document.getElementById(theButton).innerHTML == window.top.MoreContestsUp))
+		{
+			if (selection == (window.top.NumberOfContestButtonsOnReview-1))
+				scrollDown((selection-1));
+			else
+				scrollUp(selection+1);
+		}
+		else
+		{
+			for (i=0;i<window.top.NumberOfContests;i++)
+			{
+				if (window.top.Contests[i].ButtonIndex == selection)
+				{
+					window.top.CurrentContest = i;
+					window.top.contestSelectedReview('Review');
+					break;
+				}
+			}
+		}
+	}
+	else
+	{//voter used audio to make the selection
+		if (selection == window.top.SubmitButtonInReviewValue)
+		{
+			window.top.printBallot();
+		}
+		else
+		{
+			window.top.contestSelectedReview('Review');
+		}
+	}
+}
+
+function loadContests(startingFrom)
+{
+	if (window.top.VoterIsVerifyingQRCode)
+	{//If this is someone verifying their QR Code, simply show the Ballot
+		window.top.printBallot();
+		return;
+	}
+	
+	var lineNumber = 1;
+	var i=startingFrom;
+	var contestButtonIndex = 0;
+	var theButton = "contestButton" + contestButtonIndex;
+	
+	window.top.InBallotReview = true;
+
+	for (c=0;c<startingFrom;c++)
+		window.top.Contests[c].ButtonIndex = -1;
+
+	if (i > FirstContest)
+	{
+		document.getElementById(theButton).style.visibility = "visible";
+		document.getElementById(theButton).style.color = window.top.MoreContestColor;
+		document.getElementById(theButton).style.background = window.top.MoreContestBackground;
+		document.getElementById(theButton).style.font = window.top.MoreContestsFont;
+		document.getElementById(theButton).innerHTML = window.top.MoreContestsUp;
+		contestButtonIndex++;
+	}
+
+	while ((i<window.top.NumberOfContests) && (contestButtonIndex<window.top.NumberOfContestButtonsOnReview))
+	{
+		theButton = "contestButton" + contestButtonIndex;
+		var buttonText = window.top.Contests[i].ContestName + " ==> ";
+		var foundCandidate = 0;
+
+		if ((window.top.Contests[i].ContestType != window.top.BallotReview) && (window.top.Contests[i].ContestType != window.top.VoteByParty) && (window.top.Contests[i].ContestType != window.top.Settings))
+		{
+			if (FirstContest == 0) FirstContest = i;
+			
+			for (j=0;j<window.top.NumberOfCandidates;j++)
+			{
+				if ((window.top.Candidates[j].Contest.ContestID == window.top.Contests[i].ContestID) && (window.top.Candidates[j].CandidateSelected))
+				{
+					if (foundCandidate > 0) buttonText += ", ";
+					else 
+					{
+						if (contestButtonIndex < (window.top.NumberOfContestButtonsOnReview - 1))
+						{
+							window.top.Contests[i].ButtonIndex = contestButtonIndex;
+						}
+					}
+					
+					foundCandidate++;
+					
+					if (window.top.Candidates[j].CandidatePhoto == "none")
+						buttonText += window.top.Candidates[j].CandidateName + " " + window.top.Candidates[j].Party.PartyLabel;
+					else
+					{
+						buttonText += " <img src=\"" + window.top.Candidates[j].CandidatePhoto;
+						buttonText += "\" style=\"vertical-align:middle\" /> ";
+						buttonText += window.top.Candidates[j].CandidateName + " ";
+						buttonText += window.top.Candidates[j].Party.PartyLabel;
+					}
+				}
+			}
+
+			if (foundCandidate < window.top.Contests[i].NumberOfCandidatesToSelect) 
+			{
+				if (foundCandidate > 0) buttonText += ", ";
+				buttonText += window.top.NoSelection;
+				window.top.Contests[i].ButtonIndex = contestButtonIndex;
+			}
+			
+			document.getElementById(theButton).style.visibility = "visible";
+			document.getElementById(theButton).style.color = window.top.ReviewButtonColor;
+			document.getElementById(theButton).style.background = window.top.ReviewButtonBackground;
+			document.getElementById(theButton).style.font= window.top.ReviewButtonFont;
+			document.getElementById(theButton).innerHTML = buttonText;
+			lineNumber++;
+			contestButtonIndex++;
+			
+			if (contestButtonIndex >= (window.top.NumberOfContestButtonsOnReview - 1))
+			{
+				theButton = "contestButton" + (window.top.NumberOfContestButtonsOnReview - 1);
+				document.getElementById(theButton).style.visibility = "visible";
+				document.getElementById(theButton).style.color = window.top.MoreContestColor;
+				document.getElementById(theButton).style.background = window.top.MoreContestBackground;
+				document.getElementById(theButton).style.font= window.top.MoreContestsFont;
+				document.getElementById(theButton).innerHTML = window.top.MoreContests;
+			}
+		}
+		
+		i++;	
+	}
+	
+	if (contestButtonIndex < window.top.NumberOfContestButtonsOnReview)
+	{ 
+		theButton = "contestButton" + contestButtonIndex;
+		document.getElementById(theButton).style.visibility = "visible";
+		document.getElementById(theButton).style.color = window.top.SubmitButtonColor;
+		document.getElementById(theButton).style.background = window.top.SubmitButtonBackground;
+		document.getElementById(theButton).style.font= window.top.SubmitButtonFont;
+		document.getElementById(theButton).innerHTML = window.top.SubmitBallot;
+		contestButtonIndex++;
+	}
+	
+	while (contestButtonIndex < window.top.NumberOfContestButtonsOnReview)
+	{
+		theButton = "contestButton" + contestButtonIndex;
+		document.getElementById(theButton).style.visibility = "hidden";
+		contestButtonIndex++;
+	}
+	setTimeout("self.document.forms[0].contestButton0.focus();", 200);
+}
+
+function scrollDown(selection)
+{	
+	var startingFrom = 0;
+	for (j=0;j<window.top.NumberOfContests;j++)
+	{
+		if (window.top.Contests[j].ButtonIndex == selection) startingFrom = j+1;
+		window.top.Contests[j].ButtonIndex = -1;
+	}
+
+	loadContests(startingFrom);
+}
+
+function scrollUp(selection)
+{	
+	var startingFrom = 0;
+	
+	if (selection >= window.top.NumberOfContestButtonsOnReview)
+	{
+		for (j=0;j<window.top.NumberOfContests;j++)
+		{
+			if (window.top.Contests[j].ButtonIndex == selection) startingFrom = j - window.top.NumberOfContestButtonsOnReview;
+			window.top.Contests[j].ButtonIndex = -1;
+		}
+	}
+	loadContests(startingFrom);
+}
+</script>
+</head>
+
+<body onLoad="JavaScript:loadContests(0);" style="width: 100%; height: 100%; margin:0px auto; overflow-y:hidden">
+<form id="myForm">
+<script language="JavaScript">
+document.write("<table style=\"height:100%;width:100%;\" border=\"0\" cellspacing=\"3\" cellpadding=\"0\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\"><tr>\n");
+
+document.write("<td valign=\"top\" align=\"center\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\">\n");
+
+document.write("<p id='headingParagraph'><font id='myHeading' size=\"10\">Ballot Review</font></p>");
+document.write("<p id='headingParagraph2'><font id='smallHeading' size=\"5\">Touch a contest to change your selection.</font></p><br>");
+
+for (i=0;i<window.top.NumberOfContestButtonsOnReview;i++)
+{
+	if (i>0)
+		document.write("<tr><td valign=\"top\" align=\"center\">");
+	document.write("<button style=\"font: bold 18px Arial;width:1500;height:110\" type=\"button\" id=\"contestButton");
+	document.write(i);
+	document.write("\" onClick=\"contestSelected('");
+	document.write(i);
+	document.write("')\">Contest</button></td></tr>");
+}
+
+</script>
+
+<tr><td></td></tr>
+<tr><td></td></tr>
+</table>
+
+</tr>
+</table>
+</form>
+
+<script language="JavaScript" src="TabAndEnter.js"> </script>
+</body>
+</html>

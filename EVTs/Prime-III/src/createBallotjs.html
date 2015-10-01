@@ -1,0 +1,374 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+</head>
+
+<body style="width: 100%; height: 100%; margin:0px auto">
+<pre>
+<script language="JavaScript">
+var CandidateIDs = new Array(100);
+CandidateIDs[0] = "92345";
+CandidateIDs[1] = "18345";
+CandidateIDs[2] = "88231";
+CandidateIDs[3] = "22563";
+CandidateIDs[4] = "87199";
+CandidateIDs[5] = "39353";
+CandidateIDs[6] = "44444";
+CandidateIDs[7] = "55555";
+CandidateIDs[8] = "66666";
+CandidateIDs[9] = "77777";
+CandidateIDs[10] = "88888";
+CandidateIDs[11] = "99999";
+CandidateIDs[12] = "22222";
+CandidateIDs[13] = "33333";
+CandidateIDs[14] = "11111";
+CandidateIDs[15] = "28845";
+CandidateIDs[16] = "77512";
+CandidateIDs[17] = "55332";
+CandidateIDs[18] = "76543";
+CandidateIDs[19] = "23456";
+CandidateIDs[20] = "98765";
+CandidateIDs[21] = "87654";
+CandidateIDs[22] = "72634";
+CandidateIDs[23] = "22669";
+CandidateIDs[24] = "93481";
+CandidateIDs[25] = "12345";
+CandidateIDs[26] = "31313";
+CandidateIDs[27] = "49494";
+CandidateIDs[28] = "58575";
+CandidateIDs[29] = "47293";
+
+
+document.write("/* \n");
+document.write("Prime III \n\n");
+
+document.write("URL: http://www.PrimeVotingSystem.org \n\n");
+
+document.write("Copyright (c) 2015 University of Florida \n\n");
+
+document.write("This program is free software: you can redistribute it and/or modify \n");
+document.write("it under the terms of the GNU General Public License as published by \n");
+document.write("the Free Software Foundation, either version 3 of the License, or \n");
+document.write("(at your option) any later version. \n\n");
+
+document.write("This program is distributed in the hope that it will be useful, \n");
+document.write("but WITHOUT ANY WARRANTY; without even the implied warranty of \n");
+document.write("MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the \n");
+document.write("GNU General Public License for more details. \n\n");
+
+document.write("You should have received a copy of the GNU General Public License \n");
+document.write("along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;. \n\n");
+document.write("*/ \n\n\n");
+
+
+document.write("var BallotName = \"");
+document.write(window.top.BallotName);
+document.write("\";\n");
+document.write("var BallotID = \"");
+document.write(window.top.BallotID);
+document.write("\";\n");
+
+var NumberOfCandidates = parseInt(window.top.NumberOfPropsAndAmends * 2);
+NumberOfCandidates += parseInt(window.top.NumberOfParties);
+NumberOfCandidates += 5; //this is for the speed of the voice settings
+
+for (i=0;i<window.top.NumberOfContests;i++)
+{
+	bcNumberOfCandidates = "bcNumberOfCandidates" + i;
+	bcNumberOfCandidatesToSelect = "bcNumberOfCandidatesToSelect" + i;
+	NumberOfCandidates += parseInt(window.top.getCookie(bcNumberOfCandidates));
+	NumberOfCandidates += parseInt(window.top.getCookie(bcNumberOfCandidatesToSelect));
+}
+
+document.write("var AccessCodes = new Array();\n");
+document.write("AccessCodes[0] = \"1853\";\n");
+document.write("AccessCodes[1] = \"0117\";\n");
+document.write("AccessCodes[2] = \"0000\";\n\n");
+
+document.write("var ContestTypes = ['Contest', 'Proposition or Amendment', 'Ballot Review', 'Vote By Party', 'Settings'];\n");
+
+document.write("var Contests = new Object();\n");
+
+
+document.write("Contests[0] = new Contest('00', ContestTypes[4], 1, 'Settings', 'settings', \"\");\n");
+document.write("Contests[0].NumberOfSelectedCandidates = 1;\n");
+
+ContestOffset = 2;
+if (parseInt(window.top.NumberOfParties) > 0)
+	document.write("Contests[1] = new Contest('01', ContestTypes[3], 1, 'Vote By Party', 'vote by party', \"\");\n\n");
+else
+	ContestOffset = 1;
+
+for (i=0;i<window.top.NumberOfContests;i++)
+{
+	bcContestName = "bcContestName" + i;
+	bcContestNameSoundsLike = "bcContestNameSoundsLike" + i;
+	bcNumberOfCandidates = "bcNumberOfCandidates" + i;
+	bcNumberOfCandidatesToSelect = "bcNumberOfCandidatesToSelect" + i;
+
+	document.write("Contests[");
+	document.write(i+ContestOffset);
+	document.write("] = new Contest('co");
+	document.write(i);
+	document.write("', ContestTypes[0], ");
+	document.write(parseInt(window.top.getCookie(bcNumberOfCandidatesToSelect)));
+	document.write(", '");
+	document.write(window.top.getCookie(bcContestName));
+	document.write("', '");
+	document.write(window.top.getCookie(bcContestNameSoundsLike));
+	document.write("', \"\");\n");
+
+}
+document.write("\n");
+
+i += ContestOffset;
+j=i-1;
+for (c=0;c<window.top.NumberOfPropsAndAmends;c++)
+{
+	bcPropOrAmendName = "bcPropOrAmendName" + c;
+	bcPropOrAmendNameSoundsLike = "bcPropOrAmendNameSoundsLike" + c;
+	bcPropOrAmendText = "bcPropOrAmendText" + c;
+
+	j = c + i;
+	document.write("Contests[");
+	document.write(j);
+	document.write("] = new Contest('pa");
+	document.write(j);
+	document.write("', ContestTypes[1], 1, '");
+	document.write(window.top.getCookie(bcPropOrAmendName));
+	document.write("', '");
+	document.write(window.top.getCookie(bcPropOrAmendNameSoundsLike));
+	document.write("', \"");
+	document.write(window.top.getCookie(bcPropOrAmendText));
+	document.write("\");\n"); 
+}
+document.write("\n");
+
+j++;
+document.write("Contests[");
+document.write(j++);
+document.write("] = new Contest('br', ContestTypes[2], 0, 'Review My Ballot', 'review my ballot', \"\");\n");
+
+document.write("var NumberOfContests = ");
+document.write(parseInt(j));
+document.write(";\n\n");
+
+
+document.write("var Parties = new Object();\n");
+for (i=0;i<window.top.NumberOfParties;i++)
+{
+	Party = "Party" + i;
+	bcParty = "bc" + Party;
+	
+	PartyLabel = "PartyLabel" + i;
+	bcPartyLabel = "bc" + PartyLabel;
+
+	document.write("Parties[");
+	document.write(i);
+	document.write("] = new Party('");
+	document.write(window.top.getCookie(bcParty));
+	document.write("', '");
+	document.write(window.top.getCookie(bcPartyLabel));
+	document.write("');\n");	
+}
+
+document.write("Parties[");
+WriteInPartyIndex = i;
+document.write(i++);
+document.write("] = new Party(WriteIn, WriteIn);\n");
+document.write("Parties[");
+PropOrAmendPartyIndex = i;
+document.write(i);
+document.write("] = new Party(PropositionOrAmendment, PropositionOrAmendment);\n");
+
+document.write("var NumberOfParties = ");
+document.write(parseInt(window.top.NumberOfParties) + 2);
+document.write(";\n\n");
+
+
+document.write("var Candidates = new Object();\n");
+CandidateIndex = 0;
+ContestIndex = 2;
+if (window.top.NumberOfParties ==0) ContestIndex = 1;
+for (i=0;i<window.top.NumberOfContests;i++)
+{
+	bcNumberOfCandidates = "bcNumberOfCandidates" + i;
+	NumberOfCandidates = window.top.getCookie(bcNumberOfCandidates);
+	
+	bcNumberOfCandidatesToSelect = "bcNumberOfCandidatesToSelect" + i;
+	NumberOfCandidatesToSelect = window.top.getCookie(bcNumberOfCandidatesToSelect);
+
+	for (c=0;c<NumberOfCandidates;c++)
+	{
+		bcCandidate = "bc" + i + "Candidate" + c;	
+		bcCandidateSoundsLike = "bc" + i + "CandidateSoundsLike" + c;	
+		bcCandidatePhoto = "bc" + i + "CandidatePhoto" + c;	
+		bcCandidateParty = "bc" + i + "CandidateParty" + c;
+		
+		for (p=0;p<window.top.NumberOfParties;p++)	
+		{
+			Party = "Party" + p;
+			bcParty = "bc" + Party;
+			
+			if (window.top.getCookie(bcParty) == window.top.getCookie(bcCandidateParty)) break;
+		}
+
+		document.write("Candidates[");
+		document.write(CandidateIndex);
+		document.write("] = new Candidate('");
+		document.write(CandidateIDs[CandidateIndex]);
+		document.write("', '");
+		document.write(window.top.getCookie(bcCandidate));
+		document.write("', Parties[");
+		document.write(p);
+		document.write("], Contests[");
+		document.write(ContestIndex);
+		document.write("], \"");
+		
+		CandidatePhoto = window.top.getCookie(bcCandidatePhoto);
+		if ((CandidatePhoto == null) || (CandidatePhoto == "")) CandidatePhoto = "none";
+		
+		document.write(CandidatePhoto);
+		document.write("\", '");
+
+		CandidateNameSoundsLike = "";
+		if ((window.top.getCookie(bcCandidateSoundsLike) == null) || (window.top.getCookie(bcCandidateSoundsLike) == "")) 
+			CandidateNameSoundsLike = window.top.getCookie(bcCandidate);
+		else
+			CandidateNameSoundsLike = window.top.getCookie(bcCandidateSoundsLike);
+		
+			document.write(CandidateNameSoundsLike);
+		document.write("', \"\", \"\", \"\");\n");		
+		
+		CandidateIndex++;
+	}
+
+	for (x=0;x<NumberOfCandidatesToSelect;x++)
+	{
+		document.write("Candidates[");
+		document.write(CandidateIndex++);
+		document.write("] = new Candidate(WriteIn, WriteIn, Parties[");
+		document.write(WriteInPartyIndex);
+		document.write("], Contests[");
+		document.write(ContestIndex);
+		document.write("], \"none\", \"\", \"\", \"\", \"\");\n");
+	}
+	ContestIndex++;
+}
+
+for (c=0;c<window.top.NumberOfPropsAndAmends;c++)
+{
+	bcPropOrAmendName = "bcPropOrAmendName" + c;
+	bcPropOrAmendNameSoundsLike = "bcPropOrAmendNameSoundsLike" + c;
+	bcPropOrAmendText = "bcPropOrAmendText" + c;
+	
+	positive = "Yes";
+	negative = "No";
+	bcPropOrAmendOptions = "bcPropOrAmendOptions" + c;
+	bcPropOrAmendOptionsText = window.top.getCookie(bcPropOrAmendOptions);
+	
+	for (x=0;x<window.top.PropOrAmendOptionsArray.length;x++)
+	{
+		if (window.top.PropOrAmendOptionsArray[x] == bcPropOrAmendOptionsText)
+		{
+			j = bcPropOrAmendOptionsText.split("/");
+			positive = j[0];
+			negative = j[1];
+		}
+	}
+
+	document.write("Candidates[");
+	document.write(CandidateIndex);
+	document.write("] = new Candidate('");
+	document.write(CandidateIDs[CandidateIndex++]);
+	document.write("', '" + positive + "', Parties[");
+	document.write(PropOrAmendPartyIndex);
+	document.write("], Contests[");
+	document.write(ContestIndex);
+	document.write("], \"none\", \"\", \"\", \"\", \"\");\n");
+
+	document.write("Candidates[");
+	document.write(CandidateIndex);
+	document.write("] = new Candidate('");
+	document.write(CandidateIDs[CandidateIndex++]);
+	document.write("', '" + negative + "', Parties[");
+	document.write(PropOrAmendPartyIndex);
+	document.write("], Contests[");
+	document.write(ContestIndex++);
+	document.write("], \"none\", \"\", \"\", \"\", \"\");\n");
+}
+
+document.write("\n");
+document.write("Candidates[");
+document.write(CandidateIndex++);
+document.write("] = new Candidate(\"Set1\", \"Very Fast\", Parties[");
+document.write(WriteInPartyIndex);
+document.write("], Contests[0], \"none\", \"\", \"\", \"\", \"\");\n");
+
+document.write("\n");
+document.write("Candidates[");
+document.write(CandidateIndex++);
+document.write("] = new Candidate(\"Set2\", \"Fast\", Parties[");
+document.write(WriteInPartyIndex);
+document.write("], Contests[0], \"none\", \"\", \"\", \"\", \"\");\n");
+
+document.write("\n");
+document.write("Candidates[");
+document.write(CandidateIndex);
+document.write("] = new Candidate(\"Set3\", \"Average\", Parties[");
+document.write(WriteInPartyIndex);
+document.write("], Contests[0], \"none\", \"\", \"\", \"\", \"\");\n");
+document.write("Candidates[");
+document.write(CandidateIndex);
+document.write("].CandidateSelected = true;\n");
+document.write("Candidates[");
+document.write(CandidateIndex++);
+document.write("].WhenSelected = new Date();\n");
+
+
+document.write("\n");
+document.write("Candidates[");
+document.write(CandidateIndex++);
+document.write("] = new Candidate(\"Set4\", \"Slow\", Parties[");
+document.write(WriteInPartyIndex);
+document.write("], Contests[0], \"none\", \"\", \"\", \"\", \"\");\n");
+
+document.write("\n");
+document.write("Candidates[");
+document.write(CandidateIndex++);
+document.write("] = new Candidate(\"Set5\", \"Very Slow\", Parties[");
+document.write(WriteInPartyIndex);
+document.write("], Contests[0], \"none\", \"\", \"\", \"\", \"\");\n");
+
+document.write("var NumberOfCandidates = ");
+document.write(CandidateIndex);
+document.write(";\n");
+
+</script>
+
+
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.qrcode.js"></script>
+<script type="text/javascript" src="qrcode.js"></script>
+
+<script language="JavaScript">
+function setup()
+{
+	self.document.bgColor = window.top.SelectionColor;
+}
+
+function printBallot()
+{
+	if (!window.top.VoterIsVerifyingQRCode)
+	{//If the voter is verifying the QR Code, then it will show the ballot
+		window.print();
+		setTimeout("window.top.location=\"index.html\"", 9000);
+	}
+}
+</script>
+</head>
+
+<body style="width: 100%; height: 100%; margin:0px auto; overflow-y:hidden" onLoad="JavaScript:setup();">
+<form id="myForm">
+
+<script language="JavaScript">
+document.write("<center><p id='headingParagraph'><font id='myHeading' size=\"12\">Your ballot has been cast.<br><br>Thank You.</font></p></center>");
+
+if (window.top.PrintThe == "Ballot")
+{
+	var lineNumber = 1;
+	var i=0;
+	
+	for (i=0;i<window.top.NumberOfContests;i++)
+	{
+		var buttonText = lineNumber + ". " + window.top.Contests[i].ContestName;
+		var foundCandidate = 0;
+		var FoundWriteInCandidate = false;
+	
+		if ((window.top.Contests[i].ContestType != window.top.BallotReview) && (window.top.Contests[i].ContestType != window.top.VoteByParty) && (window.top.Contests[i].ContestType != window.top.Settings))
+		{
+			for (j=0;j<window.top.NumberOfCandidates;j++)
+			{
+				if ((window.top.Candidates[j].Contest.ContestID == window.top.Contests[i].ContestID) && (window.top.Candidates[j].CandidateSelected) && (!window.top.Candidates[j].WriteInCandidate))
+				{
+					if (foundCandidate > 0) buttonText += "; ";
+					else buttonText += " ==> ";
+					
+					foundCandidate++;
+					
+					buttonText += window.top.Candidates[j].CandidateName + " " + window.top.Candidates[j].Party.PartyLabel;
+					
+					if (window.top.Candidates[j].CandidatePhoto != "none")
+						buttonText += " <img src=\"" + window.top.Candidates[j].CandidatePhoto + "\" style=\"vertical-align:middle\" />";
+				}
+				else if ((window.top.Candidates[j].Contest.ContestID == window.top.Contests[i].ContestID) && (window.top.Candidates[j].CandidateSelected) && (window.top.Candidates[j].WriteInCandidate))
+				{
+					if ((foundCandidate > 0) && (!FoundWriteInCandidate))
+					{
+						buttonText += "<br>\n " + lineNumber + ". " + window.top.Contests[i].ContestName + " (write-in) ==> ";
+					}
+					else if (foundCandidate > 0) buttonText += "; ";
+					else buttonText += " (write-in) ==> ";
+					
+					FoundWriteInCandidate = true;
+					foundCandidate++;
+					
+					buttonText += window.top.Candidates[j].CandidateName + " " + window.top.Candidates[j].Party.PartyLabel;
+					
+					if (window.top.Candidates[j].CandidatePhoto != "none")
+						buttonText += " <img src=\"" + window.top.Candidates[j].CandidatePhoto + "\" style=\"vertical-align:middle\" />";
+				}
+			}
+				
+			if (foundCandidate < window.top.Contests[i].NumberOfCandidatesToSelect) 
+			{
+				if (foundCandidate > 0) buttonText += "; ";
+				else buttonText += " ==> ";
+				
+				buttonText += window.top.NoSelection;
+			}
+			
+			document.write(buttonText);
+			document.write("<br><br>\n");
+			lineNumber++;		
+		}	
+	}
+	setTimeout("printBallot()", 200);
+}
+else if (window.top.PrintThe == "QRCode")
+{//print QR Code
+	var ballotCode = window.top.BallotID;
+	
+	for (i=0;i<window.top.NumberOfContests;i++)
+	{
+		var foundCandidate = 0;
+	
+		if ((window.top.Contests[i].ContestType != window.top.BallotReview) && (window.top.Contests[i].ContestType != window.top.VoteByParty) && (window.top.Contests[i].ContestType != window.top.Settings))
+		{
+			if (FirstContest == 0) FirstContest = i;
+			
+			for (j=0;j<window.top.NumberOfCandidates;j++)
+			{
+				if ((window.top.Candidates[j].Contest.ContestID == window.top.Contests[i].ContestID) && (window.top.Candidates[j].CandidateSelected))
+				{
+					foundCandidate++;
+					
+					if (window.top.Candidates[j].CandidateID == window.top.WriteIn)
+						ballotCode += "_" + window.top.Candidates[j].CandidateName + "_" + window.top.Candidates[j].Contest.ContestID;
+					else
+						ballotCode += "_" + window.top.Candidates[j].CandidateID;
+				}
+			}
+	
+			if (foundCandidate < window.top.Contests[i].NumberOfCandidatesToSelect) 
+				ballotCode += "_" + window.top.NoSelectionID;			
+		}	
+	}
+	
+	ballotCode = window.top.QRCodeBaseURL + "?bc=" + ballotCode;
+	
+	jQuery('#qrcode').qrcode(encodeURI(ballotCode));	
+}
+else
+	window.top.goHome();
+
+
+</script>
+</form>
+</body>
+</html>

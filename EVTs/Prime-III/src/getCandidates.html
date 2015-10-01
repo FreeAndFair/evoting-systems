@@ -1,0 +1,220 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+function setup()
+{
+	if ((window.top.CurrentContest+1) >= window.top.NumberOfContest) home();
+	else
+	{
+		self.document.bgColor = window.top.SelectionColor;
+		bc = "bc" + window.top.CurrentContest + "Candidate0";
+		self.document.forms[0].elements[bc].focus();
+	}
+}
+
+function home()
+{
+	self.location = "getInitialSettings.html";
+}
+
+function back()
+{
+	self.location = "getContest.html";
+}
+
+function photoChanged(i)
+{
+	bcCandidatePhoto = "bc" + window.top.CurrentContest + "CandidatePhoto" + i;
+	CandidatePhoto = self.document.forms[0].elements[bcCandidatePhoto].value;
+	
+	if ( (CandidatePhoto.indexOf(".jpg") > -1) || (CandidatePhoto.indexOf(".png") > -1) || (CandidatePhoto.indexOf(".jpeg") > -1) || (CandidatePhoto.indexOf(".tiff") > -1) || (CandidatePhoto.indexOf(".gif") > -1) )
+		window.top.setCookie(bcCandidatePhoto, self.document.forms[0].elements[bcCandidatePhoto].value, window.top.OneYear);
+	else
+		window.top.setCookie(bcCandidatePhoto, "", window.top.OneYear);
+	
+	self.location.reload();
+}
+
+function next()
+{	
+	bcNumberOfCandidates = "bcNumberOfCandidates" + window.top.CurrentContest;
+	NumberOfCandidates = window.top.getCookie(bcNumberOfCandidates);
+	
+	for (i=0;i<NumberOfCandidates;i++)
+	{
+		bcCandidate = "bc" + window.top.CurrentContest + "Candidate" + i;		
+		bcCandidateSoundsLike = "bc" + window.top.CurrentContest + "CandidateSoundsLike" + i;		
+		bcCandidatePhoto = "bc" + window.top.CurrentContest + "CandidatePhoto" + i;		
+		
+		window.top.setCookie(bcCandidate, self.document.forms[0].elements[bcCandidate].value, window.top.OneYear);
+		window.top.setCookie(bcCandidateSoundsLike, self.document.forms[0].elements[bcCandidateSoundsLike].value, window.top.OneYear);
+		window.top.setCookie(bcCandidatePhoto, self.document.forms[0].elements[bcCandidatePhoto].value, window.top.OneYear);
+	
+		if (parseInt(window.top.NumberOfParties) > 0)
+		{
+			bcCandidateParty = "bc" + window.top.CurrentContest + "CandidateParty" + i;
+			selectedIndex = self.document.forms[0].elements[bcCandidateParty].selectedIndex;
+			CandidateParty = self.document.forms[0].elements[bcCandidateParty].options[selectedIndex].value;		
+			window.top.setCookie(bcCandidateParty, CandidateParty, window.top.OneYear);
+		}
+
+	}
+
+	
+	NextContest = parseInt(window.top.CurrentContest) + 1;
+	
+	if ((NextContest >= window.top.NumberOfContests) && (window.top.NumberOfPropsAndAmends > 0))
+		self.location = "getPropsAndAmends.html";
+	else if (NextContest >= window.top.NumberOfContests)
+		self.location = "buildBallotjs.html";
+	else
+	{
+		window.top.CurrentContest++;
+		self.location = "getContest.html";
+	}
+}
+</script>
+</head>
+
+<body style="width: 100%; height: 100%; margin:0px auto" onLoad="JavaScript:setup();">
+<form id="myForm">
+<script language="JavaScript">
+	document.write("<center><p id='headingParagraph'><font id='myHeading' size=\"12\">Candidates Information for ");
+	bcContestName = "bcContestName" + window.top.CurrentContest;
+	document.write(window.top.getCookie(bcContestName));
+	document.write("</font></p>");
+</script>
+
+<table>
+<tr><td></td><td align="center">Candidate Name</td><td align="center">Name SoundsLike</td><td align="center">Party</td><td align="center">Photo File</td><td align="center">Photo</td></tr>
+<script language="JavaScript">
+
+bcNumberOfCandidates = "bcNumberOfCandidates" + window.top.CurrentContest;
+NumberOfCandidates = window.top.getCookie(bcNumberOfCandidates);
+
+for (i=0;i<NumberOfCandidates;i++)
+{
+	bcCandidate = "bc" + window.top.CurrentContest + "Candidate" + i;
+	bcCandidateSoundsLike = "bc" + window.top.CurrentContest + "CandidateSoundsLike" + i;
+	bcCandidatePhoto = "bc" + window.top.CurrentContest + "CandidatePhoto" + i;
+	Candidate = window.top.getCookie(bcCandidate);
+	CandidateSoundsLike = window.top.getCookie(bcCandidateSoundsLike);
+	CandidatePhoto = window.top.getCookie(bcCandidatePhoto);
+
+	if (Candidate == null) Candidate = "";
+	if (CandidateSoundsLike == null) CandidateSoundsLike = "";
+	if (CandidatePhoto == null) CandidatePhoto = "";
+	
+	bcCandidateParty = "bc" + window.top.CurrentContest + "CandidateParty" + i;
+	CandidateParty = window.top.getCookie(bcCandidateParty);
+	if (CandidateParty == null) CandidateParty = "";
+	
+	document.write("<tr valign=\"top\"><td>");
+	document.write(i+1);
+	
+	document.write("</td><td><input type=\"text\" id=\"bc");
+	document.write(window.top.CurrentContest);
+	document.write("Candidate");
+	document.write(i);
+	document.write("\" value=\"");
+	document.write(Candidate);
+	document.write("\"></td><td>  <input type=\"text\" id=\"bc");
+	document.write(window.top.CurrentContest);
+	document.write("CandidateSoundsLike");
+	document.write(i);
+	document.write("\" value=\"");
+	document.write(CandidateSoundsLike);
+	document.write("\"></td><td>  <select id=\"bc");
+	document.write(window.top.CurrentContest);
+	document.write("CandidateParty");
+	document.write(i);
+	document.write("\">");
+	
+	for (j=0;j<window.top.NumberOfParties;j++)
+	{
+		Party = "Party" + j;
+		bcParty = "bc" + Party;
+		theParty = window.top.getCookie(bcParty);
+		
+		document.write("<option value=\"");
+		document.write(theParty);
+		if (theParty == CandidateParty)
+		{
+			document.write("\" selected>");
+		}
+		else
+		{
+			document.write("\">");
+		}
+		document.write(theParty);
+		document.write("</option>");
+	}
+	document.write("</select></td>");
+	document.write("<td><input type=\"text\" id=\"bc");
+	document.write(window.top.CurrentContest);
+	document.write("CandidatePhoto");
+	document.write(i);
+	document.write("\" value=\"");
+	document.write(CandidatePhoto);
+	document.write("\" onChange=\"photoChanged(");
+	document.write(i);
+	document.write(")\"></td><td>");
+	
+	if ( (CandidatePhoto.indexOf(".jpg") > -1) || (CandidatePhoto.indexOf(".png") > -1) || (CandidatePhoto.indexOf(".jpeg") > -1) || (CandidatePhoto.indexOf(".tiff") > -1) || (CandidatePhoto.indexOf(".gif") > -1) )
+	{
+		document.write("<img id=\"photo");
+		document.write(i);
+		document.write("\" src=\"");
+		document.write(CandidatePhoto);
+		document.write("\">");
+	}
+	document.write("</td></tr>\n");
+}
+
+</script>
+</table>
+<br><br><br>
+<input type="button" value="Back" onClick="back()"> <input type="button" value="Next" onClick="next()"> 
+<input type="button" value="Home" onClick="home()"> 
+</center>
+
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

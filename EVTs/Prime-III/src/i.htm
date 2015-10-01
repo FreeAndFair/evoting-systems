@@ -1,0 +1,48 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<head>
+<title>Prime III</title>
+<link rel="shortcut icon" href="favicon.ico">
+<script language="JavaScript">
+
+function getUrlVars() 
+{
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+if (typeof getUrlVars()["bc"] != "undefined") 
+	self.location = "index.html?bc=" + getUrlVars()["bc"];
+else
+	self.location = "index.html";
+
+</script>
+</head>
+
+<body>
+</body>
+</HTML>

@@ -1,0 +1,156 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+function setup()
+{
+	self.document.bgColor = window.top.SelectionColor;
+	window.top.setup();
+	
+	self.document.forms[0].BallotName.value = window.top.BallotName;
+	self.document.forms[0].BallotID.value = window.top.BallotID;
+	self.document.forms[0].NumberOfContests.value = window.top.NumberOfContests;
+	self.document.forms[0].NumberOfParties.value = window.top.NumberOfParties;
+	self.document.forms[0].NumberOfPropsAndAmends.value = window.top.NumberOfPropsAndAmends;
+	
+	self.document.forms[0].BallotName.focus();
+	window.top.CurrentPropsAndAmends = 0;
+	window.top.CurrentContest = 0;
+}
+
+function buildBallotjs()
+{
+	self.location = "buildBallotjs.html";
+}
+
+function clearTheBallot()
+{
+	if (confirm("Are you sure you want to clear the ballot?"))
+	{
+		window.top.deleteAllCookies();
+		setup();
+	}
+}
+
+function next()
+{
+	window.top.BallotID = self.document.forms[0].BallotID.value;
+	window.top.setCookie("bcBallotID", window.top.BallotID, window.top.OneYear);
+
+	window.top.BallotName = self.document.forms[0].BallotName.value;
+	window.top.setCookie("bcBallotName", window.top.BallotName, window.top.OneYear);
+
+	window.top.NumberOfContests = self.document.forms[0].NumberOfContests.value;
+	window.top.setCookie("bcNumberOfContests", window.top.NumberOfContests, window.top.OneYear);
+
+	window.top.NumberOfParties = self.document.forms[0].NumberOfParties.value;
+	window.top.setCookie("bcNumberOfParties", window.top.NumberOfParties, window.top.OneYear);
+
+	window.top.NumberOfPropsAndAmends = self.document.forms[0].NumberOfPropsAndAmends.value;
+	window.top.setCookie("bcNumberOfPropsAndAmends", window.top.NumberOfPropsAndAmends, window.top.OneYear);
+	
+	if ((window.top.NumberOfContests == 0) && (window.top.NumberOfPropsAndAmends == 0) && (window.top.NumberOfParties == 0))
+		alert("You must enter something.");
+	else if (window.top.NumberOfParties > 0) 
+		self.location = "getParties.html";
+	else if (window.top.NumberOfContests > 0)
+		self.location = "getContest.html";
+	else
+		self.location = "getPropsAndAmends.html";
+}
+</script>
+</head>
+
+<body style="width: 100%; height: 100%; margin:0px auto" onLoad="JavaScript:setup();">
+<form id="myForm">
+<center><p id='headingParagraph'><font id='myHeading' size="12">Ballot Creator</font></p>
+
+<table>
+<tr>
+	<td align="right">What is the name of this ballot?</td>
+	<td></td>
+	<td>
+		<script language="JavaScript">
+			document.write("<input type=\"text\" id=\"BallotName\" value=\"");
+			document.write(window.top.BallotName);
+			document.write("\">");
+		</script>
+	</td>
+</tr>
+
+<tr>
+	<td align="right">What is the id for this ballot?</td>
+	<td></td>
+	<td>
+		<script language="JavaScript">
+			document.write("<input type=\"text\" id=\"BallotID\" value=\"");
+			document.write(window.top.BallotID);
+			document.write("\">");
+		</script>
+	</td>
+</tr>
+
+<tr>
+	<td align="right">How many contests are on this ballot?</td>
+	<td></td>
+	<td>
+		<script language="JavaScript">
+			document.write("<input type=\"text\" id=\"NumberOfContests\" value=\"");
+			document.write(window.top.NumberOfContests);
+			document.write("\">");
+		</script>
+	</td>
+</tr>
+
+<tr>
+	<td align="right">How many parties are on this ballot?</td>
+	<td></td>
+	<td>
+		<script language="JavaScript">
+			document.write("<input type=\"text\" id=\"NumberOfParties\" value=\"");
+			document.write(window.top.NumberOfParties);
+			document.write("\">");
+		</script>
+	</td>
+</tr>
+
+<tr>
+	<td align="right">How many propositions and amendments are on this ballot?</td>
+	<td></td>
+	<td>
+		<script language="JavaScript">
+			document.write("<input type=\"text\" id=\"NumberOfPropsAndAmends\" value=\"");
+			document.write(window.top.NumberOfPropsAndAmends);
+			document.write("\">");
+		</script>
+	</td>	
+</tr>
+</table>
+<br><br><br>
+<input type="button" value="Next" onClick="next()"> <input type="button" value="Clear The Ballot" onClick="clearTheBallot()">
+<input type="button" value="Generate The Ballot.js File" onClick="buildBallotjs()">
+</center>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+function setup()
+{	
+	self.document.bgColor = window.top.SelectionColor;
+	
+	bcPropOrAmendName = "bcPropOrAmendName" + window.top.CurrentPropsAndAmends;
+	self.document.forms[0].PropOrAmendName.value = window.top.getCookie(bcPropOrAmendName);
+	
+	bcPropOrAmendNameSoundsLike = "bcPropOrAmendNameSoundsLike" + window.top.CurrentPropsAndAmends;
+	self.document.forms[0].PropOrAmendNameSoundsLike.value = window.top.getCookie(bcPropOrAmendNameSoundsLike);
+	
+	bcPropOrAmendOptions = "bcPropOrAmendOptions" + window.top.CurrentPropsAndAmends;
+	bcPropOrAmendOptionsText = window.top.getCookie(bcPropOrAmendOptions);
+	
+	for (i=0;i<self.document.forms[0].elements["PropOrAmendOptions"].length;i++)
+	{
+		if (bcPropOrAmendOptionsText == self.document.forms[0].elements["PropOrAmendOptions"].options[i].value)
+			self.document.forms[0].elements["PropOrAmendOptions"].selectedIndex = i;
+	}
+	
+	bcPropOrAmendText = "bcPropOrAmendText" + window.top.CurrentPropsAndAmends;
+	self.document.forms[0].PropOrAmendText.value = window.top.getCookie(bcPropOrAmendText);
+	
+	self.document.forms[0].PropOrAmendName.focus();
+}
+
+function home()
+{
+	self.location = "getInitialSettings.html";
+}
+
+function back()
+{
+	if (window.top.CurrentPropsAndAmends <= 0)
+		self.location = "getCandidates.html";
+	else
+	{
+		window.top.CurrentPropsAndAmends--;
+		self.location = "getPropsAndAmends.html";
+	}
+}
+
+function next()
+{
+	window.top.setCookie("bcPropOrAmendName" + window.top.CurrentPropsAndAmends, self.document.forms[0].PropOrAmendName.value, window.top.OneYear);
+	window.top.setCookie("bcPropOrAmendNameSoundsLike" + window.top.CurrentPropsAndAmends, self.document.forms[0].PropOrAmendNameSoundsLike.value, window.top.OneYear);
+	
+	i = self.document.forms[0].elements["PropOrAmendOptions"].selectedIndex;
+	bcPropOrAmendOptionsText = self.document.forms[0].elements["PropOrAmendOptions"].options[i].value;
+	window.top.setCookie("bcPropOrAmendOptions" + window.top.CurrentPropsAndAmends, bcPropOrAmendOptionsText, window.top.OneYear);
+	
+	window.top.setCookie("bcPropOrAmendText" + window.top.CurrentPropsAndAmends, self.document.forms[0].PropOrAmendText.value, window.top.OneYear);
+
+	if ((window.top.CurrentPropsAndAmends+1) >= window.top.NumberOfPropsAndAmends) 
+	{
+		self.location = "buildBallotjs.html";
+	}
+	else  
+	{
+		window.top.CurrentPropsAndAmends++;
+		self.location = "getPropsAndAmends.html";
+	}
+}
+</script>
+</head>
+
+<body style="width: 100%; height: 100%; margin:0px auto" onLoad="JavaScript:setup();">
+<form id="myForm">
+<script language="JavaScript">
+	document.write("<center><p id='headingParagraph'><font id='myHeading' size=\"12\">Proposition or Amendment ");
+	document.write(window.top.CurrentPropsAndAmends+1);
+	document.write("</font></p>");
+</script>
+
+<table>
+<tr>
+	<td align="right">What is the name of this proposition or amendment?</td>
+	<td></td>
+	<td>
+		<input type="text" id="PropOrAmendName">
+	</td>
+</tr>
+
+<tr>
+	<td align="right">How do you pronounce this proposition or amendment name?</td>
+	<td></td>
+	<td>
+		<input type="text" id="PropOrAmendNameSoundsLike">
+	</td>
+</tr>
+
+<tr>
+	<td align="right">Select Proposition/Amendment Choices.</td>
+	<td></td>
+	<td>
+		<select id="PropOrAmendOptions">
+			<script language="JavaScript">
+				for (x=0;x<window.top.PropOrAmendOptionsArray.length;x++)
+				{
+					if (x==0)
+						document.write("<option value=\"" + window.top.PropOrAmendOptionsArray[x] + "\" selected>");
+					else
+						document.write("<option value=\"" + window.top.PropOrAmendOptionsArray[x] + "\">");
+
+					document.write(window.top.PropOrAmendOptionsArray[x]);
+					document.write("</option>\n");
+						
+				}
+			</script>
+		</select>
+	</td>
+</tr>
+
+<tr>
+	<td align="right" valign="top">Please enter the proposition or amendment text here?</td>
+	<td></td>
+	<td>
+		<textarea id="PropOrAmendText" rows="10" cols="50"></textarea>
+	</td>	
+</tr>
+</table>
+<br><br><br>
+<input type="button" value="Back" onClick="back()"> <input type="button" value="Next" onClick="next()"> 
+<input type="button" value="Home" onClick="home()"> 
+</center>
+
+</form>
+</body>
+</html>

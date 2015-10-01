@@ -1,0 +1,110 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+function setup()
+{
+	if (window.top.NumberOfParties == 0) home();
+	else
+	{
+		self.document.bgColor = window.top.SelectionColor;
+		for (i=0;i<window.top.NumberOfParties;i++)
+		{
+			Party = "Party" + i;
+			bcParty = "bc" + Party;
+			self.document.forms[0].elements[Party].value = window.top.getCookie(bcParty);
+			
+			PartyLabel = "PartyLabel" + i;
+			bcPartyLabel = "bc" + PartyLabel;
+			self.document.forms[0].elements[PartyLabel].value = window.top.getCookie(bcPartyLabel);
+		}
+		
+		Party = "Party0";
+		self.document.forms[0].elements[Party].focus();
+	}
+}
+
+function home()
+{
+	self.location = "getInitialSettings.html";
+}
+
+function next()
+{
+	for (i=0;i<window.top.NumberOfParties;i++)
+	{
+		Party = "Party" + i;
+		bcParty = "bc" + Party;
+		window.top.setCookie(bcParty, self.document.forms[0].elements[Party].value, window.top.OneYear);
+		
+		PartyLabel = "PartyLabel" + i;
+		bcPartyLabel = "bc" + PartyLabel;
+		window.top.setCookie(bcPartyLabel, self.document.forms[0].elements[PartyLabel].value, window.top.OneYear);
+	}
+	
+	if ((window.top.CurrentContest+1) >= window.top.NumberOfContest)
+		self.location = "getPropsAndAmends.html";
+	else
+		self.location = "getContest.html";
+}
+</script>
+</head>
+
+<body style="width: 100%; height: 100%; margin:0px auto" onLoad="JavaScript:setup();">
+<form id="myForm">
+<center><p id='headingParagraph'><font id='myHeading' size="12">Get Parties</font></p>
+
+<table>
+<tr><td></td><td align="center">Party Name</td><td align="center">Party Label</td></tr>
+<script language="JavaScript">
+for (i=0;i<window.top.NumberOfParties;i++)
+{
+	Party = window.top.getCookie("Party" + i);
+	if (Party == null) Party = "";
+	
+	PartyLabel = window.top.getCookie("PartyLabel" + i);
+	if (PartyLabel == null) PartyLabel = "";
+	
+	document.write("<tr><td>");
+	document.write(i+1);
+	document.write("</td><td><input type=\"text\" id=\"Party");
+	document.write(i);
+	document.write("\" value=\"");
+	document.write(Party);
+	document.write("\"></td><td><input type=\"text\" id=\"PartyLabel");
+	document.write(i);
+	document.write("\" value=\"");
+	document.write(PartyLabel);
+	document.write("\"></td></tr>");
+}
+
+</script>
+</table>
+<br><br><br>
+<input type="button" value="Next" onClick="next()"> 
+<input type="button" value="Home" onClick="home()"> 
+</center>
+
+</form>
+</body>
+</html>

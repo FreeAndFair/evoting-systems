@@ -1,0 +1,227 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+function startPrimeIII()
+{
+	self.document.bgColor = window.top.SelectionColor;
+	window.top.startPrimeIII();
+	
+	if (!window.top.VotingStarted)
+	{
+		self.document.getElementById("previous").style.visibility = "hidden";
+		self.document.getElementById("clear").style.visibility = "hidden";
+		self.document.getElementById("top").style.visibility = "hidden";
+		self.document.getElementById("review").style.visibility = "hidden";
+	}
+	else
+		self.document.getElementById("next").innerHTML = "Continue <img src=\"continuearrow.png\" style=\"vertical-align:middle\" />";
+	
+	setTimeout("self.document.forms[0].next.focus()", 900);
+	
+	if (window.top.UserInterface == "Basic")
+	{
+		var tbl = document.getElementById("p3Table");
+		for (var i = 0; i < tbl.rows.length; i++) 
+		{
+			for (var j = 0; j < tbl.rows[i].cells.length; j++) 
+			{
+				if (j == 0)
+					tbl.rows[i].cells[j].style.display = "none";
+			}
+		}
+	}
+}
+
+function menuNavigate()
+{
+	window.top.contestSelected(self.document.getElementById("p3menu").selectedIndex);
+}
+
+</script>
+</head>
+
+<body id="myDocument" onLoad="JavaScript:startPrimeIII();" style="width: 100%; height: 100%; margin:0px auto">
+<form id="myForm">
+
+<table id="p3Table" style="height:100%;width:100%;" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<script language="JavaScript">
+
+document.write("<td valign=\"top\" align=\"left\" width=\"25%\" bgcolor=\"");
+document.write(window.top.DefaultColor);
+document.write("\">\n");
+
+document.write("<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"");
+document.write(window.top.DefaultColor);
+document.write("\">\n");
+
+if (window.top.NumberOfContests > window.top.VeryLargeNumberOfContests) window.top.DivOrP = "div";
+
+window.top.DivOrP = "div";
+
+for (i=0;i<window.top.BaselineNumberOfContestsForDisplay;i++)
+{
+	document.write("<tr id='cell");
+	document.write(i);
+	document.write("'> <td>");
+	document.write("\n<a style=\"text-decoration: none; color: ");
+	document.write(window.top.ContestColor);
+	document.write(";\" href=\"JavaScript:window.top.contestSelected('");
+	document.write(i);
+	document.write("');\"><");
+	document.write(window.top.DivOrP);
+	document.write(" id='button");
+	document.write(i);
+	document.write("'>");
+	document.write(window.top.Contests[i].ContestName);
+	document.write("<img id=\"check");
+	document.write(i);
+	document.write("\" src=\"");
+	document.write(window.top.invisibleImage);
+	document.write("\">");
+	
+	if ((i == (window.top.BaselineNumberOfContestsForDisplay-1)) && (window.top.BaselineNumberOfContestsForDisplay < window.top.NumberOfContests))
+		document.write("<br><br>*** MORE ***");
+	
+	document.write("</");
+	document.write(window.top.DivOrP);
+	document.write(">");
+	document.write("</a><br></td></tr>");
+	window.top.ContestsCells[i] = i;
+}
+
+</script>
+</table>  
+</td>
+
+
+
+<script language="JavaScript">
+document.write("<td valign=\"top\" align=\"center\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\">\n");
+
+document.write("<p id='headingParagraph'><font id='myHeading' size=\"10\">");
+document.write(window.top.BallotName);
+document.write("</font></p>");
+
+document.write("<p id='headingParagraph2'><font id='smallHeading' size=\"5\"> </font></p>");
+document.write("<p id='headingParagraph2'><font id='navigationHeading' size=\"5\"> </font></p>");
+
+document.write("<table border=\"0\" cellspacing=\"0\" cellpadding=\"10\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\"><tr><td>");
+
+document.write("<p id='PropositionOrAmendmentText' align='left'>");
+if (window.top.UserInterface == "Basic")
+	document.write("<font id=\"PropositionOrAmendmentText\" size=\"8\">To start voting, touch the start button below or select a contest from the menu.</font>");
+else
+	document.write(window.top.VotingInstructions);
+	
+document.write("</p>");
+
+if (window.top.UserInterface == "Basic")
+{
+	document.write("<center><select id=\"p3menu\" onchange=\"menuNavigate()\" style=\"font: 20px Arial;\">\n");
+	for (i=0;i<window.top.BaselineNumberOfContestsForDisplay;i++)
+	{
+		document.write("<option style=\"font: 24px Arial;\" value=\"");
+		document.write(i);
+		document.write("\">");
+		document.write(window.top.Contests[i].ContestName);
+		document.write("</option>\n");
+	}
+	document.write("</select></center>\n");	
+}
+
+document.write("</td></tr></table>");
+
+
+document.write("<p id='PrimeFrameBody' align='left'>");
+
+document.write("<table border=\"0\" cellspacing=\"7\" cellpadding=\"0\" bgcolor=\"");
+document.write(window.top.SelectionColor);
+document.write("\">\n");
+
+
+i=0;
+while (i<window.top.NumberOfCandidateButtons)
+{
+	document.write("<tr><td>");
+	document.write("<button style=\"");
+	document.write(window.top.CandidateButtonFontAndSize);
+	document.write("\" type=\"button\" id=\"candidateButton");
+	document.write(i);
+	document.write("\" onClick=\"window.top.candidateSelected('");
+	document.write(i);
+	document.write("')\">Candidate <img id=\"buttonCheck");
+	document.write(i);
+	document.write("\" src=\"");
+	document.write(window.top.invisibleImage);
+	document.write("\"></button>");
+	document.write("</td>");
+	i++;
+	
+	if (window.top.NumberOfCandidateButtonsColumns > 1)
+	{
+		document.write("<td><button style=\"");
+		document.write(window.top.CandidateButtonFontAndSize);
+		document.write("\" type=\"button\" id=\"candidateButton");
+		document.write(i);
+		document.write("\" onClick=\"window.top.candidateSelected('");
+		document.write(i);
+		document.write("')\">Candidate <img id=\"buttonCheck");
+		document.write(i);
+		document.write("\" src=\"");
+		document.write(window.top.invisibleImage);
+		document.write("\"></button>");
+		document.write("</td>");
+		i++;
+	}
+	document.write("</tr>");
+}
+document.write("</table></p>");
+
+</script>
+
+
+<br>
+<button style="font: bold 18px Arial;width:200;height:90" type="button" id="previous" onClick="window.top.navigate('previous')"><img src="backarrow.png" style="vertical-align:middle" /> Back</button>
+
+<button style="font: bold 18px Arial;width:200;height:90" type="button" id="top" onClick="window.top.navigate('top')">Top</button>
+
+<button style="font: bold 18px Arial;width:200;height:90" type="button" id="clear" onClick="window.top.clearAll()">Clear</button>
+
+<button style="font: bold 18px Arial;width:200;height:90" type="button" id="review" onClick="window.top.navigate('review')">Review</button>
+
+<button style="font: bold 18px Arial;width:200;height:90" type="button" id="next" onClick="window.top.navigate('next')">Start Voting <img src="continuearrow.png" style="vertical-align:middle" /></button>
+
+</tr>
+</table>
+
+</form>
+
+<script language="JavaScript" src="TabAndEnter.js"> </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>adler32cs test</title>
+	<style>
+		body { margin: 16px; font-family: monospace; color: #444 }
+		h1 { margin: 20px 0; padding: 0 12px; line-height: 2 }
+		#stats { margin: 20px 10px; padding: 0 }
+		#stats > li { margin: 0 0.5em 0 0; display: inline-block;
+			vertical-align: middle; height: 40px; line-height: 40px }
+		#stats em { font-style: normal; font-size: small }
+		#stats a { text-decoration: none }
+		#stats a:hover { text-decoration: underline }
+		#report { margin: 0; padding: 0 }
+		.suite { display: block }
+		.suite > h1 { margin: 0; line-height: 1 }
+		.suite > h1 > a { font-size: large; font-weight: normal;
+			color: #444; text-decoration: none }
+		.suite > h1 > a:hover { text-decoration: underline }
+		.test > h2 { font-size: medium; font-weight: normal; cursor: default }
+		.test.pass > h2 { color: #0B4 }
+		.test.fail > h2 { color: #E00 }
+		.test pre.error { padding: 1em; overflow: auto; background: #FEE }
+		.test .duration { padding: 0 0.5em; color: #CCC; font-size: x-small }
+	</style>
+</head>
+<body>
+	<div id="mocha"></div>
+	<script src="adler32cs.js"></script>
+	<script src="node_modules/mocha/mocha.js"></script>
+	<script>mocha.setup('bdd');</script>
+	<script src="test.js"></script>
+	<script>mocha.run();</script>
+</body>
+</html>

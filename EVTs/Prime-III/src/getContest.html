@@ -1,0 +1,125 @@
+<!-- 
+Prime III
+
+URL: http://www.PrimeVotingSystem.org
+
+Copyright (c) 2015 University of Florida
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+ -->
+
+<html style="width: 100%; height: 100%;">
+<head>
+<script language="JavaScript">
+function setup()
+{
+	self.document.bgColor = window.top.SelectionColor;
+	
+	bcCurrentContest = "bcContestName" + window.top.CurrentContest;
+	self.document.forms[0].ContestName.value = window.top.getCookie(bcCurrentContest);
+	
+	bcContestNameSoundsLike = "bcContestNameSoundsLike" + window.top.CurrentContest;
+	self.document.forms[0].ContestNameSoundsLike.value = window.top.getCookie(bcContestNameSoundsLike);
+	
+	bcNumberOfCandidates = "bcNumberOfCandidates" + window.top.CurrentContest;
+	self.document.forms[0].NumberOfCandidates.value = window.top.getCookie(bcNumberOfCandidates);
+	
+	bcNumberOfCandidatesToSelect = "bcNumberOfCandidatesToSelect" + window.top.CurrentContest;
+	self.document.forms[0].NumberOfCandidatesToSelect.value = window.top.getCookie(bcNumberOfCandidatesToSelect);
+	
+	self.document.forms[0].ContestName.focus();
+}
+
+function home()
+{
+	self.location = "getInitialSettings.html";
+}
+
+function back()
+{
+	if (window.top.CurrentContest == 0)
+		self.location = "getParties.html";
+	else
+	{
+		window.top.CurrentContest--;
+		self.location = "getCandidates.html";
+	}
+}
+
+function next()
+{
+	window.top.setCookie("bcContestName" + window.top.CurrentContest, self.document.forms[0].ContestName.value, window.top.OneYear);
+	window.top.setCookie("bcContestNameSoundsLike" + window.top.CurrentContest, self.document.forms[0].ContestNameSoundsLike.value, window.top.OneYear);
+	window.top.setCookie("bcNumberOfCandidates" + window.top.CurrentContest, self.document.forms[0].NumberOfCandidates.value, window.top.OneYear);
+	window.top.setCookie("bcNumberOfCandidatesToSelect" + window.top.CurrentContest, self.document.forms[0].NumberOfCandidatesToSelect.value, window.top.OneYear);
+
+	self.location = "getCandidates.html";
+}
+</script>
+</head>
+
+<body style="width: 100%; height: 100%; margin:0px auto" onLoad="JavaScript:setup();">
+<form id="myForm">
+<script language="JavaScript">
+	document.write("<center><p id='headingParagraph'><font id='myHeading' size=\"12\">Contest ");
+	bcContestName = "bcContestName" + window.top.CurrentContest;
+	
+	if (window.top.getCookie(bcContestName) != null)
+		document.write(window.top.getCookie(bcContestName));
+	else
+		document.write(window.top.CurrentContest+1);
+	document.write("</font></p>");
+</script>
+
+<table>
+<tr>
+	<td align="right">What is the name of this contest?</td>
+	<td></td>
+	<td>
+		<input type="text" id="ContestName">
+	</td>
+</tr>
+
+<tr>
+	<td align="right">How do you pronounce the contest name?</td>
+	<td></td>
+	<td>
+		<input type="text" id="ContestNameSoundsLike">
+	</td>
+</tr>
+
+<tr>
+	<td align="right">How many candidates are in this contest?</td>
+	<td></td>
+	<td>
+		<input type="text" id="NumberOfCandidates">
+	</td>	
+</tr>
+
+<tr>
+	<td align="right">How many candidates can the voter select for this contest?</td>
+	<td></td>
+	<td>
+		<input type="text" id="NumberOfCandidatesToSelect">
+	</td>	
+</tr>
+</table>
+<br><br><br>
+<input type="button" value="Back" onClick="back()"> <input type="button" value="Next" onClick="next()"> 
+<input type="button" value="Home" onClick="home()"> 
+</center>
+
+</form>
+</body>
+</html>
