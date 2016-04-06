@@ -1,0 +1,3 @@
+[submodule "EVTs/StakeWeightedVoting"]
+	path = EVTs/StakeWeightedVoting
+	url = https://github.com/FollowMyVote/StakeWeightedVoting.git
