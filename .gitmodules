@@ -1,3 +1,6 @@
 [submodule "EVTs/StakeWeightedVoting"]
 	path = EVTs/StakeWeightedVoting
 	url = https://github.com/FollowMyVote/StakeWeightedVoting.git
+[submodule "EVTs/votetec"]
+	path = EVTs/votetec
+	url = git@github.com:demtech/votetec.git
