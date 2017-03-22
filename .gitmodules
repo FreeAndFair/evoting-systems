@@ -16,3 +16,6 @@
 [submodule "wineds-converter"]
 	path = wineds-converter
 	url = https://github.com/cjerdonek/wineds-converter.git
+[submodule "EVTs/STAR-Vote"]
+	path = EVTs/STAR-Vote
+	url = git@github.com:mdb92nc/STAR-Vote.git
