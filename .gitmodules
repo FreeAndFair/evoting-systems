@@ -19,3 +19,6 @@
 [submodule "EVTs/STAR-Vote"]
 	path = EVTs/STAR-Vote
 	url = git@github.com:mdb92nc/STAR-Vote.git
+[submodule "EVTs/openstv"]
+	path = EVTs/openstv
+	url = https://github.com/OpenTechStrategies/openstv.git
