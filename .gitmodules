@@ -7,3 +7,12 @@
 [submodule "EVTs/evote"]
 	path = EVTs/evote
 	url = git@github.com:mdipierro/evote.git
+[submodule "Tally/open-rcv"]
+	path = Tally/open-rcv
+	url = git@github.com:cjerdonek/open-rcv.git
+[submodule "Tally/open-rcv-tests"]
+	path = Tally/open-rcv-tests
+	url = git@github.com:cjerdonek/open-rcv-tests.git
+[submodule "wineds-converter"]
+	path = wineds-converter
+	url = https://github.com/cjerdonek/wineds-converter.git
