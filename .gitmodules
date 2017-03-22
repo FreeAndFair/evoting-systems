@@ -4,3 +4,6 @@
 [submodule "EVTs/votetec"]
 	path = EVTs/votetec
 	url = git@github.com:demtech/votetec.git
+[submodule "EVTs/evote"]
+	path = EVTs/evote
+	url = git@github.com:mdipierro/evote.git
