@@ -22,3 +22,6 @@
 [submodule "EVTs/openstv"]
 	path = EVTs/openstv
 	url = https://github.com/OpenTechStrategies/openstv.git
+[submodule "blockchains/ag-blockchain"]
+	path = blockchains/ag-blockchain
+	url = https://github.com/moscow-technologies/ag-blockchain.git
